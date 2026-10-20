@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V26 — Bibliothèque illustrée</title>
+<title>GéoPins · Terra Village V27 — Navigation illustrée</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -2080,6 +2080,35 @@ body{background:linear-gradient(180deg,#dcebdd,#faf5e7)!important}
 
 <script id="tv26-destinations">
 (()=>{const patterns=[[/\b(europe|européen|européenne)\b/i,'europe'],[/\bfrance|français|française\b/i,'france'],[/\b(monde|continent|océan)\b/i,'monde'],[/royaume.uni|angleterre|britannique/i,'royaume-uni'],[/\b(usa|états.unis|united states)\b/i,'usa'],[/\bcanada\b/i,'canada'],[/\baustralie\b/i,'australie'],[/\basie\b/i,'asie']];let scheduled=false;function update(){scheduled=false;document.querySelectorAll('.v2-pack').forEach(el=>{if(el.dataset.tv26Land)return;let title=(el.querySelector('.nm,.v2-pack-title,h3,strong')?.textContent||el.textContent||'').slice(0,130);for(const [pattern,k] of patterns){if(pattern.test(title)){el.dataset.tv26Land=k;break}}});}new MutationObserver(()=>{if(scheduled)return;scheduled=true;setTimeout(update,80)}).observe(document.body,{subtree:true,childList:true});update();})();
+</script>
+
+<style id="geopins-v27-menu">
+/* V27: one unified visual system; layout does not depend on dynamically placed extra shortcut cards. */
+:root{--v27-wood:#51301b;--v27-gold:#e8bf70;--v27-cream:#fff1d2}
+#nav.nav{position:sticky!important;top:8px!important;bottom:auto!important;left:auto!important;transform:none!important;z-index:110!important;width:max-content!important;max-width:calc(100vw - 22px)!important;margin:8px auto 20px!important;padding:8px!important;display:flex!important;justify-content:center!important;align-items:stretch!important;flex-wrap:nowrap!important;gap:5px!important;min-height:unset!important;height:auto!important;border:3px solid #b77e3f!important;border-radius:22px!important;background:linear-gradient(115deg,#754425 0%,#4c2a18 52%,#784627 100%)!important;box-shadow:inset 0 2px 0 #f5ce8b,0 7px 0 #392219,0 15px 27px #33211550!important}
+#nav.nav button{box-sizing:border-box!important;position:relative!important;flex:0 0 112px!important;width:112px!important;min-width:0!important;height:90px!important;min-height:0!important;max-height:none!important;padding:5px 5px 8px!important;border:1px solid #b77a45!important;border-radius:15px!important;background:linear-gradient(#8f5932,#5b3421)!important;color:#fff4d9!important;box-shadow:inset 0 2px 0 #e4b87a50,0 3px 0 #38221b!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;transform:none!important;animation:none!important;transition:filter .14s ease,background .14s ease!important}
+#nav.nav button:hover{transform:none!important;filter:brightness(1.12)!important}
+#nav.nav button.on{background:linear-gradient(#fff0b9,#e6b962)!important;color:#402719!important;border-color:#fff1cb!important;box-shadow:inset 0 1px 3px #fff9dd,0 0 0 2px #e2b568,0 3px 0 #51371c!important}
+#nav.nav button img.tv19-icon{display:block!important;width:58px!important;height:58px!important;min-width:58px!important;max-width:58px!important;object-fit:contain!important;object-position:center!important;aspect-ratio:1!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;filter:drop-shadow(0 2px 1px #2a19144d)!important;pointer-events:none!important}
+#nav.nav button .tv19-label{font-size:13px!important;font-weight:900!important;line-height:1.1!important;white-space:nowrap!important;color:inherit!important;text-shadow:none!important}
+#nav.nav button:focus-visible{outline:3px solid #fcf1ac!important;outline-offset:4px!important}
+#home .v9-shortcuts{display:none!important}
+#home .v2-grid,#home .v2-below{min-width:0!important}
+#home .v2-hero{overflow:hidden!important}
+/* use original painted companion illustrations across selection cards, not SVG fallback */
+.v8-illustrated-buddy,.v24-buddy-art,.v20-painted-buddy{object-fit:contain!important;object-position:center!important}
+@media(max-width:780px){#nav.nav{position:fixed!important;top:auto!important;bottom:calc(7px + env(safe-area-inset-bottom,0px))!important;left:50%!important;transform:translateX(-50%)!important;width:calc(100% - 14px)!important;max-width:580px!important;margin:0!important;padding:5px!important;gap:2px!important;border-radius:18px!important;box-shadow:0 3px 0 #392219,0 9px 20px #3321154a!important}#nav.nav button{flex:1 1 0!important;width:0!important;min-width:0!important;height:70px!important;padding:4px 1px!important;border-radius:11px!important}#nav.nav button img.tv19-icon{width:42px!important;height:42px!important;min-width:42px!important}#nav.nav button .tv19-label{font-size:clamp(9px,2.3vw,11px)!important;letter-spacing:-.03em!important}#home .col,#profile .col{padding-bottom:125px!important}}
+@media(max-width:375px){#nav.nav button img.tv19-icon{width:35px!important;height:35px!important;min-width:35px!important}#nav.nav button{height:64px!important}}
+@media(prefers-reduced-motion:reduce){#nav.nav button{transition:none!important}}
+</style>
+<script id="geopins-v27-menu-controller">
+(function(){'use strict';
+const entries={play:['village','Village'],village:['village','Village'],missions:['missions','Missions'],brevet:['brevet','Brevet'],collection:['collection','Collection'],me:['me','Profil'],carnet:['carnet','Carnet']};
+let active=false;
+function update(){if(active)return;active=true;try{const nav=document.getElementById('nav');if(!nav)return;nav.querySelectorAll('button[data-t]').forEach(function(btn){const k=btn.getAttribute('data-t');const e=entries[k];if(!e)return;const path='assets/ui-v27/'+e[0]+'.png';let icon=btn.querySelector('img.tv19-icon');if(!icon){icon=document.createElement('img');icon.className='tv19-icon';icon.alt='';icon.setAttribute('aria-hidden','true');btn.prepend(icon);}if(!icon.getAttribute('src')?.endsWith(path))icon.src=path;icon.loading='eager';icon.decoding='async';let label=btn.querySelector('.tv19-label');if(!label){label=document.createElement('span');label.className='tv19-label';btn.appendChild(label);}if(label.textContent!==e[1])label.textContent=e[1];btn.setAttribute('aria-label',e[1]);btn.setAttribute('data-v24-icon',k);});}finally{active=false;}}
+function start(){const n=document.getElementById('nav');if(!n)return;update();new MutationObserver(function(){queueMicrotask(update)}).observe(n,{childList:true,subtree:true,attributes:true,attributeFilter:['src']});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
 </script>
 </body>
 </html>
