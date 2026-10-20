@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins Terra Village — Finale corrigée — Navigation réorganisée</title>
+<title>GéoPins · Terra Village — Refonte artistique du menu</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -794,6 +794,24 @@ body.tv25-playing #tv25-exit{display:block}
  #nav.nav button .tv19-label,#nav.nav button .tv31-caption{font-size:10px !important}
 }
 @media(prefers-reduced-motion:reduce){#nav.nav *,#tv25-exit{animation:none !important;transition:none !important}}
+</style>
+
+<style id="art-refonte-menu-v1">
+/* Art refresh: one coherent menu, no floating click targets. */
+#nav.nav{position:sticky!important;top:0!important;bottom:auto!important;left:auto!important;right:auto!important;transform:none!important;margin:12px auto 18px!important;width:min(1060px,calc(100% - 24px))!important;max-width:100%!important;min-height:96px!important;box-sizing:border-box!important;display:flex!important;align-items:stretch!important;justify-content:center!important;gap:10px!important;padding:10px 13px!important;border:3px solid #88512c!important;border-radius:24px!important;background:linear-gradient(180deg,#744725,#482a1c)!important;box-shadow:0 6px 0 #c4985a,0 12px 23px #32251a24!important;z-index:200!important;}
+#nav.nav>button{flex:1 1 0!important;min-width:0!important;max-width:190px!important;height:82px!important;min-height:82px!important;box-sizing:border-box!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:2px!important;padding:4px 8px!important;margin:0!important;border:2px solid transparent!important;border-radius:17px!important;background:#ffffff12!important;transform:none!important;translate:none!important;scale:1!important;transition:background-color .12s,border-color .12s!important;}
+#nav.nav>button.on{background:linear-gradient(#fff6d5,#f5d397)!important;color:#533321!important;border-color:#f8dc91!important;}
+#nav.nav>button:not(.on){color:#fff7e7!important;}
+#nav.nav>button:hover,#nav.nav>button:active,#nav.nav>button:focus-visible{transform:none!important;translate:none!important;scale:1!important;background-color:#fff3c13b!important;}
+#nav.nav>button.on:hover{background:#f6db9d!important;}
+#nav.nav .art-nav-icon{display:block!important;width:46px!important;height:46px!important;object-fit:contain!important;object-position:center!important;flex:none!important;filter:none!important;}
+#nav.nav .final-nav-icon,#nav.nav .v27-nav-icon,#nav.nav .v34-nav-image,#nav.nav .nav-art-icon{display:none!important;}
+#nav.nav .final-nav-text{display:block!important;white-space:nowrap!important;font-size:13px!important;font-weight:900!important;line-height:1.15!important;color:inherit!important;}
+.v2-hero-cta,.v2-hero-cta:hover,.v2-hero-cta:focus,.v2-hero-cta:active,.v2-hero-cta:focus-visible{transform:none!important;translate:none!important;scale:1!important;animation:none!important;transition:background-color .12s,filter .12s!important;}
+.v2-hero .terrain-art,.v2-hotspot{transform:none!important;translate:none!important;animation:none!important;}
+.v2-buddy .v3-sprite,.v2-buddy svg,.v2-buddy .v3-creature{display:none!important;}
+.v2-buddy .art-sole-buddy{display:block!important;width:84px!important;height:84px!important;object-fit:cover!important;border-radius:50%!important;border:4px solid #fff2d7!important;box-shadow:0 3px 0 #996135!important;}
+@media(max-width:630px){#nav.nav{width:calc(100% - 8px)!important;gap:2px!important;padding:6px 4px!important;border-radius:14px!important;min-height:74px!important;}#nav.nav>button{height:67px!important;min-height:67px!important;padding:2px!important;}#nav.nav .art-nav-icon{width:36px!important;height:36px!important;}#nav.nav .final-nav-text{font-size:10px!important;}}
 </style>
 </head>
 <body>
@@ -2485,5 +2503,64 @@ const earlier=buddy.querySelector('img.v6-buddy-portrait,img.tv32-asset-buddy,im
 let queued=false;function queue(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;sync()})}
 function init(){sync();const home=document.getElementById('home');if(home)new MutationObserver(queue).observe(home,{childList:true,subtree:true});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
-})();</script></body>
+})();</script>
+<script id="art-refonte-sync">
+(()=>{
+ const icons={village:'village',missions:'missions',brevet:'brevet',collection:'collection',me:'me'};
+ const root='assets/art-refresh/';
+ function refresh(){
+  document.querySelectorAll('#nav>button[data-t]').forEach(btn=>{
+   const key=icons[btn.dataset.t];if(!key)return;
+   if(!btn.querySelector('img.art-nav-icon')){const img=document.createElement('img');img.className='art-nav-icon';img.alt='';img.src=root+key+'.png';img.draggable=false;btn.prepend(img);}
+  });
+  document.querySelectorAll('.v2-buddy').forEach(buddy=>{
+   const existing=buddy.querySelector('.art-sole-buddy');
+   const match=(buddy.textContent||'').toLowerCase().match(/plume|kiko|nori|siro|luma|sora/);
+   const name=match?match[0]:'plume';
+   if(!existing){const img=document.createElement('img');img.className='art-sole-buddy';img.alt='Portrait de '+name;img.src=root+'portrait-'+name+'.png';buddy.prepend(img)}
+   else if(!existing.src.endsWith('portrait-'+name+'.png')){existing.src=root+'portrait-'+name+'.png';existing.alt='Portrait de '+name;}
+  });
+ }
+ refresh();let pending=false;new MutationObserver(()=>{if(!pending){pending=true;requestAnimationFrame(()=>{pending=false;refresh()})}}).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+<style id="artpack-final-ui">
+/* Single navigation drawing per button. Art labels baked into source thumbnails are
+   cropped at export; live HTML retains the accessible text. */
+#nav.nav{position:sticky!important;top:6px!important;bottom:auto!important;z-index:999!important;display:flex!important;max-width:1050px!important;width:calc(100% - 20px)!important;margin:10px auto 16px!important;transform:none!important;gap:8px!important;background:linear-gradient(#7c4b2b,#492b20)!important;padding:8px!important;border:2px solid #e6b36a!important;border-radius:20px!important;box-sizing:border-box!important}
+#nav.nav>button[data-t]{position:relative!important;min-width:0!important;max-width:none!important;flex:1 1 0!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:2px!important;min-height:92px!important;height:92px!important;transform:none!important;animation:none!important;background:transparent!important;padding:3px!important;border:1px solid transparent!important;border-radius:13px!important}
+#nav.nav>button[data-t].on{background:#f7d891!important;color:#402818!important;border-color:#fff4b8!important}
+#nav.nav>button[data-t]:hover,#nav.nav>button[data-t]:focus-visible{transform:none!important;filter:brightness(1.11)!important}
+#nav.nav>button[data-t] .artpack-icon{display:block!important;height:60px!important;width:80px!important;max-width:100%!important;object-fit:contain!important;object-position:center!important;border-radius:10px!important}
+#nav.nav>button[data-t] > :not(.artpack-icon):not(.artpack-label){display:none!important}
+#nav.nav>button[data-t] .artpack-label{display:block!important;font-size:12px!important;font-weight:900!important;color:inherit!important;line-height:1.1!important}
+#nav.nav>button[data-t]:not(.on){color:#fff6dc!important}
+/* Kill transforms on key play actions in every interaction state. */
+.v2-hero-cta,.v2-hero-cta:hover,.v2-hero-cta:active,.v2-hero-cta:focus-visible,.v2-hotspot,.v2-hotspot:hover,.v2-hotspot:active{transform:none!important;translate:none!important;animation:none!important;scale:1!important}
+#home .v2-buddy .artpack-portrait{width:100px!important;height:100px!important;object-fit:cover!important;object-position:center!important;border:3px solid #fff1d9!important;border-radius:50%!important;display:block!important}
+#home .v2-buddy > :not(.artpack-portrait):not(.v2-buddy-msg):not(.v2-buddy-line):not(.v2-buddy-bubble){display:none!important}
+@media(max-width:630px){#nav.nav{width:calc(100% - 8px)!important;gap:2px!important;padding:4px!important;top:0!important}#nav.nav>button[data-t]{height:69px!important;min-height:69px!important;padding:2px!important}#nav.nav>button[data-t] .artpack-icon{height:42px!important;width:50px!important}#nav.nav>button[data-t] .artpack-label{font-size:10px!important}#home .v2-buddy .artpack-portrait{width:74px!important;height:74px!important}}
+</style><script id="artpack-ui-controller">
+(()=>{
+ const icons={village:'village',missions:'missions',brevet:'brevet',collection:'collection',me:'me'};
+ const nav=document.querySelector('#nav');
+ if(nav){nav.querySelectorAll('button[data-t]').forEach(btn=>{
+   const key=btn.dataset.t;if(!icons[key])return;
+   const label=btn.getAttribute('aria-label')||btn.textContent.trim();
+   btn.replaceChildren();
+   const pic=new Image();pic.className='artpack-icon';pic.src='assets/art-pack/menu/'+icons[key]+'.webp';pic.alt='';pic.setAttribute('aria-hidden','true');
+   const txt=document.createElement('span');txt.className='artpack-label';txt.textContent=label;
+   btn.append(pic,txt);
+ });}
+ // Refresh companion without stacking portraits: only inside welcome buddy, not all other screens.
+ const buddy=document.querySelector('#home .v2-buddy');
+ if(buddy){
+  const portrait=document.createElement('img');portrait.className='artpack-portrait';portrait.alt='Compagnon explorateur';
+  const readId=()=>{try{const v=window.V3||{};return String(v.buddy||v.pet||localStorage.getItem('geopins-terra-v3-buddy')||'plume').toLowerCase()}catch(e){return 'plume'}};
+  const refresh=()=>{const id=readId();const allowed=['plume','kiko','nori','siro','luma','sora'];portrait.src='assets/art-pack/companions/'+(allowed.includes(id)?id:'plume')+'.webp'};
+  buddy.prepend(portrait);refresh();
+  document.addEventListener('click',e=>{if(e.target.closest('[data-buddy],[data-companion]'))setTimeout(refresh,100)});
+ }
+})();
+</script></body>
 </html>
