@@ -2495,35 +2495,8 @@ html body #home .v2-hero .v2-scene-bottom .v2-hero-cta:hover{filter:brightness(1
 @media(max-width:700px){#nav.nav{width:calc(100% - 12px)!important;gap:3px!important;padding:4px!important;top:3px!important}#nav.nav button[data-t]{flex-direction:column!important;height:60px!important;min-height:60px!important;gap:2px!important;padding:4px 1px!important}#nav.nav .final-nav-icon{width:26px!important;height:26px!important;flex-basis:26px!important}#nav.nav .final-nav-text{font-size:10px!important}#home .v2-buddy > img.final-buddy{width:62px!important;height:62px!important;flex-basis:62px!important}}
 @media(prefers-reduced-motion:reduce){#nav.nav *,#home .v2-hero-cta{transition:none!important;animation:none!important}}
 </style>
-<script id="final-buddy-controller">(function(){
-function sync(){const buddy=document.querySelector('#home .v2-buddy');if(!buddy)return;
-let im=buddy.querySelector(':scope > .final-buddy');if(!im){im=document.createElement('img');im.className='final-buddy';im.alt='Compagnon explorateur';buddy.prepend(im)}
-const earlier=buddy.querySelector('img.v6-buddy-portrait,img.tv32-asset-buddy,img.v34-companion');const filename=(earlier?.getAttribute('src')||'assets/plume.webp');if(im.getAttribute('src')!==filename)im.setAttribute('src',filename)
-}
-let queued=false;function queue(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;sync()})}
-function init(){sync();const home=document.getElementById('home');if(home)new MutationObserver(queue).observe(home,{childList:true,subtree:true});}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
-})();</script>
-<script id="art-refonte-sync">
-(()=>{
- const icons={village:'village',missions:'missions',brevet:'brevet',collection:'collection',me:'me'};
- const root='assets/art-refresh/';
- function refresh(){
-  document.querySelectorAll('#nav>button[data-t]').forEach(btn=>{
-   const key=icons[btn.dataset.t];if(!key)return;
-   if(!btn.querySelector('img.art-nav-icon')){const img=document.createElement('img');img.className='art-nav-icon';img.alt='';img.src=root+key+'.png';img.draggable=false;btn.prepend(img);}
-  });
-  document.querySelectorAll('.v2-buddy').forEach(buddy=>{
-   const existing=buddy.querySelector('.art-sole-buddy');
-   const match=(buddy.textContent||'').toLowerCase().match(/plume|kiko|nori|siro|luma|sora/);
-   const name=match?match[0]:'plume';
-   if(!existing){const img=document.createElement('img');img.className='art-sole-buddy';img.alt='Portrait de '+name;img.src=root+'portrait-'+name+'.png';buddy.prepend(img)}
-   else if(!existing.src.endsWith('portrait-'+name+'.png')){existing.src=root+'portrait-'+name+'.png';existing.alt='Portrait de '+name;}
-  });
- }
- refresh();let pending=false;new MutationObserver(()=>{if(!pending){pending=true;requestAnimationFrame(()=>{pending=false;refresh()})}}).observe(document.body,{childList:true,subtree:true});
-})();
-</script>
+
+
 <style id="artpack-final-ui">
 /* Single navigation drawing per button. Art labels baked into source thumbnails are
    cropped at export; live HTML retains the accessible text. */
@@ -2560,11 +2533,49 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 .v2-hero-cta,.v2-hero-cta:hover,.v2-hero-cta:focus,.v2-hero-cta:active{transform:none!important;translate:none!important;scale:1!important;animation:none!important;position:relative!important}
 @media(max-width:690px){#nav.nav{position:fixed!important;top:auto!important;bottom:calc(7px + env(safe-area-inset-bottom,0px))!important;left:7px!important;right:7px!important;margin:0!important;width:calc(100% - 14px)!important;gap:2px!important;padding:4px!important}#nav.nav>button[data-t]{height:59px!important;min-height:59px!important;gap:2px!important;padding:4px 1px!important}#nav.nav>button[data-t] .vfix-nav-symbol{font-size:19px!important}#nav.nav>button[data-t] .vfix-nav-label{font-size:10px!important}}
 </style>
-<script id="geopins-stabilisation-ui">
+
+
+<style id="release-final-authoritative">
+/* RELEASE: one clear, stable navigation above content. */
+#nav.nav{position:sticky!important;top:6px!important;bottom:auto!important;left:auto!important;right:auto!important;transform:none!important;translate:none!important;z-index:1000!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;width:min(1020px,calc(100% - 20px))!important;max-width:1020px!important;min-height:0!important;height:auto!important;gap:8px!important;padding:8px!important;margin:10px auto 18px!important;border-radius:18px!important;border:2px solid #ae793f!important;background:linear-gradient(180deg,#70482f,#54321f)!important;box-shadow:0 3px 0 #38251a,0 7px 18px #38251a33!important;overflow:visible!important}
+#nav.nav>button[data-t]{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:9px!important;position:relative!important;height:61px!important;min-height:61px!important;min-width:0!important;max-width:none!important;width:100%!important;margin:0!important;padding:5px!important;border:1px solid #a98158!important;border-radius:11px!important;background:#805639!important;color:#fff8df!important;box-shadow:inset 0 1px 1px #dfb98655!important;transform:none!important;translate:none!important;animation:none!important;transition:background-color .12s!important;overflow:hidden!important}
+#nav.nav>button[data-t].on{background:#f3dda7!important;color:#4c311b!important;border-color:#fff3ca!important}
+#nav.nav>button[data-t]:hover{background:#986a43!important;transform:none!important;filter:none!important}
+#nav.nav>button[data-t].on:hover{background:#f3dda7!important}
+#nav.nav>button[data-t]>*{display:none!important}
+#nav.nav>button[data-t]>.release-icon,#nav.nav>button[data-t]>.release-label{display:block!important;visibility:visible!important;opacity:1!important}
+#nav.nav .release-icon{width:38px!important;height:38px!important;object-fit:contain!important;flex:0 0 38px!important;background:none!important;border:0!important;border-radius:0!important;filter:drop-shadow(0 1px 1px #1a130c55)!important}
+#nav.nav .release-label{color:inherit!important;font-size:14px!important;font-weight:900!important;line-height:1.1!important;white-space:nowrap!important}
+#home .v2-buddy{align-items:center!important;gap:10px!important}
+#home .v2-buddy::before,#home .v2-buddy::after{display:none!important;content:none!important}
+#home .v2-buddy > *:not(.v2-bubble):not(.release-buddy){display:none!important}
+#home .v2-buddy>.release-buddy{display:block!important;flex:0 0 94px!important;width:94px!important;height:94px!important;object-fit:contain!important;border-radius:50%!important;border:4px solid #fff8e3!important;background:#f5e7c5!important;box-shadow:0 3px 0 #976c42!important}
+.v3-creature-art>.release-creature-portrait{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important}
+.v3-creature-art>.release-creature-portrait~*{display:none!important}
+.v3-creature-art:has(>.release-creature-portrait)>:not(.release-creature-portrait){display:none!important}
+/* Do not reposition clickable CTAs on interaction. */
+.v2-hero-cta,.v2-hero-cta:hover,.v2-hero-cta:active,.v2-hero-cta:focus-visible{transform:none!important;translate:none!important;scale:1!important;animation:none!important;transition:background-color .12s!important;position:relative!important;inset:auto!important;will-change:auto!important}
+.v2-hero-cta:hover{filter:brightness(1.08)!important}
+@media(max-width:700px){#nav.nav{position:sticky!important;top:2px!important;bottom:auto!important;left:auto!important;right:auto!important;gap:3px!important;padding:4px!important;width:calc(100% - 8px)!important;margin:4px auto 12px!important}#nav.nav>button[data-t]{flex-direction:column!important;gap:1px!important;height:59px!important;min-height:59px!important;padding:2px 1px!important}#nav.nav .release-icon{width:31px!important;height:31px!important;flex-basis:31px!important}#nav.nav .release-label{font-size:10px!important}#home .v2-buddy>.release-buddy{width:62px!important;height:62px!important;flex-basis:62px!important}}
+@media(prefers-reduced-motion:reduce){#nav.nav *,#home .v2-hero-cta{transition:none!important;animation:none!important}}
+</style>
+<script id="release-single-ui-controller">
 (()=>{
- const meta={village:['Village','V'],missions:['Missions','M'],brevet:['Brevet','B'],collection:['Collection','C'],me:['Profil','P']};
- const nav=document.querySelector('#nav');
- if(nav){nav.querySelectorAll('button[data-t]').forEach(b=>{const m=meta[b.dataset.t];if(!m)return; b.replaceChildren(); const symbol=document.createElement('span');symbol.className='vfix-nav-symbol';symbol.textContent=m[1];symbol.setAttribute('aria-hidden','true');const label=document.createElement('span');label.className='vfix-nav-label';label.textContent=m[0]; b.append(symbol,label);b.setAttribute('aria-label',m[0]);});}
+const base='assets/release-art/';
+const labels={village:'Village',missions:'Missions',brevet:'Brevet',collection:'Collection',me:'Profil'};
+const portraits=['plume','kiko','nori','siro','luma','sora'];
+function buddyName(){try{if(typeof V3!=='undefined'&&V3.buddy&&portraits.includes(V3.buddy))return V3.buddy;}catch(e){}try{return portraits.includes(localStorage.getItem('geopins-terra-v3-buddy'))?localStorage.getItem('geopins-terra-v3-buddy'):'plume'}catch(e){return 'plume'}}
+let busy=false;
+function render(){
+ const nav=document.getElementById('nav');
+ if(nav)for(const b of nav.querySelectorAll('button[data-t]')){const k=b.dataset.t;if(!labels[k])continue;
+ if(b.dataset.releaseReady!=='yes'){b.replaceChildren();const icon=document.createElement('img');icon.className='release-icon';icon.src=base+'nav-'+k+'.webp';icon.alt='';icon.decoding='async';const label=document.createElement('span');label.className='release-label';label.textContent=labels[k];b.append(icon,label);b.dataset.releaseReady='yes';b.setAttribute('aria-label',labels[k]);}}
+ const buddy=document.querySelector('#home .v2-buddy');if(buddy){let image=buddy.querySelector(':scope > img.release-buddy');if(!image){image=document.createElement('img');image.className='release-buddy';image.alt='Ton compagnon explorateur';buddy.prepend(image)}const src=base+'buddy-'+buddyName()+'.webp';if(image.getAttribute('src')!==src)image.setAttribute('src',src)}
+ document.querySelectorAll('.v3-creature').forEach(card=>{const art=card.querySelector('.v3-creature-art');if(!art)return;const raw=(card.textContent||'').toLowerCase();const name=portraits.find(p=>raw.includes(p));if(!name)return;let image=art.querySelector('img.release-creature-portrait');if(!image){image=document.createElement('img');image.className='release-creature-portrait';image.alt='Illustration de '+name;art.prepend(image)}const path=base+'buddy-'+name+'.webp';if(image.getAttribute('src')!==path)image.setAttribute('src',path)});
+}
+function queue(){if(busy)return;busy=true;requestAnimationFrame(()=>{busy=false;render()})}
+function init(){render();const home=document.querySelector('#home');if(home)new MutationObserver(queue).observe(home,{subtree:true,childList:true});const nav=document.getElementById('nav');if(nav)new MutationObserver(queue).observe(nav,{childList:true});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
 </script>
 </body>
