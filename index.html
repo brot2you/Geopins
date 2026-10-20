@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V33.1 — Art & Interface</title>
+<title>GéoPins Terra Village V34 — Menu illustré corrigé</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -2418,5 +2418,45 @@ body{padding-bottom:126px!important}#home,#profile{padding-bottom:35px!important
 #home .v2-buddy > img.tv32-asset-buddy {display:block!important;width:106px!important;height:106px!important;object-fit:contain!important;object-position:center!important;flex:0 0 106px!important;border-radius:50%!important;}
 @media(max-width:700px){#nav.nav {width:calc(100vw - 8px)!important;bottom:calc(3px + env(safe-area-inset-bottom,0px))!important;min-height:72px!important;padding:3px!important;gap:1px!important;}#nav.nav button[data-t]{min-height:61px!important;padding:3px 1px!important;}#nav.nav img.tv33-icon{width:43px!important;height:40px!important;}#nav.nav .tv33-label{font-size:10px!important;}#home .v2-buddy > img.tv32-asset-buddy{width:70px!important;height:70px!important;flex-basis:70px!important;}}
 </style>
+
+<style id="v34-navigation-last">
+/* V34 authoritative bottom dock, overriding old versions */
+#nav.nav{position:fixed!important;z-index:900!important;left:50%!important;right:auto!important;top:auto!important;bottom:calc(10px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%)!important;width:min(94vw,810px)!important;max-width:810px!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;align-items:stretch!important;gap:5px!important;padding:8px!important;min-height:91px!important;border:3px solid #ad773d!important;border-radius:22px!important;background:linear-gradient(180deg,#81552e,#492a1d)!important;box-shadow:0 7px 0 #301c14,0 12px 25px #17120c77!important;overflow:visible!important}
+#nav.nav button[data-t]{width:100%!important;min-width:0!important;min-height:73px!important;padding:3px!important;margin:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:2px!important;background:transparent!important;border:1px solid transparent!important;border-radius:13px!important;box-shadow:none!important;transform:none!important;transition:background .12s,filter .12s!important;color:#fff6dc!important;overflow:hidden!important}
+#nav.nav button[data-t].on{background:linear-gradient(#fff3c2,#f7c36a)!important;border:2px solid #efca79!important;color:#4a311b!important;box-shadow:inset 0 1px 4px #fff8e3!important}
+#nav.nav button[data-t]:hover{filter:brightness(1.13)!important;transform:none!important}
+#nav.nav button[data-t] > :not(.v34-art):not(.v34-label){display:none!important}
+#nav.nav .v34-art{display:block!important;width:clamp(46px,5.9vw,66px)!important;height:clamp(42px,5.4vw,59px)!important;object-fit:contain!important;object-position:center!important;border:0!important;background:none!important;box-shadow:none!important;border-radius:0!important;flex:none!important}
+#nav.nav .v34-label{display:block!important;color:inherit!important;line-height:1.1!important;font-size:clamp(10px,1.1vw,13px)!important;font-weight:900!important;white-space:nowrap!important}
+#home,#profile,.screen{padding-bottom:116px!important}
+/* Only one companion illustration, original SVG / extra portrait hidden */
+#home .v2-buddy svg,#home .v2-buddy .v3-sprite,#home .v2-buddy .tv32-asset-buddy,#home .v2-buddy .v6-buddy-portrait{display:none!important}
+#home .v2-buddy .v34-companion{display:block!important;width:110px!important;height:110px!important;object-fit:cover!important;object-position:center!important;border-radius:50%!important;border:4px solid #fff7e0!important;box-shadow:0 3px 0 #9e6a35!important;flex:0 0 110px!important}
+@media(max-width:600px){#nav.nav{width:calc(100% - 10px)!important;padding:4px!important;gap:1px!important;border-radius:16px!important;min-height:76px!important;bottom:calc(3px + env(safe-area-inset-bottom,0px))!important}#nav.nav button[data-t]{min-height:65px!important;padding:2px!important}#nav.nav .v34-art{width:43px!important;height:43px!important}#nav.nav .v34-label{font-size:10px!important}#home .v2-buddy .v34-companion{width:70px!important;height:70px!important;flex-basis:70px!important}}
+</style>
+
+<script id="v34-navigation-clean">
+(()=>{'use strict';
+const assets={village:'village',missions:'missions',brevet:'brevet',collection:'collection',me:'me'};
+const labels={village:'Village',missions:'Missions',brevet:'Brevet',collection:'Collection',me:'Profil'};
+function updateNav(){const nav=document.getElementById('nav');if(!nav)return;
+ for(const btn of nav.querySelectorAll('button[data-t]')){
+ const key=btn.dataset.t;if(!assets[key])continue;
+ let art=btn.querySelector(':scope > .v34-art');if(!art){art=document.createElement('img');art.className='v34-art';art.alt='';art.loading='eager';btn.prepend(art)}
+ const path='assets/nav-v34/'+assets[key]+'.webp';if(art.getAttribute('src')!==path)art.setAttribute('src',path);
+ let title=btn.querySelector(':scope > .v34-label');if(!title){title=document.createElement('span');title.className='v34-label';btn.appendChild(title)}
+ if(title.textContent!==labels[key])title.textContent=labels[key];btn.setAttribute('aria-label',labels[key]);
+ }}
+function updateBuddy(){const buddy=document.querySelector('#home .v2-buddy');if(!buddy)return;
+ let keep=buddy.querySelector(':scope > img.v34-companion');if(!keep){keep=document.createElement('img');keep.className='v34-companion';keep.alt='Compagnon explorateur';buddy.prepend(keep)}
+ const other=buddy.querySelector('img.v6-buddy-portrait,img.tv32-asset-buddy');
+ const src=other?.getAttribute('src')||'assets/plume.webp';if(keep.getAttribute('src')!==src)keep.src=src;
+}
+let queued=false;
+function queue(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;updateNav();updateBuddy()})}
+function init(){updateNav();updateBuddy();const nav=document.getElementById('nav');if(nav)new MutationObserver(queue).observe(nav,{childList:true,subtree:false});const home=document.getElementById('home');if(home)new MutationObserver(queue).observe(home,{childList:true});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
 </body>
 </html>
