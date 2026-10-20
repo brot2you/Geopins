@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V24 — Illustration & interface</title>
+<title>GéoPins • Terra Village V26 — Bibliothèque illustrée</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -711,6 +711,39 @@ body{padding-bottom:90px!important}
 body.tv25-playing #tv25-exit{display:block}
 @media (max-width:650px){#nav.nav{width:calc(100vw - 14px)!important;max-width:none!important;justify-content:space-around!important;bottom:calc(5px + env(safe-area-inset-bottom,0px))!important}#nav.nav button{flex:1 1 0!important;padding:5px 2px!important;min-height:57px!important}#nav.nav .tv19-icon{width:27px!important;height:27px!important}#nav.nav .tv19-label{font-size:10px!important}#tv25-exit{bottom:calc(12px + env(safe-area-inset-bottom,0px))}}
 @media(prefers-reduced-motion:reduce){#nav *,#tv25-exit{transition:none!important;animation:none!important}}
+</style>
+
+<style id="tv26-asset-system">
+/* V26: illustration library; no layout override for the game engine. */
+#nav.nav{box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;max-width:calc(100vw - 20px)!important;overflow-x:auto!important;scrollbar-width:thin!important;padding:6px 8px!important;border:2px solid #82502f!important;border-radius:20px!important;background:#f8ead0!important;box-shadow:0 5px 0 #654328,0 10px 25px #13281830!important}
+#nav.nav button{height:70px!important;min-width:69px!important;width:auto!important;max-width:122px!important;display:flex!important;flex-direction:column!important;gap:1px!important;justify-content:center!important;align-items:center!important;padding:4px 9px!important;border:1px solid transparent!important;border-radius:12px!important;background:transparent!important;color:#543521!important;transform:none!important;transition:background .12s,box-shadow .12s!important}
+#nav.nav button.on{background:#ffe9ae!important;border-color:#c38e44!important;box-shadow:inset 0 0 0 1px #fff5d4!important}
+#nav.nav button:hover{background:#fff6df!important;transform:none!important}
+#nav.nav .tv19-icon{height:40px!important;width:48px!important;max-width:48px!important;object-fit:contain!important;object-position:center!important;border-radius:9px!important;flex:none!important}
+#nav.nav .tv19-label,#nav.nav .nt{display:block!important;font-size:11px!important;line-height:1.12!important;text-align:center!important;font-weight:850!important;color:inherit!important;white-space:normal!important}
+/* Destination cards: independent landscape illustrations rather than emoji. */
+.v2-pack[data-tv26-land] .band{height:108px!important;background-size:cover!important;background-position:center!important;position:relative!important}
+.v2-pack[data-tv26-land] .band .em{display:none!important}
+.v2-pack[data-tv26-land] .band .lv{position:relative!important;z-index:1;background:#fff5dcee!important}
+.v2-pack[data-tv26-land="europe"] .band{background-image:url('assets/illustrations-v26/destination-europe.webp')!important}
+.v2-pack[data-tv26-land="france"] .band{background-image:url('assets/illustrations-v26/destination-france.webp')!important}
+.v2-pack[data-tv26-land="monde"] .band{background-image:url('assets/illustrations-v26/destination-monde.webp')!important}
+.v2-pack[data-tv26-land="royaume-uni"] .band{background-image:url('assets/illustrations-v26/destination-royaume-uni.webp')!important}
+.v2-pack[data-tv26-land="usa"] .band{background-image:url('assets/illustrations-v26/destination-usa.webp')!important}
+.v2-pack[data-tv26-land="canada"] .band{background-image:url('assets/illustrations-v26/destination-canada.webp')!important}
+.v2-pack[data-tv26-land="australie"] .band{background-image:url('assets/illustrations-v26/destination-australie.webp')!important}
+.v2-pack[data-tv26-land="asie"] .band{background-image:url('assets/illustrations-v26/destination-asie.webp')!important}
+/* Keep legacy vector portraits hidden only when the matching illustrated resource is present. */
+.v3-creature .v3-creature-art{background-size:cover!important;background-position:center!important}
+.v3-creature:nth-child(1) .v3-creature-art{background-image:url('assets/illustrations-v26/compagnon-plume.webp')!important}
+.v3-creature:nth-child(2) .v3-creature-art{background-image:url('assets/illustrations-v26/compagnon-kiko.webp')!important}
+.v3-creature:nth-child(3) .v3-creature-art{background-image:url('assets/illustrations-v26/compagnon-nori.webp')!important}
+.v3-creature:nth-child(4) .v3-creature-art{background-image:url('assets/illustrations-v26/compagnon-siro.webp')!important}
+.v3-creature:nth-child(5) .v3-creature-art{background-image:url('assets/illustrations-v26/compagnon-luma.webp')!important}
+.v3-creature:nth-child(6) .v3-creature-art{background-image:url('assets/illustrations-v26/compagnon-sora.webp')!important}
+.v3-creature .v3-creature-art svg,.v3-creature .v3-creature-art .v8-illustrated-buddy{display:none!important}
+@media(max-width:650px){#nav.nav{bottom:calc(6px + env(safe-area-inset-bottom,0px))!important;gap:2px!important}#nav.nav button{min-width:51px!important;padding:3px 4px!important;height:62px!important}#nav.nav .tv19-icon{width:40px!important;height:33px!important}#nav.nav .tv19-label{font-size:10px!important}}
+@media(prefers-reduced-motion:reduce){#nav.nav *{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -2043,6 +2076,10 @@ body{background:linear-gradient(180deg,#dcebdd,#faf5e7)!important}
   document.addEventListener('keydown',function(e){if(e.key==='Escape' && document.body.classList.contains('tv25-playing') && !document.querySelector('.modal'))go();});
   sync();
 })();
+</script>
+
+<script id="tv26-destinations">
+(()=>{const patterns=[[/\b(europe|européen|européenne)\b/i,'europe'],[/\bfrance|français|française\b/i,'france'],[/\b(monde|continent|océan)\b/i,'monde'],[/royaume.uni|angleterre|britannique/i,'royaume-uni'],[/\b(usa|états.unis|united states)\b/i,'usa'],[/\bcanada\b/i,'canada'],[/\baustralie\b/i,'australie'],[/\basie\b/i,'asie']];let scheduled=false;function update(){scheduled=false;document.querySelectorAll('.v2-pack').forEach(el=>{if(el.dataset.tv26Land)return;let title=(el.querySelector('.nm,.v2-pack-title,h3,strong')?.textContent||el.textContent||'').slice(0,130);for(const [pattern,k] of patterns){if(pattern.test(title)){el.dataset.tv26Land=k;break}}});}new MutationObserver(()=>{if(scheduled)return;scheduled=true;setTimeout(update,80)}).observe(document.body,{subtree:true,childList:true});update();})();
 </script>
 </body>
 </html>
