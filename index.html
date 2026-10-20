@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V13 — Village illustré</title>
+<title>GéoPins • Terra Village V15 — Village illustré</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -225,6 +225,25 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--sun);outline-of
 @keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 @media (max-height:700px){.qopt{min-height:76px;padding:8px}.qopt .flag.opt{max-width:150px}}
 
+
+/* TERRA VILLAGE V14 — Académie du Brevet illustrée, boutons HTML stables */
+.v14-academy{min-height:355px;border-radius:28px;overflow:hidden;position:relative;background:linear-gradient(90deg,rgba(23,54,46,.94) 0%,rgba(23,54,46,.89) 37%,rgba(23,54,46,.13) 83%),url('assets/brevet-v14/academie.webp') 64% 48%/cover no-repeat;border:4px solid #fff4df;box-shadow:0 14px 35px #244b3d30;display:flex;align-items:center;margin:12px 0 24px}
+.v14-academy-info{position:relative;color:#fffaf0;width:min(570px,72%);padding:34px 36px}
+.v14-eyebrow{font-size:11px;font-weight:900;letter-spacing:.1em;color:#8e7447}
+.v14-academy .v14-eyebrow{color:#ffdfa0}
+.v14-academy-info h3{font-family:var(--disp);font-size:clamp(27px,3.7vw,43px);line-height:1.12;margin:11px 0}
+.v14-academy-info p{font-size:15px;line-height:1.55;font-weight:650;color:#ecf8e9;margin:0 0 18px}
+.v14-mastery strong{font-size:13px;display:flex;justify-content:space-between;max-width:370px;gap:10px}.v14-track,.v14-mini-track{display:block;height:12px;border-radius:40px;background:#ffffff50;overflow:hidden;margin:8px 0 16px;max-width:370px}.v14-track i,.v14-mini-track i{display:block;height:100%;background:linear-gradient(90deg,#75d79c,#ddf69f);border-radius:40px}
+.v14-start{background:linear-gradient(#f7d787,#e7a856);border:2px solid #805329;box-shadow:0 4px 0 #784923;color:#49311b;border-radius:14px;font-weight:900;padding:13px 18px;min-height:48px}.v14-start:hover,.v14-start:focus-visible{filter:brightness(1.08)}
+.v14-section-heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:22px 0 14px}.v14-section-heading h3{font:700 clamp(23px,3vw,29px) var(--disp);margin:5px 0 0;color:#264d41}.v14-section-heading p{margin:0 0 2px;font-size:13px;color:#687d71;font-weight:700}
+.v14-challenges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.v14-challenge{text-align:left;background:#fffaf0;border:2px solid #e9dbc1;border-radius:23px;padding:0;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 7px 0 #dfd3b8,0 14px 25px #2a5f4020;transition:filter .15s,border-color .15s}.v14-challenge:hover,.v14-challenge:focus-visible{filter:brightness(1.04);border-color:#b58c4e;outline-offset:4px}
+.v14-challenge-art{height:142px;background-size:cover;background-position:center;display:block;position:relative}.v14-challenge-icon{position:absolute;left:15px;bottom:-19px;border-radius:15px;background:#fff7df;border:2px solid #c89f5c;padding:7px;font-size:27px;box-shadow:0 4px 0 #9b784a}
+.v14-challenge-body{display:flex;flex-direction:column;padding:26px 18px 18px;gap:8px;flex:1}.v14-challenge-body small{font-size:11px;color:#946c35;font-weight:900;text-transform:uppercase;letter-spacing:.06em}.v14-challenge-body strong{font:700 20px var(--disp);color:#254f40}.v14-challenge-body>span{font-size:13px;line-height:1.5;color:#587064;font-weight:650}.v14-challenge-body em{font-style:normal;margin-top:auto;background:#e2f0d9;border-radius:11px;padding:10px 12px;text-align:center;font-weight:900;color:#28543f}
+.v14-courses{margin-top:28px;background:#fffaf1;border:2px solid #e5d6b8;padding:20px;border-radius:23px}.v14-courses .v14-section-heading{margin:0 0 15px}.v14-course-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.v14-course{display:flex;align-items:center;gap:13px;border:1px solid #d9e3d4;background:#f3f8e9;border-radius:16px;text-align:left;padding:13px;min-height:85px;transition:filter .15s}.v14-course:hover{filter:brightness(.97)}.v14-course-num{width:37px;height:37px;border-radius:50%;flex:none;background:#dbb46c;color:#573a22;display:grid;place-items:center;font-weight:900;border:2px solid #bc8e46}.v14-course-copy{flex:1;min-width:0}.v14-course-copy strong{font-size:14px;display:block;color:#254f40}.v14-course-copy small{color:#65756c;font-size:11px}.v14-mini-track{height:6px;background:#d7e2cd;margin:6px 0 0}.v14-course-arrow{font-size:24px;color:#4b715e}.v14-note{padding:15px 18px;border-radius:15px;margin-top:17px;background:#e9f3de;color:#395941;font-size:13px;line-height:1.5}
+@media(max-width:850px){.v14-challenges{grid-template-columns:1fr 1fr}.v14-course-grid{grid-template-columns:1fr}.v14-academy-info{width:85%}}
+@media(max-width:600px){.v14-academy{min-height:385px;background-image:linear-gradient(0deg,rgba(23,54,46,.97),rgba(23,54,46,.65) 62%,rgba(23,54,46,.06)),url('assets/brevet-v14/academie.webp');background-position:center,center}.v14-academy-info{align-self:end;width:100%;padding:22px}.v14-academy-info h3{font-size:27px}.v14-academy-info p{font-size:13px}.v14-challenges{grid-template-columns:1fr}.v14-challenge-art{height:145px}.v14-section-heading{display:block}.v14-section-heading p{margin-top:7px}.v14-courses{padding:13px}}
+@media(prefers-reduced-motion:reduce){.v14-challenge,.v14-course{transition:none}}
 </style>
 <style id="terra-village-v3-style">
 /* GÉOPINS TERRA VILLAGE V3 — Living Island / collectible companions */
@@ -996,7 +1015,25 @@ function tvMissions(){
  h+='</div><div class="v2-packs">'+tvPacks()+'</div></section>';
  return h;
 }
-function tvBrevet(){var ids=PACKS.filter(function(p){return p.lv==='3e';}),sum=0,weight=0;ids.forEach(function(p){sum+=packMastery(p.id)*BYPACK[p.id].length;weight+=BYPACK[p.id].length;});var pct=weight?Math.round(100*sum/weight):0;return tvTitle('MISSION OBJECTIF BREVET','Le grand défi du Brevet 🎓','Entraîne-toi sur les repères de géographie de troisième.','<button class="v2-subaction" data-nav="missions">🗺️ Explorer les packs</button>')+'<div class="v2-brevet-hero"><div><div class="v2-eyebrow" style="color:#A9D8AD">🎓 LA GÉOGRAPHIE EN MODE AVENTURE</div><h2>En route vers ton brevet !</h2><p>De la France à l’Union européenne : repère les lieux, consolide tes acquis et deviens un cartographe confirmé.</p><div class="v2-progress" style="max-width:400px;background:#FFFFFF30"><i style="width:'+pct+'%;background:#F3C579"></i></div><p style="font-size:12px;margin:8px 0 0">Maîtrise actuelle des repères de 3e : '+pct+' %</p></div><div class="crest">🏰</div></div><div class="v2-lesson-row"><button class="v2-lesson primary" data-run="brevet"><span class="ico">🎯</span><strong>Mission Brevet</strong><span>15 repères tirés des packs de 3e. Prends le temps de te concentrer.</span><span class="tag">15 QUESTIONS · SANS CHRONO</span></button><button class="v2-lesson" data-run="brevet_long"><span class="ico">🏆</span><strong>Grande épreuve</strong><span>30 repères de 3e et de 4e pour tester ton endurance et tes automatismes.</span><span class="tag">30 QUESTIONS · SANS CHRONO</span></button><button class="v2-lesson" data-special="review"><span class="ico">🧠</span><strong>Mes points faibles</strong><span>Une session ciblée pour retrouver les repères qui te posent encore problème.</span><span class="tag">RÉVISION ADAPTATIVE</span></button></div>';
+function tvBrevet(){
+ var ids=PACKS.filter(function(p){return p.lv==='3e';}),sum=0,weight=0;
+ ids.forEach(function(p){sum+=packMastery(p.id)*BYPACK[p.id].length;weight+=BYPACK[p.id].length;});
+ var pct=weight?Math.round(100*sum/weight):0;
+ var h=tvTitle('ACADÉMIE DE TERRA VILLAGE','L’Académie du Brevet 🎓','Entraîne-toi sur les repères géographiques et suis ta progression.','<button class="v2-subaction" data-nav="missions">🗺️ Toutes les missions</button>');
+ h+='<section class="v14-academy" aria-label="Académie illustrée du brevet"><div class="v14-academy-info"><span class="v14-eyebrow">🏰 TON AVENTURE DE GÉOGRAPHIE</span><h3>Prêt pour le grand défi ?</h3><p>Explore les repères de troisième à ton rythme. Chaque essai te permet de mieux comprendre et de progresser.</p><div class="v14-mastery"><strong>Maîtrise des repères de 3e <span>'+pct+' %</span></strong><div class="v14-track" role="progressbar" aria-label="Maîtrise des repères de troisième" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><i style="width:'+pct+'%"></i></div></div><button type="button" data-run="brevet" class="v14-start">▶ Commencer l’entraînement</button></div></section>';
+ h+='<div class="v14-section-heading"><div><span class="v14-eyebrow">⚔️ CHOISIS TON PARCOURS</span><h3>Les trois portes de l’Académie</h3></div><p>De vrais exercices issus des cartes de GéoPins.</p></div>';
+ var cards=[
+  {img:'entrainement',icon:'🎯',name:'Entraînement',tag:'15 repères · sans chrono',description:'Révise les repères de troisième, sans pression.',attr:'data-run="brevet"',action:'Commencer'},
+  {img:'epreuve',icon:'🏆',name:'Grande épreuve',tag:'30 repères · sans chrono',description:'Un mélange de repères de troisième et de quatrième.',attr:'data-run="brevet_long"',action:'Relever le défi'},
+  {img:'revision',icon:'🧠',name:'Mes points faibles',tag:'Révision ciblée',description:'Retrouve les lieux qui te demandent encore de l’entraînement.',attr:'data-special="review"',action:'Réviser'}
+ ];
+ h+='<div class="v14-challenges">';
+ cards.forEach(function(c){h+='<button type="button" class="v14-challenge" '+c.attr+'><span class="v14-challenge-art" style="background-image:url(assets/brevet-v14/'+c.img+'.webp)"><span class="v14-challenge-icon">'+c.icon+'</span></span><span class="v14-challenge-body"><small>'+c.tag+'</small><strong>'+c.name+'</strong><span>'+c.description+'</span><em>'+c.action+' →</em></span></button>';});
+ h+='</div>';
+ h+='<section class="v14-courses"><div class="v14-section-heading"><div><span class="v14-eyebrow">🧭 PROGRESSER PAS À PAS</span><h3>Les repères de troisième</h3></div><p>Rejoue les missions pour consolider tes connaissances.</p></div><div class="v14-course-grid">';
+ ids.forEach(function(p,i){var m=Math.round(packMastery(p.id)*100);h+='<button type="button" class="v14-course" data-p="'+p.id+'"><span class="v14-course-num">'+(i+1)+'</span><span class="v14-course-copy"><strong>'+esc(p.n)+'</strong><small>'+BYPACK[p.id].length+' repères · '+m+' % maîtrisés</small><span class="v14-mini-track"><i style="width:'+m+'%"></i></span></span><span class="v14-course-arrow">›</span></button>';});
+ h+='</div></section><div class="v14-note">🌿 <strong>Le secret des explorateurs :</strong> chaque nouvelle tentative compte. Prends le temps de lire les explications après tes réponses.</div>';
+ return h;
 }
 function tvDecorPage(){var html=tvTitle('UN MONDE QUI GRANDIT','Personnalise ton village 🏡','Chaque nouvelle décoration se débloque avec ton expérience.','<button class="v2-subaction" data-nav="missions">🧭 Gagner des XP</button>');html+='<div class="v2-grid">'+tvScene(true)+tvHud()+'</div><div class="v2-feature-box" style="margin-top:18px"><div class="v2-section-title"><h3>🌷 Mon jardin de découvertes</h3><small>'+TV.decor.length+' décorations installées / '+TV_DECORS.length+'</small></div><p style="color:#839789;font-size:13px;font-weight:700;margin:0">Clique sur un objet débloqué pour l’ajouter ou le retirer de l’île. Tes choix sont enregistrés sur cet appareil.</p><div class="v2-decor-grid">';TV_DECORS.forEach(function(d,i){var unlocked=S.xp>=d[2],on=TV.decor.indexOf(i)>-1;html+='<button class="v2-decor'+(!unlocked?' locked':'')+(on?' selected':'')+'" data-decor="'+i+'"><span class="ico">'+(unlocked?d[0]:'🔒')+'</span><span>'+d[1]+'</span><span class="cost">'+(unlocked?(on?'✓ Installé':'Débloqué'):'✨ '+d[2]+' XP requis')+'</span></button>';});html+='</div></div>';return html;}
 function tvCollection(){var earned=BADGES.filter(function(b){return !!S.badges[b.id];}).length;var result=tvTitle('SOUVENIRS D’EXPLORATION','Ta collection de trésors 🏆','Débloque des badges et des objets en explorant le monde.','<button class="v2-subaction" data-nav="village">🏡 Mon village</button>');result+='<section class="v2-feature-box"><div class="v2-section-title"><h3>🏅 Mes badges</h3><small>'+earned+' / '+BADGES.length+' découverts</small></div><div class="v2-progress" style="margin:0 0 22px;height:13px"><i style="width:'+Math.round(100*earned/BADGES.length)+'%"></i></div><div class="v2-badge-grid">';BADGES.forEach(function(b){var got=!!S.badges[b.id];result+='<div class="v2-badge'+(got?'':' off')+'" title="'+esc(b.d||'')+'"><div class="icon">'+b.e+'</div><b>'+esc(b.n)+'</b><span>'+(got?'Débloqué ✓':'À découvrir')+'</span></div>';});result+='</div></section>';return result;}
@@ -1426,7 +1463,7 @@ function enrich(){
  var home=document.getElementById('home');if(!home||home.classList.contains('hidden'))return;
  var hero=home.querySelector('.v2-hero');if(!hero)return;
  var header=home.querySelector('.v2-heading');
- if(header&&!home.querySelector('.v9-label')){var p=document.createElement('span');p.className='v9-label';p.textContent='🌿 ÉDITION ILLUSTRÉE V12 · BROT2YOU';header.insertAdjacentElement('afterend',p);}
+ if(header&&!home.querySelector('.v9-label')){var p=document.createElement('span');p.className='v9-label';p.textContent='🌿 ÉDITION ILLUSTRÉE V15 · BROT2YOU';header.insertAdjacentElement('afterend',p);}
  if(hero.classList.contains('v3-building')&&!home.querySelector('.v9-help')){var info=document.createElement('div');info.className='v9-help';info.innerHTML='🏡 <strong>Ton atelier de village :</strong> choisis une décoration débloquée, puis touche un emplacement « + » sur la carte. Pour la retirer, touche l’objet sans sélection active. Tes choix restent enregistrés sur cet appareil.';hero.insertAdjacentElement('afterend',info);}
  if(hero&&!hero.classList.contains('v3-building')&&!home.querySelector('.v9-shortcuts')){var buttons=document.createElement('nav');buttons.className='v9-shortcuts';buttons.setAttribute('aria-label','Accès rapides Terra Village');buttons.innerHTML='<button data-v9-tab="village-edit">🏡 Décorer mon village</button><button data-v9-tab="missions">🗺️ Toutes les missions</button><button data-v9-tab="brevet">🎓 Académie du Brevet</button><button data-v9-tab="collection">🏆 Mes récompenses</button>';hero.insertAdjacentElement('afterend',buttons);}
  home.querySelectorAll('[data-v9-tab]').forEach(function(btn){btn.onclick=function(){var dest=this.dataset.v9Tab;var original=home.querySelector('[data-nav="'+dest+'"]');if(original){original.click();return;}var nav=home.querySelector('[data-nav="village"]');if(dest==='village-edit'&&nav){nav.click();return;}var link=document.querySelector('[data-t="'+dest+'"]');if(link)link.click();};});
@@ -1521,5 +1558,80 @@ requestAnimationFrame(enrich);
 }
 @media(prefers-reduced-motion:reduce){.v2-hero *, .v2-hero *::before,.v2-hero *::after{animation:none!important;transition:none!important}}
 </style>
+
+<style id="tv-v15-styles">
+/* V15 – carnet, galerie et collection : véritables interactions, aucune image avec libellé incorporé */
+.v15-cover{position:relative;min-height:245px;border:3px solid #916d43;border-radius:25px;overflow:hidden;margin:12px 0 21px;background:#d9edda;box-shadow:0 8px 0 #b08f67,0 14px 30px #2e493a24}
+.v15-cover:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#142e28dc 0%,#1d4236bc 42%,#173e2520 100%),url('assets/collection.webp') center/cover no-repeat}
+.v15-cover-content{position:relative;z-index:1;padding:30px;max-width:490px;color:#fff}
+.v15-cover h2{color:#fff;margin:8px 0;font-size:clamp(25px,4vw,39px);line-height:1.15;font-family:var(--disp)}
+.v15-cover p{color:#f4f5df;margin:6px 0 16px;line-height:1.45}
+.v15-tag{display:inline-block;border-radius:99px;background:#fff1c4;color:#365441;font-size:12px;font-weight:900;padding:7px 13px;letter-spacing:.06em}
+.v15-counts{display:flex;gap:9px;flex-wrap:wrap}
+.v15-counts span{background:#fffdf1e8;color:#355142;border:1px solid #fff;padding:8px 12px;border-radius:13px;font-weight:800;font-size:13px}
+.v15-guide{display:flex;align-items:center;gap:16px;background:#fffaec;border:2px solid #bda074;border-radius:20px;padding:15px;margin:0 0 22px;box-shadow:0 4px 0 #bba583}
+.v15-guide img{width:92px;height:92px;object-fit:contain;flex:none;filter:drop-shadow(0 5px 8px #304b3d40)}
+.v15-guide strong{color:#3b5544;display:block;font-size:18px}.v15-guide p{color:#655c46;font-size:14px;margin:4px 0 0;line-height:1.5}
+.v15-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0 24px}
+.v15-step{background:#fffdf3;border:2px solid #b89b6c;border-radius:17px;padding:13px;min-width:0}
+.v15-step b{display:block;font-size:23px;color:#2f5748;margin-bottom:2px}.v15-step small{color:#776c55;font-size:12px;font-weight:700}
+.v15-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+.v15-filter{background:#fff9e8;border:2px solid #a98b60;border-radius:99px;padding:10px 14px;color:#415744;font-weight:800;cursor:pointer}
+.v15-filter[aria-pressed="true"]{background:#456e54;color:#fff;border-color:#244c37}
+.v15-filter:focus-visible,.v15-postcard:focus-visible{outline:3px solid #f6a331;outline-offset:3px}
+.v15-badge-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.v15-badge{border:2px solid #bba07a;background:#fffdf4;border-radius:16px;padding:12px 8px;text-align:center;min-width:0}
+.v15-badge .em{font-size:29px;display:block}.v15-badge b{color:#355542;display:block;font-size:12px;margin-top:5px;overflow-wrap:anywhere}
+.v15-badge small{display:block;color:#766e59;font-size:11px;margin-top:4px}
+.v15-badge.locked{background:#f0ece3;filter:saturate(.45)}
+.v15-badge-panel{margin:19px 0;padding:20px;background:#f8edcf;border:3px solid #ab8a62;border-radius:23px}
+.v15-badge-panel h3{margin:0 0 6px;font-family:var(--disp);font-size:20px;color:#3b5944}
+.v15-badge-panel p{margin:0 0 14px;color:#665c48;font-size:14px}
+.v15-profile-top{display:flex;gap:20px;align-items:center;margin:14px 0 20px;padding:22px;background:linear-gradient(125deg,#fff9e8,#dce8ce);border:3px solid #ad8b5b;border-radius:24px}
+.v15-profile-top img{width:130px;height:130px;object-fit:contain;filter:drop-shadow(0 7px 7px #35583c30)}
+.v15-profile-top h2{font-family:var(--disp);color:#375541;margin:7px 0 4px;font-size:clamp(20px,3vw,28px)}
+.v15-profile-top p{color:#5d6e59;line-height:1.5;margin:4px 0 10px}
+.v15-progress-track{width:100%;height:15px;background:#ded9c9;border:2px solid #607a61;border-radius:40px;overflow:hidden}
+.v15-progress-track i{display:block;height:100%;background:linear-gradient(90deg,#7bbd75,#efbc51)}
+.v15-achievements{margin:14px 0 23px;padding:19px;background:#fff9e8;border:2px solid #bca075;border-radius:19px}
+.v15-achievements h3{margin:0 0 12px;color:#375544;font-family:var(--disp)}
+.v15-achievement-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.v15-achievement-grid div{padding:13px;background:white;border-radius:13px;text-align:center;border:1px solid #d0b991}
+.v15-achievement-grid b{font-size:22px;display:block;color:#315c43}.v15-achievement-grid span{font-size:12px;color:#716550}
+/* Disable overly lively movement on the actual selectable cards */
+.v3-creature:hover,.v8-postcard:hover,.v8-postcard:focus-visible{transform:none!important}
+@media(max-width:650px){.v15-cover{min-height:225px}.v15-cover-content{padding:22px}.v15-guide{gap:10px}.v15-guide img{width:68px;height:78px}.v15-steps{gap:7px}.v15-step{padding:10px 7px}.v15-badge-list{grid-template-columns:repeat(3,minmax(0,1fr))}.v15-badge-panel{padding:11px}.v15-profile-top{padding:12px;gap:10px}.v15-profile-top img{width:87px;height:103px}.v15-achievement-grid{gap:5px}.v15-achievement-grid div{padding:10px 4px}}
+@media(prefers-reduced-motion:reduce){.v15-cover *, .v15-guide *{animation:none!important}}
+</style>
+
+<script id="tv-v15-features">
+(function(){'use strict';
+// All student progress is read from the existing state (S, V3) – no save format is changed.
+var originalCollection=tvCollection;
+function countBadges(){return BADGES.filter(function(b){return !!S.badges[b.id]}).length}
+function buddy(){var id=V3.buddy||'plume';return V3_BUDDIES.find(function(b){return b.id===id})||V3_BUDDIES[0]}
+function cover(){var b=buddy(),unlocked=V3_BUDDIES.filter(function(x){return S.xp>=x.xp}).length;
+ return '<section class="v15-cover" aria-label="Présentation de ta collection"><div class="v15-cover-content"><span class="v15-tag">✦ CARNET D’EXPLORATEUR · V15</span><h2>Mes trésors d’aventure</h2><p>Compagnons, souvenirs et badges : chaque découverte raconte une étape de ton voyage.</p><div class="v15-counts"><span>🐾 '+unlocked+'/6 compagnons</span><span>🏅 '+countBadges()+'/'+BADGES.length+' badges</span><span>✨ '+S.xp+' XP</span></div></div></section>'+
+ '<div class="v15-guide"><img src="assets/'+b.id+'.webp" alt="" loading="lazy"><div><strong>'+esc(b.name)+', ton compagnon de route</strong><p>'+esc(b.line)+' Continue à explorer pour agrandir ta collection !</p></div></div>';
+}
+function badgePanel(){var total=countBadges();var html='<section class="v15-badge-panel" aria-label="Album des badges"><h3>🏅 Album des badges</h3><p>'+total+' badges sur '+BADGES.length+'. Utilise les filtres pour retrouver tes récompenses.</p><div class="v15-tabs" role="group" aria-label="Filtrer les badges"><button type="button" class="v15-filter" data-v15-filter="all" aria-pressed="true">Tous</button><button type="button" class="v15-filter" data-v15-filter="yes" aria-pressed="false">Débloqués</button><button type="button" class="v15-filter" data-v15-filter="no" aria-pressed="false">À découvrir</button></div><div class="v15-badge-list">';
+ BADGES.forEach(function(b){var got=!!S.badges[b.id];html+='<div class="v15-badge'+(got?'':' locked')+'" data-v15-unlocked="'+(got?'yes':'no')+'" title="'+esc(b.d||'')+'"><span class="em" aria-hidden="true">'+b.e+'</span><b>'+esc(b.n)+'</b><small>'+(got?'✓ Débloqué':'🔒 À découvrir')+'</small></div>';});return html+'</div></section>';
+}
+tvCollection=function(){return cover()+originalCollection()+badgePanel()};
+var oldEvents=tvRenderEvents;
+tvRenderEvents=function(root){oldEvents(root);root.querySelectorAll('[data-v15-filter]').forEach(function(btn){btn.addEventListener('click',function(){var val=this.dataset.v15Filter;root.querySelectorAll('[data-v15-filter]').forEach(function(b){b.setAttribute('aria-pressed',String(b===btn))});root.querySelectorAll('[data-v15-unlocked]').forEach(function(el){el.hidden=(val!=='all'&&el.dataset.v15Unlocked!==val)});});});};
+var oldProfile=renderProfile;
+renderProfile=function(){oldProfile();var h=document.getElementById('profile');if(!h||h.querySelector('.v15-profile-top'))return;var c=buddy(),L=levelOf(S.xp),min=xpFor(L),max=xpFor(L+1),pct=Math.max(0,Math.min(100,Math.round((S.xp-min)/(max-min)*100)));var stats=S.stats;
+ var intro='<section class="v15-profile-top"><img src="assets/'+c.id+'.webp" alt="'+esc(c.name)+'" loading="lazy"><div><span class="v15-tag">MON PASSEPORT D’EXPLORATEUR</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>Niveau '+L+' · '+esc(titleOf(L))+'<br>'+esc(c.name)+' voyage avec toi</p><div class="v15-progress-track" role="progressbar" aria-label="Progression vers le prochain niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+S.xp+' XP · '+(max-S.xp)+' XP avant le niveau '+(L+1)+'</small></div></section>';
+ var achievements='<section class="v15-achievements"><h3>🧭 Mon journal de voyage</h3><div class="v15-achievement-grid"><div><b>'+stats.games+'</b><span>Expéditions</span></div><div><b>'+stats.pins+'</b><span>Repères placés</span></div><div><b>'+countBadges()+'</b><span>Badges obtenus</span></div></div></section>';
+ var target=h.querySelector('.col');if(target){target.insertAdjacentHTML('afterbegin',intro);var name=target.querySelector('.pcard');if(name)name.insertAdjacentHTML('beforebegin',achievements)};
+};
+// Include the passport in the V2 theme profile too, where the separate home screen is used.
+var oldTvProfile=tvProfile;
+tvProfile=function(){var c=buddy(),L=levelOf(S.xp),a=xpFor(L),z=xpFor(L+1),pct=Math.max(0,Math.min(100,Math.round(100*(S.xp-a)/(z-a))));
+ var top='<section class="v15-profile-top"><img src="assets/'+c.id+'.webp" alt="" loading="lazy"><div><span class="v15-tag">PASSEPORT GÉOPINS</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>'+esc(titleOf(L))+' · Niveau '+L+'<br>Compagnon : '+esc(c.name)+'</p><div class="v15-progress-track" role="progressbar" aria-label="Progression du niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+(z-S.xp)+' XP jusqu’au niveau '+(L+1)+'</small></div></section>';
+ return top+oldTvProfile();};
+})();
+</script>
 </body>
 </html>
