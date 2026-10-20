@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins Terra Village V34 — Menu illustré corrigé</title>
+<title>GéoPins Terra Village V34.1 — Navigation réorganisée</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -2456,6 +2456,49 @@ let queued=false;
 function queue(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;updateNav();updateBuddy()})}
 function init(){updateNav();updateBuddy();const nav=document.getElementById('nav');if(nav)new MutationObserver(queue).observe(nav,{childList:true,subtree:false});const home=document.getElementById('home');if(home)new MutationObserver(queue).observe(home,{childList:true});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+
+<style id="v341-layout-final">
+/* V34.1: menu in normal page flow, above the village/map, no crop-art icons. */
+#nav.nav{position:sticky!important;top:8px!important;bottom:auto!important;left:auto!important;right:auto!important;transform:none!important;width:100%!important;max-width:none!important;box-sizing:border-box!important;z-index:80!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:8px!important;margin:12px 0 18px!important;min-height:0!important;padding:8px!important;border:2px solid #b88b51!important;border-radius:19px!important;background:linear-gradient(180deg,#fff6dc,#efdbb3)!important;box-shadow:0 4px 0 #b78d5c,0 8px 18px #553c2520!important;overflow:hidden!important}
+#nav.nav button[data-t]{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:10px!important;padding:12px 8px!important;min-height:62px!important;height:auto!important;border:1px solid #d7b98b!important;border-radius:13px!important;background:#fff9ea!important;box-shadow:0 2px 0 #c7a679!important;color:#513822!important;transform:none!important;transition:background .15s ease,border-color .15s ease!important;overflow:hidden!important}
+#nav.nav button[data-t].on{background:linear-gradient(#e7f6df,#cce8c1)!important;border:2px solid #5d9b74!important;box-shadow:inset 0 0 0 1px #fff8ea!important;color:#225c47!important}
+#nav.nav button[data-t]:hover,#nav.nav button[data-t]:active{transform:none!important;filter:none!important;background:#e7f3df!important}
+#nav.nav button[data-t] > :not(.v341-icon):not(.v34-label){display:none!important}
+#nav.nav .v341-icon{display:block!important;flex:none!important;width:30px!important;height:30px!important;color:inherit!important;stroke:currentColor!important;fill:none!important;stroke-width:1.9!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+#nav.nav .v34-label{display:block!important;font-size:15px!important;font-weight:850!important;line-height:1.2!important;white-space:nowrap!important;color:inherit!important}
+#home,#profile,.screen{padding-bottom:20px!important}
+.v2-hero-cta,.v2-hero-cta:hover,.v2-hero-cta:focus,.v2-hero-cta:active{transform:none!important;translate:none!important;animation:none!important;transition:background-color .15s,filter .15s!important;position:relative!important;cursor:pointer!important}
+.v2-hero:hover,.v2-hero-cta:hover{transform:none!important} .v2-hero-cta:hover{filter:brightness(1.075)!important}
+@media(max-width:720px){#nav.nav{top:3px!important;padding:5px!important;gap:4px!important;margin:8px 0 13px!important;border-radius:12px!important}#nav.nav button[data-t]{flex-direction:column!important;min-height:58px!important;padding:5px 1px!important;gap:2px!important;border-radius:8px!important}#nav.nav .v341-icon{width:24px!important;height:24px!important}#nav.nav .v34-label{font-size:11px!important}}
+@media(max-width:370px){#nav.nav .v34-label{font-size:10px!important}#nav.nav .v341-icon{width:21px!important;height:21px!important}}
+@media(prefers-reduced-motion:reduce){#nav.nav *, .v2-hero-cta{animation:none!important;transition:none!important}}
+</style>
+<script id="v341-navigation">
+(()=>{
+ const symbols={
+  village:'<path d="m3 11 9-8 9 8"/><path d="M5 10v11h14V10"/><path d="M10 21v-7h4v7"/>',
+  missions:'<path d="M3 5.5 9 3l6 2.5L21 3v15.5L15 21l-6-2.5L3 21z"/><path d="M9 3v15.5M15 5.5V21"/><circle cx="12" cy="10" r="2"/>',
+  brevet:'<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v6c4 3 8 3 12 0v-6M22 9v7"/>',
+  collection:'<rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 13h18M8 9V6a4 4 0 0 1 8 0v3M12 13v4"/>',
+  me:'<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>'};
+ const labels={village:'Village',missions:'Missions',brevet:'Brevet',collection:'Collection',me:'Profil'};
+ function setup(){const nav=document.getElementById('nav');if(!nav)return;
+  for(const btn of nav.querySelectorAll('button[data-t]')){const k=btn.dataset.t;if(!symbols[k])continue;
+   const svg='<svg class="v341-icon" viewBox="0 0 24 24" aria-hidden="true">'+symbols[k]+'</svg>';
+   if(!btn.querySelector('.v341-icon')){btn.insertAdjacentHTML('afterbegin',svg)}
+   let label=btn.querySelector('.v34-label');if(!label){label=document.createElement('span');label.className='v34-label';btn.append(label)}label.textContent=labels[k];btn.setAttribute('aria-label',labels[k]);
+  }
+  const home=document.getElementById('home');if(home && !home.classList.contains('hidden')){
+   const content=home.querySelector('.v2-grid,.v2-missions,.v2-mission-grid,.v2-mission-map,.v2-below') || home.firstElementChild;
+   if(content && nav.nextElementSibling!==content){content.before(nav)}
+  }else {const profile=document.getElementById('profile');if(profile&&!profile.classList.contains('hidden')&&profile.firstElementChild&&profile.firstElementChild!==nav){profile.firstElementChild.before(nav)}}
+ }
+ // The existing application rerenders screen HTML, so position the same nav after screen changes.
+ let scheduled=false;const refresh=()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;setup()})};
+ const watch=new MutationObserver(refresh);watch.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+ refresh();window.addEventListener('hashchange',refresh);
 })();
 </script>
 </body>
