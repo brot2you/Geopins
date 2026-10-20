@@ -1490,7 +1490,7 @@ tvScene=function(edit){
  original=original.replace('☀️ TON ÎLE D’AVENTURE','✦ TON MONDE À EXPLORER');
  return original;
 };
-function v3Card(c){var unlock=S.xp>=c.xp,active=V3.buddy===c.id;return '<button class="v3-creature'+(unlock?'':' v3-locked')+(active?' v3-active':'')+'" '+(unlock?'data-v3-buddy="'+c.id+'"':'disabled')+' aria-pressed="'+active+'"><div class="v3-creature-art" style="--creature-tint:'+c.color+'">'+v3Sprite(c.id)+'</div><div class="v3-creature-info"><span class="v3-creature-tag">'+(active?'✓ TON COMPAGNON':unlock?'COMPAGNON DÉBLOQUÉ':'🔒 '+c.xp+' XP')+'</span><strong>'+c.name+'</strong><small>'+c.kind+'</small><p>'+c.tag+'</p><span class="v3-creature-action">'+(active?'À tes côtés':unlock?'Choisir ce compagnon →':'Encore '+(c.xp-S.xp)+' XP')+'</span></div></button>';}
+function v3Card(c){var unlock=S.xp>=c.xp,active=V3.buddy===c.id;return '<button class="v3-creature'+(unlock?'':' v3-locked')+(active?' v3-active':'')+'" '+(unlock?'data-v3-buddy="'+c.id+'"':'disabled')+' aria-pressed="'+active+'"><div class="v3-creature-art" style="--creature-tint:'+c.color+'">'+'<img class="vfix-creature-portrait" src="assets/'+c.id+'.webp" alt="" loading="lazy" />'+'</div><div class="v3-creature-info"><span class="v3-creature-tag">'+(active?'✓ TON COMPAGNON':unlock?'COMPAGNON DÉBLOQUÉ':'🔒 '+c.xp+' XP')+'</span><strong>'+c.name+'</strong><small>'+c.kind+'</small><p>'+c.tag+'</p><span class="v3-creature-action">'+(active?'À tes côtés':unlock?'Choisir ce compagnon →':'Encore '+(c.xp-S.xp)+' XP')+'</span></div></button>';}
 var v3OldCollection=tvCollection;
 tvCollection=function(){
  var head=tvTitle('MON CARNET DE COMPAGNONS','Rencontre les amis de Terra Village 🐾','Six petites créatures originales à découvrir en progressant dans les missions.','<button class="v2-subaction" data-nav="village">🏡 Retour au village</button>');
@@ -1514,7 +1514,7 @@ tvDecorPage=function(){
 };
 var v3OldVillage=tvVillage;
 tvVillage=function(){var h=v3OldVillage();var c=v3Buddy();var next=V3_BUDDIES.find(function(b){return S.xp<b.xp;});
- h+='<section class="v3-home-band"><div class="v3-home-buddy">'+v3Sprite(c.id)+'</div><div class="v3-home-band-text"><div class="v3-eyebrow">✦ TA PETITE ÉQUIPE D’AVENTURE</div><h3>'+c.name+' t’accompagne !</h3><p>'+c.line+' '+(next?'Prochaine rencontre : <strong>'+esc(next.name)+'</strong> à '+next.xp+' XP.':'Bravo, tu as rencontré tous les compagnons !')+'</p></div><button class="v3-band-button" data-nav="collection">Découvrir les compagnons <span>↗</span></button></section>';
+ h+='<section class="v3-home-band"><div class="v3-home-buddy">'+'<img class="vfix-creature-portrait" src="assets/'+c.id+'.webp" alt="" loading="lazy" />'+'</div><div class="v3-home-band-text"><div class="v3-eyebrow">✦ TA PETITE ÉQUIPE D’AVENTURE</div><h3>'+c.name+' t’accompagne !</h3><p>'+c.line+' '+(next?'Prochaine rencontre : <strong>'+esc(next.name)+'</strong> à '+next.xp+' XP.':'Bravo, tu as rencontré tous les compagnons !')+'</p></div><button class="v3-band-button" data-nav="collection">Découvrir les compagnons <span>↗</span></button></section>';
  var checkpoints=[{t:'Premiers pas',goal:5,v:S.stats.pins,icon:'📍',d:'Poser 5 repères'},{t:'Curiosité',goal:100,v:S.xp,icon:'✨',d:'Gagner 100 XP'},{t:'Aventurier',goal:3,v:S.stats.games,icon:'🧭',d:'Terminer 3 missions'}];
  h+='<section class="v3-steps"><div class="v2-section-title"><h3>🌱 Tes premiers objectifs</h3><small>À ton rythme, sans compétition</small></div><div class="v3-step-grid">';
  checkpoints.forEach(function(it){var ok=it.v>=it.goal,pc=Math.min(100,Math.floor(it.v/it.goal*100));h+='<div class="v3-step"><span class="v3-step-icon">'+it.icon+'</span><div><b>'+it.t+'</b><small>'+it.d+'</small></div><span class="v3-step-progress">'+(ok?'✓':Math.min(it.v,it.goal)+'/'+it.goal)+'</span><div class="v2-progress"><i style="width:'+pc+'%"></i></div></div>';});
@@ -1537,7 +1537,7 @@ tvRenderEvents=function(root){
 };
 var v3OldShowEnd=showEnd;
 showEnd=function(avg){v3OldShowEnd(avg);var c=v3Buddy(),dest=$('end').querySelector('.kpis');if(!dest)return;var msg=avg>=80?'Quelle belle expédition ! Tu connais déjà beaucoup de repères.':avg>=45?'Bien joué ! On apprend aussi en faisant des essais.':'Continue à explorer : chaque repère reviendra plus facilement.';
- dest.insertAdjacentHTML('afterend','<div class="v3-result-buddy"><span>'+v3Sprite(c.id)+'</span><div><b>'+c.name+' te félicite !</b><p>'+msg+'</p></div></div>');};
+ dest.insertAdjacentHTML('afterend','<div class="v3-result-buddy"><span>'+'<img class="vfix-creature-portrait" src="assets/'+c.id+'.webp" alt="" loading="lazy" />'+'</span><div><b>'+c.name+' te félicite !</b><p>'+msg+'</p></div></div>');};
 // If the user resets their progress, remove the optional cosmetic placements, too.
 var v3OldProfile=renderProfile;
 renderProfile=function(){v3OldProfile();var reset=$('bReset');if(reset){var original=reset.onclick;reset.onclick=function(){original();var m=document.querySelector('.modal');if(m){var yes=m.querySelector('[data-a="o"]');if(yes)yes.addEventListener('click',function(){V3={buddy:'plume',sky:'day',places:{}};V3_PICK=null;v3Save();},{once:true});}};}};
@@ -2540,27 +2540,32 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 #home .v2-buddy .artpack-portrait{width:100px!important;height:100px!important;object-fit:cover!important;object-position:center!important;border:3px solid #fff1d9!important;border-radius:50%!important;display:block!important}
 #home .v2-buddy > :not(.artpack-portrait):not(.v2-buddy-msg):not(.v2-buddy-line):not(.v2-buddy-bubble){display:none!important}
 @media(max-width:630px){#nav.nav{width:calc(100% - 8px)!important;gap:2px!important;padding:4px!important;top:0!important}#nav.nav>button[data-t]{height:69px!important;min-height:69px!important;padding:2px!important}#nav.nav>button[data-t] .artpack-icon{height:42px!important;width:50px!important}#nav.nav>button[data-t] .artpack-label{font-size:10px!important}#home .v2-buddy .artpack-portrait{width:74px!important;height:74px!important}}
-</style><script id="artpack-ui-controller">
+</style>
+<style id="geopins-stabilisation-2026">
+/* Stable horizontal navigation: explicit layout rather than competing legacy classes */
+#nav.nav{position:sticky!important;top:8px!important;bottom:auto!important;left:auto!important;right:auto!important;display:flex!important;flex-direction:row!important;justify-content:space-around!important;align-items:stretch!important;gap:7px!important;margin:8px auto 18px!important;width:min(960px,calc(100% - 24px))!important;max-width:960px!important;height:auto!important;min-height:72px!important;padding:7px!important;overflow:visible!important;background:#68432c!important;border:2px solid #c99b5c!important;border-radius:18px!important;z-index:110!important;transform:none!important}
+#nav.nav>button[data-t]{display:flex!important;position:relative!important;visibility:visible!important;opacity:1!important;flex:1 1 0!important;width:auto!important;min-width:0!important;max-width:none!important;height:66px!important;min-height:66px!important;padding:8px 4px!important;flex-direction:column!important;gap:5px!important;align-items:center!important;justify-content:center!important;color:#fff9e8!important;border-radius:12px!important;transform:none!important;animation:none!important;overflow:hidden!important}
+#nav.nav>button[data-t] > *{display:none!important}
+#nav.nav>button[data-t] .vfix-nav-symbol{display:block!important;font-size:23px!important;line-height:1!important;font-weight:900!important;color:#f5d18f!important}
+#nav.nav>button[data-t] .vfix-nav-label{display:block!important;color:inherit!important;font-size:12px!important;line-height:1.2!important;font-weight:900!important;white-space:normal!important}
+#nav.nav>button[data-t].on{background:#f9e0a8!important;color:#56351d!important;border:1px solid #fff3ce!important}
+#nav.nav>button[data-t].on .vfix-nav-symbol{color:#945728!important}
+#nav.nav>button[data-t]:hover{filter:brightness(1.08)!important;transform:none!important}
+.v3-creature .v3-creature-art{display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;background:linear-gradient(160deg,#fdf2d9,#dceae1)!important}
+.v3-creature .vfix-creature-portrait{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;max-width:100%!important;max-height:100%!important}
+.v3-creature-art > :not(.vfix-creature-portrait){display:none!important}
+#home .v2-buddy .artpack-portrait,#home .v2-buddy .art-sole-buddy{display:none!important}
+#home .v2-buddy::before{display:block!important;content:""!important;background-image:var(--v5-companion-image,url('assets/plume.webp'))!important;background-size:contain!important;background-repeat:no-repeat!important;background-color:transparent!important}
+#home .v2-buddy > img{display:none!important}
+.v2-hero-cta,.v2-hero-cta:hover,.v2-hero-cta:focus,.v2-hero-cta:active{transform:none!important;translate:none!important;scale:1!important;animation:none!important;position:relative!important}
+@media(max-width:690px){#nav.nav{position:fixed!important;top:auto!important;bottom:calc(7px + env(safe-area-inset-bottom,0px))!important;left:7px!important;right:7px!important;margin:0!important;width:calc(100% - 14px)!important;gap:2px!important;padding:4px!important}#nav.nav>button[data-t]{height:59px!important;min-height:59px!important;gap:2px!important;padding:4px 1px!important}#nav.nav>button[data-t] .vfix-nav-symbol{font-size:19px!important}#nav.nav>button[data-t] .vfix-nav-label{font-size:10px!important}}
+</style>
+<script id="geopins-stabilisation-ui">
 (()=>{
- const icons={village:'village',missions:'missions',brevet:'brevet',collection:'collection',me:'me'};
+ const meta={village:['Village','V'],missions:['Missions','M'],brevet:['Brevet','B'],collection:['Collection','C'],me:['Profil','P']};
  const nav=document.querySelector('#nav');
- if(nav){nav.querySelectorAll('button[data-t]').forEach(btn=>{
-   const key=btn.dataset.t;if(!icons[key])return;
-   const label=btn.getAttribute('aria-label')||btn.textContent.trim();
-   btn.replaceChildren();
-   const pic=new Image();pic.className='artpack-icon';pic.src='assets/art-pack/menu/'+icons[key]+'.webp';pic.alt='';pic.setAttribute('aria-hidden','true');
-   const txt=document.createElement('span');txt.className='artpack-label';txt.textContent=label;
-   btn.append(pic,txt);
- });}
- // Refresh companion without stacking portraits: only inside welcome buddy, not all other screens.
- const buddy=document.querySelector('#home .v2-buddy');
- if(buddy){
-  const portrait=document.createElement('img');portrait.className='artpack-portrait';portrait.alt='Compagnon explorateur';
-  const readId=()=>{try{const v=window.V3||{};return String(v.buddy||v.pet||localStorage.getItem('geopins-terra-v3-buddy')||'plume').toLowerCase()}catch(e){return 'plume'}};
-  const refresh=()=>{const id=readId();const allowed=['plume','kiko','nori','siro','luma','sora'];portrait.src='assets/art-pack/companions/'+(allowed.includes(id)?id:'plume')+'.webp'};
-  buddy.prepend(portrait);refresh();
-  document.addEventListener('click',e=>{if(e.target.closest('[data-buddy],[data-companion]'))setTimeout(refresh,100)});
- }
+ if(nav){nav.querySelectorAll('button[data-t]').forEach(b=>{const m=meta[b.dataset.t];if(!m)return; b.replaceChildren(); const symbol=document.createElement('span');symbol.className='vfix-nav-symbol';symbol.textContent=m[1];symbol.setAttribute('aria-hidden','true');const label=document.createElement('span');label.className='vfix-nav-label';label.textContent=m[0]; b.append(symbol,label);b.setAttribute('aria-label',m[0]);});}
 })();
-</script></body>
+</script>
+</body>
 </html>
