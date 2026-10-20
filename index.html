@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village — Aventures géographiques du collège</title>
+<title>GéoPins • Terra Village V3 — L’île vivante</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -226,6 +226,89 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--sun);outline-of
 @media (max-height:700px){.qopt{min-height:76px;padding:8px}.qopt .flag.opt{max-width:150px}}
 
 </style>
+<style id="terra-village-v3-style">
+/* GÉOPINS TERRA VILLAGE V3 — Living Island / collectible companions */
+:root{--v3-line:#E4EAD9;--v3-forest:#315E52;--v3-shadow:0 15px 34px #32605218}
+.v2-brand-mark{transition:transform .3s}.v2-brand-mark:hover{transform:rotate(9deg) scale(1.08)}
+.v2-hero.v3-living{background:#B7E2E3;box-shadow:0 18px 47px #32656832,0 4px 0 #FFFFFF}
+.v3-living .terrain-art{transition:filter .8s ease,opacity .8s ease;will-change:filter}
+.v3-living.v3-sunset .terrain-art{filter:saturate(1.16) sepia(.22) hue-rotate(-12deg) brightness(.94)}
+.v3-living.v3-night .terrain-art{filter:saturate(.77) hue-rotate(18deg) brightness(.56) contrast(1.07)}
+.v3-living.v3-night::before,.v3-living.v3-sunset::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none}
+.v3-living.v3-night::before{background:linear-gradient(180deg,#22275965,#1A456535 65%,transparent)}
+.v3-living.v3-sunset::before{background:linear-gradient(180deg,#EF957E2B,transparent 70%)}
+.v3-living.v3-night .v2-hotspot,.v3-living.v3-night .v2-scene-head{box-shadow:0 12px 35px #0C1C4270}
+.v3-time{position:absolute;right:15px;top:15px;z-index:8;display:flex;align-items:center;gap:6px;padding:10px 13px;border:2px solid #FFFFFF99;border-radius:999px;background:#FFFAEFEB;backdrop-filter:blur(9px);font-size:13px;font-weight:900;color:#4B7066;box-shadow:0 9px 25px #3A655627;transition:transform .18s,background .18s}
+.v3-time:hover{transform:translateY(-3px);background:#fff}
+.v3-time:focus-visible,.v3-site:focus-visible,.v3-object-card:focus-visible,.v3-creature:focus-visible{outline:3px solid #FFA36E;outline-offset:3px}
+.v3-sky-dust{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.v3-sky-dust i{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff6ce;box-shadow:0 0 10px #FFF4B9;opacity:.63;animation:v3-spark 4s infinite alternate ease-in-out}
+.v3-sky-dust i:nth-child(1){top:16%;left:46%;animation-delay:-1s}.v3-sky-dust i:nth-child(2){top:31%;left:87%;animation-delay:-3s}.v3-sky-dust i:nth-child(3){top:13%;left:76%;animation-delay:-2s}.v3-sky-dust i:nth-child(4){top:45%;left:16%;animation-delay:-.4s}.v3-sky-dust i:nth-child(5){top:40%;left:62%;animation-delay:-1.5s}.v3-sky-dust i:nth-child(6){top:20%;left:22%;animation-delay:-3.2s}
+.v3-living.v3-night .v3-sky-dust i{width:7px;height:7px;opacity:1;background:#fff5cf;box-shadow:0 0 16px #FFF1AB}
+@keyframes v3-spark{from{opacity:.15;transform:translateY(6px) scale(.6)}to{opacity:1;transform:translateY(-5px) scale(1.2)}}
+.v3-object-layer{position:absolute;inset:0;z-index:3;pointer-events:none}
+.v3-placed-object,.v3-site{position:absolute;width:clamp(40px,8%,73px);height:auto;aspect-ratio:1;transform:translate(-50%,-68%);pointer-events:none;filter:drop-shadow(0 8px 4px #215B4A3B);transition:filter .2s}
+.v3-object-svg{width:100%;height:100%;overflow:visible}
+.v3-site{pointer-events:auto;border:2px dashed #FFE6B6;background:#FFF8D97A;display:grid;place-items:center;box-shadow:0 0 0 3px #6D987760;border-radius:100%;color:#FFF9E9;cursor:pointer;z-index:6}
+.v3-site:hover{filter:drop-shadow(0 0 7px #FFFCBA);background:#FFECB6BB;transform:translate(-50%,-70%) scale(1.1)}
+.v3-site:not(.empty){background:#F0F7CF2B;border-color:transparent;box-shadow:none}
+.v3-site-plus{display:grid;place-items:center;background:#EFCB7D;border:3px solid #FFF5D5;border-radius:50%;width:33px;height:33px;color:#76573E;font-weight:900;font-size:26px;box-shadow:0 4px 0 #9C966C;line-height:1}
+.v3-building .v2-scene-head{max-width:275px;left:15px;top:62px;padding:12px 13px}
+.v3-building .v2-hotspot{opacity:.63;z-index:3;pointer-events:none}
+.v3-building .v3-object-layer{z-index:7}
+.v3-build-help{position:absolute;top:13px;left:15px;z-index:8;max-width:calc(100% - 205px);border-radius:13px;padding:10px 14px;background:#245D52EA;color:#fff;box-shadow:0 8px 22px #1B4C454A;font-size:12px;line-height:1.25;font-weight:900}
+.v3-building .v2-scene-head{display:none}
+.v3-building .v2-scene-bottom .v2-hero-cta{display:none}
+.v2-buddy .v3-sprite{display:block;animation:v3-bob 4s ease-in-out infinite;overflow:visible}
+@keyframes v3-bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-7px) rotate(1.2deg)}}
+.v3-compendium,.v3-workshop{margin:18px 0 28px;background:linear-gradient(170deg,#FFFCF4,#F3F8EC);border:1px solid var(--v3-line);border-radius:26px;box-shadow:var(--v3-shadow);padding:24px}
+.v3-collection-note,.v3-workshop-desc{margin:6px 0 21px;color:#71887D;font-weight:700;font-size:13px;line-height:1.65}
+.v3-creature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.v3-creature{display:flex;min-width:0;flex-direction:column;align-items:stretch;text-align:left;border:2px solid #DFE9DC;border-radius:21px;background:#FFFDF8;overflow:hidden;box-shadow:0 6px 0 #DDE8D5,0 12px 22px #436B5320;transition:transform .2s,border-color .2s,box-shadow .2s}
+.v3-creature:hover:not(:disabled){transform:translateY(-5px);box-shadow:0 10px 0 #DDE8D5,0 17px 27px #436B532B}
+.v3-creature.v3-active{border-color:#68B78F;background:#F4FFF2;box-shadow:0 6px 0 #90CAA6}
+.v3-creature.v3-locked{opacity:.65;filter:saturate(.45);cursor:not-allowed}
+.v3-creature-art{height:182px;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,#FFFEF6 0,var(--creature-tint) 94%);position:relative;overflow:hidden}
+.v3-creature-art::before{content:"✦";position:absolute;left:12%;top:17%;color:#FFFFFFBD;font-size:45px}.v3-creature-art::after{content:"✶";position:absolute;right:10%;top:8%;color:#FFFFFFA8;font-size:35px}
+.v3-creature-art .v3-sprite{height:95%;max-width:93%;filter:drop-shadow(0 10px 7px #456F5D2D);z-index:1;transition:transform .2s}
+.v3-creature:hover .v3-sprite{transform:rotate(-3deg) translateY(-6px)}
+.v3-creature-info{padding:15px 16px 18px;display:flex;flex-direction:column;flex:1}
+.v3-creature-tag{font-size:10px;color:#6BAA80;letter-spacing:.6px;font-weight:900}.v3-creature-info strong{font:600 27px var(--disp);margin:4px 0 0;color:#365D4F}
+.v3-creature-info small{font-weight:900;color:#6B8B7E;font-size:12px}.v3-creature-info p{font-size:12px;color:#8C9A87;font-weight:700;margin:9px 0 13px;line-height:1.3}
+.v3-creature-action{margin-top:auto;background:#E0F1DA;color:#3C876C;padding:8px 10px;border-radius:9px;text-align:center;font-weight:900;font-size:12px}.v3-active .v3-creature-action{background:#90CEA5;color:#255F51}.v3-locked .v3-creature-action{background:#E9E8DB;color:#8A8A81}
+.v3-badges{margin-top:20px}.v3-object-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:11px}
+.v3-object-card{display:flex;flex-direction:column;align-items:center;text-align:center;border:2px solid #DEEAD9;border-radius:18px;background:#FFFCF6;min-width:0;min-height:153px;gap:4px;padding:10px 6px 12px;box-shadow:0 5px 0 #E3E5D5;transition:transform .2s,background .2s,border-color .2s}
+.v3-object-card:hover:not(:disabled){transform:translateY(-4px)}.v3-object-card.v3-picked{background:#E7F9DF;border-color:#4CB282;box-shadow:0 5px 0 #90D5AB}
+.v3-object-card.v3-locked{filter:saturate(.38);opacity:.58;cursor:not-allowed}
+.v3-object-pic{width:94px;height:91px;max-width:100%;display:grid;place-items:center;transition:transform .2s}.v3-object-card:hover .v3-object-pic{transform:scale(1.07)}
+.v3-object-card b{font-size:12px;font-weight:900;color:#456C5C;line-height:1.2}.v3-object-card small{font-size:10px;font-weight:900;color:#A08D72;line-height:1.3}
+.v3-builder-actions{display:flex;gap:12px;align-items:center;justify-content:flex-end;margin:18px 0 0}.v3-builder-actions span{font-size:12px;color:#829486;font-weight:700}
+.v3-home-band{margin:25px 0 18px;border-radius:24px;background:linear-gradient(105deg,#FFF0D6,#FDE6D4 54%,#F3EAD9);border:1px solid #F3D6AF;box-shadow:var(--v3-shadow);padding:9px 21px;display:flex;align-items:center;gap:20px;min-height:139px;position:relative;overflow:hidden}
+.v3-home-band::before{content:'✧';position:absolute;font-size:120px;color:#FFFCF3;right:170px;top:-50px;opacity:.7;pointer-events:none}
+.v3-home-buddy{height:128px;width:115px;flex:0 0 115px;display:grid;place-items:center;align-self:flex-end}.v3-home-buddy svg{height:122px;width:110px;filter:drop-shadow(0 8px 6px #AA815A3F)}
+.v3-home-band-text{flex:1;min-width:0;z-index:1}.v3-eyebrow{font-weight:900;letter-spacing:1.5px;font-size:10px;color:#A6845B}.v3-home-band h3{font:600 23px var(--disp);color:#6E624D;margin:4px 0 6px}.v3-home-band p{font-size:12px;line-height:1.45;color:#8F7D65;font-weight:700;margin:0;max-width:610px}
+.v3-band-button{z-index:1;flex:0 0 auto;background:#386C5A;color:white;border-radius:14px;padding:13px 16px;font-weight:900;font-size:12px;white-space:nowrap;box-shadow:0 4px 0 #285342}.v3-band-button span{font-size:17px;margin-left:9px}.v3-band-button:hover{background:#285F4D}
+.v3-steps{margin:0 0 20px;background:#FFFCF4;border:1px solid #E7EBDA;border-radius:24px;padding:20px 22px;box-shadow:0 9px 24px #355A5012}
+.v3-step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:13px}.v3-step{position:relative;border-radius:15px;background:#F1F6E9;border:1px solid #DFE9D8;display:grid;grid-template-columns:34px minmax(0,1fr) 42px;gap:9px;align-items:center;padding:13px}.v3-step-icon{font-size:26px}.v3-step b{font-size:13px;color:#3A6756}.v3-step small{display:block;font-size:10px;font-weight:800;color:#899F8A}.v3-step-progress{font-size:12px;font-weight:900;color:#59A27A;text-align:right}.v3-step .v2-progress{grid-column:1/-1;margin-top:0;height:7px}
+.v3-result-buddy{display:flex;align-items:center;text-align:left;gap:12px;background:#F1F9E8;border:1px solid #DDEDD5;border-radius:18px;padding:8px 13px;margin:12px 0 0}.v3-result-buddy>span{width:60px;height:70px;flex:0 0 60px}.v3-result-buddy svg{width:100%;height:100%;display:block}.v3-result-buddy b{font:600 15px var(--disp);color:#3B765B}.v3-result-buddy p{margin:5px 0 0;font-size:12px;color:#6F917C;font-weight:700;line-height:1.4}
+@media(max-width:1240px){.v3-creature-grid{grid-template-columns:repeat(2,1fr)}.v3-object-grid{grid-template-columns:repeat(4,1fr)}.v3-home-band{gap:11px}.v3-band-button{white-space:normal;max-width:185px}.v3-step-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:960px){.v3-object-card{min-height:137px}.v3-object-pic{height:78px;width:82px}.v3-home-band{flex-wrap:wrap}.v3-home-band-text{min-width:55%}.v3-band-button{margin:0 0 13px auto}.v3-time{font-size:12px}}
+@media(max-width:700px){
+ .v3-living .v3-time{right:9px;top:9px;padding:6px 8px;font-size:11px;gap:3px}.v3-time span{display:none}
+ .v3-living .v3-placed-object,.v3-living .v3-site{width:48px}.v3-living .v3-site-plus{width:25px;height:25px;font-size:18px;border-width:2px}
+ .v3-building .v2-scene-head{display:none}.v3-build-help{top:10px;left:10px;font-size:10px;padding:8px 10px;max-width:calc(100% - 71px);line-height:1.3}
+ .v3-object-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.v3-object-card{min-height:130px;padding:6px 3px 8px;border-radius:13px}.v3-object-pic{height:78px;width:77px}.v3-object-card b{font-size:10px}.v3-object-card small{font-size:9px}
+ .v3-workshop,.v3-compendium{padding:13px;border-radius:19px}.v3-workshop-desc,.v3-collection-note{font-size:11px;margin-bottom:15px}
+ .v3-creature-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.v3-creature{border-radius:14px}.v3-creature-art{height:130px}.v3-creature-info{padding:10px}.v3-creature-info strong{font-size:21px}.v3-creature-info small{font-size:10px}.v3-creature-info p{font-size:10px;margin:7px 0}.v3-creature-tag{font-size:8px}.v3-creature-action{font-size:10px;padding:7px 3px}
+ .v3-home-band{margin:13px 0;min-height:120px;padding:7px 12px;gap:7px}.v3-home-buddy{width:72px;flex-basis:72px;height:95px}.v3-home-buddy svg{height:95px;width:76px}.v3-home-band-text{min-width:50%}.v3-home-band h3{font-size:18px}.v3-home-band p{font-size:10px}.v3-eyebrow{font-size:8px;letter-spacing:.6px}.v3-band-button{font-size:11px;padding:10px 13px;margin-left:4px}
+ .v3-steps{padding:13px}.v3-step-grid{grid-template-columns:1fr;gap:8px}.v3-step{padding:10px}.v3-builder-actions{flex-wrap:wrap;justify-content:flex-start}.v3-builder-actions span{font-size:10px}
+ .v3-site{transform:translate(-50%,-70%)}
+}
+@media(prefers-reduced-motion:reduce){.v3-living .v3-sky-dust i,.v2-buddy .v3-sprite{animation:none!important}.v3-living .terrain-art{transition:none!important}}
+
+.v3-building .v2-hotspot{visibility:hidden}
+
+</style>
 <style id="terra-village-style">
 /* GÉOPINS TERRA VILLAGE — original custom game skin, version 2 */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
@@ -262,6 +345,39 @@ button{touch-action:manipulation}button:focus-visible,input:focus-visible{outlin
 @media(max-width:700px){.nav{top:auto;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));width:auto;height:67px;flex-direction:row;border-radius:19px;gap:2px;padding:4px;box-shadow:0 8px 25px #204F4F30}.nav button{flex:1;min-height:56px;padding:4px 0;border-radius:14px;gap:2px;font-size:9px}.nav button .ni{font-size:21px}.v2-wrap{padding:17px 13px 100px}.v2-head{margin-bottom:18px;gap:7px}.v2-brand{min-width:0;gap:9px}.v2-brand-mark{width:42px;height:42px;font-size:23px;border-radius:12px}.v2-brand h1{font-size:23px}.v2-brand small{font-size:8px;letter-spacing:1px}.v2-topstats{margin-left:auto;gap:5px}.v2-pill{padding:8px;gap:3px;border-radius:11px;font-size:11px}.v2-pill i{font-size:14px}.v2-pill b{font-size:13px}.v2-pill.xpill{display:none}.v2-profiletap{display:none}.v2-heading{margin-bottom:13px;align-items:center}.v2-heading h2{font-size:26px}.v2-heading p{font-size:12px;max-width:255px}.v2-eyebrow{font-size:10px}.v2-subaction{font-size:11px;padding:8px 10px}.v2-hero{min-height:480px;border-width:3px;border-radius:25px}.v2-scene-head{top:12px;left:12px;padding:10px 14px}.v2-scene-head strong{font-size:20px}.v2-scene-head p{font-size:10px}.terrain-art{transform:scale(1.35);transform-origin:50% 51%}.v2-hotspot{min-width:0;padding:6px 8px;gap:5px;max-width:119px}.v2-hotspot b{font-size:13px}.v2-hotspot small{font-size:9px}.v2-hotspot .hicon{font-size:16px}.v2-hotspot.france{left:33%;top:40%}.v2-hotspot.europe{left:71%;top:36%}.v2-hotspot.world{left:80%;top:59%}.v2-hotspot.brevet{left:42%;top:66%}.v2-scene-bottom{bottom:13px;left:10px;right:10px}.v2-buddy svg{width:60px;flex-basis:60px}.v2-bubble{font-size:9px;padding:7px 8px;max-width:133px}.v2-hero-cta{font-size:13px;padding:10px 12px;border-width:2px}.v2-rightcol{grid-template-columns:1fr 1fr;gap:9px}.v2-rightcol>.v2-card{padding:14px;border-radius:19px}.v2-rightcol .v2-card:nth-child(3){grid-column:1/-1}.v2-card h3{font-size:16px}.v2-level-num{width:44px;height:44px;font-size:18px}.v2-level-data b{font-size:12px}.v2-level-data small{font-size:10px}.v2-daily-card p{font-size:11px}.v2-orangebtn{font-size:11px;padding:10px 5px}.v2-recap{gap:4px}.v2-recap div{padding:6px}.v2-recap strong{font-size:16px}.v2-recap span{font-size:9px}.v2-dest-grid{grid-template-columns:1fr}.v2-below{margin-top:10px;gap:10px}.v2-feature-box{padding:14px;border-radius:19px}.v2-section-title h3{font-size:21px}.v2-packs{grid-template-columns:1fr 1fr;gap:10px}.v2-pack-top{height:105px}.v2-pack-symbol{font-size:34px}.v2-pack-body{padding:10px}.v2-pack-body strong{font-size:15px;min-height:36px}.v2-pack-body .foot{font-size:10px}.v2-brevet-hero{padding:20px;border-radius:22px}.v2-brevet-hero h2{font-size:27px}.v2-brevet-hero .crest{font-size:55px}.v2-brevet-hero p{font-size:12px}.v2-lesson-row{grid-template-columns:1fr;gap:9px}.v2-lesson{min-height:0;padding:16px}.v2-lesson strong{font-size:20px}.v2-profile-grid{grid-template-columns:1fr}.v2-av-grid{gap:6px}.v2-av{font-size:27px}.v2-badge-grid{grid-template-columns:repeat(3,1fr)}.v2-badge{min-height:111px}.v2-decor-grid{grid-template-columns:repeat(3,1fr)}.v2-decor{min-height:89px}.v2-statgrid{grid-template-columns:repeat(3,1fr)}.v2-panel{padding:14px}.qcard{top:calc(7px + env(safe-area-inset-top,0px))}.qname{font-size:clamp(17px,5vw,25px)}.zoom{right:7px}.zoom button{width:41px;height:41px}.btn{font-size:15px}.sheet{max-height:91vh}}
 @media(prefers-reduced-motion:reduce){.v2-hotspot{animation:none!important}}
 
+</style>
+<style id="terra-village-v4-art">/* GÉOPINS TERRA VILLAGE V4 — hand-painted art integration */
+:root{--v4-paper:#fff7e4;--v4-wood:#7c4e2d;--v4-forest:#285b40}
+body{background:#edf2de;background-image:radial-gradient(#9ec6a15a 1px,transparent 1px);background-size:23px 23px}
+.v2-wrap{max-width:1460px}
+.v2-hero.v3-living{background:#9bd5e1;outline:5px solid #f9eed0;border:3px solid #6b4a2a;box-shadow:0 13px 0 #845b3f,0 25px 50px #325b3e3d;overflow:hidden}
+.v2-hero .terrain-art{width:100%;height:100%;object-fit:cover;object-position:center;position:absolute;inset:0;display:block}
+.v2-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#032c2820,transparent 40%),linear-gradient(0deg,#052b2b34,transparent 32%);pointer-events:none;z-index:1}
+.v2-scene-head,.v2-scene-bottom,.v2-hotspot,.v3-places,.v3-time,.v3-build-help{z-index:3!important}
+.v2-scene-head{background:#fff8eae8!important;border:2px solid #8d6442!important;box-shadow:0 8px 0 #62452c65!important;backdrop-filter:blur(9px)}
+.v2-hotspot{background:linear-gradient(#fff9ea,#f6e3b9)!important;border:2px solid #76502e!important;box-shadow:0 5px 0 #76502e,0 8px 17px #12251b60!important;color:#3b3827!important}
+.v2-hotspot:hover{transform:translateY(-4px) scale(1.04)!important;box-shadow:0 9px 0 #76502e,0 15px 22px #12251b60!important}
+.v2-buddy .v3-sprite{display:none!important}
+.v2-buddy::before{content:"";display:block;width:112px;height:112px;border-radius:50%;border:4px solid #fff2cc;background:#eed9a8 url('assets/plume.webp') center/cover;box-shadow:0 6px 0 #6b4a2a,0 15px 20px #1233}
+.v2-bubble{background:#fff8df!important;border:2px solid #87603c!important;box-shadow:0 5px 0 #664b31!important}
+.v3-creature-art{background-size:cover;background-position:center;background-repeat:no-repeat}
+.v3-creature-art svg{opacity:0}
+.v3-creature-art::before,.v3-creature-art::after{display:none}
+.v3-creature:nth-child(1) .v3-creature-art{background-image:url('assets/plume.webp')}
+.v3-creature:nth-child(2) .v3-creature-art{background-image:url('assets/kiko.webp')}
+.v3-creature:nth-child(3) .v3-creature-art{background-image:url('assets/nori.webp')}
+.v3-creature:nth-child(4) .v3-creature-art{background-image:url('assets/siro.webp')}
+.v3-creature:nth-child(5) .v3-creature-art{background-image:url('assets/luma.webp')}
+.v3-creature:nth-child(6) .v3-creature-art{background-image:url('assets/sora.webp')}
+.v2-brevet-hero{background-image:linear-gradient(90deg,#143f36f0,#143f36d9 45%,#143f3609 100%),url('assets/brevet.webp')!important;background-position:center,center!important;background-size:cover!important;min-height:270px;border:3px solid #805735!important}
+.v2-brevet-hero .crest{display:none}
+.v2-panel:has(.v2-packs)::before{content:"";display:block;width:100%;height:240px;border-radius:20px;background:url('assets/missions.webp') center 52%/cover;margin-bottom:22px;border:3px solid #98724d;box-shadow:0 7px 0 #c8aa7b}
+.v2-feature-box,.v2-panel,.v2-helper,.v2-lesson,.v2-dest,.v2-hud-card,.v2-below>section{box-shadow:0 7px 0 #9fbe9552!important}
+.v2-dest{background:linear-gradient(#fff8e6,#f6edcf)!important;border-color:#ad925b!important}
+.v2-heading h1,.v2-section-title h3{color:#295840}
+.v2-brand::after{content:'BROT2YOU';font-size:10px;font-weight:900;letter-spacing:.18em;color:#6a795b;display:block;line-height:1.1}
+.v4-attribution{font-size:11px;color:#557561;text-align:center;padding:20px 10px 120px}
+@media(max-width:700px){.v2-hero .terrain-art{object-position:50% center}.v2-hero.v3-living{outline:2px solid #f9eed0}.v2-panel:has(.v2-packs)::before{height:155px}.v2-buddy::before{width:72px;height:72px}.v2-hotspot{box-shadow:0 3px 0 #76502e!important}}
 </style>
 </head>
 <body>
@@ -777,6 +893,193 @@ var tvEventsOriginal=tvRenderEvents;
 tvRenderEvents=function(root){tvEventsOriginal(root);var edit=root.querySelector('.v2-heading button[data-nav="village"]');if(edit&&TAB==='village'){edit.onclick=function(){TAB='village-edit';renderHome();window.scrollTo(0,0);};}if(TAB==='village-edit'){var nav=$('nav').querySelectorAll('button');for(var n=0;n<nav.length;n++)nav[n].className=nav[n].getAttribute('data-t')==='village'?'on':'';}};
 /* ===== END TERRA VILLAGE EXPANSION ===== */
 
+/* GÉOPINS — TERRA VILLAGE V3 / living island, exploration companions
+   Extension of V2, preserving the existing geographic engine and storage. */
+var V3_KEY='brot2you-geopins-terra-v3';
+var V3={buddy:'plume',sky:'day',places:{}};
+var V3_PICK=null;
+var V3_BUDDIES=[
+ {id:'plume',name:'Plume',kind:'La chouette des cartes',xp:0,tag:'La boussole du groupe',color:'#F3D2A0',line:'« Chaque erreur est une nouvelle découverte ! »'},
+ {id:'kiko',name:'Kiko',kind:'Le renard des forêts',xp:100,tag:'L’ami des sentiers',color:'#FFCEAF',line:'« Il y a toujours un nouveau chemin à explorer ! »'},
+ {id:'nori',name:'Nori',kind:'La tortue des océans',xp:300,tag:'Le navigateur',color:'#BFE9DB',line:'« Prends ton temps, et regarde bien la carte. »'},
+ {id:'siro',name:'Siro',kind:'Le fennec des déserts',xp:650,tag:'Le chercheur d’oasis',color:'#FFE5B6',line:'« Le monde est immense : on avance repère après repère ! »'},
+ {id:'luma',name:'Luma',kind:'Le faon des étoiles',xp:1200,tag:'Le guide des constellations',color:'#E2D6FF',line:'« Les progrès brillent, même quand ils sont petits. »'},
+ {id:'sora',name:'Sora',kind:'Le dragon des nuages',xp:2100,tag:'Le gardien des sommets',color:'#C8E6FB',line:'« Une aventure se construit à chaque mission ! »'}
+];
+var V3_DECORS=[
+ {name:'Grand chêne',xp:0,icon:'tree'},
+ {name:'Jardin de fleurs',xp:0,icon:'flowers'},
+ {name:'Champignon mignon',xp:0,icon:'mushroom'},
+ {name:'Fontaine',xp:150,icon:'fountain'},
+ {name:'Guirlande de fête',xp:320,icon:'bunting'},
+ {name:'Tente des explorateurs',xp:550,icon:'tent'},
+ {name:'Petit observatoire',xp:800,icon:'observatory'},
+ {name:'Grande longue-vue',xp:1200,icon:'telescope'},
+ {name:'Moulin fleuri',xp:1650,icon:'windmill'},
+ {name:'Passerelle',xp:2200,icon:'bridge'},
+ {name:'Arc-en-ciel',xp:2900,icon:'rainbow'},
+ {name:'Montgolfière',xp:3700,icon:'balloon'}
+];
+// Hand-selected decorative positions on the illustrated island.
+var V3_SITES=[[19,55],[27,65],[39,60],[50,57],[62,59],[73,57],[85,65],[24,44],[46,71],[59,45],[79,72],[91,54]];
+try{
+ var vv=JSON.parse(localStorage.getItem(V3_KEY)||'null');
+ if(vv&&typeof vv==='object'){
+  if(V3_BUDDIES.some(function(x){return x.id===vv.buddy;}))V3.buddy=vv.buddy;
+  if(['day','sunset','night'].indexOf(vv.sky)>-1)V3.sky=vv.sky;
+  if(vv.places&&typeof vv.places==='object')Object.keys(vv.places).forEach(function(k){var i=+k,n=+vv.places[k];if(Number.isInteger(i)&&i>=0&&i<12&&Number.isInteger(n)&&n>=0&&n<12)V3.places[k]=n;});
+ }else if(TV.decor&&TV.decor.length){
+  TV.decor.forEach(function(n,i){if(i<12&&Number.isInteger(n)&&n>=0&&n<6)V3.places[String(i)]=n;});
+ }
+}catch(v3e){}
+function v3Save(){try{localStorage.setItem(V3_KEY,JSON.stringify(V3));}catch(e){}}
+function v3Buddy(){return V3_BUDDIES.filter(function(c){return c.id===V3.buddy;})[0]||V3_BUDDIES[0];}
+function v3SvgWrap(id,shapes){
+ return '<svg class="v3-sprite" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 158" role="img" aria-label="'+esc(V3_BUDDIES.filter(function(x){return x.id===id;})[0].name)+'">'+
+ '<defs><linearGradient id="v3-'+id+'-a" x2=".8" y2="1"><stop stop-color="#fff" stop-opacity=".6"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>'+
+ '<ellipse cx="72" cy="146" rx="43" ry="8" fill="#204D56" opacity=".14"/>'+shapes+'</svg>';
+}
+function v3Face(x1,x2,y,r){return '<g fill="#243F47"><ellipse cx="'+x1+'" cy="'+y+'" rx="'+r+'" ry="'+(r+2)+'"/><ellipse cx="'+x2+'" cy="'+y+'" rx="'+r+'" ry="'+(r+2)+'"/></g><g fill="white"><circle cx="'+(x1-2)+'" cy="'+(y-3)+'" r="3"/><circle cx="'+(x2-2)+'" cy="'+(y-3)+'" r="3"/></g><g fill="#F8A7A7" opacity=".65"><ellipse cx="'+(x1-15)+'" cy="'+(y+14)+'" rx="7" ry="4"/><ellipse cx="'+(x2+15)+'" cy="'+(y+14)+'" rx="7" ry="4"/></g>'};
+function v3Sprite(id){
+ if(id==='plume')return tvOwl().replace('<svg viewBox=', '<svg class="v3-sprite" viewBox=');
+ if(id==='kiko')return v3SvgWrap(id,
+ '<path d="M29 110Q4 104 19 80Q27 67 42 74L57 105" fill="#E7835D" stroke="#9D6252" stroke-width="4"/>'+
+ '<path d="M26 48 25 13 56 34M90 35l28-25-2 52" fill="#E98B63" stroke="#9D6252" stroke-width="4"/><path d="m35 25 0 19 14-12M98 33l14-11-2 28" fill="#F4C0A4"/>'+
+ '<ellipse cx="72" cy="105" rx="40" ry="36" fill="#E98B63" stroke="#9D6252" stroke-width="4"/><path d="M52 95Q73 119 94 95L91 132Q73 146 55 131" fill="#FFF2D6"/>'+
+ '<path d="M28 73Q24 35 65 29Q107 21 118 68Q124 104 83 111H61Q24 110 28 73Z" fill="#F29A73" stroke="#9D6252" stroke-width="4"/>'+
+ '<path d="M36 78q-5 30 37 31Q110 106 112 75Q99 80 87 89Q70 97 55 88Z" fill="#FFF5DB"/>'+v3Face(55,88,68,7)+
+ '<path d="m67 91 6 6 7-6Z" fill="#83554F"/><path d="M72 99q-6 7-12 1m12-1q6 7 12 1" fill="none" stroke="#885850" stroke-width="3" stroke-linecap="round"/>'+
+ '<path d="M48 124q-8 17 4 18m42-18q9 17-3 18" stroke="#BE7357" stroke-width="10" stroke-linecap="round"/><path d="M38 115Q72 134 104 116" fill="none" stroke="#79BFAA" stroke-width="8"/><circle cx="72" cy="124" r="5" fill="#F5D27A"/>');
+ if(id==='nori')return v3SvgWrap(id,
+ '<path d="M34 95Q4 84 13 108Q22 127 42 115M109 95q27-7 24 17-2 13-24 2" fill="#79C6AC" stroke="#5B998D" stroke-width="4"/>'+
+ '<ellipse cx="72" cy="105" rx="43" ry="36" fill="#6FB7A4" stroke="#4E938A" stroke-width="4"/><ellipse cx="72" cy="100" rx="36" ry="28" fill="#408D91"/>'+
+ '<path d="M72 73 52 89l9 19h22l9-19Z" fill="#7BD2BB"/><path d="m52 89-10 7 15 22 5-10m30-19 10 7-15 22-4-10" stroke="#A3E3C7" stroke-width="3" fill="none"/>'+
+ '<path d="M27 71Q28 27 72 27Q116 26 119 71Q122 99 73 109Q22 104 27 71Z" fill="#94DDC1" stroke="#589E91" stroke-width="4"/>'+
+ '<path d="M49 55q23-23 46 0" fill="none" stroke="#DAF1CE" stroke-width="7"/>'+v3Face(53,91,72,7)+'<path d="M71 85q4 6 9 0" stroke="#517E73" stroke-width="3" stroke-linecap="round" fill="none"/>'+
+ '<path d="M36 45Q72 11 108 45" fill="none" stroke="#8A6A54" stroke-width="11"/><path d="M43 42Q72 20 102 42" fill="none" stroke="#F6D893" stroke-width="13"/>'+
+ '<circle cx="71" cy="35" r="10" fill="#FFF8DF" stroke="#96794A" stroke-width="2"/><path d="m71 28 3 9-6 2Z" fill="#D77F6B"/>'+
+ '<ellipse cx="48" cy="141" rx="13" ry="8" fill="#69B29E"/><ellipse cx="95" cy="141" rx="13" ry="8" fill="#69B29E"/>');
+ if(id==='siro')return v3SvgWrap(id,
+ '<path d="M21 69 11 4 58 46M86 42 131 4 122 73" fill="#F5C889" stroke="#AE906A" stroke-width="4"/><path d="M24 25 27 60 49 47M116 25l-3 37-19-16" fill="#EAA5A6"/>'+
+ '<ellipse cx="73" cy="114" rx="40" ry="31" fill="#F3D6A0" stroke="#AE906A" stroke-width="4"/><path d="M29 78Q24 35 69 33Q121 27 121 79Q121 111 76 119Q26 115 29 78Z" fill="#F9DCA6" stroke="#AE906A" stroke-width="4"/>'+
+ '<path d="M38 93Q43 107 73 109Q102 109 114 93Q88 84 73 94Q54 85 38 93Z" fill="#FFF8E4"/>'+v3Face(55,89,78,7)+'<path d="m68 99 6 6 6-6Z" fill="#94725E"/><path d="M72 109q-5 4-10 0m10 0q5 4 10 0" fill="none" stroke="#94725E" stroke-width="3"/>'+
+ '<path d="M33 126q39 16 80-1" fill="none" stroke="#DE9D6C" stroke-width="12"/><rect x="62" y="122" width="20" height="17" rx="5" fill="#7EBAAC" stroke="#6B9D90" stroke-width="3"/>'+
+ '<path d="M51 137q-9 11 1 12m40-12q9 11-1 12" stroke="#CBA878" stroke-width="8" stroke-linecap="round"/>');
+ if(id==='luma')return v3SvgWrap(id,
+ '<path d="M48 51Q23 29 31 12m17 34Q38 20 18 24m76 28q26-20 17-40m-18 33q14-23 31-21" fill="none" stroke="#B69B9D" stroke-width="7" stroke-linecap="round"/>'+
+ '<path d="M31 55 23 38 51 48M89 49l28-12-6 34" fill="#BCA8D9" stroke="#8F83AE" stroke-width="4"/>'+
+ '<ellipse cx="71" cy="109" rx="40" ry="32" fill="#BCA8D9" stroke="#8F83AE" stroke-width="4"/>'+
+ '<path d="M24 75Q23 33 72 32Q120 33 119 75Q121 114 70 118Q25 115 24 75Z" fill="#D7C8EC" stroke="#8F83AE" stroke-width="4"/>'+
+ '<path d="M38 94Q72 127 106 94L95 111Q71 129 47 111Z" fill="#FDF6E8"/>'+v3Face(53,91,76,8)+'<path d="m67 99 6 6 7-6Z" fill="#967E96"/>'+
+ '<path d="M66 47l7-12 7 12-7 9Z" fill="#FFEEA5" stroke="#E7BD7C" stroke-width="2"/>'+
+ '<path d="M44 130q-8 15 2 17m51-17q8 15-2 17" stroke="#A998C3" stroke-width="8" stroke-linecap="round"/>'+
+ '<path d="m14 97 4 7 8 2-8 3-4 8-3-8-8-3 8-2Zm112-17 3 8 8 1-8 4-3 7-3-7-8-4 8-1Z" fill="#F6D587"/>');
+ if(id==='sora')return v3SvgWrap(id,
+ '<path d="M30 93Q0 62 12 46Q25 57 49 74M111 93q31-23 26-47-19 17-41 29" fill="#83C1D0" stroke="#6396AB" stroke-width="4"/>'+
+ '<path d="M36 41 26 23 52 31M92 31l27-8-10 26" fill="#8DD3DB" stroke="#6396AB" stroke-width="4"/>'+
+ '<path d="M44 32 48 13 62 30 76 10 89 31 98 18l12 23" fill="#EFD5AD" stroke="#6396AB" stroke-width="3"/>'+
+ '<ellipse cx="72" cy="108" rx="43" ry="34" fill="#76B7D1" stroke="#6396AB" stroke-width="4"/><path d="M55 104q16-8 33 0l-6 37H63Z" fill="#D5F2ED"/>'+
+ '<path d="M26 74Q25 33 72 29Q119 30 119 74Q121 111 75 116Q25 111 26 74Z" fill="#8DD3DB" stroke="#6396AB" stroke-width="4"/>'+
+ '<path d="M47 98q24 22 49 0" fill="none" stroke="#DAF7F2" stroke-width="15" stroke-linecap="round"/>'+v3Face(51,92,76,8)+'<path d="m65 97 8 7 8-7Z" fill="#5C97A7"/>'+
+ '<path d="M48 139q-7 12 4 13m42-13q8 13-5 13" stroke="#72B4CA" stroke-width="8" stroke-linecap="round"/>'+
+ '<circle cx="71" cy="129" r="8" fill="#F6D891"/><path d="m69 124 7 5-7 6" stroke="#AD8E60" fill="none" stroke-width="2"/>');
+ return tvOwl();
+}
+function v3Art(n){
+ var art=[
+  '<ellipse cx="48" cy="84" rx="37" ry="7" fill="#2E7257" opacity=".22"/><path d="M43 79 45 24h8l3 55Z" fill="#9B745A"/><circle cx="36" cy="37" r="22" fill="#55A579"/><circle cx="65" cy="39" r="24" fill="#65BE88"/><circle cx="50" cy="20" r="26" fill="#8AD09A"/><circle cx="42" cy="12" r="9" fill="#C4EAA7" opacity=".55"/>',
+  '<ellipse cx="50" cy="83" rx="42" ry="7" fill="#427F60" opacity=".19"/><rect x="12" y="58" width="76" height="19" rx="7" fill="#B88569"/><path d="M18 59H82" stroke="#F6DCC4" stroke-width="4"/><g fill="#83C897"><path d="M27 61V38M46 61V35M65 61V39M78 61V45" stroke="#4B9D72" stroke-width="4"/></g><g fill="#F8A5A8"><circle cx="26" cy="36" r="9"/><circle cx="45" cy="34" r="9"/></g><g fill="#F7CD6A"><circle cx="65" cy="37" r="10"/><circle cx="80" cy="44" r="8"/></g>',
+  '<ellipse cx="50" cy="84" rx="40" ry="8" fill="#46735B" opacity=".2"/><path d="M29 47Q27 16 52 16Q79 16 80 47Z" fill="#F4B36A" stroke="#C78468" stroke-width="4"/><circle cx="39" cy="37" r="5" fill="#FFF2DC"/><circle cx="60" cy="37" r="5" fill="#FFF2DC"/><path d="m27 43 23-10 30 10" fill="none" stroke="#FFF1C7" stroke-width="6"/><path d="M28 45h50v34H28Z" fill="#FFF0D1" stroke="#B38C70" stroke-width="4"/><rect x="45" y="54" width="16" height="25" rx="8" fill="#9C716A"/>',
+  '<ellipse cx="50" cy="84" rx="37" ry="7" fill="#4C7466" opacity=".2"/><path d="M24 71Q23 51 50 45Q75 51 76 71Z" fill="#7AB4CC" stroke="#548CA4" stroke-width="4"/><path d="M14 57h72v12H14Z" fill="#F5E9D5" stroke="#C8B9A1" stroke-width="4"/><path d="M27 56q-11-12 0-19h46q11 8 0 19" fill="#9ECFDB" stroke="#6C9FB6" stroke-width="4"/><path d="M49 37V22" stroke="#6C9FB6" stroke-width="7"/><circle cx="49" cy="18" r="10" fill="#F8D6A6"/><path d="M19 70q30 16 62 0" stroke="#D1F3FF" stroke-width="5" fill="none"/>',
+  '<ellipse cx="50" cy="84" rx="40" ry="7" fill="#396E5A" opacity=".19"/><path d="M16 36q16-18 34 0t34 0" fill="none" stroke="#BE9872" stroke-width="5"/><path d="M19 38h12v22H19Zm17 0h12v22H36Zm17 0h12v22H53Zm17 0h12v22H70Z" fill="#F5B88A"/><path d="m18 38 6 13 6-13m6 0 6 13 6-13m6 0 6 13 6-13m6 0 6 13 6-13" fill="#F8DB8A"/>',
+  '<ellipse cx="50" cy="84" rx="42" ry="7" fill="#46735B" opacity=".21"/><path d="M16 72 50 22l34 50Z" fill="#ECA27D" stroke="#B87D65" stroke-width="4"/><path d="m50 22 0 50H16Z" fill="#F9DDA7"/><path d="M44 57h13v16H44Z" fill="#7BA7A0"/><path d="M14 74h73" stroke="#8B796A" stroke-width="6" stroke-linecap="round"/>',
+  '<ellipse cx="50" cy="84" rx="39" ry="7" fill="#477B65" opacity=".21"/><rect x="20" y="46" width="60" height="34" rx="5" fill="#F5DDAE" stroke="#AE9370" stroke-width="4"/><path d="M14 48 50 18l36 30Z" fill="#B77F74" stroke="#956C66" stroke-width="4"/><rect x="43" y="55" width="16" height="25" rx="6" fill="#8C776E"/><path d="M29 48h13v13H29Zm31 0h11v13H60Z" fill="#8DCDCC"/><circle cx="50" cy="27" r="5" fill="#FFEDB9"/>',
+  '<ellipse cx="50" cy="84" rx="41" ry="7" fill="#477B65" opacity=".19"/><path d="m31 79 17-31 12 31" stroke="#8B7865" stroke-width="7" fill="none"/><rect x="37" y="39" width="40" height="17" rx="6" transform="rotate(-20 37 39)" fill="#8BC0CA" stroke="#558B9F" stroke-width="4"/><circle cx="73" cy="39" r="10" fill="#F8E5B1" stroke="#7A8D86" stroke-width="4"/><path d="m27 71-10 12M60 71l13 13" stroke="#8B7865" stroke-width="5"/>',
+  '<ellipse cx="50" cy="84" rx="40" ry="7" fill="#477B65" opacity=".18"/><path d="M42 78V22h16v56Z" fill="#F5E4C1" stroke="#BCA17E" stroke-width="4"/><path d="M49 22 29 13l-8 18 28-9 8-20 17 6-17 14 27 6 5 15-32-21-8 31-16 10Z" fill="#F9D9A0" stroke="#CFA979" stroke-width="3"/><path d="M35 80h30" stroke="#8F765F" stroke-width="6" stroke-linecap="round"/>',
+  '<ellipse cx="50" cy="84" rx="44" ry="7" fill="#477B65" opacity=".2"/><path d="M10 67q40-33 80 0" fill="none" stroke="#9D7859" stroke-width="17" stroke-linecap="round"/><path d="M10 67q40-33 80 0" fill="none" stroke="#E8C590" stroke-width="11" stroke-linecap="round" stroke-dasharray="8 6"/><path d="M14 67V81m73-14v14" stroke="#845F50" stroke-width="7"/>',
+  '<path d="M15 70Q50 0 85 70" fill="none" stroke="#EA9AA2" stroke-width="13"/><path d="M20 70Q50 13 80 70" fill="none" stroke="#F8D88E" stroke-width="11"/><path d="M27 70Q50 26 73 70" fill="none" stroke="#96D1AB" stroke-width="10"/><path d="M36 70Q50 42 64 70" fill="none" stroke="#9FCBD3" stroke-width="9"/><ellipse cx="28" cy="78" rx="15" ry="9" fill="#FFF8ED"/><ellipse cx="73" cy="79" rx="15" ry="9" fill="#FFF8ED"/>',
+  '<path d="M48 67V27" stroke="#947D64" stroke-width="5"/><path d="M24 30Q17 9 37 9Q50 0 63 9Q84 10 77 31L66 51H34Z" fill="#F1A77D" stroke="#B67D68" stroke-width="4"/><path d="M28 26h46M49 9v42" fill="none" stroke="#FFF0D2" stroke-width="5"/><path d="m34 51 15 25 16-25" fill="#FFF0D6" stroke="#BBA182" stroke-width="3"/><ellipse cx="50" cy="79" rx="11" ry="5" fill="#E8D5AE"/>'
+ ];
+ return '<svg class="v3-object-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">'+art[n]+'</svg>';
+}
+function v3Places(edit){var h='<div class="v3-object-layer">';
+ V3_SITES.forEach(function(pt,i){var n=Object.prototype.hasOwnProperty.call(V3.places,String(i))?V3.places[i]:null;
+  if(edit){h+='<button type="button" class="v3-site'+(n===null?' empty':'')+'" data-v3-slot="'+i+'" style="left:'+pt[0]+'%;top:'+pt[1]+'%" aria-label="'+(n===null?'Emplacement vide '+(i+1):V3_DECORS[n].name+' : déplacer ou retirer')+'">'+(n===null?'<span class="v3-site-plus">+</span>':v3Art(n))+'</button>';}
+  else if(n!==null){h+='<span class="v3-placed-object" aria-hidden="true" style="left:'+pt[0]+'%;top:'+pt[1]+'%">'+v3Art(n)+'</span>';}
+ });return h+'</div>';}
+var v3OldScene=tvScene;
+tvScene=function(edit){
+ var c=v3Buddy();var sky={day:['☀️','Journée'],sunset:['🌅','Coucher du soleil'],night:['🌙','Nuit étoilée']}[V3.sky];
+ var original=v3OldScene(edit);
+ original=original.replace('class="v2-hero" id="v2Hero"','class="v2-hero v3-living v3-'+V3.sky+(edit?' v3-building':'')+'" id="v2Hero"');
+ original=original.replace(/<span class="v2-placed d\d"[^>]*>[^<]*<\/span>/g,'');
+ original=original.replace('class="v2-scene-head"','class="v2-scene-head"');
+ original=original.replace('<div class="v2-scene-bottom">',
+  v3Places(edit)+'<div class="v3-sky-dust" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>'+
+  '<button class="v3-time" type="button" data-v3-sky aria-label="Changer la lumière de l’île : '+sky[1]+'">'+sky[0]+' <span>'+sky[1]+'</span> ↻</button>'+
+  (edit?'<div class="v3-build-help">'+(V3_PICK===null?'1. Choisis un objet ci-dessous, puis touche un emplacement.':'2. Touche un cercle sur ton île pour installer l’objet !')+'</div>':'')+
+  '<div class="v2-scene-bottom">');
+ original=original.replace(tvOwl(),v3Sprite(c.id));
+ original=original.replace(/Bienvenue ! Je suis Plume, ton guide\. Quelle région visites-tu \?/,'<b>'+c.name+'</b> · '+c.line);
+ original=original.replace('Choisis un décor ci-dessous pour embellir notre île !','Construisons notre île ! Choisis un objet et touche un emplacement.');
+ original=original.replace('☀️ TON ÎLE D’AVENTURE','✦ TON MONDE À EXPLORER');
+ return original;
+};
+function v3Card(c){var unlock=S.xp>=c.xp,active=V3.buddy===c.id;return '<button class="v3-creature'+(unlock?'':' v3-locked')+(active?' v3-active':'')+'" '+(unlock?'data-v3-buddy="'+c.id+'"':'disabled')+' aria-pressed="'+active+'"><div class="v3-creature-art" style="--creature-tint:'+c.color+'">'+v3Sprite(c.id)+'</div><div class="v3-creature-info"><span class="v3-creature-tag">'+(active?'✓ TON COMPAGNON':unlock?'COMPAGNON DÉBLOQUÉ':'🔒 '+c.xp+' XP')+'</span><strong>'+c.name+'</strong><small>'+c.kind+'</small><p>'+c.tag+'</p><span class="v3-creature-action">'+(active?'À tes côtés':unlock?'Choisir ce compagnon →':'Encore '+(c.xp-S.xp)+' XP')+'</span></div></button>';}
+var v3OldCollection=tvCollection;
+tvCollection=function(){
+ var head=tvTitle('MON CARNET DE COMPAGNONS','Rencontre les amis de Terra Village 🐾','Six petites créatures originales à découvrir en progressant dans les missions.','<button class="v2-subaction" data-nav="village">🏡 Retour au village</button>');
+ var count=V3_BUDDIES.filter(function(x){return S.xp>=x.xp;}).length;
+ head+='<section class="v3-compendium"><div class="v2-section-title"><h3>✨ Les compagnons de l’explorateur</h3><small>'+count+' / 6 rencontrés</small></div><p class="v3-collection-note">Clique sur un compagnon débloqué pour qu’il t’accompagne sur l’île et t’encourage après tes expéditions. Tous s’obtiennent en jouant.</p><div class="v3-creature-grid">'+V3_BUDDIES.map(v3Card).join('')+'</div></section>';
+ var earned=BADGES.filter(function(b){return !!S.badges[b.id];}).length;
+ head+='<section class="v2-feature-box v3-badges"><div class="v2-section-title"><h3>🏅 Mes badges de voyage</h3><small>'+earned+' / '+BADGES.length+' découverts</small></div><div class="v2-progress" style="margin:0 0 22px;height:13px"><i style="width:'+Math.round(100*earned/BADGES.length)+'%"></i></div><div class="v2-badge-grid">';
+ BADGES.forEach(function(b){var got=!!S.badges[b.id];head+='<div class="v2-badge'+(got?'':' off')+'" title="'+esc(b.d||'')+'"><div class="icon">'+b.e+'</div><b>'+esc(b.n)+'</b><span>'+(got?'Débloqué ✓':'À découvrir')+'</span></div>';});
+ return head+'</div></section>';
+};
+function v3CountPlaced(){return Object.keys(V3.places).length;}
+tvDecorPage=function(){
+ var h=tvTitle('ATELIER DE DÉCORATION','Construis ton île, à ta façon 🏡','Choisis tes objets, puis place-les sur les emplacements du paysage.','<button class="v2-subaction" data-v3-finish>✓ Terminer la déco</button>');
+ h+='<div class="v2-grid">'+tvScene(true)+tvHud()+'</div>';
+ h+='<section class="v3-workshop"><div class="v2-section-title"><h3>🎨 L’atelier de construction</h3><small>'+v3CountPlaced()+' / 12 emplacements occupés</small></div><p class="v3-workshop-desc">1. Sélectionne une décoration débloquée. &nbsp; 2. Touche un cercle sur l’île pour l’installer ou la déplacer. &nbsp; 3. Sans objet sélectionné, touche un décor pour le retirer.</p><div class="v3-object-grid">';
+ V3_DECORS.forEach(function(d,i){var locked=S.xp<d.xp,installed=Object.keys(V3.places).some(function(k){return V3.places[k]===i;});
+  h+='<button type="button" class="v3-object-card'+(locked?' v3-locked':'')+(V3_PICK===i?' v3-picked':'')+'" data-v3-select="'+i+'" '+(locked?'disabled':'')+' aria-pressed="'+(V3_PICK===i)+'"><span class="v3-object-pic">'+v3Art(i)+'</span><b>'+d.name+'</b><small>'+(locked?'🔒 '+d.xp+' XP':V3_PICK===i?'✓ À placer':installed?'✓ Sur l’île':'Ajouter sur l’île')+'</small></button>';
+ });
+ h+='</div><div class="v3-builder-actions"><button data-v3-unselect class="v2-subaction" type="button">✕ Annuler la sélection</button><span>Les objets se gagnent avec les XP. Aucun achat nécessaire.</span></div></section>';
+ return h;
+};
+var v3OldVillage=tvVillage;
+tvVillage=function(){var h=v3OldVillage();var c=v3Buddy();var next=V3_BUDDIES.find(function(b){return S.xp<b.xp;});
+ h+='<section class="v3-home-band"><div class="v3-home-buddy">'+v3Sprite(c.id)+'</div><div class="v3-home-band-text"><div class="v3-eyebrow">✦ TA PETITE ÉQUIPE D’AVENTURE</div><h3>'+c.name+' t’accompagne !</h3><p>'+c.line+' '+(next?'Prochaine rencontre : <strong>'+esc(next.name)+'</strong> à '+next.xp+' XP.':'Bravo, tu as rencontré tous les compagnons !')+'</p></div><button class="v3-band-button" data-nav="collection">Découvrir les compagnons <span>↗</span></button></section>';
+ var checkpoints=[{t:'Premiers pas',goal:5,v:S.stats.pins,icon:'📍',d:'Poser 5 repères'},{t:'Curiosité',goal:100,v:S.xp,icon:'✨',d:'Gagner 100 XP'},{t:'Aventurier',goal:3,v:S.stats.games,icon:'🧭',d:'Terminer 3 missions'}];
+ h+='<section class="v3-steps"><div class="v2-section-title"><h3>🌱 Tes premiers objectifs</h3><small>À ton rythme, sans compétition</small></div><div class="v3-step-grid">';
+ checkpoints.forEach(function(it){var ok=it.v>=it.goal,pc=Math.min(100,Math.floor(it.v/it.goal*100));h+='<div class="v3-step"><span class="v3-step-icon">'+it.icon+'</span><div><b>'+it.t+'</b><small>'+it.d+'</small></div><span class="v3-step-progress">'+(ok?'✓':Math.min(it.v,it.goal)+'/'+it.goal)+'</span><div class="v2-progress"><i style="width:'+pc+'%"></i></div></div>';});
+ return h+'</div></section>';
+};
+var v3OldRenderEvents=tvRenderEvents;
+tvRenderEvents=function(root){
+ v3OldRenderEvents(root);
+ var sky=root.querySelector('[data-v3-sky]');if(sky)sky.onclick=function(){var list=['day','sunset','night'];V3.sky=list[(list.indexOf(V3.sky)+1)%3];v3Save();sfx('tap');renderHome();};
+ var done=root.querySelector('[data-v3-finish]');if(done)done.onclick=function(){V3_PICK=null;TAB='village';sfx('tap');renderHome();window.scrollTo(0,0);};
+ var picks=root.querySelectorAll('[data-v3-select]');for(var i=0;i<picks.length;i++)picks[i].onclick=function(){var idx=+this.getAttribute('data-v3-select');if(S.xp<V3_DECORS[idx].xp)return;V3_PICK=V3_PICK===idx?null:idx;sfx('tap');renderHome();};
+ var slots=root.querySelectorAll('[data-v3-slot]');for(i=0;i<slots.length;i++)slots[i].onclick=function(){var spot=this.getAttribute('data-v3-slot'),current=Object.prototype.hasOwnProperty.call(V3.places,spot)?V3.places[spot]:null;if(V3_PICK===null){if(current!==null){delete V3.places[spot];v3Save();sfx('tap');renderHome();}else{toast('🪴','Choisis d’abord une décoration dans l’atelier.');}return;}
+  Object.keys(V3.places).forEach(function(k){if(V3.places[k]===V3_PICK)delete V3.places[k];});
+  V3.places[spot]=V3_PICK;V3_PICK=null;v3Save();sfx('tap');renderHome();toast('🌼','Décoration installée !');
+ };
+ var cancel=root.querySelector('[data-v3-unselect]');if(cancel)cancel.onclick=function(){V3_PICK=null;renderHome();};
+ var buddies=root.querySelectorAll('[data-v3-buddy]');for(i=0;i<buddies.length;i++)buddies[i].onclick=function(){var id=this.getAttribute('data-v3-buddy'),c=V3_BUDDIES.find(function(x){return x.id===id;});if(!c||S.xp<c.xp)return;V3.buddy=id;v3Save();sfx('tap');renderHome();toast('💛',c.name+' rejoint ton équipe !');};
+ // Add a proper direct link to the builder on the home page.
+ var edit=root.querySelector('.v2-heading button[data-nav="village"]');if(edit&&TAB==='village')edit.onclick=function(){V3_PICK=null;TAB='village-edit';renderHome();window.scrollTo(0,0);};
+};
+var v3OldShowEnd=showEnd;
+showEnd=function(avg){v3OldShowEnd(avg);var c=v3Buddy(),dest=$('end').querySelector('.kpis');if(!dest)return;var msg=avg>=80?'Quelle belle expédition ! Tu connais déjà beaucoup de repères.':avg>=45?'Bien joué ! On apprend aussi en faisant des essais.':'Continue à explorer : chaque repère reviendra plus facilement.';
+ dest.insertAdjacentHTML('afterend','<div class="v3-result-buddy"><span>'+v3Sprite(c.id)+'</span><div><b>'+c.name+' te félicite !</b><p>'+msg+'</p></div></div>');};
+// If the user resets their progress, remove the optional cosmetic placements, too.
+var v3OldProfile=renderProfile;
+renderProfile=function(){v3OldProfile();var reset=$('bReset');if(reset){var original=reset.onclick;reset.onclick=function(){original();var m=document.querySelector('.modal');if(m){var yes=m.querySelector('[data-a="o"]');if(yes)yes.addEventListener('click',function(){V3={buddy:'plume',sky:'day',places:{}};V3_PICK=null;v3Save();},{once:true});}};}};
+/* ===== END TERRA VILLAGE V3 ===== */
+
+/* V4 artwork: all existing HTML buttons remain functional; only the decorative SVG scene is replaced. */
+TV_SCENE='<img class="terrain-art" src="assets/village.webp" alt="Village illustré avec montagnes, rivières et îles verdoyantes" decoding="async">';
 /* ---------- boot ---------- */
 var nb=$('nav').querySelectorAll('button');for(i=0;i<nb.length;i++)nb[i].onclick=function(){showTab(this.getAttribute('data-t'));};
 applySettings();showTab('village');

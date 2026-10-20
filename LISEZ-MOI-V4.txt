@@ -1,0 +1,20 @@
+GÉOPINS TERRA VILLAGE V4 — première intégration illustrée
+
+INSTALLATION GITHUB PAGES
+1. Décompresser cette archive.
+2. Dans le dépôt GitHub Pages de GéoPins, remplacer index.html.
+3. Importer également le dossier assets avec tous ses fichiers .webp, à la racine du dépôt.
+4. Valider les modifications (Commit changes), puis recharger le site.
+5. Ne pas déplacer les fichiers WebP sans modifier leurs chemins dans index.html.
+
+CONTENU
+- index.html : l'application V3 conservée avec surcouche visuelle V4.
+- assets/village.webp : décor peint du village.
+- assets/plume.webp, kiko.webp, nori.webp, siro.webp, luma.webp, sora.webp : portraits illustrés.
+- assets/missions.webp, brevet.webp, collection.webp : illustrations complémentaires.
+
+ATTENTION
+- Les visuels sont issus de maquettes illustrées, recadrées pour un premier prototype intégré. Certaines parties peuvent encore montrer des détails de la planche.
+- Il s'agit de la première étape d'intégration visuelle, pas de la reconstruction complète de toutes les interfaces.
+- La sauvegarde de jeu reste gérée par le navigateur avec les clés de stockage de l'application précédente.
+- Validation statique du JavaScript effectuée. Test navigateur automatisé non exécuté faute de navigateur disponible dans l'environnement.
