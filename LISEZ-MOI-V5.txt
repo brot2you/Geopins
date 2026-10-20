@@ -1,0 +1,22 @@
+GÉOPINS TERRA VILLAGE V5 — GUIDE D'INSTALLATION
+================================================
+Cette version reprend le moteur et les données de la V4.
+
+1. Décompresser le ZIP.
+2. Sur GitHub, remplacer le fichier index.html À LA RACINE du dépôt.
+3. Conserver ou téléverser le dossier assets en entier, au même niveau que index.html.
+4. Vérifier que GitHub Pages publie la racine de la branche main.
+5. Patienter après le commit, puis forcer l'actualisation (Ctrl+F5).
+
+Corrections V5 :
+- titre V5 cohérent ;
+- mascotte illustrée sur l'accueil synchronisée avec le compagnon choisi ;
+- descriptions des six compagnons raccord avec leurs illustrations ;
+- traitement des images, effets légers et interface responsive ;
+- signature textuelle Brot2You en attendant l'intégration du logo original.
+
+Attention : certains décors de V4 sont encore des EXTRACTIONS de maquettes et
+comportent des mots intégrés aux images. Ces assets ne constituent pas encore
+les illustrations finales détourées individuellement.
+
+Conserver la même URL pour retrouver la sauvegarde locale du navigateur.

@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V3 — L’île vivante</title>
+<title>GéoPins • Terra Village V5 — L’aventure illustrée</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -378,6 +378,38 @@ body{background:#edf2de;background-image:radial-gradient(#9ec6a15a 1px,transpare
 .v2-brand::after{content:'BROT2YOU';font-size:10px;font-weight:900;letter-spacing:.18em;color:#6a795b;display:block;line-height:1.1}
 .v4-attribution{font-size:11px;color:#557561;text-align:center;padding:20px 10px 120px}
 @media(max-width:700px){.v2-hero .terrain-art{object-position:50% center}.v2-hero.v3-living{outline:2px solid #f9eed0}.v2-panel:has(.v2-packs)::before{height:155px}.v2-buddy::before{width:72px;height:72px}.v2-hotspot{box-shadow:0 3px 0 #76502e!important}}
+</style>
+
+<style id="terra-village-v5-style">
+/* V5: dynamic illustrated companions; no fake text/buttons are added to the artwork. */
+:root {--v5-forest:#25533e;--v5-amber:#e7a756}
+.v2-buddy::before{background-image:var(--v5-companion-image,url('assets/plume.webp'))!important;background-position:center 31%!important;background-size:cover!important}
+.v2-brand{position:relative;flex-wrap:wrap}
+.v2-brand::after{content:'BROT2YOU · ÉDITION TERRA VILLAGE'!important;flex-basis:100%;margin-left:70px;letter-spacing:.12em;color:#637b54}
+.v3-creature-art{background-position:center 31%;}
+.v3-creature{overflow:hidden;transition:transform .22s ease, box-shadow .22s ease}
+.v3-creature:hover{transform:translateY(-5px)}
+.v3-creature-art{border-bottom:3px solid #eedcc0}
+.v3-creature.v3-active{box-shadow:0 7px 0 #4f926f,0 17px 22px #28543e26!important}
+.v2-hero.v3-living{isolation:isolate}
+.v2-hero .terrain-art{transform:scale(1.035);transition:transform 10s ease,filter .8s ease;}
+.v2-hero:hover .terrain-art{transform:scale(1.075)}
+.v2-hotspot{backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);transition:transform .2s ease,box-shadow .2s ease!important}
+.v2-hero-cta,.v2-feature-box button,.v2-dest button{transition:transform .18s ease,filter .18s ease}
+.v2-hero-cta:hover,.v2-feature-box button:hover,.v2-dest button:hover{filter:brightness(1.06)}
+.v2-panel:has(.v2-packs)::before{background-position:center 34%;}
+.v2-brevet-hero{background-position:center,center 35%!important}
+.v3-compendium{background:linear-gradient(145deg,#fff9e8,#f1f7e7)!important}
+.v5-signature{font-size:12px;color:#4a6757;text-align:center;font-weight:800;letter-spacing:.08em;padding:24px 15px 100px}
+.v5-signature span{color:#b87036}
+@media(max-width:700px){
+ .v2-brand::after{margin-left:0;font-size:8px}
+ .v2-hero .terrain-art{transform:none!important}
+ .v2-hero.v3-living{min-height:510px}
+ .v2-panel:has(.v2-packs)::before{background-position:50% 40%}
+ .v2-buddy::before{background-position:center 31%}
+}
+@media(prefers-reduced-motion:reduce){.v2-hero .terrain-art,.v3-creature,.v2-hotspot{transition:none!important}}
 </style>
 </head>
 <body>
@@ -900,11 +932,11 @@ var V3={buddy:'plume',sky:'day',places:{}};
 var V3_PICK=null;
 var V3_BUDDIES=[
  {id:'plume',name:'Plume',kind:'La chouette des cartes',xp:0,tag:'La boussole du groupe',color:'#F3D2A0',line:'« Chaque erreur est une nouvelle découverte ! »'},
- {id:'kiko',name:'Kiko',kind:'Le renard des forêts',xp:100,tag:'L’ami des sentiers',color:'#FFCEAF',line:'« Il y a toujours un nouveau chemin à explorer ! »'},
- {id:'nori',name:'Nori',kind:'La tortue des océans',xp:300,tag:'Le navigateur',color:'#BFE9DB',line:'« Prends ton temps, et regarde bien la carte. »'},
- {id:'siro',name:'Siro',kind:'Le fennec des déserts',xp:650,tag:'Le chercheur d’oasis',color:'#FFE5B6',line:'« Le monde est immense : on avance repère après repère ! »'},
- {id:'luma',name:'Luma',kind:'Le faon des étoiles',xp:1200,tag:'Le guide des constellations',color:'#E2D6FF',line:'« Les progrès brillent, même quand ils sont petits. »'},
- {id:'sora',name:'Sora',kind:'Le dragon des nuages',xp:2100,tag:'Le gardien des sommets',color:'#C8E6FB',line:'« Une aventure se construit à chaque mission ! »'}
+ {id:'kiko',name:'Kiko',kind:'Le panda roux cartographe',xp:100,tag:'L’ami des sentiers',color:'#FFCEAF',line:'« Il y a toujours un nouveau chemin à explorer ! »'},
+ {id:'nori',name:'Nori',kind:'Le petit dinosaure aventurier',xp:300,tag:'Le navigateur',color:'#BFE9DB',line:'« Prends ton temps, et regarde bien la carte. »'},
+ {id:'siro',name:'Siro',kind:'Le renard éclaireur',xp:650,tag:'Le chercheur d’oasis',color:'#FFE5B6',line:'« Le monde est immense : on avance repère après repère ! »'},
+ {id:'luma',name:'Luma',kind:'Le lapin inventeur',xp:1200,tag:'Le guide des constellations',color:'#E2D6FF',line:'« Les progrès brillent, même quand ils sont petits. »'},
+ {id:'sora',name:'Sora',kind:'Le pingouin observateur',xp:2100,tag:'Le gardien des sommets',color:'#C8E6FB',line:'« Une aventure se construit à chaque mission ! »'}
 ];
 var V3_DECORS=[
  {name:'Grand chêne',xp:0,icon:'tree'},
@@ -1079,7 +1111,7 @@ renderProfile=function(){v3OldProfile();var reset=$('bReset');if(reset){var orig
 /* ===== END TERRA VILLAGE V3 ===== */
 
 /* V4 artwork: all existing HTML buttons remain functional; only the decorative SVG scene is replaced. */
-TV_SCENE='<img class="terrain-art" src="assets/village.webp" alt="Village illustré avec montagnes, rivières et îles verdoyantes" decoding="async">';
+TV_SCENE='<img class="terrain-art" loading="eager" fetchpriority="high" src="assets/village.webp" alt="Village illustré avec montagnes, rivières et îles verdoyantes" decoding="async">';
 /* ---------- boot ---------- */
 var nb=$('nav').querySelectorAll('button');for(i=0;i<nb.length;i++)nb[i].onclick=function(){showTab(this.getAttribute('data-t'));};
 applySettings();showTab('village');
@@ -1087,5 +1119,21 @@ window.__R={S:S,G:function(){return G;},start:startGame,tap:onMapTap,proj:functi
 })();
 
 </script>
-</body>
+<script>
+/* V5 companion art bridge — keeps V3 persistence untouched. */
+(function(){
+ var portraitIds=['plume','kiko','nori','siro','luma','sora'];
+ function syncPortrait(){
+  var id=(typeof V3!=='undefined'&&V3&&V3.buddy)||'plume';
+  if(portraitIds.indexOf(id)<0)id='plume';
+  document.documentElement.style.setProperty('--v5-companion-image',"url('assets/"+id+".webp')");
+ }
+ syncPortrait();
+ var home=document.getElementById('home');
+ if(home){
+  var queued=false;
+  new MutationObserver(function(){if(queued)return;queued=true;requestAnimationFrame(function(){queued=false;syncPortrait();});}).observe(home,{childList:true,subtree:false});
+ }
+})();
+</script></body>
 </html>
