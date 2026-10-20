@@ -2182,5 +2182,35 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </style>
 <button type="button" class="v29-quit hidden" id="v29Quit" aria-label="Quitter la partie et revenir à l'accueil">← Quitter</button>
 <script id="terra-v29-controls">(()=>{const quit=document.getElementById('v29Quit');const game=document.getElementById('game');if(!quit||!game)return;function sync(){quit.classList.toggle('hidden',game.classList.contains('hidden'));}const observer=new MutationObserver(sync);observer.observe(game,{attributes:true,attributeFilter:['class']});quit.addEventListener('click',()=>{const existing=document.getElementById('bQuit')||document.querySelector('#game .x');if(existing){existing.click();return;}const close=[...document.querySelectorAll('#game button')].find(b=>/quitter|abandonner|retour/i.test(b.textContent||''));if(close){close.click();return;}if(confirm('Quitter cette partie ?')){game.classList.add('hidden');document.getElementById('home')?.classList.remove('hidden');document.getElementById('nav')?.classList.remove('hidden');}});sync();})();</script>
+
+<style id="terra-v30-mission-rebuild">
+/* Version 30: unique bespoke painting per geography theme, no duplicate panoramic banner */
+#home .v2-pack{overflow:hidden!important;min-width:0!important;border:2px solid #986234!important;border-radius:18px!important;box-shadow:0 4px 0 #c8ac7a!important;background:#fffaf0!important;display:flex!important;flex-direction:column!important}
+#home .v2-pack .v7-mission-visual{display:none!important}
+#home .v2-pack .v2-pack-top{height:170px!important;min-height:170px!important;max-height:170px!important;margin:0!important;border:0!important;overflow:hidden!important;position:relative!important;background:linear-gradient(125deg,#83b9c1,#d3e4b5)!important}
+#home .v2-pack .v13-pack-image{width:100%!important;height:100%!important;display:block!important;position:absolute!important;inset:0!important;object-fit:cover!important;object-position:center!important;border:0!important;border-radius:0!important;filter:none!important;transform:none!important}
+#home .v2-pack .v2-pack-symbol{display:none!important}
+#home .v2-pack .v2-pack-level{position:absolute!important;z-index:2!important;top:10px!important;left:10px!important;border-radius:10px!important;background:#fff6d9!important;border:1px solid #bd9965!important;color:#58361f!important;box-shadow:0 2px 0 #735239!important}
+#home .v2-pack .v2-pack-body{flex:1!important;min-height:118px!important;display:flex!important;flex-direction:column!important;gap:8px!important;padding:13px 15px!important;background:#fffaf0!important}
+#home .v2-pack .v2-pack-body strong{font-size:17px!important;line-height:1.25!important;color:#45351f!important}
+#home .v2-pack .v2-pack-body .foot{margin-top:auto!important;display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:space-between!important;gap:4px!important;font-size:12px!important}
+#home .v2-pack .v2-progress{width:100%!important;height:9px!important;flex:none!important;margin-top:2px!important}
+#home .v2-packs{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:17px!important;align-items:stretch!important}
+#home .v13-mission-panel .v7-scenic{display:none!important}
+#nav.nav{position:fixed!important;top:8px!important;left:50%!important;right:auto!important;bottom:auto!important;transform:translateX(-50%)!important;z-index:160!important;margin:0!important}
+body:has(#nav:not(.hidden)){padding-top:116px!important}
+#nav.nav button img.tv19-icon{object-fit:contain!important;object-position:center!important}
+@media(max-width:900px){#home .v2-packs{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:780px){#nav.nav{top:auto!important;bottom:calc(8px + env(safe-area-inset-bottom))!important;left:50%!important;transform:translateX(-50%)!important}body:has(#nav:not(.hidden)){padding-top:0!important}#home .v2-pack .v2-pack-top{height:140px!important;min-height:140px!important;max-height:140px!important}}
+@media(max-width:520px){#home .v2-packs{grid-template-columns:1fr!important}#home .v2-pack .v2-pack-top{height:190px!important;min-height:190px!important;max-height:190px!important}}
+</style>
+<script id="terra-v30-artwork-controller">
+(()=>{'use strict';
+const paintings={continents:'continents',reliefs:'reliefs',populations:'populations',regions:'regions',europe:'europe',uk:'uk',america:'america',asie:'asie'};
+const patterns=[[/continent|océan|monde/i,'continents'],[/fleuve|montagne|désert|relief|climat/i,'reliefs'],[/où vivent|habitant|humain|population|ville|métropole/i,'populations'],[/région|france|département/i,'regions'],[/royaume.uni|angleterre|écosse|pays de galles/i,'uk'],[/états.unis|usa|canada|amérique/i,'america'],[/asie|japon|chine|inde/i,'asie'],[/europe|union européenne|capitales|pays d.europe/i,'europe']];
+const update=()=>{document.querySelectorAll('#home .v2-pack').forEach(card=>{let label=card.querySelector('.v2-pack-body strong')?.textContent||'';let key=patterns.find(([rx])=>rx.test(label))?.[1]||'continents';const image=card.querySelector('.v13-pack-image');if(image){const path='assets/missions-v30/'+paintings[key]+'.webp';if(image.getAttribute('src')!==path)image.src=path;} });};
+let scheduled=false;const observer=new MutationObserver(()=>{if(scheduled)return;scheduled=true;setTimeout(()=>{scheduled=false;update();},120)});observer.observe(document.body,{childList:true,subtree:true});update();
+})();
+</script>
 </body>
 </html>
