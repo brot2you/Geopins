@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V16 — Village illustré</title>
+<title>GéoPins • Terra Village V17 — Village illustré</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -1657,9 +1657,9 @@ BUILDINGS.forEach(function(b){if(levels[b.id]===undefined)levels[b.id]=0});
 function save(){try{localStorage.setItem(KEY,JSON.stringify(levels))}catch(e){}}
 function total(){return BUILDINGS.reduce(function(n,b){return n+levels[b.id]},0)}
 function summary(){return '<div class="v16-village-summary"><b>🏘️ Village niveau '+(1+Math.floor(total()/3))+'</b><span class="v16-pill">'+total()+' / 8 améliorations</span><span class="v16-pill">🌳 '+Object.keys(V3.places||{}).length+' / 12 décorations</span></div>'}
-function workshop(){var out='<section class="v16-banner"><span class="mini">TERRA VILLAGE · V16</span><h3>🏡 Fais grandir ton village !</h3><p>Chaque expédition te rapporte des XP. Débloque des améliorations et choisis toi-même quand agrandir les bâtiments. Rien à acheter, aucun point dépensé.</p><strong>'+total()+' améliorations réalisées sur 8</strong><div class="v16-meter" aria-label="'+total()+' améliorations sur 8"><i style="width:'+(total()/8*100)+'%"></i></div></section><div class="v16-districts">';
+function workshop(){var out='<section class="v16-banner"><span class="mini">TERRA VILLAGE · V17</span><h3>🏡 Fais grandir ton village !</h3><p>Chaque expédition te rapporte des XP. Débloque des améliorations et choisis toi-même quand agrandir les bâtiments. Rien à acheter, aucun point dépensé.</p><strong>'+total()+' améliorations réalisées sur 8</strong><div class="v16-meter" aria-label="'+total()+' améliorations sur 8"><i style="width:'+(total()/8*100)+'%"></i></div></section><div class="v16-districts">';
  BUILDINGS.forEach(function(b){var stage=levels[b.id],next=stage+1,need=next<=2?b.limits[next]:0,can=next<=2&&S.xp>=need;
- out+='<article class="v16-district"><div class="v16-district-art"><span class="emoji" aria-hidden="true">'+b.emoji+'</span><span class="stars">'+('★'.repeat(stage+1))+'</span></div><h4>'+b.name+'</h4><span class="v16-stage">Niveau '+(stage+1)+' / 3 · '+b.stages[stage]+'</span><p>'+b.hint+'</p>';
+ out+='<article class="v16-district"><div class="v16-district-art"><img class="v17-building-picture" src="assets/buildings-v17/'+b.id+'-'+(stage+1)+'.webp" alt="Illustration de '+b.name+', niveau '+(stage+1)+'" loading="lazy"><span class="stars">'+('★'.repeat(stage+1))+'</span></div><h4>'+b.name+'</h4><span class="v16-stage">Niveau '+(stage+1)+' / 3 · '+b.stages[stage]+'</span><p>'+b.hint+'</p>';
  if(stage===2)out+='<button class="v16-upgrade" disabled>✨ Bâtiment entièrement amélioré</button>';
  else if(can)out+='<button class="v16-upgrade" type="button" data-v16-upgrade="'+b.id+'">⬆️ Améliorer : '+b.stages[next]+' · '+need+' XP requis</button>';
  else out+='<button class="v16-upgrade" disabled>🔒 Prochaine amélioration à '+need+' XP · encore '+Math.max(0,need-S.xp)+' XP</button>';
@@ -1672,12 +1672,45 @@ tvDecorPage=function(){return oldPage()+workshop()};
 var oldVillage=tvVillage;
 tvVillage=function(){return oldVillage()+summary()};
 var oldScene=tvScene;
-tvScene=function(edit){var scene=oldScene(edit);var built=BUILDINGS.map(function(b){return '<span class="v16-scene-building">'+b.emoji+' <i>'+('★'.repeat(levels[b.id]+1))+'</i></span>'}).join('');return scene.replace('<div class="v2-scene-bottom">','<div class="v16-scene-buildings" aria-hidden="true">'+built+'</div><div class="v16-scene-badge" aria-hidden="true">🏘️ Village niv. '+(1+Math.floor(total()/3))+' · '+total()+'/8 améliorations</div><div class="v2-scene-bottom">')};
+tvScene=function(edit){var scene=oldScene(edit);var built=BUILDINGS.map(function(b){return '<span class="v16-scene-building v17-scene-building" title="'+b.name+' · niveau '+(levels[b.id]+1)+'"><img src="assets/buildings-v17/'+b.id+'-'+(levels[b.id]+1)+'.webp" alt=""><span>'+b.name+'<i>'+('★'.repeat(levels[b.id]+1))+'</i></span></span>'}).join('');return scene.replace('<div class="v2-scene-bottom">','<div class="v16-scene-buildings" aria-hidden="true">'+built+'</div><div class="v16-scene-badge" aria-hidden="true">🏘️ Village niv. '+(1+Math.floor(total()/3))+' · '+total()+'/8 améliorations</div><div class="v2-scene-bottom">')};
 var oldEvents=tvRenderEvents;
 tvRenderEvents=function(root){oldEvents(root);root.querySelectorAll('[data-v16-upgrade]').forEach(function(btn){btn.addEventListener('click',function(){var id=this.getAttribute('data-v16-upgrade');var b=BUILDINGS.find(function(x){return x.id===id});if(!b)return;var next=levels[id]+1;if(next>2||S.xp<b.limits[next])return;levels[id]=next;save();if(typeof sfx==='function')sfx('tap');renderHome();if(typeof toast==='function')toast('🏗️',b.name+' amélioré : '+b.stages[next]+' !')})})};
 // Prevent resetting the main profile from leaving behind orphaned cosmetic building levels.
 var oldProfile=renderProfile;
 renderProfile=function(){oldProfile();var reset=document.getElementById('bReset');if(!reset)return;var previous=reset.onclick;reset.onclick=function(ev){if(previous)previous.call(this,ev);var modalEl=document.querySelector('.modal');if(!modalEl)return;var confirm=modalEl.querySelector('[data-a="o"]');if(confirm){confirm.addEventListener('click',function(){BUILDINGS.forEach(function(b){levels[b.id]=0});save()},{once:true})}}};
+})();
+</script>
+
+<style id="tv-v17-style">
+/* V17: actual painted building closeups, image-level changes, and stable companion feedback. */
+.v16-district-art{height:165px;background:linear-gradient(#d5f3df,#c5e7e6)}
+.v17-building-picture{width:min(100%,360px);height:154px;object-fit:contain;position:relative;display:block;filter:drop-shadow(0 5px 5px #3d563452)}
+.v16-district-art .stars{z-index:2;top:12px}
+.v16-district-art:before{display:none}
+.v16-scene-buildings{left:11px;right:11px;bottom:112px;max-width:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;z-index:4}
+.v16-scene-building.v17-scene-building{padding:3px;display:flex;align-items:center;gap:3px;overflow:hidden;min-width:0;background:#fff8e5f0;line-height:1.15}
+.v17-scene-building img{width:44px;height:34px;object-fit:cover;border-radius:5px;flex:none}
+.v17-scene-building span{min-width:0;font-size:10px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v17-scene-building i{display:block;margin-top:3px}
+.v17-companion-tip{display:flex;gap:12px;align-items:center;background:#fff5dd;border:2px solid #c39b5f;border-radius:17px;padding:10px 13px;margin:10px 0;font-size:13px;color:#315344}
+.v17-companion-tip img{width:70px;height:70px;object-fit:cover;border-radius:50%;border:3px solid #a97945}
+.v17-companion-tip strong{display:block;font-size:15px;margin-bottom:3px}
+@media(max-width:650px){.v16-district-art{height:145px}.v17-building-picture{height:137px}.v16-scene-buildings{grid-template-columns:repeat(2,minmax(0,1fr));bottom:115px;max-width:65%}.v17-scene-building img{width:30px;height:27px}.v17-scene-building span{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.v17-building-picture{transition:none!important}}
+</style>
+<script id="tv-v17-features">
+(function(){'use strict';
+// The four illustrated buildings read the original V16 level data; no migration or XP reset.
+var lines={
+ plume:['Chaque exploration construit notre village !','Super ! Une nouvelle amélioration apparaît sur la carte.'],
+ kiko:['Une carte, un chemin, une aventure !','Je vais dessiner notre village encore plus grand !'],
+ nori:['Une belle journée pour explorer !','Bravo ! Notre île devient encore plus accueillante.'],
+ siro:['Observe les nouveaux détails du village !','Bien joué ! Chaque progrès compte.'],
+ luma:['J’ai plein d’idées pour décorer notre île !','Super construction ! Et si on ajoutait des fleurs ?'],
+ sora:['Regarde tout ce que nous avons découvert.','Une nouvelle étape de notre voyage !']
+};
+var previousDecor=tvDecorPage;
+tvDecorPage=function(){var content=previousDecor(),key='plume';try{key=(V3.buddy||V3.pet||localStorage.getItem('geopins-terra-v3-buddy')||'plume').toLowerCase()}catch(e){}if(!lines[key])key='plume';return content+'<aside class="v17-companion-tip"><img src="assets/'+key+'.webp" alt="Compagnon explorateur"><div><strong>🐾 Le conseil de ton compagnon</strong>'+lines[key][0]+'</div></aside>'};
 })();
 </script>
 </body>
