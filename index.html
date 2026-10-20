@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V22 — Interface restaurée</title>
+<title>GéoPins • Terra Village V23 — Interface restaurée</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -667,6 +667,36 @@ button:focus-visible{outline:3px solid #125f57!important;outline-offset:3px!impo
 @media(max-width:1100px){#home .v2-grid{grid-template-columns:minmax(0,1fr)!important}#home .v2-hero{height:min(72vw,620px)!important;min-height:480px!important}#home .v2-rightcol{grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important}#home .v2-rightcol .v2-card:nth-child(3){grid-column:auto!important}#home .v2-recap{gap:5px!important}#home .v2-small-links{grid-template-columns:1fr!important}}
 @media(max-width:740px){#nav.nav{position:fixed!important;top:auto!important;bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;left:8px!important;right:8px!important;margin:0!important;width:calc(100% - 16px)!important;height:68px!important;gap:0!important;padding:4px!important;border-radius:17px!important}#nav.nav button{height:56px!important;min-height:56px!important;flex:1 1 20%!important;flex-direction:column!important;gap:1px!important;padding:3px 1px!important}#nav.nav .tv19-icon{height:31px!important;width:31px!important;min-width:31px!important}#nav.nav .tv19-label{font-size:10px!important}#home .v2-wrap,.v2-wrap{padding:16px 12px calc(108px + env(safe-area-inset-bottom,0px))!important}#home .v2-grid{grid-template-columns:1fr!important}#home .v2-hero{height:480px!important;min-height:0!important}#home .v2-rightcol{grid-template-columns:1fr!important}#home .v2-rightcol .v2-card:nth-child(3){grid-column:auto!important}#home .v2-small-links{grid-template-columns:1fr 1fr!important}#home .v2-below{grid-template-columns:1fr!important}#home .v2-dest-grid{grid-template-columns:1fr!important}}
 @media(prefers-reduced-motion:reduce){#nav.nav *,#home .v2-hero *{transition:none!important;animation:none!important}}
+</style>
+
+<style id="terra-v23-layout">
+/* V23: single authoritative layout layer; overrides accumulated V18–V22 patches. */
+:root{--v23-wood:#60402a;--v23-border:#a77b47;--v23-parchment:#fff5dd;--v23-green:#276d50}
+#home .v2-wrap{width:min(1440px,100%)!important;max-width:1440px!important;margin:0 auto!important;padding:20px 24px 92px!important;box-sizing:border-box!important}
+#home .v2-grid{display:grid!important;grid-template-columns:minmax(0,1fr) 318px!important;align-items:start!important;gap:20px!important;width:100%!important;min-width:0!important}
+#home .v2-grid>*{min-width:0!important;width:100%!important;max-width:100%!important;grid-column:auto!important}
+#home .v2-hero{width:100%!important;min-width:0!important;min-height:525px!important;height:525px!important;box-sizing:border-box!important;overflow:hidden!important;transform:none!important;transition:none!important}
+#home .v2-hero:hover{transform:none!important}
+#home .v2-rightcol{display:flex!important;flex-direction:column!important;gap:14px!important;min-width:0!important;width:100%!important;align-items:stretch!important}
+#home .v2-rightcol .v2-card{position:relative!important;display:block!important;flex:none!important;width:100%!important;min-width:0!important;max-width:100%!important;height:auto!important;min-height:0!important;padding:17px!important;overflow:hidden!important;box-sizing:border-box!important;grid-column:auto!important;grid-row:auto!important}
+#home .v2-rightcol .v2-card:nth-child(3){min-height:150px!important}
+#home .v2-small-links{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;align-items:stretch!important}
+#home .v2-mini-link{width:100%!important;min-width:0!important;min-height:98px!important;height:100%!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;text-align:center!important;box-sizing:border-box!important;gap:6px!important}
+#home .v2-mini-link b{white-space:normal!important;overflow-wrap:anywhere!important;line-height:1.25!important;font-size:13px!important}
+#home .v2-mini-link .tv19-icon{width:40px!important;height:40px!important;object-fit:contain!important}
+#home .v9-shortcuts{display:none!important}
+#nav.nav{position:relative!important;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;margin:10px auto 12px!important;transform:none!important;width:min(760px,calc(100% - 32px))!important;max-width:760px!important;min-width:0!important;height:auto!important;min-height:76px!important;display:flex!important;flex-direction:row!important;align-items:stretch!important;gap:4px!important;padding:7px!important;box-sizing:border-box!important}
+#nav.nav button{flex:1 1 0!important;min-width:0!important;width:0!important;min-height:58px!important;height:auto!important;flex-direction:row!important;gap:6px!important;overflow:hidden!important;box-sizing:border-box!important;transform:none!important;transition:background-color .15s,filter .15s!important}
+#nav.nav button .tv19-icon{width:36px!important;height:36px!important;min-width:36px!important;flex:none!important;border-radius:8px!important}
+#nav.nav button .tv19-label{font-size:12px!important;overflow-wrap:anywhere!important;white-space:normal!important;line-height:1.15!important}
+#home .v2-hotspot,#home .v2-mini-link,#nav.nav button{animation:none!important;transform:none!important}
+#home .v2-hotspot:hover,#home .v2-mini-link:hover,#nav.nav button:hover{transform:none!important}
+.v8-illustrated-buddy,.v20-painted-buddy{display:block;object-fit:contain;max-width:100%;max-height:100%}
+@media (min-width:1150px){#home .v2-wrap{padding-left:28px!important;padding-right:28px!important}}
+@media (max-width:1000px){#home .v2-grid{grid-template-columns:minmax(0,1fr) 285px!important}#home .v2-hero{height:500px!important;min-height:500px!important}}
+@media (max-width:800px){#home .v2-grid{grid-template-columns:minmax(0,1fr)!important}#home .v2-hero{height:490px!important;min-height:490px!important}#home .v2-rightcol{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}#home .v2-rightcol .v2-card{height:100%!important}#home .v2-rightcol .v2-card:nth-child(3){grid-column:1 / -1!important}#nav.nav button{flex-direction:column!important;gap:2px!important}#nav.nav button .tv19-label{font-size:11px!important}}
+@media(max-width:600px){#home .v2-wrap{padding:12px 12px 105px!important}#home .v2-hero{height:470px!important;min-height:470px!important}#home .v2-rightcol{display:flex!important;flex-direction:column!important}#nav.nav{position:fixed!important;top:auto!important;bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;left:8px!important;right:8px!important;margin:0!important;width:calc(100% - 16px)!important;max-width:none!important;min-height:68px!important;height:68px!important;padding:4px!important;z-index:100!important}#nav.nav button{min-height:58px!important;height:58px!important;flex-direction:column!important;padding:4px 1px!important;gap:2px!important}#nav.nav button .tv19-icon{width:30px!important;min-width:30px!important;height:30px!important}#nav.nav button .tv19-label{font-size:10px!important}}
+@media(prefers-reduced-motion:reduce){#home *,#nav.nav *{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
