@@ -369,9 +369,9 @@ body{background:#edf2de;background-image:radial-gradient(#9ec6a15a 1px,transpare
 .v3-creature:nth-child(4) .v3-creature-art{background-image:url('assets/siro.webp')}
 .v3-creature:nth-child(5) .v3-creature-art{background-image:url('assets/luma.webp')}
 .v3-creature:nth-child(6) .v3-creature-art{background-image:url('assets/sora.webp')}
-.v2-brevet-hero{background-image:linear-gradient(90deg,#143f36f0,#143f36d9 45%,#143f3609 100%),url('assets/brevet.webp')!important;background-position:center,center!important;background-size:cover!important;min-height:270px;border:3px solid #805735!important}
+.v2-brevet-hero{background-image:linear-gradient(90deg,#143f36f0,#143f36d9 45%,#143f3609 100%),url('assets/village-v11-clean.webp')!important;background-position:center,center!important;background-size:cover!important;min-height:270px;border:3px solid #805735!important}
 .v2-brevet-hero .crest{display:none}
-.v2-panel:has(.v2-packs)::before{content:"";display:block;width:100%;height:240px;border-radius:20px;background:url('assets/missions.webp') center 52%/cover;margin-bottom:22px;border:3px solid #98724d;box-shadow:0 7px 0 #c8aa7b}
+.v2-panel:has(.v2-packs)::before{content:"";display:block;width:100%;height:240px;border-radius:20px;background:url('assets/village-v11-clean.webp') center 52%/cover;margin-bottom:22px;border:3px solid #98724d;box-shadow:0 7px 0 #c8aa7b}
 .v2-feature-box,.v2-panel,.v2-helper,.v2-lesson,.v2-dest,.v2-hud-card,.v2-below>section{box-shadow:0 7px 0 #9fbe9552!important}
 .v2-dest{background:linear-gradient(#fff8e6,#f6edcf)!important;border-color:#ad925b!important}
 .v2-heading h1,.v2-section-title h3{color:#295840}
@@ -455,6 +455,8 @@ body{background:#edf2de;background-image:radial-gradient(#9ec6a15a 1px,transpare
 @media(prefers-reduced-motion:reduce){.v3-placed-object .v10-object-image{animation:none}}
 @media(max-width:700px){.v2-hero.v3-living .terrain-art{transform:none!important}.v3-placed-object,.v3-site{min-width:42px;min-height:42px}.v3-build-help{max-width:78%}}
 </style>
+
+
 </head>
 <body>
 <main id="home" class="screen"></main>
@@ -1155,7 +1157,7 @@ renderProfile=function(){v3OldProfile();var reset=$('bReset');if(reset){var orig
 /* ===== END TERRA VILLAGE V3 ===== */
 
 /* V4 artwork: all existing HTML buttons remain functional; only the decorative SVG scene is replaced. */
-TV_SCENE='<img class="terrain-art" loading="eager" fetchpriority="high" src="assets/village-landscape.webp" alt="Paysage illustré de Terra Village sans boutons ni inscriptions" decoding="async">';
+TV_SCENE='<img class="terrain-art" loading="eager" fetchpriority="high" src="assets/village-v11-clean.webp" alt="Paysage illustré de Terra Village sans boutons ni inscriptions" decoding="async">';
 /* ---------- boot ---------- */
 var nb=$('nav').querySelectorAll('button');for(i=0;i<nb.length;i++)nb[i].onclick=function(){showTab(this.getAttribute('data-t'));};
 applySettings();showTab('village');
@@ -1263,7 +1265,7 @@ window.__R={S:S,G:function(){return G;},start:startGame,tap:onMapTap,proj:functi
 .v2-panel:has(.v2-packs)::before{display:none!important}
 .v2-brevet-hero{background-image:linear-gradient(110deg,#184d3bee,#27684dd9),radial-gradient(circle at 90% 20%,#94d8af,#27684d 50%,#163d37)!important;min-height:230px}
 /* Illustrated header strip using the artwork as a scenic, text-free decorative slice */
-.v7-scenic{border:3px solid #9c6c42;border-radius:22px;min-height:150px;position:relative;background:linear-gradient(90deg,#112c24d9 0%,#112c2466 66%,#112c2433),url('assets/village.webp') center 58%/cover;overflow:hidden;display:flex;align-items:center;padding:20px 28px;margin-bottom:24px;box-shadow:0 5px 0 #bb9c6f}
+.v7-scenic{border:3px solid #9c6c42;border-radius:22px;min-height:150px;position:relative;background:linear-gradient(90deg,#112c24d9 0%,#112c2466 66%,#112c2433),url('assets/village-v11-clean.webp') center 58%/cover;overflow:hidden;display:flex;align-items:center;padding:20px 28px;margin-bottom:24px;box-shadow:0 5px 0 #bb9c6f}
 .v7-scenic h2{color:#fff9e9;font-family:var(--disp);font-size:clamp(22px,3.8vw,34px);line-height:1.2;margin:0;text-shadow:0 2px 5px #1d3024}
 .v7-scenic p{color:#fff8e9;max-width:440px;margin:8px 0 0;font-weight:700;text-shadow:0 2px 5px #1d3024}
 .v7-quests{margin-top:17px;margin-bottom:18px;border:3px solid #986c45;border-radius:22px;background:linear-gradient(140deg,#fff5dd,#f1e1b8);box-shadow:0 6px 0 #b18b62,0 16px 30px #283c2c25;padding:18px;position:relative;overflow:hidden}
@@ -1278,8 +1280,8 @@ window.__R={S:S,G:function(){return G;},start:startGame,tap:onMapTap,proj:functi
 .v7-progress{height:9px;border-radius:30px;background:#e4dcc5;overflow:hidden;margin-top:auto}.v7-progress span{height:100%;display:block;background:linear-gradient(90deg,#75c67e,#2e8565);border-radius:30px}
 .v7-toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 16px}.v7-toolbar button{border:2px solid #8b643a;color:#4d452e;background:#fff2d4;box-shadow:0 3px 0 #a37b51;border-radius:13px;padding:10px 15px;font-weight:800;cursor:pointer}
 .v7-toolbar button:hover{background:#ffdfab}
-.v7-illust-dest{display:block;height:94px;background:linear-gradient(0deg,#214c42a9,transparent 64%),url('assets/village.webp') center 55%/cover;border-radius:13px 13px 0 0;pointer-events:none}
-.v7-mission-visual{height:104px;border-radius:14px;background:linear-gradient(0deg,#124c36a9,transparent 65%),url('assets/village.webp') center 45%/cover;margin:0 0 12px}
+.v7-illust-dest{display:block;height:94px;background:linear-gradient(0deg,#214c42a9,transparent 64%),url('assets/village-v11-clean.webp') center 55%/cover;border-radius:13px 13px 0 0;pointer-events:none}
+.v7-mission-visual{height:104px;border-radius:14px;background:linear-gradient(0deg,#124c36a9,transparent 65%),url('assets/village-v11-clean.webp') center 45%/cover;margin:0 0 12px}
 .v7-ambient{position:absolute;z-index:2;pointer-events:none;color:#fff1ba;text-shadow:0 0 12px #fff;width:100%;inset:0;overflow:hidden}
 .v7-ambient i{position:absolute;font-size:18px;animation:v7drift 7s ease-in-out infinite alternate}
 .v7-ambient i:nth-child(1){left:11%;top:14%}.v7-ambient i:nth-child(2){left:83%;top:17%;animation-delay:-3s}.v7-ambient i:nth-child(3){left:65%;top:78%;animation-delay:-5s}
@@ -1393,5 +1395,48 @@ obs.observe(document.getElementById('home'),{childList:true});
 requestAnimationFrame(enrich);
 })();
 </script>
+<!-- V11: stable and accessible click targets, clean standalone scenery without duplicate copy -->
+<style id="terra-v11-stable-interface">
+/* No floating/bouncing clickable destinations: the pointer target never shifts under a cursor. */
+.v2-hero .v2-hotspot,
+.v2-hero .v2-hotspot:nth-of-type(even){
+ animation:none!important;translate:none!important;transition:background-color .14s ease,filter .14s ease!important;
+ transform:translate(-50%,-50%)!important;will-change:auto!important;
+ box-shadow:0 4px 0 #60432f,0 9px 15px #173e3266!important;
+}
+.v2-hero .v2-hotspot:hover,.v2-hero .v2-hotspot:focus-visible{
+ transform:translate(-50%,-50%)!important;
+ filter:brightness(1.08) saturate(1.04)!important;
+ box-shadow:0 4px 0 #60432f,0 9px 15px #173e3266!important;
+}
+.v2-hero .v2-hotspot:active{transform:translate(-50%,-50%)!important;filter:brightness(.97)!important}
+.v2-hotspot:focus-visible{outline:4px solid #ffdf5d!important;outline-offset:4px}
+/* Other interactive controls: keep position stable on hover and during animations. */
+.v9-shortcuts button:hover,.v3-creature:hover,.v2-hero-cta:hover,
+.v2-feature-box button:hover,.v2-dest button:hover{transform:none!important}
+.v2-hero .terrain-art,.v2-hero:hover .terrain-art{
+ transform:none!important;transition:filter .25s ease!important;
+ object-fit:cover;object-position:50% 50%;
+}
+.v2-hero.v3-living .terrain-art{filter:saturate(1.12) contrast(1.04)}
+.v2-hero .v3-sky-dust i,.v7-ambient i{animation:none!important}
+/* Our art contains only terrain and scenery. All text/buttons are live HTML. */
+.v2-panel:has(.v2-packs)::before{
+ background:linear-gradient(180deg,#17382a00 40%,#17382a52),url('assets/village-v11-clean.webp') center 48%/cover!important;
+}
+.v2-brevet-hero{background-image:linear-gradient(90deg,#143f36f5,#143f36da 52%,#143f361f),url('assets/village-v11-clean.webp')!important}
+.v7-scenic{background-image:linear-gradient(90deg,#112c24df,#112c2466 66%,#112c2433),url('assets/village-v11-clean.webp')!important}
+.v7-illust-dest,.v7-mission-visual{background-image:linear-gradient(0deg,#214c42a9,transparent 64%),url('assets/village-v11-clean.webp')!important}
+/* The illustrated companions remain separate from interactive hitboxes. */
+.v3-creature:hover{box-shadow:0 4px 0 #a48861!important}
+@media (hover:none){.v2-hero .v2-hotspot:hover{filter:none!important}}
+@media(max-width:700px){
+ .v2-hero .v2-hotspot{min-height:52px!important;min-width:105px;max-width:135px}
+ .v2-hero .v2-hotspot.france{left:30%;top:42%}
+ .v2-hero .v2-hotspot.europe{left:72%;top:36%}
+ .v2-hero .v2-hotspot.world{left:73%;top:61%}
+ .v2-hero .v2-hotspot.brevet{left:30%;top:67%}
+}
+</style>
 </body>
 </html>
