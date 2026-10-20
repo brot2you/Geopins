@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V32.2.1 — Illustrations intégrées</title>
+<title>GéoPins • Terra Village V33 — Art & Interface</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -2342,6 +2342,67 @@ function tidy(){nav.querySelectorAll('button[data-t]').forEach(btn=>{
  const captions=[...btn.querySelectorAll(':scope > .tv19-label, :scope > .tv31-caption')];captions.slice(1).forEach(node=>node.remove());
  });}
 let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;setTimeout(()=>{pending=false;tidy()},200)}).observe(nav,{childList:true,subtree:true});tidy();
+})();
+</script>
+
+<style id="tv33-final-interface">
+/* Terra Village V33: one stable, accessible bottom dock */
+#nav.nav{position:fixed!important;inset:auto auto calc(10px + env(safe-area-inset-bottom,0px)) 50%!important;transform:translateX(-50%)!important;display:flex!important;flex-wrap:nowrap!important;align-items:stretch!important;justify-content:center!important;width:min(760px,calc(100vw - 24px))!important;max-width:100%!important;min-height:78px!important;gap:4px!important;padding:7px!important;margin:0!important;border-radius:20px!important;background:linear-gradient(155deg,#875229,#51321d)!important;border:3px solid #c6924b!important;box-shadow:0 6px 0 #362113,0 12px 22px #122b2855!important;z-index:420!important;overflow:visible!important}
+#nav.nav button[data-t]{display:flex!important;position:relative!important;flex:1 1 0!important;flex-direction:column!important;min-width:0!important;gap:3px!important;align-items:center!important;justify-content:center!important;padding:4px 2px!important;min-height:64px!important;white-space:normal!important;border-radius:13px!important;color:#fff4da!important;background:transparent!important;box-shadow:none!important;border:1px solid transparent!important;transform:none!important;animation:none!important;transition:background .15s,box-shadow .15s!important}
+#nav.nav button[data-t].on{background:linear-gradient(#fff2ce,#e5b771)!important;color:#54341f!important;border-color:#ffe2a0!important;box-shadow:inset 0 0 0 1px #a87634!important}
+#nav.nav button[data-t]:focus-visible{outline:3px solid #60d3cf!important;outline-offset:2px!important}
+#nav.nav button[data-t] > :not(.tv33-icon):not(.tv33-label){display:none!important}
+#nav.nav .tv33-icon{display:block!important;flex:none!important;width:37px!important;height:37px!important;object-fit:contain!important;object-position:center!important;border-radius:9px!important;filter:drop-shadow(0 2px 1px #26150666)!important}
+#nav.nav .tv33-label{display:block!important;font-size:11px!important;line-height:1.1!important;font-weight:800!important;letter-spacing:0!important;text-align:center!important;color:inherit!important}
+body{padding-bottom:126px!important}#home,#profile{padding-bottom:35px!important}
+.v2-pack .v2-pack-top{position:relative!important;overflow:hidden!important;isolation:isolate!important}
+.v2-pack .v2-pack-top > img.v13-pack-image{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;display:block!important;opacity:1!important;border-radius:0!important;pointer-events:none!important}
+.v2-pack .v2-pack-top:after{pointer-events:none!important}
+.v2-pack{overflow:hidden!important;min-width:0!important;transform:none!important;animation:none!important}
+.v2-pack:hover,.v2-pack:active{transform:none!important}
+.v3-creature-art{overflow:hidden!important}
+.v3-creature-art .tv33-painted{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;position:relative!important;z-index:3!important}
+.v3-creature-art svg{display:none!important}
+@media(max-width:600px){#nav.nav{width:calc(100vw - 10px)!important;min-height:68px!important;bottom:calc(4px + env(safe-area-inset-bottom,0px))!important;gap:1px!important;padding:4px!important;border-radius:14px!important}#nav.nav button[data-t]{min-height:55px!important;padding:2px 0!important}#nav.nav .tv33-icon{width:30px!important;height:30px!important}#nav.nav .tv33-label{font-size:9px!important}body{padding-bottom:104px!important}}
+@media(prefers-reduced-motion:reduce){#nav.nav *{transition:none!important}}
+</style>
+
+<script id="tv33-final-assets">
+(()=>{'use strict';
+ const nav=document.getElementById('nav');
+ const navImages={village:'village',missions:'missions',brevet:'brevet',collection:'collection',me:'me'};
+ const captions={village:'Village',missions:'Missions',brevet:'Brevet',collection:'Collection',me:'Profil'};
+ // Direct children only: never introduce nested buttons or copy click handlers.
+ function renderDock(){if(!nav)return;for(const button of nav.querySelectorAll(':scope > button[data-t]')){
+  const key=button.dataset.t;if(!navImages[key])continue;
+  const current=button.querySelector(':scope > img.tv33-icon');
+  const filename='assets/dock-v31/'+navImages[key]+'.png';
+  if(current&&current.getAttribute('src')===filename&&button.querySelectorAll(':scope > .tv33-icon').length===1)continue;
+  button.replaceChildren();const icon=document.createElement('img');icon.className='tv33-icon';icon.src=filename;icon.alt='';icon.decoding='async';
+  const label=document.createElement('span');label.className='tv33-label';label.textContent=captions[key];button.append(icon,label);
+ }}
+ const packAssets={continents:'continents',oceans:'continents',fleuves:'reliefs',montagnes:'reliefs',deserts:'reliefs',reliefs:'reliefs',population:'population',humains:'population',villes:'population',france:'france',regions:'france',europe:'europe',capitales:'europe',royaume:'royaume-uni',londres:'royaume-uni',amerique:'amerique',canada:'amerique',etats:'amerique',asie:'asie',japon:'asie'};
+ function themeOf(s){s=(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');for(const [w,k] of Object.entries(packAssets))if(s.includes(w))return k;return 'continents'}
+ function refreshIllustrations(){
+  for(const card of document.querySelectorAll('#home .v2-pack')){
+   const top=card.querySelector('.v2-pack-top');if(!top)continue;
+   const label=(card.querySelector('.v2-pack-body strong')||card).textContent;
+   const path='assets/ui-v33/mission-'+themeOf(label)+'.webp';let img=top.querySelector('img.v13-pack-image');
+   if(!img){img=document.createElement('img');img.className='v13-pack-image';img.alt='';img.loading='lazy';top.prepend(img)}
+   if(img.getAttribute('src')!==path)img.src=path;
+   // Do not display the old landscape atop the new one.
+   for(const extra of top.querySelectorAll('img:not(.v13-pack-image)'))extra.style.display='none';
+  }
+  const chars=document.querySelectorAll('.v3-creature');const ids=['plume','kiko','nori','siro','luma','sora'];
+  chars.forEach((card,i)=>{const art=card.querySelector('.v3-creature-art');if(!art||!ids[i])return;
+   let image=art.querySelector('img.tv33-painted');if(!image){image=document.createElement('img');image.className='tv33-painted';image.alt='Compagnon '+ids[i];art.append(image)}
+   const p='assets/ui-v33/companion-'+ids[i]+'.webp';if(image.getAttribute('src')!==p)image.src=p;
+  });
+ }
+ renderDock();refreshIllustrations();
+ let queued=false;const queue=()=>{if(queued)return;queued=true;setTimeout(()=>{queued=false;renderDock();refreshIllustrations()},200)};
+ if(nav)new MutationObserver(queue).observe(nav,{childList:true,subtree:false});
+ const home=document.getElementById('home');if(home)new MutationObserver(queue).observe(home,{childList:true,subtree:true});
 })();
 </script>
 </body>
