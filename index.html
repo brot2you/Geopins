@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V21 — Interface restaurée</title>
+<title>GéoPins • Terra Village V22 — Interface restaurée</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -630,7 +630,45 @@ body{background:#e9f2e7!important}
 @media(max-width:1160px){#home .v2-grid{grid-template-columns:minmax(0,1fr)!important}#home .v2-rightcol{grid-template-columns:repeat(2,minmax(0,1fr))!important}#home .v2-rightcol .v2-card:nth-child(3){grid-column:1/-1!important}}
 @media(max-width:720px){#nav.nav{width:calc(100% - 20px)!important;height:73px!important;max-height:73px!important;top:auto!important;bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;left:10px!important;right:10px!important;transform:none!important;flex-direction:row!important;justify-content:space-between!important;gap:2px!important;padding:4px!important;overflow-x:auto!important;overflow-y:hidden!important;border-radius:17px!important}#nav.nav button{height:63px!important;min-height:63px!important;min-width:62px!important;width:auto!important;flex:1 0 62px!important;padding:4px 2px!important;gap:1px!important}#nav.nav .tv19-icon{width:36px!important;height:36px!important;min-width:36px!important}#nav.nav .tv19-label{font-size:9px!important}#home .v2-wrap{padding:12px 12px 110px!important}#home .v2-grid{display:block!important}#home .v2-hero{height:490px!important;margin-bottom:16px!important}#home .v2-rightcol{display:grid!important;grid-template-columns:minmax(0,1fr)!important}#home .v2-rightcol .v2-card:nth-child(3){grid-column:auto!important}}
 @media(prefers-reduced-motion:reduce){#nav.nav *{transition:none!important;animation:none!important}}
-</style></head>
+</style>
+<style id="terra-v22-design-system">
+/* V22 - single, inspectable design-system layer; no change to the geography engine. */
+:root { --tv22-paper:#fff9e9;--tv22-wood:#65442f;--tv22-gold:#e7c789;--tv22-green:#246f54;--tv22-shadow:rgba(38,43,31,.16) }
+html { scroll-padding-top:95px }
+body {background:radial-gradient(circle at 50% 0,#f8f2df,#e4ecdb 70%)!important;overflow-x:hidden!important}
+#nav.nav {position:sticky!important;top:12px!important;bottom:auto!important;left:auto!important;right:auto!important;transform:none!important;margin:12px auto 6px!important;width:min(690px,calc(100% - 32px))!important;height:72px!important;max-height:none!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-evenly!important;gap:5px!important;padding:6px!important;border:2px solid #b78c5b!important;border-radius:22px!important;overflow:visible!important;background:linear-gradient(135deg,#745034,#422d24)!important;box-shadow:0 6px 0 #33271d,0 14px 28px #50331c30!important;z-index:60!important}
+#nav.nav button{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;flex:1 1 0!important;gap:7px!important;width:auto!important;min-width:0!important;min-height:56px!important;height:56px!important;padding:7px!important;border:1px solid transparent!important;border-radius:14px!important;background:transparent!important;color:#fff7e6!important;box-shadow:none!important;transform:none!important;transition:background .15s,filter .15s!important}
+#nav.nav button.on {background:linear-gradient(#fff6dc,#ead09c)!important;color:#493322!important;border-color:#fff9df!important;box-shadow:inset 0 0 0 1px #cbaa74!important}
+#nav.nav button:hover:not(.on){background:#ffffff22!important;filter:none!important;transform:none!important}
+#nav.nav .tv19-icon{width:34px!important;height:34px!important;min-width:34px!important;max-width:34px!important;object-fit:contain!important;mix-blend-mode:normal!important;border:0!important;border-radius:10px!important;box-shadow:none!important;background:transparent!important}
+#nav.nav .tv19-label{font-size:13px!important;line-height:1.1!important;font-weight:800!important;white-space:nowrap!important;color:inherit!important}
+.v2-wrap,#home .v2-wrap{max-width:1410px!important;width:100%!important;margin:0 auto!important;padding:18px 28px 110px!important;box-sizing:border-box!important}
+#home .v2-grid{display:grid!important;grid-template-columns:minmax(0,1.8fr) minmax(280px,1fr)!important;gap:18px!important;align-items:stretch!important}
+#home .v2-grid>*{min-width:0!important}
+#home .v2-hero{position:relative!important;min-height:525px!important;height:clamp(530px,45vw,700px)!important;border-radius:25px!important;border:4px solid #b49060!important;box-shadow:0 9px 0 #775636,0 18px 35px #4e382c30!important;overflow:hidden!important;margin:0!important}
+#home .v2-hero .terrain-art{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;transform:none!important}
+#home .v2-rightcol{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:14px!important;align-content:stretch!important;grid-auto-rows:auto!important;width:100%!important}
+#home .v2-rightcol .v2-card{width:100%!important;min-width:0!important;max-width:none!important;min-height:0!important;height:auto!important;margin:0!important;padding:19px!important;box-sizing:border-box!important;border:2px solid #d7be93!important;border-radius:23px!important;background:linear-gradient(160deg,#fffdf3,#f7eacd)!important;box-shadow:0 6px 0 #c5a576,0 10px 19px #51382122!important;grid-column:auto!important}
+#home .v2-rightcol .v2-card:nth-child(3){min-height:0!important;grid-column:auto!important}
+#home .v2-rightcol .v2-card h3{font-size:clamp(17px,2vw,22px)!important;line-height:1.2!important;margin:0 0 10px!important}
+#home .v2-small-links{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+#home .v2-mini-link{width:100%!important;min-width:0!important;height:auto!important;min-height:90px!important;border-radius:17px!important;padding:10px!important;display:flex!important;flex-direction:column!important;gap:4px!important;justify-content:center!important;align-items:center!important;box-shadow:inset 0 0 0 1px #dae5cd!important;transform:none!important}
+#home .v2-mini-link b{font-size:12px!important;text-align:center!important;overflow-wrap:anywhere!important}
+#home .v2-mini-link small{font-size:11px!important}
+#home .v2-mini-link .tv19-icon{width:34px!important;height:34px!important;object-fit:contain!important}
+#home .v2-mini-link span:not(.tv19-icon){line-height:1.15!important}
+#home .v9-shortcuts {display:none!important}
+#home .v2-below{grid-template-columns:minmax(0,2fr) minmax(240px,1fr)!important;gap:16px!important}
+#home .v2-below>*{min-width:0!important}
+.v2-hotspot,.v2-hotspot:hover,.v2-hotspot:active{transform:translate(-50%,-50%)!important;animation:none!important;transition:background .15s,filter .15s!important}
+.v2-hotspot:hover{filter:brightness(1.08)!important}
+#home .v2-hero *,#nav.nav * {scroll-margin-top:100px}
+button:focus-visible{outline:3px solid #125f57!important;outline-offset:3px!important}
+@media(max-width:1100px){#home .v2-grid{grid-template-columns:minmax(0,1fr)!important}#home .v2-hero{height:min(72vw,620px)!important;min-height:480px!important}#home .v2-rightcol{grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important}#home .v2-rightcol .v2-card:nth-child(3){grid-column:auto!important}#home .v2-recap{gap:5px!important}#home .v2-small-links{grid-template-columns:1fr!important}}
+@media(max-width:740px){#nav.nav{position:fixed!important;top:auto!important;bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;left:8px!important;right:8px!important;margin:0!important;width:calc(100% - 16px)!important;height:68px!important;gap:0!important;padding:4px!important;border-radius:17px!important}#nav.nav button{height:56px!important;min-height:56px!important;flex:1 1 20%!important;flex-direction:column!important;gap:1px!important;padding:3px 1px!important}#nav.nav .tv19-icon{height:31px!important;width:31px!important;min-width:31px!important}#nav.nav .tv19-label{font-size:10px!important}#home .v2-wrap,.v2-wrap{padding:16px 12px calc(108px + env(safe-area-inset-bottom,0px))!important}#home .v2-grid{grid-template-columns:1fr!important}#home .v2-hero{height:480px!important;min-height:0!important}#home .v2-rightcol{grid-template-columns:1fr!important}#home .v2-rightcol .v2-card:nth-child(3){grid-column:auto!important}#home .v2-small-links{grid-template-columns:1fr 1fr!important}#home .v2-below{grid-template-columns:1fr!important}#home .v2-dest-grid{grid-template-columns:1fr!important}}
+@media(prefers-reduced-motion:reduce){#nav.nav *,#home .v2-hero *{transition:none!important;animation:none!important}}
+</style>
+</head>
 <body>
 <main id="home" class="screen"></main>
 <main id="profile" class="screen hidden"></main>
@@ -1783,7 +1821,7 @@ BUILDINGS.forEach(function(b){if(levels[b.id]===undefined)levels[b.id]=0});
 function save(){try{localStorage.setItem(KEY,JSON.stringify(levels))}catch(e){}}
 function total(){return BUILDINGS.reduce(function(n,b){return n+levels[b.id]},0)}
 function summary(){return '<div class="v16-village-summary"><b>🏘️ Village niveau '+(1+Math.floor(total()/3))+'</b><span class="v16-pill">'+total()+' / 8 améliorations</span><span class="v16-pill">🌳 '+Object.keys(V3.places||{}).length+' / 12 décorations</span></div>'}
-function workshop(){var out='<section class="v16-banner"><span class="mini">TERRA VILLAGE · V17</span><h3>🏡 Fais grandir ton village !</h3><p>Chaque expédition te rapporte des XP. Débloque des améliorations et choisis toi-même quand agrandir les bâtiments. Rien à acheter, aucun point dépensé.</p><strong>'+total()+' améliorations réalisées sur 8</strong><div class="v16-meter" aria-label="'+total()+' améliorations sur 8"><i style="width:'+(total()/8*100)+'%"></i></div></section><div class="v16-districts">';
+function workshop(){var out='<section class="v16-banner"><span class="mini">TERRA VILLAGE · V22</span><h3>🏡 Fais grandir ton village !</h3><p>Chaque expédition te rapporte des XP. Débloque des améliorations et choisis toi-même quand agrandir les bâtiments. Rien à acheter, aucun point dépensé.</p><strong>'+total()+' améliorations réalisées sur 8</strong><div class="v16-meter" aria-label="'+total()+' améliorations sur 8"><i style="width:'+(total()/8*100)+'%"></i></div></section><div class="v16-districts">';
  BUILDINGS.forEach(function(b){var stage=levels[b.id],next=stage+1,need=next<=2?b.limits[next]:0,can=next<=2&&S.xp>=need;
  out+='<article class="v16-district"><div class="v16-district-art"><img class="v17-building-picture" src="assets/buildings-v17/'+b.id+'-'+(stage+1)+'.webp" alt="Illustration de '+b.name+', niveau '+(stage+1)+'" loading="lazy"><span class="stars">'+('★'.repeat(stage+1))+'</span></div><h4>'+b.name+'</h4><span class="v16-stage">Niveau '+(stage+1)+' / 3 · '+b.stages[stage]+'</span><p>'+b.hint+'</p>';
  if(stage===2)out+='<button class="v16-upgrade" disabled>✨ Bâtiment entièrement amélioré</button>';
