@@ -698,6 +698,20 @@ button:focus-visible{outline:3px solid #125f57!important;outline-offset:3px!impo
 @media(max-width:600px){#home .v2-wrap{padding:12px 12px 105px!important}#home .v2-hero{height:470px!important;min-height:470px!important}#home .v2-rightcol{display:flex!important;flex-direction:column!important}#nav.nav{position:fixed!important;top:auto!important;bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;left:8px!important;right:8px!important;margin:0!important;width:calc(100% - 16px)!important;max-width:none!important;min-height:68px!important;height:68px!important;padding:4px!important;z-index:100!important}#nav.nav button{min-height:58px!important;height:58px!important;flex-direction:column!important;padding:4px 1px!important;gap:2px!important}#nav.nav button .tv19-icon{width:30px!important;min-width:30px!important;height:30px!important}#nav.nav button .tv19-label{font-size:10px!important}}
 @media(prefers-reduced-motion:reduce){#home *,#nav.nav *{animation:none!important;transition:none!important}}
 </style>
+<style id="tv25-fixes">
+/* Navigation consistently visible while scrolling. No drifting hover targets. */
+#nav.nav{position:fixed!important;top:auto!important;bottom:calc(12px + env(safe-area-inset-bottom,0px))!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;z-index:95!important;width:max-content!important;max-width:calc(100vw - 20px)!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:4px!important;margin:0!important;padding:6px!important;overflow-x:auto!important;overflow-y:hidden!important;box-sizing:border-box!important;box-shadow:0 8px 24px #271c1960!important}
+#nav.nav button{min-width:0!important;width:auto!important;max-width:none!important;flex:0 0 auto!important;min-height:60px!important;height:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:2px!important;padding:5px 9px!important;transform:none!important}
+#nav.nav .tv19-icon{display:block!important;width:32px!important;height:32px!important;border-radius:9px!important;object-fit:contain!important;background:#f5e4c6!important;padding:2px!important;box-sizing:border-box!important}
+#nav.nav .tv19-label{font-size:11px!important;line-height:1.15!important}
+#nav.nav button:hover,#nav.nav button:active{transform:none!important}
+body{padding-bottom:90px!important}
+#game,#end{z-index:100!important}
+#tv25-exit{position:fixed;left:calc(12px + env(safe-area-inset-left,0px));bottom:calc(15px + env(safe-area-inset-bottom,0px));z-index:140;display:none;background:#fff8e8;border:2px solid #755031;border-radius:14px;color:#51351e;padding:12px 15px;font:800 14px Figtree,system-ui,sans-serif;box-shadow:0 4px 0 #805a38;cursor:pointer}
+body.tv25-playing #tv25-exit{display:block}
+@media (max-width:650px){#nav.nav{width:calc(100vw - 14px)!important;max-width:none!important;justify-content:space-around!important;bottom:calc(5px + env(safe-area-inset-bottom,0px))!important}#nav.nav button{flex:1 1 0!important;padding:5px 2px!important;min-height:57px!important}#nav.nav .tv19-icon{width:27px!important;height:27px!important}#nav.nav .tv19-label{font-size:10px!important}#tv25-exit{bottom:calc(12px + env(safe-area-inset-bottom,0px))}}
+@media(prefers-reduced-motion:reduce){#nav *,#tv25-exit{transition:none!important;animation:none!important}}
+</style>
 </head>
 <body>
 <main id="home" class="screen"></main>
@@ -2012,6 +2026,22 @@ body{background:linear-gradient(180deg,#dcebdd,#faf5e7)!important}
   if(!['plume','kiko','nori','siro','luma','sora'].includes(nm))nm='plume';
   return '<img class="v24-buddy-art" alt="Compagnon explorateur" src="assets/'+nm+'.webp">';
  };
+})();
+</script>
+<script id="tv25-safe-exit">
+(function(){
+  function visible(el){return el && !el.classList.contains('hidden') && getComputedStyle(el).display!=='none';}
+  function sync(){document.body.classList.toggle('tv25-playing', visible(document.getElementById('game')) || visible(document.getElementById('end')));}
+  function go(){
+    try{if(typeof quitAsk==='function' && visible(document.getElementById('game'))){quitAsk();setTimeout(sync,100);return;}}
+    catch(e){console.warn('Quit confirmation unavailable',e);}
+    try{if(typeof closeGame==='function'){closeGame();sync();return;}}catch(e){console.warn('Close game unavailable',e);}
+    document.getElementById('game')?.classList.add('hidden');document.getElementById('end')?.classList.add('hidden');sync();
+  }
+  var b=document.createElement('button');b.type='button';b.id='tv25-exit';b.textContent='← Quitter l’activité';b.setAttribute('aria-label','Quitter l’activité et revenir au village');b.addEventListener('click',go);document.body.appendChild(b);
+  ['game','end'].forEach(function(id){var el=document.getElementById(id);if(el)new MutationObserver(sync).observe(el,{attributes:true,attributeFilter:['class','style']});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape' && document.body.classList.contains('tv25-playing') && !document.querySelector('.modal'))go();});
+  sync();
 })();
 </script>
 </body>
