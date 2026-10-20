@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V19 — Game UI</title>
+<title>GéoPins • Terra Village V19.1 — Game UI</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -522,7 +522,7 @@ body{background:#edf2de;background-image:radial-gradient(#9ec6a15a 1px,transpare
 @media(prefers-reduced-motion:reduce){.v9-shortcuts button,.v2-hero .v2-hotspot{transition:none!important}}
 </style>
 <style id="tv19-game-ui">
-/* === Terra Village V19 / unified game interface === */
+/* === Terra Village V19.1 / unified game interface === */
 :root{--ui-wood:#64422a;--ui-wood-dark:#392519;--ui-gold:#e3ba6c;--ui-cream:#fff5df;--ui-green:#28734d}
 #nav.nav{background:linear-gradient(155deg,#fff5df,#e6cda0)!important;border:3px solid #8b6136!important;box-shadow:0 9px 0 #563a25,0 18px 40px #2b2a1c30!important;overflow:visible!important}
 #nav.nav button{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:5px!important;padding:8px 3px!important;min-width:0!important;border:2px solid transparent!important;border-radius:15px!important;background:transparent!important;color:#513b29!important;font-size:12px!important;font-weight:850!important;line-height:1.12!important;text-align:center!important;transform:none!important;transition:background .14s,box-shadow .14s,filter .14s!important}
@@ -548,6 +548,15 @@ button:focus-visible{outline:3px solid #e9a82f!important;outline-offset:3px!impo
 @media(max-width:990px){.v9-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr))!important}.v9-shortcuts button{min-height:78px!important}}
 @media(max-width:650px){#nav.nav{padding:5px!important}#nav.nav button{padding:5px 2px!important;gap:3px!important;font-size:10px!important}#nav .tv19-icon{width:30px;height:30px;border-radius:10px}#nav .tv19-label{font-size:10px;white-space:normal}.v9-shortcuts{gap:9px!important}.v9-shortcuts button{flex-direction:column!important;min-height:94px!important;font-size:12px!important;text-align:center!important}.v9-shortcuts .tv19-icon{width:43px;height:43px}.v2-mini-link{flex-direction:column!important;justify-content:center!important;text-align:center!important}}
 @media(prefers-reduced-motion:reduce){#nav button,.v9-shortcuts button{transition:none!important}}
+
+/* UI repair: no duplicated shortcut column inside the two-column home grid. */
+@media (min-width:701px){#nav.nav{width:94px!important;left:6px!important;right:auto!important;}#nav.nav button{min-height:76px!important}#nav .tv19-icon{width:42px!important;height:42px!important}}
+.v2-grid{grid-template-columns:minmax(0,1fr) minmax(265px,310px)!important}
+.v2-rightcol{min-width:0!important}
+.v2-hero{min-width:0!important}
+.v9-shortcuts{display:none!important}
+@media(max-width:960px){.v2-grid{grid-template-columns:minmax(0,1fr)!important}}
+@media(max-width:700px){#nav.nav{width:auto!important;left:8px!important;right:8px!important}}
 </style></head>
 <body>
 <main id="home" class="screen"></main>
@@ -1507,9 +1516,9 @@ function enrich(){
  var home=document.getElementById('home');if(!home||home.classList.contains('hidden'))return;
  var hero=home.querySelector('.v2-hero');if(!hero)return;
  var header=home.querySelector('.v2-heading');
- if(header&&!home.querySelector('.v9-label')){var p=document.createElement('span');p.className='v9-label';p.textContent='🌿 ÉDITION ILLUSTRÉE V18 · BROT2YOU';header.insertAdjacentElement('afterend',p);}
+ if(header&&!home.querySelector('.v9-label')){var p=document.createElement('span');p.className='v9-label';p.textContent='🌿 TERRA VILLAGE · BROT2YOU';header.insertAdjacentElement('afterend',p);}
  if(hero.classList.contains('v3-building')&&!home.querySelector('.v9-help')){var info=document.createElement('div');info.className='v9-help';info.innerHTML='🏡 <strong>Ton atelier de village :</strong> choisis une décoration débloquée, puis touche un emplacement « + » sur la carte. Pour la retirer, touche l’objet sans sélection active. Tes choix restent enregistrés sur cet appareil.';hero.insertAdjacentElement('afterend',info);}
- if(hero&&!hero.classList.contains('v3-building')&&!home.querySelector('.v9-shortcuts')){var buttons=document.createElement('nav');buttons.className='v9-shortcuts';buttons.setAttribute('aria-label','Accès rapides Terra Village');buttons.innerHTML='<button data-v9-tab="village-edit">🏡 Décorer mon village</button><button data-v9-tab="missions">🗺️ Toutes les missions</button><button data-v9-tab="brevet">🎓 Académie du Brevet</button><button data-v9-tab="collection">🏆 Mes récompenses</button>';hero.insertAdjacentElement('afterend',buttons);}
+ if(false&&hero&&!hero.classList.contains('v3-building')&&!home.querySelector('.v9-shortcuts')){var buttons=document.createElement('nav');buttons.className='v9-shortcuts';buttons.setAttribute('aria-label','Accès rapides Terra Village');buttons.innerHTML='<button data-v9-tab="village-edit">🏡 Décorer mon village</button><button data-v9-tab="missions">🗺️ Toutes les missions</button><button data-v9-tab="brevet">🎓 Académie du Brevet</button><button data-v9-tab="collection">🏆 Mes récompenses</button>';hero.insertAdjacentElement('afterend',buttons);}
  home.querySelectorAll('[data-v9-tab]').forEach(function(btn){btn.onclick=function(){var dest=this.dataset.v9Tab;var original=home.querySelector('[data-nav="'+dest+'"]');if(original){original.click();return;}var nav=home.querySelector('[data-nav="village"]');if(dest==='village-edit'&&nav){nav.click();return;}var link=document.querySelector('[data-t="'+dest+'"]');if(link)link.click();};});
 }
 var obs=new MutationObserver(function(){if(!document.getElementById('home'))return;requestAnimationFrame(enrich);});
