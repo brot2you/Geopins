@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V10 — Le village modulaire</title>
+<title>GéoPins • Terra Village V12 — Village illustré</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -369,9 +369,9 @@ body{background:#edf2de;background-image:radial-gradient(#9ec6a15a 1px,transpare
 .v3-creature:nth-child(4) .v3-creature-art{background-image:url('assets/siro.webp')}
 .v3-creature:nth-child(5) .v3-creature-art{background-image:url('assets/luma.webp')}
 .v3-creature:nth-child(6) .v3-creature-art{background-image:url('assets/sora.webp')}
-.v2-brevet-hero{background-image:linear-gradient(90deg,#143f36f0,#143f36d9 45%,#143f3609 100%),url('assets/village-v11-clean.webp')!important;background-position:center,center!important;background-size:cover!important;min-height:270px;border:3px solid #805735!important}
+.v2-brevet-hero{background-image:linear-gradient(90deg,#143f36f0,#143f36d9 45%,#143f3609 100%),url('assets/village-panorama-v12.webp')!important;background-position:center,center!important;background-size:cover!important;min-height:270px;border:3px solid #805735!important}
 .v2-brevet-hero .crest{display:none}
-.v2-panel:has(.v2-packs)::before{content:"";display:block;width:100%;height:240px;border-radius:20px;background:url('assets/village-v11-clean.webp') center 52%/cover;margin-bottom:22px;border:3px solid #98724d;box-shadow:0 7px 0 #c8aa7b}
+.v2-panel:has(.v2-packs)::before{content:"";display:block;width:100%;height:240px;border-radius:20px;background:url('assets/village-panorama-v12.webp') center 52%/cover;margin-bottom:22px;border:3px solid #98724d;box-shadow:0 7px 0 #c8aa7b}
 .v2-feature-box,.v2-panel,.v2-helper,.v2-lesson,.v2-dest,.v2-hud-card,.v2-below>section{box-shadow:0 7px 0 #9fbe9552!important}
 .v2-dest{background:linear-gradient(#fff8e6,#f6edcf)!important;border-color:#ad925b!important}
 .v2-heading h1,.v2-section-title h3{color:#295840}
@@ -1157,7 +1157,7 @@ renderProfile=function(){v3OldProfile();var reset=$('bReset');if(reset){var orig
 /* ===== END TERRA VILLAGE V3 ===== */
 
 /* V4 artwork: all existing HTML buttons remain functional; only the decorative SVG scene is replaced. */
-TV_SCENE='<img class="terrain-art" loading="eager" fetchpriority="high" src="assets/village-v11-clean.webp" alt="Paysage illustré de Terra Village sans boutons ni inscriptions" decoding="async">';
+TV_SCENE='<img class="terrain-art" loading="eager" fetchpriority="high" src="assets/village-panorama-v12.webp" alt="Panorama original du village Terra Village, sans texte ni boutons dessinés" decoding="async">';
 /* ---------- boot ---------- */
 var nb=$('nav').querySelectorAll('button');for(i=0;i<nb.length;i++)nb[i].onclick=function(){showTab(this.getAttribute('data-t'));};
 applySettings();showTab('village');
@@ -1265,7 +1265,7 @@ window.__R={S:S,G:function(){return G;},start:startGame,tap:onMapTap,proj:functi
 .v2-panel:has(.v2-packs)::before{display:none!important}
 .v2-brevet-hero{background-image:linear-gradient(110deg,#184d3bee,#27684dd9),radial-gradient(circle at 90% 20%,#94d8af,#27684d 50%,#163d37)!important;min-height:230px}
 /* Illustrated header strip using the artwork as a scenic, text-free decorative slice */
-.v7-scenic{border:3px solid #9c6c42;border-radius:22px;min-height:150px;position:relative;background:linear-gradient(90deg,#112c24d9 0%,#112c2466 66%,#112c2433),url('assets/village-v11-clean.webp') center 58%/cover;overflow:hidden;display:flex;align-items:center;padding:20px 28px;margin-bottom:24px;box-shadow:0 5px 0 #bb9c6f}
+.v7-scenic{border:3px solid #9c6c42;border-radius:22px;min-height:150px;position:relative;background:linear-gradient(90deg,#112c24d9 0%,#112c2466 66%,#112c2433),url('assets/village-panorama-v12.webp') center 58%/cover;overflow:hidden;display:flex;align-items:center;padding:20px 28px;margin-bottom:24px;box-shadow:0 5px 0 #bb9c6f}
 .v7-scenic h2{color:#fff9e9;font-family:var(--disp);font-size:clamp(22px,3.8vw,34px);line-height:1.2;margin:0;text-shadow:0 2px 5px #1d3024}
 .v7-scenic p{color:#fff8e9;max-width:440px;margin:8px 0 0;font-weight:700;text-shadow:0 2px 5px #1d3024}
 .v7-quests{margin-top:17px;margin-bottom:18px;border:3px solid #986c45;border-radius:22px;background:linear-gradient(140deg,#fff5dd,#f1e1b8);box-shadow:0 6px 0 #b18b62,0 16px 30px #283c2c25;padding:18px;position:relative;overflow:hidden}
@@ -1280,8 +1280,8 @@ window.__R={S:S,G:function(){return G;},start:startGame,tap:onMapTap,proj:functi
 .v7-progress{height:9px;border-radius:30px;background:#e4dcc5;overflow:hidden;margin-top:auto}.v7-progress span{height:100%;display:block;background:linear-gradient(90deg,#75c67e,#2e8565);border-radius:30px}
 .v7-toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 16px}.v7-toolbar button{border:2px solid #8b643a;color:#4d452e;background:#fff2d4;box-shadow:0 3px 0 #a37b51;border-radius:13px;padding:10px 15px;font-weight:800;cursor:pointer}
 .v7-toolbar button:hover{background:#ffdfab}
-.v7-illust-dest{display:block;height:94px;background:linear-gradient(0deg,#214c42a9,transparent 64%),url('assets/village-v11-clean.webp') center 55%/cover;border-radius:13px 13px 0 0;pointer-events:none}
-.v7-mission-visual{height:104px;border-radius:14px;background:linear-gradient(0deg,#124c36a9,transparent 65%),url('assets/village-v11-clean.webp') center 45%/cover;margin:0 0 12px}
+.v7-illust-dest{display:block;height:94px;background:linear-gradient(0deg,#214c42a9,transparent 64%),url('assets/village-panorama-v12.webp') center 55%/cover;border-radius:13px 13px 0 0;pointer-events:none}
+.v7-mission-visual{height:104px;border-radius:14px;background:linear-gradient(0deg,#124c36a9,transparent 65%),url('assets/village-panorama-v12.webp') center 45%/cover;margin:0 0 12px}
 .v7-ambient{position:absolute;z-index:2;pointer-events:none;color:#fff1ba;text-shadow:0 0 12px #fff;width:100%;inset:0;overflow:hidden}
 .v7-ambient i{position:absolute;font-size:18px;animation:v7drift 7s ease-in-out infinite alternate}
 .v7-ambient i:nth-child(1){left:11%;top:14%}.v7-ambient i:nth-child(2){left:83%;top:17%;animation-delay:-3s}.v7-ambient i:nth-child(3){left:65%;top:78%;animation-delay:-5s}
@@ -1385,7 +1385,7 @@ function enrich(){
  var home=document.getElementById('home');if(!home||home.classList.contains('hidden'))return;
  var hero=home.querySelector('.v2-hero');if(!hero)return;
  var header=home.querySelector('.v2-heading');
- if(header&&!home.querySelector('.v9-label')){var p=document.createElement('span');p.className='v9-label';p.textContent='🌿 ÉDITION ILLUSTRÉE V9 · BROT2YOU';header.insertAdjacentElement('afterend',p);}
+ if(header&&!home.querySelector('.v9-label')){var p=document.createElement('span');p.className='v9-label';p.textContent='🌿 ÉDITION ILLUSTRÉE V12 · BROT2YOU';header.insertAdjacentElement('afterend',p);}
  if(hero.classList.contains('v3-building')&&!home.querySelector('.v9-help')){var info=document.createElement('div');info.className='v9-help';info.innerHTML='🏡 <strong>Ton atelier de village :</strong> choisis une décoration débloquée, puis touche un emplacement « + » sur la carte. Pour la retirer, touche l’objet sans sélection active. Tes choix restent enregistrés sur cet appareil.';hero.insertAdjacentElement('afterend',info);}
  if(hero&&!hero.classList.contains('v3-building')&&!home.querySelector('.v9-shortcuts')){var buttons=document.createElement('nav');buttons.className='v9-shortcuts';buttons.setAttribute('aria-label','Accès rapides Terra Village');buttons.innerHTML='<button data-v9-tab="village-edit">🏡 Décorer mon village</button><button data-v9-tab="missions">🗺️ Toutes les missions</button><button data-v9-tab="brevet">🎓 Académie du Brevet</button><button data-v9-tab="collection">🏆 Mes récompenses</button>';hero.insertAdjacentElement('afterend',buttons);}
  home.querySelectorAll('[data-v9-tab]').forEach(function(btn){btn.onclick=function(){var dest=this.dataset.v9Tab;var original=home.querySelector('[data-nav="'+dest+'"]');if(original){original.click();return;}var nav=home.querySelector('[data-nav="village"]');if(dest==='village-edit'&&nav){nav.click();return;}var link=document.querySelector('[data-t="'+dest+'"]');if(link)link.click();};});
@@ -1422,11 +1422,11 @@ requestAnimationFrame(enrich);
 .v2-hero .v3-sky-dust i,.v7-ambient i{animation:none!important}
 /* Our art contains only terrain and scenery. All text/buttons are live HTML. */
 .v2-panel:has(.v2-packs)::before{
- background:linear-gradient(180deg,#17382a00 40%,#17382a52),url('assets/village-v11-clean.webp') center 48%/cover!important;
+ background:linear-gradient(180deg,#17382a00 40%,#17382a52),url('assets/village-panorama-v12.webp') center 48%/cover!important;
 }
-.v2-brevet-hero{background-image:linear-gradient(90deg,#143f36f5,#143f36da 52%,#143f361f),url('assets/village-v11-clean.webp')!important}
-.v7-scenic{background-image:linear-gradient(90deg,#112c24df,#112c2466 66%,#112c2433),url('assets/village-v11-clean.webp')!important}
-.v7-illust-dest,.v7-mission-visual{background-image:linear-gradient(0deg,#214c42a9,transparent 64%),url('assets/village-v11-clean.webp')!important}
+.v2-brevet-hero{background-image:linear-gradient(90deg,#143f36f5,#143f36da 52%,#143f361f),url('assets/village-panorama-v12.webp')!important}
+.v7-scenic{background-image:linear-gradient(90deg,#112c24df,#112c2466 66%,#112c2433),url('assets/village-panorama-v12.webp')!important}
+.v7-illust-dest,.v7-mission-visual{background-image:linear-gradient(0deg,#214c42a9,transparent 64%),url('assets/village-panorama-v12.webp')!important}
 /* The illustrated companions remain separate from interactive hitboxes. */
 .v3-creature:hover{box-shadow:0 4px 0 #a48861!important}
 @media (hover:none){.v2-hero .v2-hotspot:hover{filter:none!important}}
@@ -1437,6 +1437,48 @@ requestAnimationFrame(enrich);
  .v2-hero .v2-hotspot.world{left:73%;top:61%}
  .v2-hero .v2-hotspot.brevet{left:30%;top:67%}
 }
+</style>
+
+<!-- V12: panorama original sans typographie incrustée ; cibles fixes et accessibles -->
+<style id="terra-v12-final">
+.v2-hero{background:#66b5cc!important;isolation:isolate}
+.v2-hero .terrain-art,.v2-hero:hover .terrain-art{
+ width:100%!important;height:100%!important;object-fit:cover!important;
+ object-position:50% 50%!important;transform:none!important;translate:none!important;
+ animation:none!important;transition:filter .24s linear!important;
+ user-select:none;pointer-events:none;
+}
+.v2-hero .v2-hotspot,.v2-hero .v2-hotspot:hover,.v2-hero .v2-hotspot:active,.v2-hero .v2-hotspot:focus-visible{
+ transform:translate(-50%,-50%)!important;translate:none!important;animation:none!important;
+ transition:background-color .16s ease,filter .16s ease!important;
+ min-height:58px;touch-action:manipulation;cursor:pointer;
+}
+.v2-hero .v2-hotspot:hover{filter:brightness(1.12)!important}
+.v2-hero .v2-hotspot:focus-visible{outline:4px solid #ffe780!important;outline-offset:3px}
+.v2-hero .v2-hotspot.france{left:28%;top:43%}
+.v2-hero .v2-hotspot.europe{left:54%;top:32%}
+.v2-hero .v2-hotspot.world{left:78%;top:47%}
+.v2-hero .v2-hotspot.brevet{left:56%;top:67%}
+.v2-hero .v2-scene-head{max-width:240px;background:#fff5dcee;pointer-events:none}
+.v2-hero .v2-scene-bottom{pointer-events:none}
+.v2-hero .v2-scene-bottom button{pointer-events:auto}
+/* Never put text-bearing design mockups behind functional labels */
+.v2-hero .v3-object-layer{pointer-events:none}
+.v2-hero .v3-object-layer button,.v2-hero .v3-object-layer [role="button"]{pointer-events:auto}
+.v3-living.v3-sunset .terrain-art{filter:saturate(1.12) sepia(.14) brightness(.97)!important}
+.v3-living.v3-night .terrain-art{filter:brightness(.65) saturate(.82)!important}
+@media (max-width:700px){
+ .v2-hero{min-height:520px!important}
+ .v2-hero .terrain-art{object-position:49% 50%!important}
+ .v2-hero .v2-scene-head{max-width:170px;padding:8px 10px!important}
+ .v2-hero .v2-scene-head strong{font-size:17px!important}
+ .v2-hero .v2-hotspot{min-height:50px;max-width:120px;font-size:12px!important}
+ .v2-hero .v2-hotspot.france{left:27%;top:41%}
+ .v2-hero .v2-hotspot.europe{left:75%;top:34%}
+ .v2-hero .v2-hotspot.world{left:73%;top:55%}
+ .v2-hero .v2-hotspot.brevet{left:30%;top:65%}
+}
+@media(prefers-reduced-motion:reduce){.v2-hero *, .v2-hero *::before,.v2-hero *::after{animation:none!important;transition:none!important}}
 </style>
 </body>
 </html>
