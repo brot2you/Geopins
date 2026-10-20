@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins Terra Village V34.1 — Navigation réorganisée</title>
+<title>GéoPins Terra Village — Finale corrigée — Navigation réorganisée</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -799,7 +799,7 @@ body.tv25-playing #tv25-exit{display:block}
 <body>
 <main id="home" class="screen"></main>
 <main id="profile" class="screen hidden"></main>
-<nav class="nav" id="nav" aria-label="Navigation principale"><button data-t="village" class="on"><span class="ni">🏡</span><span class="nt">Village</span></button><button data-t="missions"><span class="ni">🗺️</span><span class="nt">Missions</span></button><button data-t="brevet"><span class="ni">🎓</span><span class="nt">Brevet</span></button><button data-t="collection"><span class="ni">🏆</span><span class="nt">Collection</span></button><button data-t="me"><span class="ni">🙂</span><span class="nt">Profil</span></button></nav>
+<nav class="nav" id="nav" aria-label="Navigation principale"><button type="button" data-t="village" aria-label="Village" class="on"><svg class="final-nav-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11.5 12 3l10 8.5"/><path d="M5 10.5V21h14V10.5"/><path d="M10 21v-7h4v7"/><path d="M16 6.5V4h3v5"/></svg><span class="final-nav-text">Village</span></button><button type="button" data-t="missions" aria-label="Missions" class=""><svg class="final-nav-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5 9 3l6 2.5L21 3v15.5L15 21l-6-2.5L3 21z"/><path d="M9 3v15.5M15 5.5V21"/><circle cx="12" cy="10" r="2"/></svg><span class="final-nav-text">Missions</span></button><button type="button" data-t="brevet" aria-label="Brevet" class=""><svg class="final-nav-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-6 9 6v13"/><path d="M7 21v-8h10v8M2 21h20"/><path d="M10 21v-5h4v5"/><path d="M9 9h6"/></svg><span class="final-nav-text">Brevet</span></button><button type="button" data-t="collection" aria-label="Collection" class=""><svg class="final-nav-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 13h18M8 9V6a4 4 0 0 1 8 0v3"/><path d="M12 13v5"/></svg><span class="final-nav-text">Collection</span></button><button type="button" data-t="me" aria-label="Profil" class=""><svg class="final-nav-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg><span class="final-nav-text">Profil</span></button></nav>
 <section id="game" class="hidden" aria-label="Partie">
 <svg id="map" role="img" aria-label="Carte muette : touche pour placer ton repère"></svg>
 <div class="qcard" id="qcard"></div>
@@ -2435,29 +2435,7 @@ body{padding-bottom:126px!important}#home,#profile{padding-bottom:35px!important
 @media(max-width:600px){#nav.nav{width:calc(100% - 10px)!important;padding:4px!important;gap:1px!important;border-radius:16px!important;min-height:76px!important;bottom:calc(3px + env(safe-area-inset-bottom,0px))!important}#nav.nav button[data-t]{min-height:65px!important;padding:2px!important}#nav.nav .v34-art{width:43px!important;height:43px!important}#nav.nav .v34-label{font-size:10px!important}#home .v2-buddy .v34-companion{width:70px!important;height:70px!important;flex-basis:70px!important}}
 </style>
 
-<script id="v34-navigation-clean">
-(()=>{'use strict';
-const assets={village:'village',missions:'missions',brevet:'brevet',collection:'collection',me:'me'};
-const labels={village:'Village',missions:'Missions',brevet:'Brevet',collection:'Collection',me:'Profil'};
-function updateNav(){const nav=document.getElementById('nav');if(!nav)return;
- for(const btn of nav.querySelectorAll('button[data-t]')){
- const key=btn.dataset.t;if(!assets[key])continue;
- let art=btn.querySelector(':scope > .v34-art');if(!art){art=document.createElement('img');art.className='v34-art';art.alt='';art.loading='eager';btn.prepend(art)}
- const path='assets/nav-v34/'+assets[key]+'.webp';if(art.getAttribute('src')!==path)art.setAttribute('src',path);
- let title=btn.querySelector(':scope > .v34-label');if(!title){title=document.createElement('span');title.className='v34-label';btn.appendChild(title)}
- if(title.textContent!==labels[key])title.textContent=labels[key];btn.setAttribute('aria-label',labels[key]);
- }}
-function updateBuddy(){const buddy=document.querySelector('#home .v2-buddy');if(!buddy)return;
- let keep=buddy.querySelector(':scope > img.v34-companion');if(!keep){keep=document.createElement('img');keep.className='v34-companion';keep.alt='Compagnon explorateur';buddy.prepend(keep)}
- const other=buddy.querySelector('img.v6-buddy-portrait,img.tv32-asset-buddy');
- const src=other?.getAttribute('src')||'assets/plume.webp';if(keep.getAttribute('src')!==src)keep.src=src;
-}
-let queued=false;
-function queue(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;updateNav();updateBuddy()})}
-function init(){updateNav();updateBuddy();const nav=document.getElementById('nav');if(nav)new MutationObserver(queue).observe(nav,{childList:true,subtree:false});const home=document.getElementById('home');if(home)new MutationObserver(queue).observe(home,{childList:true});}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
-})();
-</script>
+
 
 <style id="v341-layout-final">
 /* V34.1: menu in normal page flow, above the village/map, no crop-art icons. */
@@ -2475,31 +2453,37 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 @media(max-width:370px){#nav.nav .v34-label{font-size:10px!important}#nav.nav .v341-icon{width:21px!important;height:21px!important}}
 @media(prefers-reduced-motion:reduce){#nav.nav *, .v2-hero-cta{animation:none!important;transition:none!important}}
 </style>
-<script id="v341-navigation">
-(()=>{
- const symbols={
-  village:'<path d="m3 11 9-8 9 8"/><path d="M5 10v11h14V10"/><path d="M10 21v-7h4v7"/>',
-  missions:'<path d="M3 5.5 9 3l6 2.5L21 3v15.5L15 21l-6-2.5L3 21z"/><path d="M9 3v15.5M15 5.5V21"/><circle cx="12" cy="10" r="2"/>',
-  brevet:'<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v6c4 3 8 3 12 0v-6M22 9v7"/>',
-  collection:'<rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 13h18M8 9V6a4 4 0 0 1 8 0v3M12 13v4"/>',
-  me:'<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>'};
- const labels={village:'Village',missions:'Missions',brevet:'Brevet',collection:'Collection',me:'Profil'};
- function setup(){const nav=document.getElementById('nav');if(!nav)return;
-  for(const btn of nav.querySelectorAll('button[data-t]')){const k=btn.dataset.t;if(!symbols[k])continue;
-   const svg='<svg class="v341-icon" viewBox="0 0 24 24" aria-hidden="true">'+symbols[k]+'</svg>';
-   if(!btn.querySelector('.v341-icon')){btn.insertAdjacentHTML('afterbegin',svg)}
-   let label=btn.querySelector('.v34-label');if(!label){label=document.createElement('span');label.className='v34-label';btn.append(label)}label.textContent=labels[k];btn.setAttribute('aria-label',labels[k]);
-  }
-  const home=document.getElementById('home');if(home && !home.classList.contains('hidden')){
-   const content=home.querySelector('.v2-grid,.v2-missions,.v2-mission-grid,.v2-mission-map,.v2-below') || home.firstElementChild;
-   if(content && nav.nextElementSibling!==content){content.before(nav)}
-  }else {const profile=document.getElementById('profile');if(profile&&!profile.classList.contains('hidden')&&profile.firstElementChild&&profile.firstElementChild!==nav){profile.firstElementChild.before(nav)}}
- }
- // The existing application rerenders screen HTML, so position the same nav after screen changes.
- let scheduled=false;const refresh=()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;setup()})};
- const watch=new MutationObserver(refresh);watch.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
- refresh();window.addEventListener('hashchange',refresh);
-})();
-</script>
-</body>
+
+
+<style id="final-corrections-2026">
+/* One navigation system: semantic buttons, inline vector line-art, no cropped images or emoji. */
+#nav.nav{position:sticky!important;inset:auto!important;top:8px!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;translate:none!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;width:min(1050px,calc(100% - 30px))!important;max-width:1050px!important;min-height:0!important;height:auto!important;margin:10px auto 17px!important;padding:7px!important;gap:7px!important;box-sizing:border-box!important;border:2px solid #b58a52!important;border-radius:18px!important;background:linear-gradient(180deg,#fff8e5,#eddbb7)!important;box-shadow:0 4px 0 #b78b53,0 7px 14px #37210b21!important;overflow:visible!important;z-index:120!important}
+#nav.nav button[data-t]{position:relative!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;flex:1 1 0!important;width:100%!important;min-width:0!important;max-width:none!important;min-height:57px!important;height:57px!important;margin:0!important;padding:7px 9px!important;gap:10px!important;overflow:visible!important;border:1.5px solid #d6ae74!important;border-radius:12px!important;background:#fffaf0!important;color:#5a432b!important;box-shadow:0 2px 0 #b88b56!important;transform:none!important;translate:none!important;animation:none!important;transition:background-color .1s,filter .1s!important;box-sizing:border-box!important}
+#nav.nav button[data-t].on{background:#dcefd6!important;color:#245d47!important;border-color:#6ca780!important;box-shadow:inset 0 0 0 1px #fff,0 2px 0 #72987a!important}
+#nav.nav button[data-t]:hover,#nav.nav button[data-t]:focus-visible{transform:none!important;translate:none!important;filter:brightness(.97)!important}
+#nav.nav button[data-t] > .final-nav-icon{display:block!important;flex:0 0 30px!important;width:30px!important;height:30px!important;stroke:currentColor!important;fill:none!important;opacity:1!important;visibility:visible!important}
+#nav.nav button[data-t] > .final-nav-text{display:block!important;visibility:visible!important;opacity:1!important;font:800 15px/1.1 system-ui,sans-serif!important;color:inherit!important;white-space:nowrap!important}
+#nav.nav button[data-t] > :not(.final-nav-icon):not(.final-nav-text){display:none!important}
+/* Critical: earlier rule #home .v2-hero-cta:hover applied translate(-50%,-50%) and moved the target under the pointer. */
+html body #home .v2-hero .v2-scene-bottom .v2-hero-cta,
+html body #home .v2-hero .v2-scene-bottom .v2-hero-cta:hover,
+html body #home .v2-hero .v2-scene-bottom .v2-hero-cta:active,
+html body #home .v2-hero .v2-scene-bottom .v2-hero-cta:focus-visible{transform:none!important;translate:none!important;scale:1!important;animation:none!important;transition:filter .08s!important;position:relative!important;inset:auto!important;will-change:auto!important;filter:none!important;cursor:pointer!important}
+html body #home .v2-hero .v2-scene-bottom .v2-hero-cta:hover{filter:brightness(1.08)!important}
+#home .v2-hero .v2-scene-bottom{pointer-events:none!important}#home .v2-hero .v2-scene-bottom button{pointer-events:auto!important}
+/* The painted illustration is the only buddy graphic: remove old overlapping portraits and SVG. */
+#home .v2-buddy svg,#home .v2-buddy .v3-sprite,#home .v2-buddy img.v6-buddy-portrait,#home .v2-buddy img.tv32-asset-buddy,#home .v2-buddy img.v34-companion{display:none!important}
+#home .v2-buddy > img.final-buddy{display:block!important;width:90px!important;height:90px!important;flex:0 0 90px!important;border-radius:50%!important;object-fit:cover!important;object-position:center!important;border:3px solid #fff6dd!important;box-shadow:0 2px 9px #36291c47!important}
+@media(max-width:700px){#nav.nav{width:calc(100% - 12px)!important;gap:3px!important;padding:4px!important;top:3px!important}#nav.nav button[data-t]{flex-direction:column!important;height:60px!important;min-height:60px!important;gap:2px!important;padding:4px 1px!important}#nav.nav .final-nav-icon{width:26px!important;height:26px!important;flex-basis:26px!important}#nav.nav .final-nav-text{font-size:10px!important}#home .v2-buddy > img.final-buddy{width:62px!important;height:62px!important;flex-basis:62px!important}}
+@media(prefers-reduced-motion:reduce){#nav.nav *,#home .v2-hero-cta{transition:none!important;animation:none!important}}
+</style>
+<script id="final-buddy-controller">(function(){
+function sync(){const buddy=document.querySelector('#home .v2-buddy');if(!buddy)return;
+let im=buddy.querySelector(':scope > .final-buddy');if(!im){im=document.createElement('img');im.className='final-buddy';im.alt='Compagnon explorateur';buddy.prepend(im)}
+const earlier=buddy.querySelector('img.v6-buddy-portrait,img.tv32-asset-buddy,img.v34-companion');const filename=(earlier?.getAttribute('src')||'assets/plume.webp');if(im.getAttribute('src')!==filename)im.setAttribute('src',filename)
+}
+let queued=false;function queue(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;sync()})}
+function init(){sync();const home=document.getElementById('home');if(home)new MutationObserver(queue).observe(home,{childList:true,subtree:true});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();</script></body>
 </html>
