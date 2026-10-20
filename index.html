@@ -832,6 +832,20 @@ body.tv25-playing #tv25-exit{display:block}
 #home .v2-go:hover,#home .v2-go:focus-visible,#home .v2-go:active{transform:none!important;translate:none!important;left:auto!important;right:auto!important}
 @media(max-width:700px){#nav.nav{position:sticky!important;top:0!important;gap:4px!important;padding:6px!important;width:calc(100% - 14px)!important;min-height:60px!important}#nav.nav>button[data-t]{flex:1 1 60px!important;min-width:54px!important;min-height:58px!important;padding:3px!important}#nav.nav .gp-icon{width:28px!important;height:28px!important;flex-basis:28px!important}#nav.nav .gp-label{font-size:10px!important}}
 </style>
+<style id="art-2026-final-css">
+/* One graphic per buddy; no CSS SVG overlays. */
+.v3-creature-art{display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;background:#f8ead8!important}
+.v3-creature-art .vfix-creature-portrait{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important;display:block!important}
+.v3-creature-art svg,.v3-creature-art .v3-sprite{display:none!important}
+#nav.nav{position:sticky!important;top:0!important;bottom:auto!important;z-index:400!important;display:flex!important;gap:8px!important;align-items:center!important;justify-content:center!important;flex-wrap:wrap!important;height:auto!important;max-width:1100px!important;margin:8px auto 16px!important;padding:8px!important}
+#nav.nav>button{width:auto!important;min-width:100px!important;min-height:73px!important;flex:1 1 110px!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:3px!important;transform:none!important;transition:background-color .15s,filter .15s!important}
+#nav.nav>button:hover,#nav.nav>button:focus-visible{transform:none!important;translate:none!important;scale:1!important}
+#nav.nav .art2026-nav{display:block!important;width:48px!important;height:45px!important;object-fit:contain!important;object-position:center!important}
+#nav.nav svg,#nav.nav .final-nav-icon,#nav.nav .art-nav-icon,#nav.nav .v27-nav-icon{display:none!important}
+#nav.nav button .gp-label{font-size:12px!important;visibility:visible!important;opacity:1!important}
+.v2-hero-cta,.v2-hero-cta:hover,.v2-hero-cta:focus-visible,.v2-hero-cta:active{transform:none!important;translate:none!important;scale:1!important;inset:auto!important}
+@media(max-width:650px){#nav.nav{position:sticky!important;top:0!important;bottom:auto!important}#nav.nav>button{min-width:65px!important;min-height:60px!important;flex:1 1 27%!important}#nav.nav .art2026-nav{width:34px!important;height:31px!important}}
+</style>
 </head>
 <body>
 <main id="home" class="screen"></main>
@@ -1509,7 +1523,7 @@ tvScene=function(edit){
  original=original.replace('☀️ TON ÎLE D’AVENTURE','✦ TON MONDE À EXPLORER');
  return original;
 };
-function v3Card(c){var unlock=S.xp>=c.xp,active=V3.buddy===c.id;return '<button class="v3-creature'+(unlock?'':' v3-locked')+(active?' v3-active':'')+'" '+(unlock?'data-v3-buddy="'+c.id+'"':'disabled')+' aria-pressed="'+active+'"><div class="v3-creature-art" style="--creature-tint:'+c.color+'">'+'<img class="vfix-creature-portrait" src="assets/'+c.id+'.webp" alt="" loading="lazy" />'+'</div><div class="v3-creature-info"><span class="v3-creature-tag">'+(active?'✓ TON COMPAGNON':unlock?'COMPAGNON DÉBLOQUÉ':'🔒 '+c.xp+' XP')+'</span><strong>'+c.name+'</strong><small>'+c.kind+'</small><p>'+c.tag+'</p><span class="v3-creature-action">'+(active?'À tes côtés':unlock?'Choisir ce compagnon →':'Encore '+(c.xp-S.xp)+' XP')+'</span></div></button>';}
+function v3Card(c){var unlock=S.xp>=c.xp,active=V3.buddy===c.id;return '<button class="v3-creature'+(unlock?'':' v3-locked')+(active?' v3-active':'')+'" '+(unlock?'data-v3-buddy="'+c.id+'"':'disabled')+' aria-pressed="'+active+'"><div class="v3-creature-art" style="--creature-tint:'+c.color+'">'+'<img class="vfix-creature-portrait" src="assets/art-original-2026/'+c.id+'.webp" alt="" loading="lazy" />'+'</div><div class="v3-creature-info"><span class="v3-creature-tag">'+(active?'✓ TON COMPAGNON':unlock?'COMPAGNON DÉBLOQUÉ':'🔒 '+c.xp+' XP')+'</span><strong>'+c.name+'</strong><small>'+c.kind+'</small><p>'+c.tag+'</p><span class="v3-creature-action">'+(active?'À tes côtés':unlock?'Choisir ce compagnon →':'Encore '+(c.xp-S.xp)+' XP')+'</span></div></button>';}
 var v3OldCollection=tvCollection;
 tvCollection=function(){
  var head=tvTitle('MON CARNET DE COMPAGNONS','Rencontre les amis de Terra Village 🐾','Six petites créatures originales à découvrir en progressant dans les missions.','<button class="v2-subaction" data-nav="village">🏡 Retour au village</button>');
@@ -1533,7 +1547,7 @@ tvDecorPage=function(){
 };
 var v3OldVillage=tvVillage;
 tvVillage=function(){var h=v3OldVillage();var c=v3Buddy();var next=V3_BUDDIES.find(function(b){return S.xp<b.xp;});
- h+='<section class="v3-home-band"><div class="v3-home-buddy">'+'<img class="vfix-creature-portrait" src="assets/'+c.id+'.webp" alt="" loading="lazy" />'+'</div><div class="v3-home-band-text"><div class="v3-eyebrow">✦ TA PETITE ÉQUIPE D’AVENTURE</div><h3>'+c.name+' t’accompagne !</h3><p>'+c.line+' '+(next?'Prochaine rencontre : <strong>'+esc(next.name)+'</strong> à '+next.xp+' XP.':'Bravo, tu as rencontré tous les compagnons !')+'</p></div><button class="v3-band-button" data-nav="collection">Découvrir les compagnons <span>↗</span></button></section>';
+ h+='<section class="v3-home-band"><div class="v3-home-buddy">'+'<img class="vfix-creature-portrait" src="assets/art-original-2026/'+c.id+'.webp" alt="" loading="lazy" />'+'</div><div class="v3-home-band-text"><div class="v3-eyebrow">✦ TA PETITE ÉQUIPE D’AVENTURE</div><h3>'+c.name+' t’accompagne !</h3><p>'+c.line+' '+(next?'Prochaine rencontre : <strong>'+esc(next.name)+'</strong> à '+next.xp+' XP.':'Bravo, tu as rencontré tous les compagnons !')+'</p></div><button class="v3-band-button" data-nav="collection">Découvrir les compagnons <span>↗</span></button></section>';
  var checkpoints=[{t:'Premiers pas',goal:5,v:S.stats.pins,icon:'📍',d:'Poser 5 repères'},{t:'Curiosité',goal:100,v:S.xp,icon:'✨',d:'Gagner 100 XP'},{t:'Aventurier',goal:3,v:S.stats.games,icon:'🧭',d:'Terminer 3 missions'}];
  h+='<section class="v3-steps"><div class="v2-section-title"><h3>🌱 Tes premiers objectifs</h3><small>À ton rythme, sans compétition</small></div><div class="v3-step-grid">';
  checkpoints.forEach(function(it){var ok=it.v>=it.goal,pc=Math.min(100,Math.floor(it.v/it.goal*100));h+='<div class="v3-step"><span class="v3-step-icon">'+it.icon+'</span><div><b>'+it.t+'</b><small>'+it.d+'</small></div><span class="v3-step-progress">'+(ok?'✓':Math.min(it.v,it.goal)+'/'+it.goal)+'</span><div class="v2-progress"><i style="width:'+pc+'%"></i></div></div>';});
@@ -1556,7 +1570,7 @@ tvRenderEvents=function(root){
 };
 var v3OldShowEnd=showEnd;
 showEnd=function(avg){v3OldShowEnd(avg);var c=v3Buddy(),dest=$('end').querySelector('.kpis');if(!dest)return;var msg=avg>=80?'Quelle belle expédition ! Tu connais déjà beaucoup de repères.':avg>=45?'Bien joué ! On apprend aussi en faisant des essais.':'Continue à explorer : chaque repère reviendra plus facilement.';
- dest.insertAdjacentHTML('afterend','<div class="v3-result-buddy"><span>'+'<img class="vfix-creature-portrait" src="assets/'+c.id+'.webp" alt="" loading="lazy" />'+'</span><div><b>'+c.name+' te félicite !</b><p>'+msg+'</p></div></div>');};
+ dest.insertAdjacentHTML('afterend','<div class="v3-result-buddy"><span>'+'<img class="vfix-creature-portrait" src="assets/art-original-2026/'+c.id+'.webp" alt="" loading="lazy" />'+'</span><div><b>'+c.name+' te félicite !</b><p>'+msg+'</p></div></div>');};
 // If the user resets their progress, remove the optional cosmetic placements, too.
 var v3OldProfile=renderProfile;
 renderProfile=function(){v3OldProfile();var reset=$('bReset');if(reset){var original=reset.onclick;reset.onclick=function(){original();var m=document.querySelector('.modal');if(m){var yes=m.querySelector('[data-a="o"]');if(yes)yes.addEventListener('click',function(){V3={buddy:'plume',sky:'day',places:{}};V3_PICK=null;v3Save();},{once:true});}};}};
@@ -1929,14 +1943,14 @@ var oldEvents=tvRenderEvents;
 tvRenderEvents=function(root){oldEvents(root);root.querySelectorAll('[data-v15-filter]').forEach(function(btn){btn.addEventListener('click',function(){var val=this.dataset.v15Filter;root.querySelectorAll('[data-v15-filter]').forEach(function(b){b.setAttribute('aria-pressed',String(b===btn))});root.querySelectorAll('[data-v15-unlocked]').forEach(function(el){el.hidden=(val!=='all'&&el.dataset.v15Unlocked!==val)});});});};
 var oldProfile=renderProfile;
 renderProfile=function(){oldProfile();var h=document.getElementById('profile');if(!h||h.querySelector('.v15-profile-top'))return;var c=buddy(),L=levelOf(S.xp),min=xpFor(L),max=xpFor(L+1),pct=Math.max(0,Math.min(100,Math.round((S.xp-min)/(max-min)*100)));var stats=S.stats;
- var intro='<section class="v15-profile-top"><img src="assets/'+c.id+'.webp" alt="'+esc(c.name)+'" loading="lazy"><div><span class="v15-tag">MON PASSEPORT D’EXPLORATEUR</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>Niveau '+L+' · '+esc(titleOf(L))+'<br>'+esc(c.name)+' voyage avec toi</p><div class="v15-progress-track" role="progressbar" aria-label="Progression vers le prochain niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+S.xp+' XP · '+(max-S.xp)+' XP avant le niveau '+(L+1)+'</small></div></section>';
+ var intro='<section class="v15-profile-top"><img src="assets/art-original-2026/'+c.id+'.webp" alt="'+esc(c.name)+'" loading="lazy"><div><span class="v15-tag">MON PASSEPORT D’EXPLORATEUR</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>Niveau '+L+' · '+esc(titleOf(L))+'<br>'+esc(c.name)+' voyage avec toi</p><div class="v15-progress-track" role="progressbar" aria-label="Progression vers le prochain niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+S.xp+' XP · '+(max-S.xp)+' XP avant le niveau '+(L+1)+'</small></div></section>';
  var achievements='<section class="v15-achievements"><h3>🧭 Mon journal de voyage</h3><div class="v15-achievement-grid"><div><b>'+stats.games+'</b><span>Expéditions</span></div><div><b>'+stats.pins+'</b><span>Repères placés</span></div><div><b>'+countBadges()+'</b><span>Badges obtenus</span></div></div></section>';
  var target=h.querySelector('.col');if(target){target.insertAdjacentHTML('afterbegin',intro);var name=target.querySelector('.pcard');if(name)name.insertAdjacentHTML('beforebegin',achievements)};
 };
 // Include the passport in the V2 theme profile too, where the separate home screen is used.
 var oldTvProfile=tvProfile;
 tvProfile=function(){var c=buddy(),L=levelOf(S.xp),a=xpFor(L),z=xpFor(L+1),pct=Math.max(0,Math.min(100,Math.round(100*(S.xp-a)/(z-a))));
- var top='<section class="v15-profile-top"><img src="assets/'+c.id+'.webp" alt="" loading="lazy"><div><span class="v15-tag">PASSEPORT GÉOPINS</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>'+esc(titleOf(L))+' · Niveau '+L+'<br>Compagnon : '+esc(c.name)+'</p><div class="v15-progress-track" role="progressbar" aria-label="Progression du niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+(z-S.xp)+' XP jusqu’au niveau '+(L+1)+'</small></div></section>';
+ var top='<section class="v15-profile-top"><img src="assets/art-original-2026/'+c.id+'.webp" alt="" loading="lazy"><div><span class="v15-tag">PASSEPORT GÉOPINS</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>'+esc(titleOf(L))+' · Niveau '+L+'<br>Compagnon : '+esc(c.name)+'</p><div class="v15-progress-track" role="progressbar" aria-label="Progression du niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+(z-S.xp)+' XP jusqu’au niveau '+(L+1)+'</small></div></section>';
  return top+oldTvProfile();};
 })();
 </script>
@@ -2448,6 +2462,18 @@ html body #home .v2-hero .v2-scene-bottom .v2-hero-cta:hover{filter:brightness(1
  let scheduled=false;function queue(){if(scheduled)return;scheduled=true;setTimeout(()=>{scheduled=false;renderMenu();renderBuddy();renderCards()},120)}
  function init(){renderMenu();renderBuddy();renderCards();const home=document.getElementById('home');if(home)new MutationObserver(queue).observe(home,{childList:true,subtree:true});const profile=document.getElementById('profile');if(profile)new MutationObserver(queue).observe(profile,{childList:true,subtree:true});}
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+<script id="art-2026-menu-js">
+(function(){
+  var names={village:'village',missions:'missions',brevet:'brevet',collection:'collection',profile:'profil',profil:'profil',settings:'parametres',parametres:'parametres'};
+  function update(){var nav=document.getElementById('nav');if(!nav)return;
+    nav.querySelectorAll('button').forEach(function(b){
+      var key=b.getAttribute('data-t')||b.getAttribute('data-nav')||'';var name=names[key];if(!name)return;
+      var old=b.querySelector('.art2026-nav');if(!old){var img=document.createElement('img');img.className='art2026-nav';img.src='assets/art-original-2026/nav-'+name+'.webp';img.alt='';img.loading='eager';b.prepend(img)}
+    });
+  }
+  update();new MutationObserver(function(){update()}).observe(document.getElementById('nav'),{childList:true});
 })();
 </script>
 </body>
