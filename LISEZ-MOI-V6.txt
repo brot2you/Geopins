@@ -1,0 +1,12 @@
+GÉOPINS TERRA VILLAGE V6
+
+1. Place index.html à la racine de ton dépôt Geopins.
+2. Copie tout le dossier assets au même niveau que index.html.
+3. Vérifie la publication GitHub Pages puis recharge avec Ctrl+F5.
+
+Nouveautés : carnet d’exploration cliquable, objectifs de progression, accès rapide aux pages et portrait dynamique du compagnon sélectionné.
+Les sauvegardes V3/V4/V5 sont conservées via les mêmes clés localStorage.
+
+Note : le décor du village et certains décors de pages sont encore des recadrages de maquettes illustrées comportant du texte intégré ; les assets autonomes seront à refaire pour un rendu final sans doublons.
+
+BROT2YOU

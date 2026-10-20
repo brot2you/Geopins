@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V5 — L’aventure illustrée</title>
+<title>GéoPins • Terra Village V6 — Carnet d’exploration</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -1119,21 +1119,88 @@ window.__R={S:S,G:function(){return G;},start:startGame,tap:onMapTap,proj:functi
 })();
 
 </script>
+<style id="terra-village-v6">
+/* V6 – genuine interactive UI is HTML, artwork is decorative only */
+:root{--v6-earth:#795035;--v6-cream:#fff5dc;--v6-green:#276b4d}
+.v6-journal-trigger{display:inline-flex;align-items:center;gap:7px;border:2px solid #906a40;background:linear-gradient(#fff9e8,#f4ddb2);border-radius:15px;box-shadow:0 4px 0 #9a744d;color:#4b3829;padding:10px 14px;font-weight:900;font-size:13px;white-space:nowrap;cursor:pointer}
+.v6-journal-trigger:hover{filter:brightness(1.04);transform:translateY(-2px)}
+.v6-journal-trigger:focus-visible,.v6-close:focus-visible{outline:3px solid #1b7b5e;outline-offset:3px}
+.v6-journal-overlay{position:fixed;inset:0;z-index:95;background:rgba(18,47,39,.7);backdrop-filter:blur(7px);display:flex;justify-content:center;align-items:center;padding:20px}
+.v6-journal{width:min(860px,100%);max-height:min(850px,90dvh);overflow-y:auto;background:#fff8e9;border:5px solid #765136;border-radius:26px;box-shadow:0 18px 0 #422a1b,0 30px 75px #021d1699;position:relative;padding:26px}
+.v6-journal:before{content:"";pointer-events:none;position:absolute;inset:10px;border:2px dashed #d7bc87;border-radius:16px}
+.v6-journal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;position:relative}
+.v6-journal h2{margin:0;font-size:clamp(23px,4vw,34px);font-family:var(--disp);color:#3a654a}
+.v6-journal p{color:#705b45}
+.v6-close{border-radius:13px;border:2px solid #95724c;background:white;font-size:22px;font-weight:900;min-width:44px;min-height:44px;cursor:pointer}
+.v6-overview{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:20px 0}
+.v6-overview article{padding:14px 8px;background:#f4e7c9;border:2px solid #d5b98e;border-radius:16px;text-align:center}
+.v6-overview article strong{display:block;font-size:23px;color:#2c7052}.v6-overview article span{display:block;font-size:12px;font-weight:800;color:#72563b}
+.v6-subtitle{font-weight:900;color:#4d654a;margin:22px 0 12px;font-size:20px}
+.v6-mastery-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.v6-mastery-item{background:#fffdf7;border:1px solid #e2d0ae;border-radius:15px;padding:12px;text-align:left;cursor:pointer;color:#385d4a}
+.v6-mastery-item:hover{background:#f0f7e9}.v6-mastery-item b{display:block;font-size:14px}.v6-mastery-item small{color:#7c7966;font-weight:700}
+.v6-progress-track{height:10px;border-radius:30px;overflow:hidden;background:#e2e4d0;margin:8px 0 5px}.v6-progress-track i{display:block;height:100%;background:linear-gradient(90deg,#79bb78,#299d72);border-radius:30px}
+.v6-journal-foot{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;padding-top:14px;border-top:1px dashed #c4a47d}
+.v6-journal-foot button{background:#2e8b65;border:2px solid #1f6245;color:#fff;font-weight:900;border-radius:13px;padding:11px 17px;cursor:pointer}
+.v6-brandmark{font-size:11px;letter-spacing:.17em;font-weight:900;color:#6a855c}
+.v6-smallhelp{font-size:12px!important;line-height:1.5}
+.v6-buddy-portrait{width:96px;height:96px;object-fit:cover;object-position:center 32%;border-radius:50%;border:4px solid #fce5aa;box-shadow:0 5px 0 #93633a;background:#fbebcf;flex:none}
+.v2-buddy.v6-buddy-ready::before{display:none!important}
+.v6-buddy-ready .v6-buddy-portrait{height:110px;width:110px}
+@media(max-width:850px){.v2-head{flex-wrap:wrap}.v6-journal-trigger{margin-left:auto}.v6-overview{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:550px){.v6-journal{padding:17px;border-width:3px}.v6-mastery-list{grid-template-columns:1fr}.v6-journal-overlay{padding:9px}.v6-journal-trigger{font-size:11px;padding:8px}.v6-buddy-ready .v6-buddy-portrait{height:74px;width:74px}.v6-journal-foot{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.v6-journal-trigger:hover{transform:none}}
+</style>
 <script>
-/* V5 companion art bridge — keeps V3 persistence untouched. */
+/* V6 follows the same localStorage keys as V3; no progression reset. */
 (function(){
- var portraitIds=['plume','kiko','nori','siro','luma','sora'];
- function syncPortrait(){
-  var id=(typeof V3!=='undefined'&&V3&&V3.buddy)||'plume';
-  if(portraitIds.indexOf(id)<0)id='plume';
-  document.documentElement.style.setProperty('--v5-companion-image',"url('assets/"+id+".webp')");
+ 'use strict';
+ var buddyKey='brot2you-geopins-terra-v3', savedKey='brot2you-geopins';
+ var buddyNames={plume:'Plume',kiko:'Kiko',nori:'Nori',siro:'Siro',luma:'Luma',sora:'Sora'};
+ function chosen(){try{var state=JSON.parse(localStorage.getItem(buddyKey)||'{}');return Object.prototype.hasOwnProperty.call(buddyNames,state.buddy)?state.buddy:'plume'}catch(e){return 'plume'}}
+ function refreshBuddy(){
+  var id=chosen();document.documentElement.style.setProperty('--v5-companion-image',"url('assets/"+id+".webp')");
+  var hero=document.querySelector('#home .v2-buddy');
+  if(hero){hero.classList.add('v6-buddy-ready');var pic=hero.querySelector('.v6-buddy-portrait');if(!pic){pic=document.createElement('img');pic.className='v6-buddy-portrait';pic.decoding='async';hero.insertBefore(pic,hero.firstChild)}pic.src='assets/'+id+'.webp';pic.alt=buddyNames[id]+' : compagnon explorateur';}
  }
- syncPortrait();
- var home=document.getElementById('home');
- if(home){
-  var queued=false;
-  new MutationObserver(function(){if(queued)return;queued=true;requestAnimationFrame(function(){queued=false;syncPortrait();});}).observe(home,{childList:true,subtree:false});
+ var panel=null,previousFocus=null;
+ function closeJournal(){if(panel){panel.remove();panel=null;if(previousFocus&&previousFocus.focus)previousFocus.focus()}}
+ function metric(label,value){return '<article><strong>'+value+'</strong><span>'+label+'</span></article>'}
+ function makeJournal(){
+  if(panel){closeJournal();return}
+  previousFocus=document.activeElement;
+  var progress=window.__R&&window.__R.S;if(!progress){return}
+  var lvl=(function(){var xp=progress.xp||0,i=1;while(i<100&&xp>=100*i*i)i++;return i})();
+  var stats=progress.stats||{};
+  var packs=[];
+  // Read the packs from rendered mission cards: the real data stays in the existing engine.
+  var source=document.querySelectorAll('#home .v2-pack');
+  if(!source.length){var m=document.querySelector('#nav button[data-t="missions"]');if(m){/* no navigation change necessary */}}
+  var bName=buddyNames[chosen()];
+  var html='<div class="v6-journal-head"><div><div class="v6-brandmark">GÉOPINS · TERRA VILLAGE</div><h2>📖 Mon carnet d’exploration</h2><p>Ton aventure, tes découvertes et tes prochaines étapes.</p></div><button class="v6-close" type="button" aria-label="Fermer le carnet">×</button></div>';
+  html+='<div class="v6-overview">'+metric('XP gagnés',progress.xp||0)+metric('Repères placés',stats.pins||0)+metric('Parties terminées',stats.games||0)+metric('Compagnon',bName)+'</div>';
+  html+='<h3 class="v6-subtitle">🗺️ Mes prochains défis</h3><div class="v6-mastery-list">';
+  var challenges=[{title:'Découvrir les cartes',hint:'Explorer les pays et les régions',tab:'missions',icon:'🌍'},{title:'Objectif Brevet',hint:'Réviser les repères de troisième',tab:'brevet',icon:'🎓'},{title:'Mon village',hint:'Installer de nouvelles décorations',tab:'village',icon:'🏡'},{title:'Collection',hint:'Retrouver mes badges et compagnons',tab:'collection',icon:'🏆'}];
+  challenges.forEach(function(q){html+='<button type="button" class="v6-mastery-item" data-v6-dest="'+q.tab+'"><b>'+q.icon+' '+q.title+'</b><small>'+q.hint+' →</small></button>'});
+  html+='</div><h3 class="v6-subtitle">🌱 Mon aventure à mon rythme</h3><div class="v6-mastery-list">';
+  [{name:'5 repères placés',v:stats.pins||0,goal:5},{name:'3 expéditions',v:stats.games||0,goal:3},{name:'100 XP',v:progress.xp||0,goal:100},{name:'500 XP',v:progress.xp||0,goal:500}].forEach(function(a){var pct=Math.min(100,Math.floor(100*a.v/a.goal));html+='<div class="v6-mastery-item" style="cursor:default"><b>'+a.name+'</b><div class="v6-progress-track"><i style="width:'+pct+'%"></i></div><small>'+Math.min(a.v,a.goal)+' / '+a.goal+(pct>=100?' ✓':'')+'</small></div>'});
+  html+='</div><div class="v6-journal-foot"><span class="v6-brandmark">BROT2YOU · Apprendre en explorant</span><button type="button" data-v6-go="missions">Partir en mission →</button></div>';
+  panel=document.createElement('div');panel.className='v6-journal-overlay';panel.innerHTML='<section class="v6-journal" role="dialog" aria-modal="true" aria-label="Mon carnet d’exploration">'+html+'</section>';
+  document.body.appendChild(panel);panel.querySelector('.v6-close').onclick=closeJournal;
+  panel.onclick=function(e){if(e.target===panel)closeJournal()};
+  panel.querySelectorAll('[data-v6-dest], [data-v6-go]').forEach(function(el){el.onclick=function(){var dest=el.dataset.v6Dest||el.dataset.v6Go;closeJournal();var btn=document.querySelector('#nav button[data-t="'+dest+'"]');if(btn)btn.click();else if(dest==='village'){var v=document.querySelector('#nav button[data-t="village"]');if(v)v.click()}}});
+  panel.querySelector('.v6-close').focus();
  }
+ function update(){
+  refreshBuddy();
+  var header=document.querySelector('#home .v2-head')||document.querySelector('#profile .v2-head');
+  if(header&&!header.querySelector('.v6-journal-trigger')){var b=document.createElement('button');b.className='v6-journal-trigger';b.type='button';b.innerHTML='📖 <span>Mon carnet</span>';b.onclick=makeJournal;header.appendChild(b)}
+ }
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeJournal();if(e.key==='Tab'&&panel){var buttons=panel.querySelectorAll('button');var first=buttons[0],last=buttons[buttons.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+ var schedule=false;var root=document.getElementById('home');var profile=document.getElementById('profile');
+ var observer=new MutationObserver(function(){if(schedule)return;schedule=true;requestAnimationFrame(function(){schedule=false;update()})});
+ if(root)observer.observe(root,{childList:true});if(profile)observer.observe(profile,{childList:true});
+ window.addEventListener('storage',update);update();
 })();
 </script></body>
 </html>
