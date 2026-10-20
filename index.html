@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V33 — Art & Interface</title>
+<title>GéoPins • Terra Village V33.1 — Art & Interface</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -2376,7 +2376,7 @@ body{padding-bottom:126px!important}#home,#profile{padding-bottom:35px!important
  function renderDock(){if(!nav)return;for(const button of nav.querySelectorAll(':scope > button[data-t]')){
   const key=button.dataset.t;if(!navImages[key])continue;
   const current=button.querySelector(':scope > img.tv33-icon');
-  const filename='assets/dock-v31/'+navImages[key]+'.png';
+  const filename='assets/ui-v19/'+navImages[key]+'.webp';
   if(current&&current.getAttribute('src')===filename&&button.querySelectorAll(':scope > .tv33-icon').length===1)continue;
   button.replaceChildren();const icon=document.createElement('img');icon.className='tv33-icon';icon.src=filename;icon.alt='';icon.decoding='async';
   const label=document.createElement('span');label.className='tv33-label';label.textContent=captions[key];button.append(icon,label);
@@ -2405,5 +2405,18 @@ body{padding-bottom:126px!important}#home,#profile{padding-bottom:35px!important
  const home=document.getElementById('home');if(home)new MutationObserver(queue).observe(home,{childList:true,subtree:true});
 })();
 </script>
+
+<style id="tv33-1-dock-buddy-hotfix">
+/* Desktop and mobile dock: genuinely visible icons and stable hit targets. */
+#nav.nav {width:min(790px,calc(100vw - 16px))!important;min-height:91px!important;padding:7px!important;bottom:calc(10px + env(safe-area-inset-bottom,0px))!important;}
+#nav.nav button[data-t] {min-height:73px!important;gap:3px!important;padding:5px 4px!important;}
+#nav.nav img.tv33-icon {width:56px!important;height:51px!important;max-width:100%!important;object-fit:contain!important;border-radius:7px!important;}
+#nav.nav .tv33-label {font-size:12px!important;}
+/* Earlier integrations created several overlapping buddy portraits; show one. */
+#home .v2-buddy::before,#home .v2-buddy::after{display:none!important;content:none!important;}
+#home .v2-buddy > :not(.v2-bubble):not(.tv32-asset-buddy){display:none!important;}
+#home .v2-buddy > img.tv32-asset-buddy {display:block!important;width:106px!important;height:106px!important;object-fit:contain!important;object-position:center!important;flex:0 0 106px!important;border-radius:50%!important;}
+@media(max-width:700px){#nav.nav {width:calc(100vw - 8px)!important;bottom:calc(3px + env(safe-area-inset-bottom,0px))!important;min-height:72px!important;padding:3px!important;gap:1px!important;}#nav.nav button[data-t]{min-height:61px!important;padding:3px 1px!important;}#nav.nav img.tv33-icon{width:43px!important;height:40px!important;}#nav.nav .tv33-label{font-size:10px!important;}#home .v2-buddy > img.tv32-asset-buddy{width:70px!important;height:70px!important;flex-basis:70px!important;}}
+</style>
 </body>
 </html>
