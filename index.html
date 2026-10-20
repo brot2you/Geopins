@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins · Terra Village V28 — Navigation illustrée</title>
+<title>GéoPins • Terra Village V29 — Expéditions illustrées</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -2151,5 +2151,36 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  const result=document.getElementById('res');if(result){let last='';new MutationObserver(()=>{if(!enabled||result.classList.contains('hidden')||!result.textContent.trim())return;const signature=result.textContent.slice(0,80);if(signature===last)return;last=signature;const match=signature.match(/\+(\d+)/),n=match?Number(match[1]):0; if(n>0){note(523,.12,'triangle');note(659,.14,'triangle',.09);note(784,.19,'sine',.19)}else note(300,.12,'sine')}).observe(result,{subtree:true,childList:true,attributes:true})}
 })();
 </script>
+<style id="terra-v29-style">
+/* V29: unified illustrated mission art, legible quiz, stable mobile navigation */
+.v2-pack[data-tv26-land] .band{background-size:cover!important;background-position:center!important;isolation:isolate;position:relative}
+.v2-pack[data-tv26-land] .band::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,43,44,.12),transparent 75%);pointer-events:none;z-index:-1}
+.v2-pack[data-tv26-land="europe"] .band{background-image:url("assets/expeditions-v29/europe.webp")!important}
+.v2-pack[data-tv26-land="france"] .band{background-image:url("assets/expeditions-v29/france.webp")!important}
+.v2-pack[data-tv26-land="monde"] .band{background-image:url("assets/expeditions-v29/monde.webp")!important}
+.v2-pack[data-tv26-land="royaume-uni"] .band{background-image:url("assets/expeditions-v29/royaume-uni.webp")!important}
+.v2-pack[data-tv26-land="usa"] .band{background-image:url("assets/expeditions-v29/usa.webp")!important}
+.v2-pack[data-tv26-land="canada"] .band{background-image:url("assets/expeditions-v29/canada.webp")!important}
+.v2-pack[data-tv26-land="australie"] .band{background-image:url("assets/expeditions-v29/australie.webp")!important}
+.v2-pack[data-tv26-land="asie"] .band{background-image:url("assets/expeditions-v29/asie.webp")!important}
+
+.v2-pack .band,.v2-pack .nm,.v2-pack .ft{min-width:0}
+.v2-pack .band{height:104px!important}
+.v2-pack .band .em{background:rgba(255,250,230,.9);border-radius:12px;padding:4px 7px}
+.v2-pack .band .lv{background:#fff9e9!important}
+#game .qcard{max-width:min(540px,calc(100% - 16px));}
+#game .qopt{min-height:80px!important;transition:background-color .12s,filter .12s!important}
+#game .qopt:hover{transform:none!important}
+#game .flag.opt{object-fit:contain!important;max-height:110px;aspect-ratio:4/3}
+#game .flag.opt svg{object-fit:contain;width:100%;height:100%}
+#nav.nav button,#home button,.v2-pack{transition:filter .15s!important}
+#nav.nav button:hover,#home button:hover,.v2-pack:hover{transform:none!important;filter:brightness(1.08)}
+@media(max-width:720px){#nav.nav{position:fixed!important;bottom:calc(6px + env(safe-area-inset-bottom))!important;top:auto!important;left:50%!important;transform:translateX(-50%)!important;width:min(calc(100% - 12px),560px)!important;display:flex!important;justify-content:space-around!important;z-index:90!important}#nav.nav button{min-width:0;flex:1;padding:7px 3px!important;font-size:11px!important}#nav.nav .ni{max-height:33px!important}#home,#profile{padding-bottom:96px!important}}
+@media(prefers-reduced-motion:reduce){.v2-pack,#nav.nav button{transition:none!important}}
+.v29-quit{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:85;background:#fff2ce;color:#57371e;border:2px solid #784825;border-radius:13px;box-shadow:0 3px #5c381a;padding:9px 15px;font:800 14px system-ui;min-height:44px}
+#game.hidden~.v29-quit,.v29-quit.hidden{display:none!important}
+</style>
+<button type="button" class="v29-quit hidden" id="v29Quit" aria-label="Quitter la partie et revenir à l'accueil">← Quitter</button>
+<script id="terra-v29-controls">(()=>{const quit=document.getElementById('v29Quit');const game=document.getElementById('game');if(!quit||!game)return;function sync(){quit.classList.toggle('hidden',game.classList.contains('hidden'));}const observer=new MutationObserver(sync);observer.observe(game,{attributes:true,attributeFilter:['class']});quit.addEventListener('click',()=>{const existing=document.getElementById('bQuit')||document.querySelector('#game .x');if(existing){existing.click();return;}const close=[...document.querySelectorAll('#game button')].find(b=>/quitter|abandonner|retour/i.test(b.textContent||''));if(close){close.click();return;}if(confirm('Quitter cette partie ?')){game.classList.add('hidden');document.getElementById('home')?.classList.remove('hidden');document.getElementById('nav')?.classList.remove('hidden');}});sync();})();</script>
 </body>
 </html>
