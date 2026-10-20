@@ -5,7 +5,7 @@
 <!-- GéoPins (BROT2YOU). Cartes : Natural Earth (domaine public), régions : france-geojson (G. David, licence ouverte). Drapeaux : flag-icons, (c) 2013 Panayiotis Lipiridis, licence MIT. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F4E9">
-<title>GéoPins • Terra Village V32 — Illustrations intégrées</title>
+<title>GéoPins • Terra Village V32.1 — Illustrations intégrées</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Unbounded:wght@600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
@@ -2352,6 +2352,30 @@ body:has(#nav:not(.hidden)){padding-top:0!important}
   }
  }finally{busy=false}}
  let queued=false;const home=document.getElementById('home');if(home){new MutationObserver(()=>{if(queued)return;queued=true;setTimeout(()=>{queued=false;refresh()},140)}).observe(home,{childList:true,subtree:true});refresh()}
+})();
+</script>
+
+<!-- V32.1: single fixed bottom dock, single illustration per navigation entry and per map marker. -->
+<style id="tv321-one-dock">
+html{scroll-padding-bottom:125px}
+body{padding-bottom:125px!important}
+#nav.nav{position:fixed!important;top:auto!important;bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:max-content!important;max-width:calc(100% - 16px)!important;height:auto!important;min-height:0!important;z-index:350!important;animation:none!important}
+#nav.nav button{transform:none!important;animation:none!important;position:relative!important}
+#nav.nav button>img.tv19-icon,#nav.nav button>img.tv31-dock-icon{object-fit:contain!important;object-position:center!important}
+#nav.nav button>img.tv19-icon:not(:first-of-type),#nav.nav button>img.tv31-dock-icon:not(:first-of-type){display:none!important}
+#nav.nav button>.tv19-label:not(:last-child),#nav.nav button>.tv31-caption:not(:last-child){display:none!important}
+/* Markers already have readable HTML labels: remove superimposed icon duplicates. */
+#home .v2-hotspot .hicon{display:none!important}
+#home .v2-hotspot{gap:0!important}
+@media(max-width:700px){body{padding-bottom:104px!important}#nav.nav{bottom:calc(4px + env(safe-area-inset-bottom,0px))!important;width:calc(100% - 10px)!important}#nav.nav button{min-width:0!important;flex:1 1 0!important}}
+</style>
+<script id="tv321-icon-cleanup">
+(()=>{'use strict';const nav=document.getElementById('nav');if(!nav)return;
+function tidy(){nav.querySelectorAll('button[data-t]').forEach(btn=>{
+ const pictures=[...btn.querySelectorAll(':scope > img.tv19-icon, :scope > img.tv31-dock-icon')];pictures.slice(1).forEach(node=>node.remove());
+ const captions=[...btn.querySelectorAll(':scope > .tv19-label, :scope > .tv31-caption')];captions.slice(1).forEach(node=>node.remove());
+ });}
+let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;setTimeout(()=>{pending=false;tidy()},200)}).observe(nav,{childList:true,subtree:true});tidy();
 })();
 </script>
 </body>
