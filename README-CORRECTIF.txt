@@ -1,0 +1,1 @@
+Correctif sur le dépôt fourni par l’utilisateur. Menu intégré juste avant la carte et à sa largeur, boutons illustrés, portraits des compagnons dédoublonnés, image de compagnon sur les résultats limitée à 58 px. Aucun changement intentionnel aux données ou sauvegardes. Tester sur GitHub Pages.
