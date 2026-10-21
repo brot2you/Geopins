@@ -998,11 +998,21 @@ img[src*="/final-art/"]{object-fit:contain;object-position:center;}
 </style>
 <style id="gp-workshop-24-slots-stable">
 .v3-object-layer{overflow:visible!important}
-.v3-site,.v3-placed-object{width:clamp(27px,5.3%,76px)!important;height:auto!important;aspect-ratio:1!important;transform:translate(-50%,-50%)!important;transition:box-shadow .12s ease,border-color .12s ease!important}
+.v3-site,.v3-placed-object{width:clamp(42px,8.5%,118px)!important;height:auto!important;aspect-ratio:1!important;transform:translate(-50%,-50%)!important;transition:box-shadow .12s ease,border-color .12s ease!important}
 .v3-site:hover,.v3-site:focus-visible,.v3-placed-object:hover{transform:translate(-50%,-50%)!important}
 .v3-site img.gp-workshop-sprite,.v3-placed-object img.gp-workshop-sprite{width:100%!important;height:100%!important;object-fit:contain!important;max-width:none!important}
 .v3-object-pic img.gp-workshop-sprite{object-fit:contain!important}
-@media(max-width:620px){.v3-site,.v3-placed-object{width:6.3%!important}}
+@media(max-width:620px){.v3-site,.v3-placed-object{width:9.5%!important}}
+</style><style id="gp-natural-size-v1">
+/* Decoration type sets footprint; stable center position & no hover-jump. */
+.v3-object-layer .v3-site[data-gp-size],.v3-object-layer .v3-placed-object[data-gp-size]{height:auto!important;aspect-ratio:1!important;transform:translate(-50%,-50%)!important;transition:filter .15s ease,border-color .15s ease!important}
+.v3-object-layer [data-gp-size="large"]{width:clamp(62px,12%,158px)!important;z-index:8}
+.v3-object-layer [data-gp-size="nature"]{width:clamp(54px,10.3%,132px)!important;z-index:7}
+.v3-object-layer [data-gp-size="normal"]{width:clamp(46px,9%,115px)!important;z-index:7}
+.v3-object-layer [data-gp-size="small"]{width:clamp(42px,7%,85px)!important;z-index:9}
+.v3-object-layer [data-gp-size="empty"]{width:clamp(42px,8.5%,75px)!important;z-index:10}
+.v3-object-layer .v3-site:hover,.v3-object-layer .v3-site:focus-visible{transform:translate(-50%,-50%)!important}
+@media(max-width:620px){.v3-object-layer [data-gp-size="large"]{width:14%!important}.v3-object-layer [data-gp-size="nature"]{width:12%!important}.v3-object-layer [data-gp-size="normal"]{width:10.5%!important}.v3-object-layer [data-gp-size="small"]{width:9%!important}.v3-object-layer [data-gp-size="empty"]{width:9.5%!important}}
 </style></head>
 <body>
 <main class="screen" id="home"></main>
@@ -1650,10 +1660,17 @@ function v3Art(n){
  var d=V3_DECORS[n];if(!d)return '';
  return '<img class="v3-object-svg v10-object-image gp-workshop-sprite" src="assets/workshop-50/item-'+String(d.sprite).padStart(2,'0')+'.png?v=atelier-20261021b" alt="" loading="lazy" decoding="async">';
 }
+function gpDecorSize(n){
+ var id=V3_DECORS[n]&&V3_DECORS[n].sprite;
+ if([1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,20,41,43,48].includes(id))return 'large';
+ if([21,22,23,24,25,26,27,28,29,30,37,39].includes(id))return 'nature';
+ if([19,31,32,33,34,35,36,38,40,42,45,47,49,50,13,17,18,46].includes(id))return 'small';
+ return 'normal';
+}
 function v3Places(edit){var h='<div class="v3-object-layer">';
  V3_SITES.forEach(function(pt,i){var n=Object.prototype.hasOwnProperty.call(V3.places,String(i))?V3.places[i]:null;
-  if(edit){h+='<button type="button" class="v3-site'+(n===null?' empty':'')+'" data-v3-slot="'+i+'" style="left:'+pt[0]+'%;top:'+pt[1]+'%" aria-label="'+(n===null?'Emplacement vide '+(i+1):V3_DECORS[n].name+' : déplacer ou retirer')+'">'+(n===null?'<span class="v3-site-plus">+</span>':v3Art(n))+'</button>';}
-  else if(n!==null){h+='<span class="v3-placed-object" aria-hidden="true" style="left:'+pt[0]+'%;top:'+pt[1]+'%">'+v3Art(n)+'</span>';}
+  if(edit){h+='<button type="button" class="v3-site'+(n===null?' empty':'')+'" data-gp-size="'+(n===null?'empty':gpDecorSize(n))+'" data-v3-slot="'+i+'" style="left:'+pt[0]+'%;top:'+pt[1]+'%" aria-label="'+(n===null?'Emplacement vide '+(i+1):V3_DECORS[n].name+' : déplacer ou retirer')+'">'+(n===null?'<span class="v3-site-plus">+</span>':v3Art(n))+'</button>';}
+  else if(n!==null){h+='<span class="v3-placed-object" data-gp-size="'+gpDecorSize(n)+'" aria-hidden="true" style="left:'+pt[0]+'%;top:'+pt[1]+'%">'+v3Art(n)+'</span>';}
  });return h+'</div>';}
 var v3OldScene=tvScene;
 tvScene=function(edit){
