@@ -1,0 +1,4 @@
+GéoPins Terra Village — Atelier de décoration désactivé.
+La carte du village conserve son paysage et ses autres fonctions.
+Les anciens objets et emplacements de décorations ne sont plus visibles ni cliquables.
+Les sauvegardes de progression ne sont pas effacées.

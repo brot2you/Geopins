@@ -2790,5 +2790,55 @@ body.gp-active-game #end:not(.hidden) {z-index:10001!important;pointer-events:au
 .v3-home-buddy>img.vfix-creature-portrait{display:block!important;object-fit:contain!important;max-width:112px!important;max-height:112px!important;}
 .v3-home-buddy::before,.v3-home-buddy::after{display:none!important}
 </style>
+<style id="gp-no-workshop-style">
+/* Village scenery stays; editing and decoration interactions are retired. */
+.v3-object-layer,.v2-placed,.v3-placed-object,.v3-site,.v3-build-help,
+.v3-workshop,.v3-object-grid,.v3-builder-actions,.v2-decor-grid,
+.gp-edit-village,.v9-help,.v2-helper,.v16-village-summary .v16-pill:last-child {display:none!important}
+</style>
+<script id="gp-remove-decorations-feature">
+(function(){
+  // No decoration hotspots are injected into the map, while the original landscape,
+  // missions, companions and the existing saved progress stay untouched.
+  if (typeof v3Places === 'function') v3Places = function(){return '';};
+  if (typeof tvVillage === 'function') {
+    var originalVillage = tvVillage;
+    tvVillage = function(){
+      var html = originalVillage();
+      html = html.replace(/<button\b[^>]*\bgp-edit-village\b[^>]*>[\s\S]*?<\/button>/g,'');
+      html = html.replace(/<section class="v2-helper">[\s\S]*?<\/section>/g,'');
+      html = html.replace(/<span class="v16-pill">🌳[\s\S]*?<\/span>/g,'');
+      return html;
+    };
+  }
+  // Old direct links to the retired editor now show the village instead.
+  if (typeof tvDecorPage === 'function') tvDecorPage = function(){return tvVillage();};
+  if (typeof showTab === 'function') {
+    var originalShowTab=showTab;
+    showTab=function(destination){return originalShowTab(destination==='village-edit'?'village':destination);};
+  }
+  // Remove misleading prompts where another subsystem adds them.
+  if(typeof renderHome==='function'){
+    var originalRenderHome=renderHome;
+    renderHome=function(){
+      if(typeof TAB!=='undefined'&&TAB==='village-edit')TAB='village';
+      var result=originalRenderHome.apply(this,arguments);
+      var root=document.getElementById('home');
+      if(root){
+        root.querySelectorAll('.gp-edit-village,.v9-help,.v2-helper,.v3-object-layer,.v3-build-help').forEach(function(el){el.remove();});
+        root.querySelectorAll('.v16-village-summary .v16-pill').forEach(function(el){if(/décoration|décorations/.test(el.textContent))el.remove();});
+      }
+      return result;
+    };
+  }
+  document.addEventListener('click',function(evt){
+    var link=evt.target.closest&&evt.target.closest('[data-nav="village-edit"],[data-v9-tab="village-edit"]');
+    if(!link)return;
+    evt.preventDefault();evt.stopImmediatePropagation();
+    if(typeof showTab==='function')showTab('village');
+  },true);
+  if(typeof TAB!=='undefined'&&TAB==='village-edit'&&typeof showTab==='function')showTab('village');
+})();
+</script>
 </body>
 </html>
