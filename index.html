@@ -1411,7 +1411,7 @@ var TV_DECORS=[['🌳','Grand chêne',0],['🌷','Jardin fleuri',150],['🏡','M
 function tvLevel(){var L=levelOf(S.xp),a=xpFor(L),b=xpFor(L+1);return {L:L,pct:Math.max(0,Math.min(100,Math.round(100*(S.xp-a)/(b-a)))),next:b-S.xp};}
 function tvOwl(){return '<svg viewBox="0 0 120 136" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><ellipse cx="61" cy="120" rx="43" ry="10" fill="#345859" opacity=".22"/><path d="M22 60Q2 42 18 16L39 31Q60 18 81 31L104 13Q119 41 101 67Q109 101 77 117Q55 126 33 109Q11 94 22 60Z" fill="#B47A50" stroke="#724E42" stroke-width="3.5"/><path d="M25 67Q11 39 39 36Q58 43 60 66Q66 44 84 36Q108 45 97 70Q84 86 60 85Q36 89 25 67Z" fill="#F5DAB1"/><ellipse cx="44" cy="65" rx="17" ry="21" fill="#FEFFF4" stroke="#8D6A50" stroke-width="2"/><ellipse cx="78" cy="65" rx="17" ry="21" fill="#FEFFF4" stroke="#8D6A50" stroke-width="2"/><circle cx="48" cy="66" r="8" fill="#3C514E"/><circle cx="74" cy="66" r="8" fill="#3C514E"/><circle cx="51" cy="62" r="3" fill="white"/><circle cx="77" cy="62" r="3" fill="white"/><path d="M56 83l7 11 8-11Z" fill="#E9A04E"/><path d="M38 106q5 17 21 10m20-9q-6 15-16 10" fill="none" stroke="#D79F61" stroke-width="5"/><path d="M25 83Q2 87 11 104Q21 114 34 105" fill="#8E694B" stroke="#715142" stroke-width="3"/><path d="M92 84q21-3 22 16l-20 5" fill="#8E694B" stroke="#715142" stroke-width="3"/><path d="M39 49q-7-22-1-38 5-7 11 3M76 47q4-25-3-36" fill="none" stroke="#8E694B" stroke-width="4"/><path d="M22 38q38-49 78 0" stroke="#725444" stroke-width="8" fill="none"/><path d="M27 38q33-36 70 0" stroke="#D1B27E" stroke-width="11" fill="none"/><ellipse cx="45" cy="44" rx="19" ry="12" fill="#EFB96C" stroke="#785743" stroke-width="3"/><ellipse cx="79" cy="44" rx="19" ry="12" fill="#EFB96C" stroke="#785743" stroke-width="3"/><circle cx="45" cy="44" r="7" fill="#9AD4D6" stroke="#EAF7E9" stroke-width="3"/><circle cx="79" cy="44" r="7" fill="#9AD4D6" stroke="#EAF7E9" stroke-width="3"/><path d="M41 112h12M72 112h11" stroke="#8C6848" stroke-width="7" stroke-linecap="round"/></svg>';}
 function tvHeader(){var l=tvLevel();var nick=S.name?'Salut, '+esc(S.name)+' !':'Bonjour, explorateur !';return '<header class="v2-head"><div class="v2-brand"><span class="v2-brand-mark" aria-hidden="true">🧭</span><div><h1>Géo<span class="pink">Pins</span></h1><small>TERRA VILLAGE</small></div></div><div class="v2-greeting"><strong>'+nick+'</strong><span>Un monde de découvertes t’attend 🌿</span></div><div class="v2-topstats"><div class="v2-pill" title="Série de jours"><i>🔥</i><b>'+(S.streak.last===today()||S.streak.last===yesterday()?S.streak.cur:0)+'</b></div><div class="v2-pill xpill" title="Expérience gagnée"><i>✨</i><b>'+S.xp+'</b><span>XP</span></div><button class="v2-profiletap" data-nav="me"><span class="v2-tinyavatar">'+TV.avatar+'</span>Profil</button></div></header>';}
-function tvTitle(eyebrow,title,desc,action){return '<div class="v2-heading"><div><div class="v2-eyebrow">'+eyebrow+'</div><h2>'+title+'</h2><p>'+desc+'</p></div>'+(action||'')+(TAB!=='village' && TAB!=='village-edit' && TAB!=='brevet'?'<button type="button" class="v2-subaction gp-return-home" data-nav="village">← Accueil</button>':'')+'</div>';}
+function tvTitle(eyebrow,title,desc,action){return '<div class="v2-heading"><div><div class="v2-eyebrow">'+eyebrow+'</div><h2>'+title+'</h2><p>'+desc+'</p></div>'+(action||'')+'</div>';}
 function tvScene(edition){var pins='<button class="v2-hotspot france" data-open="regions" aria-label="Explorer les régions de France"><span class="hicon">🇫🇷</span><span><b>France</b><small>13 régions</small></span></button><button class="v2-hotspot europe" data-open="ue" aria-label="Explorer l’Europe"><span class="hicon">🧭</span><span><b>Europe</b><small>27 pays</small></span></button><button class="v2-hotspot world" data-open="conts" aria-label="Explorer le monde"><span class="hicon">🌍</span><span><b>Monde</b><small>7 continents</small></span></button><button class="v2-hotspot brevet" data-nav="brevet" aria-label="Préparer le brevet"><span class="hicon">🎓</span><span><b>Brevet</b><small>Défis spéciaux</small></span></button>';
  var placed='';TV.decor.forEach(function(idx){placed+='<span class="v2-placed d'+idx+'" aria-hidden="true">'+TV_DECORS[idx][0]+'</span>';});
  return '<div class="v2-hero" id="v2Hero">'+TV_SCENE+placed+'<div class="v2-scene-head"><div class="micro">☀️ TON ÎLE D’AVENTURE</div><strong>Terra Village</strong><p>'+(edition?'Personnalise ton île avec tes découvertes !':'Chaque destination cache une nouvelle mission.')+'</p></div>'+pins+'<div class="v2-scene-bottom"><div class="v2-buddy">'+tvOwl()+'<div class="v2-bubble">'+(edition?'Choisis un décor ci-dessous pour embellir notre île !':'Bienvenue ! Je suis Plume, ton guide. Quelle région visites-tu ?')+'</div></div><button class="v2-hero-cta" data-nav="missions">'+(edition?'🧭 Voir les missions':'▶ Partir explorer')+'</button></div></div>';}
@@ -1462,6 +1462,18 @@ function tvRenderEvents(root){var nav=root.querySelectorAll('[data-nav]');for(va
 renderHome=function(){var root=$('home');var html=tvHeader();if(TAB==='missions')html+=tvMissions();else if(TAB==='brevet')html+=tvBrevet();else if(TAB==='collection')html+=tvCollection();else if(TAB==='village-edit')html+=tvDecorPage();else html+=tvVillage();root.innerHTML='<div class="v2-wrap">'+html+'</div>';tvRenderEvents(root);};
 renderProfile=function(){var root=$('profile');root.innerHTML='<div class="v2-wrap">'+tvHeader()+tvProfile()+'</div>';tvRenderEvents(root);$('nameIn').oninput=function(){S.name=this.value.replace(/^\s+/,'');save();};var opts=root.querySelectorAll('.sw');for(var a=0;a<opts.length;a++)opts[a].onclick=function(){var k=this.getAttribute('data-k');S.settings[k]=!S.settings[k];save();applySettings();renderProfile();};var avs=root.querySelectorAll('[data-avatar]');for(a=0;a<avs.length;a++)avs[a].onclick=function(){TV.avatar=this.getAttribute('data-avatar');tvSave();renderProfile();sfx('tap');};$('bReset').onclick=function(){modal('Repartir de zéro ?','Les scores, XP et badges de cet appareil seront effacés, ainsi que les décorations placées.','Effacer','Annuler',function(){var keep=S.settings;S=defState();S.settings=keep;TV.decor=[];tvSave();save();renderProfile();toast('🧽','Progression remise à zéro.');});};};
 showTab=function(t){if(t==='play')t='village';if(t==='village-edit')t='village';TAB=t;$('home').className='screen'+(t==='me'?' hidden':'');$('profile').className='screen'+(t==='me'?'':' hidden');var btns=$('nav').querySelectorAll('button');for(var z=0;z<btns.length;z++)btns[z].classList.toggle('on',btns[z].getAttribute('data-t')===t);if(t==='me')renderProfile();else if(t==='village'){renderHome();}else renderHome();window.scrollTo(0,0);};
+
+// Correctif robuste : utiliser directement la navigation interne pour les retours.
+// Capture avant les anciens scripts; les boutons n'ont qu'une seule action.
+document.addEventListener('click',function(ev){
+ var b=ev.target.closest('button[data-nav],a[data-nav]');
+ if(!b)return;
+ var route=b.getAttribute('data-nav');
+ if(route!=='village' && route!=='home' && route!=='accueil')return;
+ ev.preventDefault();ev.stopImmediatePropagation();
+ showTab('village');
+},true);
+
 // Village editor button: village opens the editor when pressed on the village screen.
 var tvEventsOriginal=tvRenderEvents;
 tvRenderEvents=function(root){tvEventsOriginal(root);var edit=root.querySelector('.v2-heading button[data-nav="village"]');if(edit&&TAB==='village'){edit.onclick=function(){TAB='village-edit';renderHome();window.scrollTo(0,0);};}if(TAB==='village-edit'){var nav=$('nav').querySelectorAll('button');for(var n=0;n<nav.length;n++)nav[n].classList.toggle('on',nav[n].getAttribute('data-t')==='village');}};
@@ -1599,7 +1611,7 @@ tvScene=function(edit){
  original=original.replace('☀️ TON ÎLE D’AVENTURE','✦ TON MONDE À EXPLORER');
  return original;
 };
-function v3Card(c){var unlock=S.xp>=c.xp,active=V3.buddy===c.id;return '<button class="v3-creature'+(unlock?'':' v3-locked')+(active?' v3-active':'')+'" '+(unlock?'data-v3-buddy="'+c.id+'"':'disabled')+' aria-pressed="'+active+'"><div class="v3-creature-art" style="--creature-tint:'+c.color+'">'+'<img class="vfix-creature-portrait" src="assets/art-original-2026/'+c.id+'.webp" alt="" loading="lazy" />'+'</div><div class="v3-creature-info"><span class="v3-creature-tag">'+(active?'✓ TON COMPAGNON':unlock?'COMPAGNON DÉBLOQUÉ':'🔒 '+c.xp+' XP')+'</span><strong>'+c.name+'</strong><small>'+c.kind+'</small><p>'+c.tag+'</p><span class="v3-creature-action">'+(active?'À tes côtés':unlock?'Choisir ce compagnon →':'Encore '+(c.xp-S.xp)+' XP')+'</span></div></button>';}
+function v3Card(c){var unlock=S.xp>=c.xp,active=V3.buddy===c.id;return '<button class="v3-creature'+(unlock?'':' v3-locked')+(active?' v3-active':'')+'" '+(unlock?'data-v3-buddy="'+c.id+'"':'disabled')+' aria-pressed="'+active+'"><div class="v3-creature-art" style="--creature-tint:'+c.color+'">'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png" alt="" loading="lazy" />'+'</div><div class="v3-creature-info"><span class="v3-creature-tag">'+(active?'✓ TON COMPAGNON':unlock?'COMPAGNON DÉBLOQUÉ':'🔒 '+c.xp+' XP')+'</span><strong>'+c.name+'</strong><small>'+c.kind+'</small><p>'+c.tag+'</p><span class="v3-creature-action">'+(active?'À tes côtés':unlock?'Choisir ce compagnon →':'Encore '+(c.xp-S.xp)+' XP')+'</span></div></button>';}
 var v3OldCollection=tvCollection;
 tvCollection=function(){
  var head=tvTitle('MON CARNET DE COMPAGNONS','Rencontre les amis de Terra Village 🐾','Six petites créatures originales à découvrir en progressant dans les missions.','<button class="v2-subaction" data-nav="village">🏡 Retour au village</button>');
@@ -1623,7 +1635,7 @@ tvDecorPage=function(){
 };
 var v3OldVillage=tvVillage;
 tvVillage=function(){var h=v3OldVillage();var c=v3Buddy();var next=V3_BUDDIES.find(function(b){return S.xp<b.xp;});
- h+='<section class="v3-home-band"><div class="v3-home-buddy">'+'<img class="vfix-creature-portrait" src="assets/art-original-2026/'+c.id+'.webp" alt="" loading="lazy" />'+'</div><div class="v3-home-band-text"><div class="v3-eyebrow">✦ TA PETITE ÉQUIPE D’AVENTURE</div><h3>'+c.name+' t’accompagne !</h3><p>'+c.line+' '+(next?'Prochaine rencontre : <strong>'+esc(next.name)+'</strong> à '+next.xp+' XP.':'Bravo, tu as rencontré tous les compagnons !')+'</p></div><button class="v3-band-button" data-nav="collection">Découvrir les compagnons <span>↗</span></button></section>';
+ h+='<section class="v3-home-band"><div class="v3-home-buddy">'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png" alt="" loading="lazy" />'+'</div><div class="v3-home-band-text"><div class="v3-eyebrow">✦ TA PETITE ÉQUIPE D’AVENTURE</div><h3>'+c.name+' t’accompagne !</h3><p>'+c.line+' '+(next?'Prochaine rencontre : <strong>'+esc(next.name)+'</strong> à '+next.xp+' XP.':'Bravo, tu as rencontré tous les compagnons !')+'</p></div><button class="v3-band-button" data-nav="collection">Découvrir les compagnons <span>↗</span></button></section>';
  var checkpoints=[{t:'Premiers pas',goal:5,v:S.stats.pins,icon:'📍',d:'Poser 5 repères'},{t:'Curiosité',goal:100,v:S.xp,icon:'✨',d:'Gagner 100 XP'},{t:'Aventurier',goal:3,v:S.stats.games,icon:'🧭',d:'Terminer 3 missions'}];
  h+='<section class="v3-steps"><div class="v2-section-title"><h3>🌱 Tes premiers objectifs</h3><small>À ton rythme, sans compétition</small></div><div class="v3-step-grid">';
  checkpoints.forEach(function(it){var ok=it.v>=it.goal,pc=Math.min(100,Math.floor(it.v/it.goal*100));h+='<div class="v3-step"><span class="v3-step-icon">'+it.icon+'</span><div><b>'+it.t+'</b><small>'+it.d+'</small></div><span class="v3-step-progress">'+(ok?'✓':Math.min(it.v,it.goal)+'/'+it.goal)+'</span><div class="v2-progress"><i style="width:'+pc+'%"></i></div></div>';});
@@ -1646,7 +1658,7 @@ tvRenderEvents=function(root){
 };
 var v3OldShowEnd=showEnd;
 showEnd=function(avg){v3OldShowEnd(avg);var c=v3Buddy(),dest=$('end').querySelector('.kpis');if(!dest)return;var msg=avg>=80?'Quelle belle expédition ! Tu connais déjà beaucoup de repères.':avg>=45?'Bien joué ! On apprend aussi en faisant des essais.':'Continue à explorer : chaque repère reviendra plus facilement.';
- dest.insertAdjacentHTML('afterend','<div class="v3-result-buddy"><span>'+'<img class="vfix-creature-portrait" src="assets/art-original-2026/'+c.id+'.webp" alt="" loading="lazy" />'+'</span><div><b>'+c.name+' te félicite !</b><p>'+msg+'</p></div></div>');};
+ dest.insertAdjacentHTML('afterend','<div class="v3-result-buddy"><span>'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png" alt="" loading="lazy" />'+'</span><div><b>'+c.name+' te félicite !</b><p>'+msg+'</p></div></div>');};
 // If the user resets their progress, remove the optional cosmetic placements, too.
 var v3OldProfile=renderProfile;
 renderProfile=function(){v3OldProfile();var reset=$('bReset');if(reset){var original=reset.onclick;reset.onclick=function(){original();var m=document.querySelector('.modal');if(m){var yes=m.querySelector('[data-a="o"]');if(yes)yes.addEventListener('click',function(){V3={buddy:'plume',sky:'day',places:{}};V3_PICK=null;v3Save();},{once:true});}};}};
@@ -2012,14 +2024,14 @@ var oldEvents=tvRenderEvents;
 tvRenderEvents=function(root){oldEvents(root);root.querySelectorAll('[data-v15-filter]').forEach(function(btn){btn.addEventListener('click',function(){var val=this.dataset.v15Filter;root.querySelectorAll('[data-v15-filter]').forEach(function(b){b.setAttribute('aria-pressed',String(b===btn))});root.querySelectorAll('[data-v15-unlocked]').forEach(function(el){el.hidden=(val!=='all'&&el.dataset.v15Unlocked!==val)});});});};
 var oldProfile=renderProfile;
 renderProfile=function(){oldProfile();var h=document.getElementById('profile');if(!h||h.querySelector('.v15-profile-top'))return;var c=buddy(),L=levelOf(S.xp),min=xpFor(L),max=xpFor(L+1),pct=Math.max(0,Math.min(100,Math.round((S.xp-min)/(max-min)*100)));var stats=S.stats;
- var intro='<section class="v15-profile-top"><img src="assets/art-original-2026/'+c.id+'.webp" alt="'+esc(c.name)+'" loading="lazy"><div><span class="v15-tag">MON PASSEPORT D’EXPLORATEUR</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>Niveau '+L+' · '+esc(titleOf(L))+'<br>'+esc(c.name)+' voyage avec toi</p><div class="v15-progress-track" role="progressbar" aria-label="Progression vers le prochain niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+S.xp+' XP · '+(max-S.xp)+' XP avant le niveau '+(L+1)+'</small></div></section>';
+ var intro='<section class="v15-profile-top"><img src="assets/companions-final/'+c.id+'.png" alt="'+esc(c.name)+'" loading="lazy"><div><span class="v15-tag">MON PASSEPORT D’EXPLORATEUR</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>Niveau '+L+' · '+esc(titleOf(L))+'<br>'+esc(c.name)+' voyage avec toi</p><div class="v15-progress-track" role="progressbar" aria-label="Progression vers le prochain niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+S.xp+' XP · '+(max-S.xp)+' XP avant le niveau '+(L+1)+'</small></div></section>';
  var achievements='<section class="v15-achievements"><h3>🧭 Mon journal de voyage</h3><div class="v15-achievement-grid"><div><b>'+stats.games+'</b><span>Expéditions</span></div><div><b>'+stats.pins+'</b><span>Repères placés</span></div><div><b>'+countBadges()+'</b><span>Badges obtenus</span></div></div></section>';
  var target=h.querySelector('.col');if(target){target.insertAdjacentHTML('afterbegin',intro);var name=target.querySelector('.pcard');if(name)name.insertAdjacentHTML('beforebegin',achievements)};
 };
 // Include the passport in the V2 theme profile too, where the separate home screen is used.
 var oldTvProfile=tvProfile;
 tvProfile=function(){var c=buddy(),L=levelOf(S.xp),a=xpFor(L),z=xpFor(L+1),pct=Math.max(0,Math.min(100,Math.round(100*(S.xp-a)/(z-a))));
- var top='<section class="v15-profile-top"><img src="assets/art-original-2026/'+c.id+'.webp" alt="" loading="lazy"><div><span class="v15-tag">PASSEPORT GÉOPINS</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>'+esc(titleOf(L))+' · Niveau '+L+'<br>Compagnon : '+esc(c.name)+'</p><div class="v15-progress-track" role="progressbar" aria-label="Progression du niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+(z-S.xp)+' XP jusqu’au niveau '+(L+1)+'</small></div></section>';
+ var top='<section class="v15-profile-top"><img src="assets/companions-final/'+c.id+'.png" alt="" loading="lazy"><div><span class="v15-tag">PASSEPORT GÉOPINS</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>'+esc(titleOf(L))+' · Niveau '+L+'<br>Compagnon : '+esc(c.name)+'</p><div class="v15-progress-track" role="progressbar" aria-label="Progression du niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+(z-S.xp)+' XP jusqu’au niveau '+(L+1)+'</small></div></section>';
  return top+oldTvProfile();};
 })();
 </script>
@@ -2499,8 +2511,8 @@ html body #home #nav.nav.gp-btn-nav > button.gp-illustrated-button > .art-nav-la
 /* Companion cards: exactly one artwork, no layered backgrounds or vector fallback. */
 .v3-creature-art{background:#fff7e8!important;background-image:none!important;overflow:hidden!important;position:relative!important;}
 .v3-creature-art::before,.v3-creature-art::after{display:none!important;content:none!important}
-.v3-creature-art > :not(img.gp-final-companion){display:none!important}
-.v3-creature-art > img.gp-final-companion{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:100%!important;max-height:205px!important;object-fit:contain!important;object-position:center!important;transform:none!important;animation:none!important;}
+.v3-creature-art > :not(img.vfix-creature-portrait){display:none!important}
+.v3-creature-art > img.vfix-creature-portrait{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:100%!important;max-height:205px!important;object-fit:contain!important;object-position:center!important;transform:none!important;animation:none!important;}
 </style>
 <script id="gp-single-navigation-and-portraits">
 (function(){'use strict';
@@ -2520,14 +2532,6 @@ function refresh(){if(active)return;active=true;
  try{
   const map=home.querySelector('.v2-grid');
   if(map && map.parentNode && (nav.parentNode!==map.parentNode || nav.nextElementSibling!==map)){map.parentNode.insertBefore(nav,map);}
-  const names=['plume','kiko','nori','siro','luma','sora'];
-  home.querySelectorAll('.v3-creature').forEach((card,i)=>{
-   const art=card.querySelector('.v3-creature-art');if(!art)return;
-   const id=names.find(n=>card.textContent.toLowerCase().includes(n))||names[i%6];
-   let img=art.querySelector(':scope > img.gp-final-companion');
-   if(!img){art.replaceChildren();img=document.createElement('img');img.className='gp-final-companion';art.append(img);}
-   const src='assets/companions-final/'+id+'.png';if(img.getAttribute('src')!==src)img.src=src;img.alt='Compagnon '+id;
-  });
  }finally{active=false;}}
 let scheduled=false;const observer=new MutationObserver(()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;refresh()})});
 observer.observe(home,{childList:true,subtree:true});refresh();
@@ -2617,5 +2621,12 @@ body.gp-active-game #end:not(.hidden) {z-index:10001!important;}
 
 
 
+<style id="gp-final-nav-card-normalization">
+.v3-creature-art{background-image:none!important;background-color:#fffaf0!important;overflow:hidden!important}
+.v3-creature-art>img.vfix-creature-portrait{display:block!important;visibility:visible!important;opacity:1!important;object-fit:contain!important;object-position:center!important;width:100%!important;height:100%!important;transform:none!important;position:static!important;}
+.v3-creature-art>img:not(.vfix-creature-portrait),.v3-creature-art>svg{display:none!important}
+.v3-home-buddy>img.vfix-creature-portrait{display:block!important;object-fit:contain!important;max-width:112px!important;max-height:112px!important;}
+.v3-home-buddy::before,.v3-home-buddy::after{display:none!important}
+</style>
 </body>
 </html>
