@@ -1325,7 +1325,7 @@ function showExplore(it,bb){var rs=$('res');$('bottom').innerHTML='';$('tip').st
  setTimeout(function(){var pts=it.t==='pt'&&it.g.length===1?[it.g[0]]:[[bb[0],bb[1]],[bb[2],bb[3]]];fitPts(pts,CUR==='france'?(PACK[it.p].scale?6:30):60);},60);}
 function nextQ(){if(!G)return;if(G.mode==='eclair'){G.i++;if(G.i>=G.q.length){G.q=G.q.concat(shuffle(G.q.slice()));}renderQ();return;}
  if(G.i>=G.q.length-1){finishGame();return;}G.i++;renderQ();}
-function quitAsk(){if(G.mode==='explore'||!G.res.length){closeGame();return;}modal('Quitter la partie ?','Tes repères déjà placés sont enregistrés, mais tu ne verras pas ton bilan.','Quitter','Continuer',function(){closeGame();});}
+function quitAsk(){if(!G){closeGame();return;}if(G.mode==='explore'||!G.res.length){closeGame();return;}modal('Quitter la partie ?','Tes repères déjà placés sont enregistrés, mais tu ne verras pas ton bilan.','Quitter','Continuer',function(){closeGame();});}
 function closeGame(){if(G&&G.timer)clearInterval(G.timer);G=null;$('game').className='hidden';$('end').className='hidden';showTab(TAB);}
 function finishGame(){if(!G)return;if(G.timer){clearInterval(G.timer);G.timer=null;}G.state='end';
  var n=G.res.length,avg=0,a;for(a=0;a<n;a++)avg+=G.res[a].s;avg=n?Math.round(avg/n):0;
@@ -2198,7 +2198,7 @@ body{background:linear-gradient(180deg,#dcebdd,#faf5e7)!important}
   function visible(el){return el && !el.classList.contains('hidden') && getComputedStyle(el).display!=='none';}
   function sync(){document.body.classList.toggle('tv25-playing', visible(document.getElementById('game')) || visible(document.getElementById('end')));}
   function go(){
-    try{if(typeof quitAsk==='function' && visible(document.getElementById('game'))){quitAsk();setTimeout(sync,100);return;}}
+    try{if(visible(document.getElementById('end')) && typeof closeGame==='function'){closeGame();sync();return;} if(typeof quitAsk==='function' && visible(document.getElementById('game'))){quitAsk();setTimeout(sync,100);return;}}
     catch(e){console.warn('Quit confirmation unavailable',e);}
     try{if(typeof closeGame==='function'){closeGame();sync();return;}}catch(e){console.warn('Close game unavailable',e);}
     document.getElementById('game')?.classList.add('hidden');document.getElementById('end')?.classList.add('hidden');sync();
@@ -2301,8 +2301,7 @@ body{background:linear-gradient(180deg,#dcebdd,#faf5e7)!important}
 .v29-quit{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:85;background:#fff2ce;color:#57371e;border:2px solid #784825;border-radius:13px;box-shadow:0 3px #5c381a;padding:9px 15px;font:800 14px system-ui;min-height:44px}
 #game.hidden~.v29-quit,.v29-quit.hidden{display:none!important}
 </style>
-<button aria-label="Quitter la partie et revenir à l'accueil" class="v29-quit hidden" id="v29Quit" type="button">← Quitter</button>
-<script id="terra-v29-controls">(()=>{const quit=document.getElementById('v29Quit');const game=document.getElementById('game');if(!quit||!game)return;function sync(){quit.classList.toggle('hidden',game.classList.contains('hidden'));}const observer=new MutationObserver(sync);observer.observe(game,{attributes:true,attributeFilter:['class']});quit.addEventListener('click',()=>{const existing=document.getElementById('bQuit')||document.querySelector('#game .x');if(existing){existing.click();return;}const close=[...document.querySelectorAll('#game button')].find(b=>/quitter|abandonner|retour/i.test(b.textContent||''));if(close){close.click();return;}if(confirm('Quitter cette partie ?')){game.classList.add('hidden');document.getElementById('home')?.classList.remove('hidden');document.getElementById('nav')?.classList.remove('hidden');}});sync();})();</script>
+
 <style id="terra-v30-mission-rebuild">
 /* Version 30: unique bespoke painting per geography theme, no duplicate panoramic banner */
 #home .v2-pack{overflow:hidden!important;min-width:0!important;border:2px solid #986234!important;border-radius:18px!important;box-shadow:0 4px 0 #c8ac7a!important;background:#fffaf0!important;display:flex!important;flex-direction:column!important}
@@ -2550,9 +2549,12 @@ for(const btn of nav.querySelectorAll(':scope > button[data-t]')){
 /* Aucun portrait pleine taille sur le récapitulatif : le score et les boutons restent prioritaires. */
 #end .v3-result-buddy, #end .v3-result-buddy img, #end img.vfix-creature-portrait, #end img.gp-final-companion {display:none!important;}
 /* Pendant la partie, masquer toute navigation pouvant passer par-dessus la carte. */
-body.gp-active-game #nav, body.gp-active-game .veil {pointer-events:none!important;}
+body.gp-active-game #nav {pointer-events:none!important;}
+/* Quit confirmation is a veil: never disable its buttons. */
+body.gp-active-game .veil {pointer-events:auto!important; z-index:11000!important;}
 body.gp-active-game #game {z-index:10000!important; visibility:visible!important;}
-body.gp-active-game #end:not(.hidden) {z-index:10001!important;}
+body.gp-active-game #end:not(.hidden) {z-index:10001!important;pointer-events:auto!important;}
+#end .endbtns, #end .endbtns button {pointer-events:auto!important;position:relative;z-index:2;}
 </style>
 <script id="gp-pack-result-hotfix-js">
 (function(){

@@ -1,0 +1,14 @@
+GéoPins — Correctif des jeux (21 octobre 2026)
+
+Version issue de GeoPins-Navigation-Reparee-Source.zip (version confirmée comme fonctionnelle pour le menu).
+
+Corrections :
+- Rétablit les clics sur la fenêtre de confirmation Quitter : une règle CSS bloquait tous les clics sur les fenêtres .veil pendant la partie.
+- Permet de quitter depuis la croix (✕) puis de confirmer.
+- Préserve les boutons Accueil et Rejouer sur l'écran de résultats et leurs interactions.
+- Évite un deuxième bouton Quitter flottant qui faisait doublon ; le bouton d'urgence conservé quitte immédiatement l'écran des résultats.
+- Ne modifie pas les sauvegardes ni les visuels des compagnons.
+
+Contrôle : scripts exécutables passés au contrôle de syntaxe ; essai de navigation dans Chromium limité par l'environnement.
+
+Installation : remplacer index.html et assets dans le dépôt GitHub Pages. Commit puis Push origin.
