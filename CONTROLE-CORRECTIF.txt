@@ -1,0 +1,2 @@
+Navigation : suppression des deux scripts qui interceptaient les clics en capture ; classes des boutons préservées lors des changements de rubrique ; cinq images de navigation conservées.
+Faire Commit puis Push.

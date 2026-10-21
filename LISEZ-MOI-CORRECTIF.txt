@@ -1,0 +1,11 @@
+GÉOPINS — correctif boutons de retour et illustrations des compagnons
+
+- Correction des clics de la navigation principale (Village, Missions, Brevet, Collection, Profil).
+- Correction des liens « Retour au village » présents sur les écrans.
+- Utilisation des six dernières illustrations individuelles (PNG transparents, pas les anciennes découpes WebP).
+- Les images se trouvent dans assets/companions-final/.
+- Les données pédagogiques et les clés de sauvegarde ne sont pas modifiées.
+
+Installation : remplacer index.html et assets/ dans la racine du dépôt Geopins, puis Commit to main et Push origin dans GitHub Desktop.
+Vérifier après déploiement les retours depuis Collection, Missions, Brevet et les cartes des six compagnons.
+Test automatisé du navigateur impossible dans cet environnement (accès local bloqué) ; validation visuelle sur GitHub Pages encore nécessaire.

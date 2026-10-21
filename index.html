@@ -917,7 +917,11 @@ img[src*="/final-art/"]{object-fit:contain;object-position:center;}
 #end .v3-result-buddy{display:none!important}
 @media(max-width:680px){.v3-creature-art{height:205px!important}.v3-home-band .v3-home-buddy{flex-basis:86px!important;width:86px!important;min-width:86px!important;height:86px!important}}
 </style>
-</head>
+<style id="gp-2026-nav-stability">
+#nav.gp-btn-nav button[data-t] > img.art-nav-image {display:block!important;opacity:1!important;visibility:visible!important;width:46px!important;height:46px!important;object-fit:contain!important;}
+#nav.gp-btn-nav button[data-t] > span.art-nav-label {display:block!important;opacity:1!important;visibility:visible!important;}
+#nav.gp-btn-nav button[data-t],#nav.gp-btn-nav button[data-t]:hover,#nav.gp-btn-nav button[data-t]:active {transform:none!important;translate:none!important;animation:none!important;}
+</style></head>
 <body>
 <main class="screen" id="home"></main>
 <main class="screen hidden" id="profile"></main>
@@ -1150,7 +1154,7 @@ function renderProfile(){var h=$('profile'),L=levelOf(S.xp),st=S.stats;
  $('bReset').onclick=function(){modal('Tout effacer ?','Ton niveau, tes badges et ta liste à revoir seront supprimés de cet appareil.','Effacer','Annuler',function(){var keep=S.settings;S=defState();S.settings=keep;save();renderProfile();toast('🧽','Progression effacée.');});};}
 function tg(k,label){return '<div class="tg"><span>'+label+'</span><button class="sw'+(S.settings[k]?' on':'')+'" data-k="'+k+'" role="switch" aria-checked="'+(S.settings[k]?'true':'false')+'" aria-label="'+label+'"></button></div>';}
 function applySettings(){document.body.className=S.settings.dys?'dys':'';}
-function showTab(t){TAB=t;$('home').className='screen'+(t==='play'?'':' hidden');$('profile').className='screen'+(t==='me'?'':' hidden');var b=$('nav').querySelectorAll('button');for(var a=0;a<b.length;a++)b[a].className=b[a].getAttribute('data-t')===t?'on':'';if(t==='play')renderHome();else renderProfile();window.scrollTo(0,0);}
+function showTab(t){TAB=t;$('home').className='screen'+(t==='play'?'':' hidden');$('profile').className='screen'+(t==='me'?'':' hidden');var b=$('nav').querySelectorAll('button');for(var a=0;a<b.length;a++)b[a].classList.toggle('on',b[a].getAttribute('data-t')===t);if(t==='play')renderHome();else renderProfile();window.scrollTo(0,0);}
 
 /* ---------- map view ---------- */
 var svg=$('map'),gMap,gOv,VW=0,VH=0,T={k:1,x:0,y:0},FIT={k:1,x:0,y:0},CUR=null,BUILT={};
@@ -1457,10 +1461,10 @@ function tvRenderEvents(root){var nav=root.querySelectorAll('[data-nav]');for(va
 (function(){var orig=tvRenderEvents;tvRenderEvents=function(root){orig(root);root.querySelectorAll('[data-v13-filter]').forEach(function(btn){btn.addEventListener('click',function(){var f=this.getAttribute('data-v13-filter');var existing=root.querySelector('[data-f="'+f+'"]');if(existing)existing.click();});});};})();
 renderHome=function(){var root=$('home');var html=tvHeader();if(TAB==='missions')html+=tvMissions();else if(TAB==='brevet')html+=tvBrevet();else if(TAB==='collection')html+=tvCollection();else if(TAB==='village-edit')html+=tvDecorPage();else html+=tvVillage();root.innerHTML='<div class="v2-wrap">'+html+'</div>';tvRenderEvents(root);};
 renderProfile=function(){var root=$('profile');root.innerHTML='<div class="v2-wrap">'+tvHeader()+tvProfile()+'</div>';tvRenderEvents(root);$('nameIn').oninput=function(){S.name=this.value.replace(/^\s+/,'');save();};var opts=root.querySelectorAll('.sw');for(var a=0;a<opts.length;a++)opts[a].onclick=function(){var k=this.getAttribute('data-k');S.settings[k]=!S.settings[k];save();applySettings();renderProfile();};var avs=root.querySelectorAll('[data-avatar]');for(a=0;a<avs.length;a++)avs[a].onclick=function(){TV.avatar=this.getAttribute('data-avatar');tvSave();renderProfile();sfx('tap');};$('bReset').onclick=function(){modal('Repartir de zéro ?','Les scores, XP et badges de cet appareil seront effacés, ainsi que les décorations placées.','Effacer','Annuler',function(){var keep=S.settings;S=defState();S.settings=keep;TV.decor=[];tvSave();save();renderProfile();toast('🧽','Progression remise à zéro.');});};};
-showTab=function(t){if(t==='play')t='village';if(t==='village-edit')t='village';TAB=t;$('home').className='screen'+(t==='me'?' hidden':'');$('profile').className='screen'+(t==='me'?'':' hidden');var btns=$('nav').querySelectorAll('button');for(var z=0;z<btns.length;z++)btns[z].className=btns[z].getAttribute('data-t')===t?'on':'';if(t==='me')renderProfile();else if(t==='village'){renderHome();}else renderHome();window.scrollTo(0,0);};
+showTab=function(t){if(t==='play')t='village';if(t==='village-edit')t='village';TAB=t;$('home').className='screen'+(t==='me'?' hidden':'');$('profile').className='screen'+(t==='me'?'':' hidden');var btns=$('nav').querySelectorAll('button');for(var z=0;z<btns.length;z++)btns[z].classList.toggle('on',btns[z].getAttribute('data-t')===t);if(t==='me')renderProfile();else if(t==='village'){renderHome();}else renderHome();window.scrollTo(0,0);};
 // Village editor button: village opens the editor when pressed on the village screen.
 var tvEventsOriginal=tvRenderEvents;
-tvRenderEvents=function(root){tvEventsOriginal(root);var edit=root.querySelector('.v2-heading button[data-nav="village"]');if(edit&&TAB==='village'){edit.onclick=function(){TAB='village-edit';renderHome();window.scrollTo(0,0);};}if(TAB==='village-edit'){var nav=$('nav').querySelectorAll('button');for(var n=0;n<nav.length;n++)nav[n].className=nav[n].getAttribute('data-t')==='village'?'on':'';}};
+tvRenderEvents=function(root){tvEventsOriginal(root);var edit=root.querySelector('.v2-heading button[data-nav="village"]');if(edit&&TAB==='village'){edit.onclick=function(){TAB='village-edit';renderHome();window.scrollTo(0,0);};}if(TAB==='village-edit'){var nav=$('nav').querySelectorAll('button');for(var n=0;n<nav.length;n++)nav[n].classList.toggle('on',nav[n].getAttribute('data-t')==='village');}};
 /* ===== END TERRA VILLAGE EXPANSION ===== */
 
 /* GÉOPINS — TERRA VILLAGE V3 / living island, exploration companions
@@ -2597,47 +2601,7 @@ body.gp-active-game #end:not(.hidden) {z-index:10001!important;}
 }
 [data-v3-unselect]{cursor:pointer!important}
 </style>
-<script id="gp-construction-navigation-repair-js">
-(function(){'use strict';
-  // Capture only the broken return links; do not override unrelated activity buttons.
-  document.addEventListener('click',function(e){
-    const back=e.target.closest('button[data-nav="village"],a[data-nav="village"]');
-    if(!back || back.closest('#nav'))return;
-    e.preventDefault();e.stopImmediatePropagation();
-    try{if(typeof V3_PICK!=='undefined')V3_PICK=null;
-      if(typeof showTab==='function')showTab('village');
-      else if(typeof renderHome==='function')renderHome();
-      if(typeof TAB!=='undefined' && TAB!=='village'){TAB='village';if(typeof renderHome==='function')renderHome();}
-      window.scrollTo({top:0,behavior:'instant'});
-    }catch(error){console.error('Retour au village',error);}
-  },true);
-  // Cancellation must work even if another script rebuilt the construction cards.
-  document.addEventListener('click',function(e){
-    const cancel=e.target.closest('[data-v3-unselect]');if(!cancel)return;
-    e.preventDefault();e.stopImmediatePropagation();
-    try{V3_PICK=null;if(typeof renderHome==='function')renderHome();}
-    catch(error){console.error('Annulation objet',error);}
-  },true);
-  document.addEventListener('keydown',function(e){
-    if(e.key!=='Escape' || typeof V3_PICK==='undefined' || V3_PICK===null)return;
-    if(e.target.matches('input,textarea,select,[contenteditable="true"]'))return;
-    V3_PICK=null;if(typeof renderHome==='function')renderHome();
-  });
-  // Keep navigation artwork present if older render code replaces tab contents.
-  const paths={village:'village',missions:'missions',brevet:'brevet',collection:'collection',me:'me'};
-  function repairNav(){
-    document.querySelectorAll('#nav button[data-t]').forEach(function(btn){
-      const key=btn.getAttribute('data-t');if(!paths[key])return;
-      let icon=btn.querySelector('img.art-nav-image');
-      if(!icon){icon=document.createElement('img');icon.className='art-nav-image';icon.alt='';icon.loading='eager';btn.prepend(icon);}
-      const expected='assets/menu-buttons/'+paths[key]+'.webp';if(icon.getAttribute('src')!==expected)icon.src=expected;
-      let label=btn.querySelector('.art-nav-label');if(!label){label=document.createElement('span');label.className='art-nav-label';label.textContent=({me:'Profil',village:'Village',missions:'Missions',brevet:'Brevet',collection:'Collection'})[key];btn.append(label);}
-    });
-  }
-  repairNav();
-  const nav=document.getElementById('nav');if(nav){let queued=false;new MutationObserver(function(){if(queued)return;queued=true;requestAnimationFrame(function(){queued=false;repairNav();});}).observe(nav,{childList:true,subtree:true});}
-})();
-</script>
+
 
 <style id="gp-nav-and-companions-canonical-fix">
 /* Canonical companion artwork: isolated transparent illustrations, one per card. */
@@ -2650,49 +2614,6 @@ body.gp-active-game #end:not(.hidden) {z-index:10001!important;}
 #nav button[data-t] img.art-nav-image {display:block!important;visibility:visible!important;opacity:1!important;object-fit:contain!important;}
 #nav button[data-t] .art-nav-label {display:block!important;visibility:visible!important;opacity:1!important;}
 </style>
-<script id="gp-nav-and-companions-canonical-fix-js">
-(function(){'use strict';
- const assets='assets/companions-final/';
- const ids=['plume','kiko','nori','siro','luma','sora'];
- function fixPortraits(){
-   document.querySelectorAll('.v3-creature').forEach((card,i)=>{
-     let id=(card.getAttribute('data-v3-buddy')||ids[i]||'plume').toLowerCase();
-     if(!ids.includes(id)) id=ids[i]||'plume';
-     const artwork=card.querySelector('.v3-creature-art');if(!artwork)return;
-     let portrait=artwork.querySelector('img.vfix-creature-portrait');
-     if(!portrait){portrait=document.createElement('img');portrait.className='vfix-creature-portrait';portrait.alt=id;artwork.append(portrait);}
-     let src=assets+id+'.png';if(portrait.getAttribute('src')!==src)portrait.setAttribute('src',src);
-     artwork.querySelectorAll('img:not(.vfix-creature-portrait),svg').forEach(n=>n.remove());
-   });
-   document.querySelectorAll('.v3-home-buddy img.vfix-creature-portrait').forEach(img=>{
-     let old=img.getAttribute('src')||'';let name=ids.find(id=>old.includes('/'+id+'.')) || 'plume';
-     const src=assets+name+'.png';if(old!==src)img.setAttribute('src',src);
-   });
- }
- // Event delegation avoids callbacks left pointing to old menus after a redraw.
- document.addEventListener('click',function(event){
-   const nav=event.target.closest('#nav button[data-t]');
-   if(nav){event.preventDefault();event.stopImmediatePropagation();
-     const tab=nav.dataset.t;
-     if(typeof showTab==='function')showTab(tab);
-     return;
-   }
-   const back=event.target.closest('button[data-nav="village"],a[data-nav="village"],button[data-nav="play"],button[data-v6-go="village"],button[data-v7-go="village"]');
-   if(back){event.preventDefault();event.stopImmediatePropagation();
-     try{if(typeof V3_PICK!=='undefined')V3_PICK=null;}catch(e){}
-     if(typeof showTab==='function')showTab('village');
-     window.scrollTo(0,0);
-   }
- },true);
- let pending=false;
- const observer=new MutationObserver(()=>{
-   if(pending)return;
-   pending=true;
-   requestAnimationFrame(()=>{pending=false;fixPortraits();});
- });
- const home=document.getElementById('home');if(home)observer.observe(home,{childList:true,subtree:true});
- fixPortraits();
-})();
-</script>
+
 </body>
 </html>
