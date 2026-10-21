@@ -1013,7 +1013,40 @@ img[src*="/final-art/"]{object-fit:contain;object-position:center;}
 .v3-object-layer [data-gp-size="empty"]{width:clamp(42px,8.5%,75px)!important;z-index:10}
 .v3-object-layer .v3-site:hover,.v3-object-layer .v3-site:focus-visible{transform:translate(-50%,-50%)!important}
 @media(max-width:620px){.v3-object-layer [data-gp-size="large"]{width:14%!important}.v3-object-layer [data-gp-size="nature"]{width:12%!important}.v3-object-layer [data-gp-size="normal"]{width:10.5%!important}.v3-object-layer [data-gp-size="small"]{width:9%!important}.v3-object-layer [data-gp-size="empty"]{width:9.5%!important}}
-</style></head>
+</style>
+<style id="gp-workshop-visual-size-stable-v3">
+/* The artwork itself fills its transparent PNG canvas; placement positions must stay anchored. */
+.v3-object-layer .v3-site[data-gp-size],
+.v3-object-layer .v3-placed-object[data-gp-size],
+.v3-object-layer .v3-site[data-gp-size]:hover,
+.v3-object-layer .v3-site[data-gp-size]:focus-visible,
+.v3-object-layer .v3-site[data-gp-size]:active {
+ transform:translate(-50%,-50%) !important;
+ translate:none !important;
+ scale:1 !important;
+ animation:none !important;
+ transition:filter .12s ease,border-color .12s ease !important;
+}
+.v3-object-card,.v3-object-card:hover,.v3-object-card:active,.v3-object-card:focus-visible,
+.v3-object-card .v3-object-pic,.v3-object-card:hover .v3-object-pic,
+.v3-object-card .gp-workshop-sprite,.v3-object-card:hover .gp-workshop-sprite{
+ transform:none !important;translate:none !important;scale:1 !important;animation:none !important;
+}
+.v3-object-layer [data-gp-size="large"]{width:clamp(85px,14%,175px)!important}
+.v3-object-layer [data-gp-size="nature"]{width:clamp(74px,12%,148px)!important}
+.v3-object-layer [data-gp-size="normal"]{width:clamp(64px,10.5%,128px)!important}
+.v3-object-layer [data-gp-size="small"]{width:clamp(50px,8%,100px)!important}
+.v3-object-layer [data-gp-size="empty"]{width:clamp(42px,8.5%,75px)!important}
+.v3-object-layer .gp-workshop-sprite{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important}
+@media(max-width:620px){
+ .v3-object-layer [data-gp-size="large"]{width:16%!important}
+ .v3-object-layer [data-gp-size="nature"]{width:14%!important}
+ .v3-object-layer [data-gp-size="normal"]{width:12%!important}
+ .v3-object-layer [data-gp-size="small"]{width:10%!important}
+ .v3-object-layer [data-gp-size="empty"]{width:9.5%!important}
+}
+</style>
+</head>
 <body>
 <main class="screen" id="home"></main>
 <main class="screen hidden" id="profile"></main>
@@ -1658,7 +1691,7 @@ function v3Art(n){
   '<path d="M48 67V27" stroke="#947D64" stroke-width="5"/><path d="M24 30Q17 9 37 9Q50 0 63 9Q84 10 77 31L66 51H34Z" fill="#F1A77D" stroke="#B67D68" stroke-width="4"/><path d="M28 26h46M49 9v42" fill="none" stroke="#FFF0D2" stroke-width="5"/><path d="m34 51 15 25 16-25" fill="#FFF0D6" stroke="#BBA182" stroke-width="3"/><ellipse cx="50" cy="79" rx="11" ry="5" fill="#E8D5AE"/>'
  ];
  var d=V3_DECORS[n];if(!d)return '';
- return '<img class="v3-object-svg v10-object-image gp-workshop-sprite" src="assets/workshop-50/item-'+String(d.sprite).padStart(2,'0')+'.png?v=atelier-20261021b" alt="" loading="lazy" decoding="async">';
+ return '<img class="v3-object-svg v10-object-image gp-workshop-sprite" src="assets/workshop-50/item-'+String(d.sprite).padStart(2,'0')+'.png?v=atelier-cadre-20261021c" alt="" loading="lazy" decoding="async">';
 }
 function gpDecorSize(n){
  var id=V3_DECORS[n]&&V3_DECORS[n].sprite;
@@ -1690,7 +1723,7 @@ tvScene=function(edit){
  original=original.replace('☀️ TON ÎLE D’AVENTURE','✦ TON MONDE À EXPLORER');
  return original;
 };
-function v3Card(c){var unlock=S.xp>=c.xp,active=V3.buddy===c.id;return '<button class="v3-creature'+(unlock?'':' v3-locked')+(active?' v3-active':'')+'" '+(unlock?'data-v3-buddy="'+c.id+'"':'disabled')+' aria-pressed="'+active+'"><div class="v3-creature-art" style="--creature-tint:'+c.color+'">'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png?v=atelier-20261021b" alt="" loading="lazy" />'+'</div><div class="v3-creature-info"><span class="v3-creature-tag">'+(active?'✓ TON COMPAGNON':unlock?'COMPAGNON DÉBLOQUÉ':'🔒 '+c.xp+' XP')+'</span><strong>'+c.name+'</strong><small>'+c.kind+'</small><p>'+c.tag+'</p><span class="v3-creature-action">'+(active?'À tes côtés':unlock?'Choisir ce compagnon →':'Encore '+(c.xp-S.xp)+' XP')+'</span></div></button>';}
+function v3Card(c){var unlock=S.xp>=c.xp,active=V3.buddy===c.id;return '<button class="v3-creature'+(unlock?'':' v3-locked')+(active?' v3-active':'')+'" '+(unlock?'data-v3-buddy="'+c.id+'"':'disabled')+' aria-pressed="'+active+'"><div class="v3-creature-art" style="--creature-tint:'+c.color+'">'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png?v=atelier-cadre-20261021c" alt="" loading="lazy" />'+'</div><div class="v3-creature-info"><span class="v3-creature-tag">'+(active?'✓ TON COMPAGNON':unlock?'COMPAGNON DÉBLOQUÉ':'🔒 '+c.xp+' XP')+'</span><strong>'+c.name+'</strong><small>'+c.kind+'</small><p>'+c.tag+'</p><span class="v3-creature-action">'+(active?'À tes côtés':unlock?'Choisir ce compagnon →':'Encore '+(c.xp-S.xp)+' XP')+'</span></div></button>';}
 var v3OldCollection=tvCollection;
 tvCollection=function(){
  var head=tvTitle('MON CARNET DE COMPAGNONS','Rencontre les amis de Terra Village 🐾','Six petites créatures originales à découvrir en progressant dans les missions.','<button class="v2-subaction" data-nav="village">🏡 Retour au village</button>');
@@ -1714,7 +1747,7 @@ tvDecorPage=function(){
 };
 var v3OldVillage=tvVillage;
 tvVillage=function(){var h=v3OldVillage();var c=v3Buddy();var next=V3_BUDDIES.find(function(b){return S.xp<b.xp;});
- h+='<section class="v3-home-band"><div class="v3-home-buddy">'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png?v=atelier-20261021b" alt="" loading="lazy" />'+'</div><div class="v3-home-band-text"><div class="v3-eyebrow">✦ TA PETITE ÉQUIPE D’AVENTURE</div><h3>'+c.name+' t’accompagne !</h3><p>'+c.line+' '+(next?'Prochaine rencontre : <strong>'+esc(next.name)+'</strong> à '+next.xp+' XP.':'Bravo, tu as rencontré tous les compagnons !')+'</p></div><button class="v3-band-button" data-nav="collection">Découvrir les compagnons <span>↗</span></button></section>';
+ h+='<section class="v3-home-band"><div class="v3-home-buddy">'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png?v=atelier-cadre-20261021c" alt="" loading="lazy" />'+'</div><div class="v3-home-band-text"><div class="v3-eyebrow">✦ TA PETITE ÉQUIPE D’AVENTURE</div><h3>'+c.name+' t’accompagne !</h3><p>'+c.line+' '+(next?'Prochaine rencontre : <strong>'+esc(next.name)+'</strong> à '+next.xp+' XP.':'Bravo, tu as rencontré tous les compagnons !')+'</p></div><button class="v3-band-button" data-nav="collection">Découvrir les compagnons <span>↗</span></button></section>';
  var checkpoints=[{t:'Premiers pas',goal:5,v:S.stats.pins,icon:'📍',d:'Poser 5 repères'},{t:'Curiosité',goal:100,v:S.xp,icon:'✨',d:'Gagner 100 XP'},{t:'Aventurier',goal:3,v:S.stats.games,icon:'🧭',d:'Terminer 3 missions'}];
  h+='<section class="v3-steps"><div class="v2-section-title"><h3>🌱 Tes premiers objectifs</h3><small>À ton rythme, sans compétition</small></div><div class="v3-step-grid">';
  checkpoints.forEach(function(it){var ok=it.v>=it.goal,pc=Math.min(100,Math.floor(it.v/it.goal*100));h+='<div class="v3-step"><span class="v3-step-icon">'+it.icon+'</span><div><b>'+it.t+'</b><small>'+it.d+'</small></div><span class="v3-step-progress">'+(ok?'✓':Math.min(it.v,it.goal)+'/'+it.goal)+'</span><div class="v2-progress"><i style="width:'+pc+'%"></i></div></div>';});
@@ -1737,7 +1770,7 @@ tvRenderEvents=function(root){
 };
 var v3OldShowEnd=showEnd;
 showEnd=function(avg){v3OldShowEnd(avg);var c=v3Buddy(),dest=$('end').querySelector('.kpis');if(!dest)return;var msg=avg>=80?'Quelle belle expédition ! Tu connais déjà beaucoup de repères.':avg>=45?'Bien joué ! On apprend aussi en faisant des essais.':'Continue à explorer : chaque repère reviendra plus facilement.';
- dest.insertAdjacentHTML('afterend','<div class="v3-result-buddy"><span>'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png?v=atelier-20261021b" alt="" loading="lazy" />'+'</span><div><b>'+c.name+' te félicite !</b><p>'+msg+'</p></div></div>');};
+ dest.insertAdjacentHTML('afterend','<div class="v3-result-buddy"><span>'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png?v=atelier-cadre-20261021c" alt="" loading="lazy" />'+'</span><div><b>'+c.name+' te félicite !</b><p>'+msg+'</p></div></div>');};
 // If the user resets their progress, remove the optional cosmetic placements, too.
 var v3OldProfile=renderProfile;
 renderProfile=function(){v3OldProfile();var reset=$('bReset');if(reset){var original=reset.onclick;reset.onclick=function(){original();var m=document.querySelector('.modal');if(m){var yes=m.querySelector('[data-a="o"]');if(yes)yes.addEventListener('click',function(){V3={buddy:'plume',sky:'day',places:{}};V3_PICK=null;v3Save();},{once:true});}};}};
@@ -2127,7 +2160,7 @@ renderProfile=function(){oldProfile();var h=document.getElementById('profile');i
 // Include the passport in the V2 theme profile too, where the separate home screen is used.
 var oldTvProfile=tvProfile;
 tvProfile=function(){var c=buddy(),L=levelOf(S.xp),a=xpFor(L),z=xpFor(L+1),pct=Math.max(0,Math.min(100,Math.round(100*(S.xp-a)/(z-a))));
- var top='<section class="v15-profile-top"><img src="assets/companions-final/'+c.id+'.png?v=atelier-20261021b" alt="" loading="lazy"><div><span class="v15-tag">PASSEPORT GÉOPINS</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>'+esc(titleOf(L))+' · Niveau '+L+'<br>Compagnon : '+esc(c.name)+'</p><div class="v15-progress-track" role="progressbar" aria-label="Progression du niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+(z-S.xp)+' XP jusqu’au niveau '+(L+1)+'</small></div></section>';
+ var top='<section class="v15-profile-top"><img src="assets/companions-final/'+c.id+'.png?v=atelier-cadre-20261021c" alt="" loading="lazy"><div><span class="v15-tag">PASSEPORT GÉOPINS</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>'+esc(titleOf(L))+' · Niveau '+L+'<br>Compagnon : '+esc(c.name)+'</p><div class="v15-progress-track" role="progressbar" aria-label="Progression du niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+(z-S.xp)+' XP jusqu’au niveau '+(L+1)+'</small></div></section>';
  return top+oldTvProfile();};
 })();
 </script>
