@@ -1046,6 +1046,43 @@ img[src*="/final-art/"]{object-fit:contain;object-position:center;}
  .v3-object-layer [data-gp-size="empty"]{width:9.5%!important}
 }
 </style>
+
+<!-- GéoPins: anchor-level fix: placement buttons have a fixed hitbox; decoration scale is on the inner PNG only. -->
+<style id="gp-fixed-placement-anchors-20261021">
+/* Keep each interactive slot's geometry identical whether empty, selected, filled, hovered or focused. */
+html body .v3-living .v3-object-layer button.v3-site[data-v3-slot],
+html body .v3-living .v3-object-layer button.v3-site[data-v3-slot]:is(:hover,:focus,:focus-visible,:active) {
+ position:absolute!important; box-sizing:border-box!important;
+ width:clamp(40px,5.2vw,64px)!important; height:clamp(40px,5.2vw,64px)!important;
+ min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;
+ aspect-ratio:1!important; margin:0!important;padding:0!important;
+ transform:translate3d(-50%,-50%,0)!important; translate:none!important;scale:1!important;
+ animation:none!important;transition:none!important;will-change:auto!important;
+ filter:none!important; outline-offset:2px!important;
+} 
+/* All placements share one fixed circular hit target; only the drawing varies in size. */
+html body .v3-living .v3-object-layer button.v3-site:not(.empty){
+ background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important;
+}
+html body .v3-living .v3-object-layer button.v3-site.empty{
+ border:2px dashed #3e805e!important;box-shadow:0 2px 7px #173b3950!important;
+}
+html body .v3-living .v3-object-layer button.v3-site .gp-workshop-sprite{
+ position:absolute!important;left:50%!important;top:50%!important;
+ width:170%!important;height:170%!important;max-width:none!important;max-height:none!important;
+ transform:translate3d(-50%,-50%,0)!important;translate:none!important;scale:1!important;
+ object-fit:contain!important;pointer-events:none!important;animation:none!important;transition:none!important;filter:drop-shadow(0 5px 4px #183e3855)!important;
+}
+html body .v3-living .v3-object-layer button.v3-site[data-gp-size="large"] .gp-workshop-sprite{width:255%!important;height:255%!important}
+html body .v3-living .v3-object-layer button.v3-site[data-gp-size="nature"] .gp-workshop-sprite{width:215%!important;height:215%!important}
+html body .v3-living .v3-object-layer button.v3-site[data-gp-size="normal"] .gp-workshop-sprite{width:185%!important;height:185%!important}
+html body .v3-living .v3-object-layer button.v3-site[data-gp-size="small"] .gp-workshop-sprite{width:145%!important;height:145%!important}
+html body .v3-living .v3-object-layer button.v3-site .v3-site-plus{transform:none!important;animation:none!important;transition:none!important}
+@media(max-width:620px){
+ html body .v3-living .v3-object-layer button.v3-site[data-v3-slot],
+ html body .v3-living .v3-object-layer button.v3-site[data-v3-slot]:is(:hover,:focus,:focus-visible,:active){width:clamp(34px,8.5vw,48px)!important;height:clamp(34px,8.5vw,48px)!important}
+}
+</style>
 </head>
 <body>
 <main class="screen" id="home"></main>

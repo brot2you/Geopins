@@ -1,0 +1,2 @@
+Correction structurelle : chaque emplacement conserve exactement la meme largeur et hauteur dans tous les etats. Seule l’image situee a l interieur du bouton change d echelle. Les coordonnees restent identiques.
+Test visuel et interaction dans le navigateur necessaires avant publication.
