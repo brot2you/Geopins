@@ -996,7 +996,14 @@ img[src*="/final-art/"]{object-fit:contain;object-position:center;}
 .v3-object-card,.v3-object-card:hover,.v3-object-card:focus-visible{transform:none!important}
 @media(max-width:700px){.v3-object-pic{width:80px!important;height:80px!important}}
 </style>
-</head>
+<style id="gp-workshop-24-slots-stable">
+.v3-object-layer{overflow:visible!important}
+.v3-site,.v3-placed-object{width:clamp(27px,5.3%,76px)!important;height:auto!important;aspect-ratio:1!important;transform:translate(-50%,-50%)!important;transition:box-shadow .12s ease,border-color .12s ease!important}
+.v3-site:hover,.v3-site:focus-visible,.v3-placed-object:hover{transform:translate(-50%,-50%)!important}
+.v3-site img.gp-workshop-sprite,.v3-placed-object img.gp-workshop-sprite{width:100%!important;height:100%!important;object-fit:contain!important;max-width:none!important}
+.v3-object-pic img.gp-workshop-sprite{object-fit:contain!important}
+@media(max-width:620px){.v3-site,.v3-placed-object{width:6.3%!important}}
+</style></head>
 <body>
 <main class="screen" id="home"></main>
 <main class="screen hidden" id="profile"></main>
@@ -1561,15 +1568,15 @@ var V3_BUDDIES=[
 ];
 var V3_DECORS=[{"name":"Grand chêne","xp":0,"icon":"new","sprite":21},{"name":"Jardinière de fleurs","xp":0,"icon":"new","sprite":36},{"name":"Cerisier en fleurs","xp":0,"icon":"new","sprite":22},{"name":"Fontaine de la place","xp":150,"icon":"new","sprite":17},{"name":"Arche fleurie","xp":320,"icon":"new","sprite":37},{"name":"Campement des explorateurs","xp":550,"icon":"new","sprite":11},{"name":"Phare marin","xp":800,"icon":"new","sprite":5},{"name":"Longue-vue","xp":1200,"icon":"new","sprite":50},{"name":"Moulin à vent","xp":1650,"icon":"new","sprite":6},{"name":"Petit pont de pierre","xp":2200,"icon":"new","sprite":16},{"name":"Arche de pierre","xp":2900,"icon":"new","sprite":20},{"name":"Barque de pêche","xp":3700,"icon":"new","sprite":44},{"name":"Chaumière bleue","xp":590,"icon":"new","sprite":1},{"name":"Maison au toit de paille","xp":590,"icon":"new","sprite":2},{"name":"Maison provençale","xp":830,"icon":"new","sprite":3},{"name":"Cabane dans les arbres","xp":830,"icon":"new","sprite":4},{"name":"Moulin à eau","xp":1070,"icon":"new","sprite":7},{"name":"Étal du marché","xp":1070,"icon":"new","sprite":8},{"name":"Cabane du port","xp":1310,"icon":"new","sprite":9},{"name":"Petit château","xp":1310,"icon":"new","sprite":10},{"name":"Serre botanique","xp":1550,"icon":"new","sprite":12},{"name":"Panneau des annonces","xp":1550,"icon":"new","sprite":13},{"name":"Puits du village","xp":1790,"icon":"new","sprite":14},{"name":"Pontons de bois","xp":1790,"icon":"new","sprite":15},{"name":"Pierre mystérieuse","xp":2030,"icon":"new","sprite":18},{"name":"Panneaux directionnels","xp":2030,"icon":"new","sprite":19},{"name":"Oranger","xp":2270,"icon":"new","sprite":23},{"name":"Pommier","xp":2270,"icon":"new","sprite":24},{"name":"Grand sapin","xp":2510,"icon":"new","sprite":25},{"name":"Palmier","xp":2510,"icon":"new","sprite":26},{"name":"Arbre feuillu","xp":2750,"icon":"new","sprite":27},{"name":"Cactus fleuri","xp":2750,"icon":"new","sprite":28},{"name":"Bosquet de bambous","xp":2990,"icon":"new","sprite":29},{"name":"Rochers moussus","xp":2990,"icon":"new","sprite":30},{"name":"Banc fleuri","xp":3230,"icon":"new","sprite":31},{"name":"Clôture rustique","xp":3230,"icon":"new","sprite":32},{"name":"Muret de pierre","xp":3470,"icon":"new","sprite":33},{"name":"Lampadaire","xp":3470,"icon":"new","sprite":34},{"name":"Tonneau et caisse","xp":3710,"icon":"new","sprite":35},{"name":"Massif fleuri","xp":3710,"icon":"new","sprite":38},{"name":"Statue de chouette","xp":3950,"icon":"new","sprite":39},{"name":"Carte du village","xp":3950,"icon":"new","sprite":40},{"name":"Coin de plage","xp":4190,"icon":"new","sprite":41},{"name":"Parasol de plage","xp":4190,"icon":"new","sprite":42},{"name":"Hamac tropical","xp":4430,"icon":"new","sprite":43},{"name":"Casiers de pêche","xp":4430,"icon":"new","sprite":45},{"name":"Feu de camp","xp":4670,"icon":"new","sprite":46},{"name":"Table de pique-nique","xp":4670,"icon":"new","sprite":47},{"name":"Four à bois","xp":4910,"icon":"new","sprite":48},{"name":"Marmite au feu","xp":4910,"icon":"new","sprite":49}];
 // Hand-selected decorative positions on the illustrated island.
-var V3_SITES=[[19,55],[27,65],[39,60],[50,57],[62,59],[73,57],[85,65],[24,44],[46,71],[59,45],[79,72],[91,54]];
+var V3_SITES=[[19,55],[27,65],[39,60],[50,57],[62,59],[73,57],[85,65],[24,44],[46,71],[59,45],[79,72],[91,54],[13,67],[18,77],[31,77],[36,48],[53,74],[67,74],[82,44],[70,38],[41,39],[32,53],[56,40],[86,82]];
 try{
  var vv=JSON.parse(localStorage.getItem(V3_KEY)||'null');
  if(vv&&typeof vv==='object'){
   if(V3_BUDDIES.some(function(x){return x.id===vv.buddy;}))V3.buddy=vv.buddy;
   if(['day','sunset','night'].indexOf(vv.sky)>-1)V3.sky=vv.sky;
-  if(vv.places&&typeof vv.places==='object')Object.keys(vv.places).forEach(function(k){var i=+k,n=+vv.places[k];if(Number.isInteger(i)&&i>=0&&i<12&&Number.isInteger(n)&&n>=0&&n<V3_DECORS.length)V3.places[k]=n;});
+  if(vv.places&&typeof vv.places==='object')Object.keys(vv.places).forEach(function(k){var i=+k,n=+vv.places[k];if(Number.isInteger(i)&&i>=0&&i<V3_SITES.length&&Number.isInteger(n)&&n>=0&&n<V3_DECORS.length)V3.places[k]=n;});
  }else if(TV.decor&&TV.decor.length){
-  TV.decor.forEach(function(n,i){if(i<12&&Number.isInteger(n)&&n>=0&&n<6)V3.places[String(i)]=n;});
+  TV.decor.forEach(function(n,i){if(i<V3_SITES.length&&Number.isInteger(n)&&n>=0&&n<6)V3.places[String(i)]=n;});
  }
 }catch(v3e){}
 function v3Save(){try{localStorage.setItem(V3_KEY,JSON.stringify(V3));}catch(e){}}
@@ -1641,7 +1648,7 @@ function v3Art(n){
   '<path d="M48 67V27" stroke="#947D64" stroke-width="5"/><path d="M24 30Q17 9 37 9Q50 0 63 9Q84 10 77 31L66 51H34Z" fill="#F1A77D" stroke="#B67D68" stroke-width="4"/><path d="M28 26h46M49 9v42" fill="none" stroke="#FFF0D2" stroke-width="5"/><path d="m34 51 15 25 16-25" fill="#FFF0D6" stroke="#BBA182" stroke-width="3"/><ellipse cx="50" cy="79" rx="11" ry="5" fill="#E8D5AE"/>'
  ];
  var d=V3_DECORS[n];if(!d)return '';
- return '<img class="v3-object-svg v10-object-image gp-workshop-sprite" src="assets/workshop-50/item-'+String(d.sprite).padStart(2,'0')+'.png" alt="" loading="lazy" decoding="async">';
+ return '<img class="v3-object-svg v10-object-image gp-workshop-sprite" src="assets/workshop-50/item-'+String(d.sprite).padStart(2,'0')+'.png?v=atelier-20261021b" alt="" loading="lazy" decoding="async">';
 }
 function v3Places(edit){var h='<div class="v3-object-layer">';
  V3_SITES.forEach(function(pt,i){var n=Object.prototype.hasOwnProperty.call(V3.places,String(i))?V3.places[i]:null;
@@ -1666,7 +1673,7 @@ tvScene=function(edit){
  original=original.replace('☀️ TON ÎLE D’AVENTURE','✦ TON MONDE À EXPLORER');
  return original;
 };
-function v3Card(c){var unlock=S.xp>=c.xp,active=V3.buddy===c.id;return '<button class="v3-creature'+(unlock?'':' v3-locked')+(active?' v3-active':'')+'" '+(unlock?'data-v3-buddy="'+c.id+'"':'disabled')+' aria-pressed="'+active+'"><div class="v3-creature-art" style="--creature-tint:'+c.color+'">'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png" alt="" loading="lazy" />'+'</div><div class="v3-creature-info"><span class="v3-creature-tag">'+(active?'✓ TON COMPAGNON':unlock?'COMPAGNON DÉBLOQUÉ':'🔒 '+c.xp+' XP')+'</span><strong>'+c.name+'</strong><small>'+c.kind+'</small><p>'+c.tag+'</p><span class="v3-creature-action">'+(active?'À tes côtés':unlock?'Choisir ce compagnon →':'Encore '+(c.xp-S.xp)+' XP')+'</span></div></button>';}
+function v3Card(c){var unlock=S.xp>=c.xp,active=V3.buddy===c.id;return '<button class="v3-creature'+(unlock?'':' v3-locked')+(active?' v3-active':'')+'" '+(unlock?'data-v3-buddy="'+c.id+'"':'disabled')+' aria-pressed="'+active+'"><div class="v3-creature-art" style="--creature-tint:'+c.color+'">'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png?v=atelier-20261021b" alt="" loading="lazy" />'+'</div><div class="v3-creature-info"><span class="v3-creature-tag">'+(active?'✓ TON COMPAGNON':unlock?'COMPAGNON DÉBLOQUÉ':'🔒 '+c.xp+' XP')+'</span><strong>'+c.name+'</strong><small>'+c.kind+'</small><p>'+c.tag+'</p><span class="v3-creature-action">'+(active?'À tes côtés':unlock?'Choisir ce compagnon →':'Encore '+(c.xp-S.xp)+' XP')+'</span></div></button>';}
 var v3OldCollection=tvCollection;
 tvCollection=function(){
  var head=tvTitle('MON CARNET DE COMPAGNONS','Rencontre les amis de Terra Village 🐾','Six petites créatures originales à découvrir en progressant dans les missions.','<button class="v2-subaction" data-nav="village">🏡 Retour au village</button>');
@@ -1690,7 +1697,7 @@ tvDecorPage=function(){
 };
 var v3OldVillage=tvVillage;
 tvVillage=function(){var h=v3OldVillage();var c=v3Buddy();var next=V3_BUDDIES.find(function(b){return S.xp<b.xp;});
- h+='<section class="v3-home-band"><div class="v3-home-buddy">'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png" alt="" loading="lazy" />'+'</div><div class="v3-home-band-text"><div class="v3-eyebrow">✦ TA PETITE ÉQUIPE D’AVENTURE</div><h3>'+c.name+' t’accompagne !</h3><p>'+c.line+' '+(next?'Prochaine rencontre : <strong>'+esc(next.name)+'</strong> à '+next.xp+' XP.':'Bravo, tu as rencontré tous les compagnons !')+'</p></div><button class="v3-band-button" data-nav="collection">Découvrir les compagnons <span>↗</span></button></section>';
+ h+='<section class="v3-home-band"><div class="v3-home-buddy">'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png?v=atelier-20261021b" alt="" loading="lazy" />'+'</div><div class="v3-home-band-text"><div class="v3-eyebrow">✦ TA PETITE ÉQUIPE D’AVENTURE</div><h3>'+c.name+' t’accompagne !</h3><p>'+c.line+' '+(next?'Prochaine rencontre : <strong>'+esc(next.name)+'</strong> à '+next.xp+' XP.':'Bravo, tu as rencontré tous les compagnons !')+'</p></div><button class="v3-band-button" data-nav="collection">Découvrir les compagnons <span>↗</span></button></section>';
  var checkpoints=[{t:'Premiers pas',goal:5,v:S.stats.pins,icon:'📍',d:'Poser 5 repères'},{t:'Curiosité',goal:100,v:S.xp,icon:'✨',d:'Gagner 100 XP'},{t:'Aventurier',goal:3,v:S.stats.games,icon:'🧭',d:'Terminer 3 missions'}];
  h+='<section class="v3-steps"><div class="v2-section-title"><h3>🌱 Tes premiers objectifs</h3><small>À ton rythme, sans compétition</small></div><div class="v3-step-grid">';
  checkpoints.forEach(function(it){var ok=it.v>=it.goal,pc=Math.min(100,Math.floor(it.v/it.goal*100));h+='<div class="v3-step"><span class="v3-step-icon">'+it.icon+'</span><div><b>'+it.t+'</b><small>'+it.d+'</small></div><span class="v3-step-progress">'+(ok?'✓':Math.min(it.v,it.goal)+'/'+it.goal)+'</span><div class="v2-progress"><i style="width:'+pc+'%"></i></div></div>';});
@@ -1713,7 +1720,7 @@ tvRenderEvents=function(root){
 };
 var v3OldShowEnd=showEnd;
 showEnd=function(avg){v3OldShowEnd(avg);var c=v3Buddy(),dest=$('end').querySelector('.kpis');if(!dest)return;var msg=avg>=80?'Quelle belle expédition ! Tu connais déjà beaucoup de repères.':avg>=45?'Bien joué ! On apprend aussi en faisant des essais.':'Continue à explorer : chaque repère reviendra plus facilement.';
- dest.insertAdjacentHTML('afterend','<div class="v3-result-buddy"><span>'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png" alt="" loading="lazy" />'+'</span><div><b>'+c.name+' te félicite !</b><p>'+msg+'</p></div></div>');};
+ dest.insertAdjacentHTML('afterend','<div class="v3-result-buddy"><span>'+'<img class="vfix-creature-portrait" src="assets/companions-final/'+c.id+'.png?v=atelier-20261021b" alt="" loading="lazy" />'+'</span><div><b>'+c.name+' te félicite !</b><p>'+msg+'</p></div></div>');};
 // If the user resets their progress, remove the optional cosmetic placements, too.
 var v3OldProfile=renderProfile;
 renderProfile=function(){v3OldProfile();var reset=$('bReset');if(reset){var original=reset.onclick;reset.onclick=function(){original();var m=document.querySelector('.modal');if(m){var yes=m.querySelector('[data-a="o"]');if(yes)yes.addEventListener('click',function(){V3={buddy:'plume',sky:'day',places:{}};V3_PICK=null;v3Save();},{once:true});}};}};
@@ -2103,7 +2110,7 @@ renderProfile=function(){oldProfile();var h=document.getElementById('profile');i
 // Include the passport in the V2 theme profile too, where the separate home screen is used.
 var oldTvProfile=tvProfile;
 tvProfile=function(){var c=buddy(),L=levelOf(S.xp),a=xpFor(L),z=xpFor(L+1),pct=Math.max(0,Math.min(100,Math.round(100*(S.xp-a)/(z-a))));
- var top='<section class="v15-profile-top"><img src="assets/companions-final/'+c.id+'.png" alt="" loading="lazy"><div><span class="v15-tag">PASSEPORT GÉOPINS</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>'+esc(titleOf(L))+' · Niveau '+L+'<br>Compagnon : '+esc(c.name)+'</p><div class="v15-progress-track" role="progressbar" aria-label="Progression du niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+(z-S.xp)+' XP jusqu’au niveau '+(L+1)+'</small></div></section>';
+ var top='<section class="v15-profile-top"><img src="assets/companions-final/'+c.id+'.png?v=atelier-20261021b" alt="" loading="lazy"><div><span class="v15-tag">PASSEPORT GÉOPINS</span><h2>'+esc(S.name||'Explorateur')+'</h2><p>'+esc(titleOf(L))+' · Niveau '+L+'<br>Compagnon : '+esc(c.name)+'</p><div class="v15-progress-track" role="progressbar" aria-label="Progression du niveau" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+pct+'%"></i></div><small>'+(z-S.xp)+' XP jusqu’au niveau '+(L+1)+'</small></div></section>';
  return top+oldTvProfile();};
 })();
 </script>
