@@ -1,0 +1,1 @@
+Correctif ciblé du bouton Retour au village depuis Missions. Remplacer index.html et assets dans le dépôt. Ne modifie pas le moteur de jeu. Test navigateur encore nécessaire.

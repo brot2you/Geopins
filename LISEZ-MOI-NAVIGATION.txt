@@ -1,0 +1,1 @@
+Correctifs cumulés : retour Village depuis Missions, Accueil depuis Académie du Brevet, bouton Toutes les missions et retour Accueil dans les écrans secondaires. Les boutons utilisent le système de navigation existant. Vérification syntaxique OK ; tests interactifs à confirmer dans un navigateur. Copier index.html et assets à la racine du dépôt.
