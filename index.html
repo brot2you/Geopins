@@ -988,6 +988,14 @@ img[src*="/final-art/"]{object-fit:contain;object-position:center;}
 #home .gp-mission-pack .gp-mission-art img {width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important}
 #home .v2-pack:hover,#home .v2-pack:focus,#home .v2-pack:active {transform:none!important}
 </style>
+
+<style id="gp-workshop-50-style">
+.v3-object-pic{height:100px!important;width:100px!important;max-width:100%;overflow:visible;place-items:center}
+.v3-object-pic img.gp-workshop-sprite{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;animation:none!important;transform:none!important}
+.v3-site img.gp-workshop-sprite,.v3-placed-object img.gp-workshop-sprite{width:100%;height:100%;object-fit:contain;display:block;animation:none!important;transform:none!important}
+.v3-object-card,.v3-object-card:hover,.v3-object-card:focus-visible{transform:none!important}
+@media(max-width:700px){.v3-object-pic{width:80px!important;height:80px!important}}
+</style>
 </head>
 <body>
 <main class="screen" id="home"></main>
@@ -1551,20 +1559,7 @@ var V3_BUDDIES=[
  {id:'luma',name:'Luma',kind:'Le lapin inventeur',xp:1200,tag:'Le guide des constellations',color:'#E2D6FF',line:'« Les progrès brillent, même quand ils sont petits. »'},
  {id:'sora',name:'Sora',kind:'Le pingouin observateur',xp:2100,tag:'Le gardien des sommets',color:'#C8E6FB',line:'« Une aventure se construit à chaque mission ! »'}
 ];
-var V3_DECORS=[
- {name:'Grand chêne',xp:0,icon:'tree'},
- {name:'Jardin de fleurs',xp:0,icon:'flowers'},
- {name:'Champignon mignon',xp:0,icon:'mushroom'},
- {name:'Fontaine',xp:150,icon:'fountain'},
- {name:'Guirlande de fête',xp:320,icon:'bunting'},
- {name:'Tente des explorateurs',xp:550,icon:'tent'},
- {name:'Petit observatoire',xp:800,icon:'observatory'},
- {name:'Grande longue-vue',xp:1200,icon:'telescope'},
- {name:'Moulin fleuri',xp:1650,icon:'windmill'},
- {name:'Passerelle',xp:2200,icon:'bridge'},
- {name:'Arc-en-ciel',xp:2900,icon:'rainbow'},
- {name:'Montgolfière',xp:3700,icon:'balloon'}
-];
+var V3_DECORS=[{"name":"Grand chêne","xp":0,"icon":"new","sprite":21},{"name":"Jardinière de fleurs","xp":0,"icon":"new","sprite":36},{"name":"Cerisier en fleurs","xp":0,"icon":"new","sprite":22},{"name":"Fontaine de la place","xp":150,"icon":"new","sprite":17},{"name":"Arche fleurie","xp":320,"icon":"new","sprite":37},{"name":"Campement des explorateurs","xp":550,"icon":"new","sprite":11},{"name":"Phare marin","xp":800,"icon":"new","sprite":5},{"name":"Longue-vue","xp":1200,"icon":"new","sprite":50},{"name":"Moulin à vent","xp":1650,"icon":"new","sprite":6},{"name":"Petit pont de pierre","xp":2200,"icon":"new","sprite":16},{"name":"Arche de pierre","xp":2900,"icon":"new","sprite":20},{"name":"Barque de pêche","xp":3700,"icon":"new","sprite":44},{"name":"Chaumière bleue","xp":590,"icon":"new","sprite":1},{"name":"Maison au toit de paille","xp":590,"icon":"new","sprite":2},{"name":"Maison provençale","xp":830,"icon":"new","sprite":3},{"name":"Cabane dans les arbres","xp":830,"icon":"new","sprite":4},{"name":"Moulin à eau","xp":1070,"icon":"new","sprite":7},{"name":"Étal du marché","xp":1070,"icon":"new","sprite":8},{"name":"Cabane du port","xp":1310,"icon":"new","sprite":9},{"name":"Petit château","xp":1310,"icon":"new","sprite":10},{"name":"Serre botanique","xp":1550,"icon":"new","sprite":12},{"name":"Panneau des annonces","xp":1550,"icon":"new","sprite":13},{"name":"Puits du village","xp":1790,"icon":"new","sprite":14},{"name":"Pontons de bois","xp":1790,"icon":"new","sprite":15},{"name":"Pierre mystérieuse","xp":2030,"icon":"new","sprite":18},{"name":"Panneaux directionnels","xp":2030,"icon":"new","sprite":19},{"name":"Oranger","xp":2270,"icon":"new","sprite":23},{"name":"Pommier","xp":2270,"icon":"new","sprite":24},{"name":"Grand sapin","xp":2510,"icon":"new","sprite":25},{"name":"Palmier","xp":2510,"icon":"new","sprite":26},{"name":"Arbre feuillu","xp":2750,"icon":"new","sprite":27},{"name":"Cactus fleuri","xp":2750,"icon":"new","sprite":28},{"name":"Bosquet de bambous","xp":2990,"icon":"new","sprite":29},{"name":"Rochers moussus","xp":2990,"icon":"new","sprite":30},{"name":"Banc fleuri","xp":3230,"icon":"new","sprite":31},{"name":"Clôture rustique","xp":3230,"icon":"new","sprite":32},{"name":"Muret de pierre","xp":3470,"icon":"new","sprite":33},{"name":"Lampadaire","xp":3470,"icon":"new","sprite":34},{"name":"Tonneau et caisse","xp":3710,"icon":"new","sprite":35},{"name":"Massif fleuri","xp":3710,"icon":"new","sprite":38},{"name":"Statue de chouette","xp":3950,"icon":"new","sprite":39},{"name":"Carte du village","xp":3950,"icon":"new","sprite":40},{"name":"Coin de plage","xp":4190,"icon":"new","sprite":41},{"name":"Parasol de plage","xp":4190,"icon":"new","sprite":42},{"name":"Hamac tropical","xp":4430,"icon":"new","sprite":43},{"name":"Casiers de pêche","xp":4430,"icon":"new","sprite":45},{"name":"Feu de camp","xp":4670,"icon":"new","sprite":46},{"name":"Table de pique-nique","xp":4670,"icon":"new","sprite":47},{"name":"Four à bois","xp":4910,"icon":"new","sprite":48},{"name":"Marmite au feu","xp":4910,"icon":"new","sprite":49}];
 // Hand-selected decorative positions on the illustrated island.
 var V3_SITES=[[19,55],[27,65],[39,60],[50,57],[62,59],[73,57],[85,65],[24,44],[46,71],[59,45],[79,72],[91,54]];
 try{
@@ -1572,7 +1567,7 @@ try{
  if(vv&&typeof vv==='object'){
   if(V3_BUDDIES.some(function(x){return x.id===vv.buddy;}))V3.buddy=vv.buddy;
   if(['day','sunset','night'].indexOf(vv.sky)>-1)V3.sky=vv.sky;
-  if(vv.places&&typeof vv.places==='object')Object.keys(vv.places).forEach(function(k){var i=+k,n=+vv.places[k];if(Number.isInteger(i)&&i>=0&&i<12&&Number.isInteger(n)&&n>=0&&n<12)V3.places[k]=n;});
+  if(vv.places&&typeof vv.places==='object')Object.keys(vv.places).forEach(function(k){var i=+k,n=+vv.places[k];if(Number.isInteger(i)&&i>=0&&i<12&&Number.isInteger(n)&&n>=0&&n<V3_DECORS.length)V3.places[k]=n;});
  }else if(TV.decor&&TV.decor.length){
   TV.decor.forEach(function(n,i){if(i<12&&Number.isInteger(n)&&n>=0&&n<6)V3.places[String(i)]=n;});
  }
@@ -1645,7 +1640,8 @@ function v3Art(n){
   '<path d="M15 70Q50 0 85 70" fill="none" stroke="#EA9AA2" stroke-width="13"/><path d="M20 70Q50 13 80 70" fill="none" stroke="#F8D88E" stroke-width="11"/><path d="M27 70Q50 26 73 70" fill="none" stroke="#96D1AB" stroke-width="10"/><path d="M36 70Q50 42 64 70" fill="none" stroke="#9FCBD3" stroke-width="9"/><ellipse cx="28" cy="78" rx="15" ry="9" fill="#FFF8ED"/><ellipse cx="73" cy="79" rx="15" ry="9" fill="#FFF8ED"/>',
   '<path d="M48 67V27" stroke="#947D64" stroke-width="5"/><path d="M24 30Q17 9 37 9Q50 0 63 9Q84 10 77 31L66 51H34Z" fill="#F1A77D" stroke="#B67D68" stroke-width="4"/><path d="M28 26h46M49 9v42" fill="none" stroke="#FFF0D2" stroke-width="5"/><path d="m34 51 15 25 16-25" fill="#FFF0D6" stroke="#BBA182" stroke-width="3"/><ellipse cx="50" cy="79" rx="11" ry="5" fill="#E8D5AE"/>'
  ];
- var special={3:'objet-maison',8:'objet-observatoire',9:'objet-academie',10:'objet-port'};var file=special[n]?'assets/art-original-2026/'+special[n]+'.webp':'assets/decorations/object-'+n+'.webp';return '<img class="v3-object-svg v10-object-image" src="'+file+'" alt="" loading="lazy" decoding="async">';
+ var d=V3_DECORS[n];if(!d)return '';
+ return '<img class="v3-object-svg v10-object-image gp-workshop-sprite" src="assets/workshop-50/item-'+String(d.sprite).padStart(2,'0')+'.png" alt="" loading="lazy" decoding="async">';
 }
 function v3Places(edit){var h='<div class="v3-object-layer">';
  V3_SITES.forEach(function(pt,i){var n=Object.prototype.hasOwnProperty.call(V3.places,String(i))?V3.places[i]:null;
