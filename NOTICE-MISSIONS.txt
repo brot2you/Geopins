@@ -1,0 +1,4 @@
+GéoPins — mise à jour visuelle des missions
+13 images 1254 x 198 px, dans assets/mission-banners-exact.
+Remplacer index.html et assets, commit et push.
+Les fonctions de jeu et de navigation sont inchangées.
