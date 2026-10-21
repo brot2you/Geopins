@@ -2686,7 +2686,7 @@ nav.classList.add('gp-btn-nav');
 for(const btn of nav.querySelectorAll(':scope > button[data-t]')){
  const key=btn.dataset.t;if(!icons[key])continue;
  btn.classList.add('gp-illustrated-button');btn.replaceChildren();
- const image=document.createElement('img'); image.className='art-nav-image';image.alt='';image.src='assets/menu-buttons/'+icons[key]+'.webp';image.loading='eager';
+ const image=document.createElement('img'); image.className='art-nav-image';image.alt='';image.src='assets/menu-buttons/'+icons[key]+'-2026.png?v=3';image.loading='eager';
  const label=document.createElement('span');label.className='art-nav-label';label.textContent=labels[key];btn.append(image,label);
 }
 // Do NOT move navigation into #home here: renderHome() replaces its innerHTML.
