@@ -1003,84 +1003,79 @@ img[src*="/final-art/"]{object-fit:contain;object-position:center;}
 .v3-site img.gp-workshop-sprite,.v3-placed-object img.gp-workshop-sprite{width:100%!important;height:100%!important;object-fit:contain!important;max-width:none!important}
 .v3-object-pic img.gp-workshop-sprite{object-fit:contain!important}
 @media(max-width:620px){.v3-site,.v3-placed-object{width:9.5%!important}}
-</style><style id="gp-natural-size-v1">
-/* Decoration type sets footprint; stable center position & no hover-jump. */
-.v3-object-layer .v3-site[data-gp-size],.v3-object-layer .v3-placed-object[data-gp-size]{height:auto!important;aspect-ratio:1!important;transform:translate(-50%,-50%)!important;transition:filter .15s ease,border-color .15s ease!important}
-.v3-object-layer [data-gp-size="large"]{width:clamp(62px,12%,158px)!important;z-index:8}
-.v3-object-layer [data-gp-size="nature"]{width:clamp(54px,10.3%,132px)!important;z-index:7}
-.v3-object-layer [data-gp-size="normal"]{width:clamp(46px,9%,115px)!important;z-index:7}
-.v3-object-layer [data-gp-size="small"]{width:clamp(42px,7%,85px)!important;z-index:9}
-.v3-object-layer [data-gp-size="empty"]{width:clamp(42px,8.5%,75px)!important;z-index:10}
-.v3-object-layer .v3-site:hover,.v3-object-layer .v3-site:focus-visible{transform:translate(-50%,-50%)!important}
-@media(max-width:620px){.v3-object-layer [data-gp-size="large"]{width:14%!important}.v3-object-layer [data-gp-size="nature"]{width:12%!important}.v3-object-layer [data-gp-size="normal"]{width:10.5%!important}.v3-object-layer [data-gp-size="small"]{width:9%!important}.v3-object-layer [data-gp-size="empty"]{width:9.5%!important}}
-</style>
-<style id="gp-workshop-visual-size-stable-v3">
-/* The artwork itself fills its transparent PNG canvas; placement positions must stay anchored. */
-.v3-object-layer .v3-site[data-gp-size],
-.v3-object-layer .v3-placed-object[data-gp-size],
-.v3-object-layer .v3-site[data-gp-size]:hover,
-.v3-object-layer .v3-site[data-gp-size]:focus-visible,
-.v3-object-layer .v3-site[data-gp-size]:active {
- transform:translate(-50%,-50%) !important;
- translate:none !important;
- scale:1 !important;
- animation:none !important;
- transition:filter .12s ease,border-color .12s ease !important;
-}
-.v3-object-card,.v3-object-card:hover,.v3-object-card:active,.v3-object-card:focus-visible,
-.v3-object-card .v3-object-pic,.v3-object-card:hover .v3-object-pic,
-.v3-object-card .gp-workshop-sprite,.v3-object-card:hover .gp-workshop-sprite{
- transform:none !important;translate:none !important;scale:1 !important;animation:none !important;
-}
-.v3-object-layer [data-gp-size="large"]{width:clamp(85px,14%,175px)!important}
-.v3-object-layer [data-gp-size="nature"]{width:clamp(74px,12%,148px)!important}
-.v3-object-layer [data-gp-size="normal"]{width:clamp(64px,10.5%,128px)!important}
-.v3-object-layer [data-gp-size="small"]{width:clamp(50px,8%,100px)!important}
-.v3-object-layer [data-gp-size="empty"]{width:clamp(42px,8.5%,75px)!important}
-.v3-object-layer .gp-workshop-sprite{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important}
-@media(max-width:620px){
- .v3-object-layer [data-gp-size="large"]{width:16%!important}
- .v3-object-layer [data-gp-size="nature"]{width:14%!important}
- .v3-object-layer [data-gp-size="normal"]{width:12%!important}
- .v3-object-layer [data-gp-size="small"]{width:10%!important}
- .v3-object-layer [data-gp-size="empty"]{width:9.5%!important}
-}
 </style>
 
+
 <!-- GéoPins: anchor-level fix: placement buttons have a fixed hitbox; decoration scale is on the inner PNG only. -->
-<style id="gp-fixed-placement-anchors-20261021">
-/* Keep each interactive slot's geometry identical whether empty, selected, filled, hovered or focused. */
-html body .v3-living .v3-object-layer button.v3-site[data-v3-slot],
-html body .v3-living .v3-object-layer button.v3-site[data-v3-slot]:is(:hover,:focus,:focus-visible,:active) {
- position:absolute!important; box-sizing:border-box!important;
- width:clamp(40px,5.2vw,64px)!important; height:clamp(40px,5.2vw,64px)!important;
- min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;
- aspect-ratio:1!important; margin:0!important;padding:0!important;
- transform:translate3d(-50%,-50%,0)!important; translate:none!important;scale:1!important;
- animation:none!important;transition:none!important;will-change:auto!important;
- filter:none!important; outline-offset:2px!important;
-} 
-/* All placements share one fixed circular hit target; only the drawing varies in size. */
-html body .v3-living .v3-object-layer button.v3-site:not(.empty){
- background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important;
+
+<style id="gp-placement-stability-clean-v4">
+/* One consistent geometry for all edit-mode sites. Do not magnify a button on hover. */
+html body .v3-living .v3-object-layer .v3-site,
+html body .v3-living .v3-object-layer .v3-site:hover,
+html body .v3-living .v3-object-layer .v3-site:active,
+html body .v3-living .v3-object-layer .v3-site:focus,
+html body .v3-living .v3-object-layer .v3-site:focus-visible {
+  position:absolute !important;
+  width:clamp(32px,4.5vw,48px) !important;
+  height:clamp(32px,4.5vw,48px) !important;
+  min-width:0 !important; min-height:0 !important;
+  aspect-ratio:1 !important;
+  box-sizing:border-box !important;
+  margin:0 !important; padding:0 !important;
+  transform:translate(-50%,-68%) !important;
+  translate:none !important; scale:1 !important;
+  transition:none !important; animation:none !important;
+  filter:none !important;
+  overflow:visible !important;
 }
-html body .v3-living .v3-object-layer button.v3-site.empty{
- border:2px dashed #3e805e!important;box-shadow:0 2px 7px #173b3950!important;
+/* Placed image has its own stable size, separate from button hit area. */
+html body .v3-living .v3-object-layer .v3-site:not(.empty) {
+  background:transparent !important; border:0 !important;box-shadow:none !important;
 }
-html body .v3-living .v3-object-layer button.v3-site .gp-workshop-sprite{
- position:absolute!important;left:50%!important;top:50%!important;
- width:170%!important;height:170%!important;max-width:none!important;max-height:none!important;
- transform:translate3d(-50%,-50%,0)!important;translate:none!important;scale:1!important;
- object-fit:contain!important;pointer-events:none!important;animation:none!important;transition:none!important;filter:drop-shadow(0 5px 4px #183e3855)!important;
+html body .v3-living .v3-object-layer .v3-site .gp-workshop-sprite {
+  position:absolute !important;left:50% !important;top:50% !important;
+  width:clamp(54px,7.2vw,94px) !important;
+  height:clamp(54px,7.2vw,94px) !important;
+  max-width:none !important;max-height:none !important;
+  object-fit:contain !important;
+  transform:translate(-50%,-50%) !important;
+  scale:1 !important;translate:none !important;
+  margin:0 !important;padding:0 !important;
+  transition:none !important;animation:none !important;
+  pointer-events:none !important;
 }
-html body .v3-living .v3-object-layer button.v3-site[data-gp-size="large"] .gp-workshop-sprite{width:255%!important;height:255%!important}
-html body .v3-living .v3-object-layer button.v3-site[data-gp-size="nature"] .gp-workshop-sprite{width:215%!important;height:215%!important}
-html body .v3-living .v3-object-layer button.v3-site[data-gp-size="normal"] .gp-workshop-sprite{width:185%!important;height:185%!important}
-html body .v3-living .v3-object-layer button.v3-site[data-gp-size="small"] .gp-workshop-sprite{width:145%!important;height:145%!important}
-html body .v3-living .v3-object-layer button.v3-site .v3-site-plus{transform:none!important;animation:none!important;transition:none!important}
+html body .v3-living .v3-object-layer .v3-site.empty {
+  border-radius:50% !important;
+  background:#fff8e8df !important;
+  border:2px dashed #9a6641 !important;
+  box-shadow:0 2px 5px #183e3833 !important;
+}
+html body .v3-living .v3-object-layer .v3-site .v3-site-plus {
+  width:25px !important;height:25px !important;font-size:19px !important;
+  transform:none !important;scale:1 !important;transition:none !important;
+}
+html body .v3-living .v3-object-layer .v3-placed-object {
+  width:clamp(54px,7.2vw,94px) !important;
+  height:clamp(54px,7.2vw,94px) !important;
+  transform:translate(-50%,-68%) !important;
+  translate:none !important;scale:1 !important;
+  animation:none !important;transition:none !important;
+  pointer-events:none !important;
+}
+html body .v3-living .v3-object-layer .v3-placed-object .gp-workshop-sprite {
+ width:100% !important;height:100% !important;
+ object-fit:contain !important;transform:none !important;
+}
+/* Make the village heading legible above decorative objects. */
+html body .v3-building .v2-scene-head {position:absolute !important;z-index:40 !important;
+  max-width:275px !important;visibility:visible !important;opacity:1 !important;}
+html body .v3-building .v2-scene-head * {visibility:visible !important;}
 @media(max-width:620px){
- html body .v3-living .v3-object-layer button.v3-site[data-v3-slot],
- html body .v3-living .v3-object-layer button.v3-site[data-v3-slot]:is(:hover,:focus,:focus-visible,:active){width:clamp(34px,8.5vw,48px)!important;height:clamp(34px,8.5vw,48px)!important}
+ html body .v3-living .v3-object-layer .v3-site .gp-workshop-sprite,
+ html body .v3-living .v3-object-layer .v3-placed-object {
+   width:clamp(43px,11vw,69px) !important;
+   height:clamp(43px,11vw,69px) !important;
+ }
 }
 </style>
 </head>
