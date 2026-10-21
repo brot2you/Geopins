@@ -927,6 +927,16 @@ img[src*="/final-art/"]{object-fit:contain;object-position:center;}
 #profile #nav.gp-btn-nav img.art-nav-image{display:block!important;visibility:visible!important;opacity:1!important;width:36px!important;height:38px!important;object-fit:contain!important;}
 #profile #nav.gp-btn-nav .art-nav-label{display:block!important;visibility:visible!important;font-size:12px!important;}
 @media(max-width:650px){#profile #nav.gp-btn-nav > button{flex-direction:column!important;gap:0!important}#profile #nav.gp-btn-nav .art-nav-label{font-size:9px!important}}
+</style><style>
+/* GéoPins missions — illustrated tile update only; no changes to navigation/game handlers */
+.pack.gp-mission-pack{min-height:0;background:#fffaf2;isolation:isolate}
+.gp-mission-pack .gp-mission-art{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#def1fd;border-bottom:2px solid var(--ink)}
+.gp-mission-pack .gp-mission-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:none!important;transform:none!important}
+.gp-mission-pack .gp-mission-level{position:absolute;right:9px;top:9px;color:#111b37;border:2px solid #fff;box-shadow:0 2px 7px #16244d66;border-radius:100px;font-size:12px;font-weight:900;padding:4px 10px}
+.gp-mission-pack .nm{font-size:15px;padding:12px 12px 7px;line-height:1.3;min-height:0}
+.gp-mission-pack .ft{padding-bottom:12px}
+.gp-mission-pack:hover .gp-mission-art,.gp-mission-pack:hover .gp-mission-art img{transform:none!important}
+@media(max-width:560px){.gp-mission-pack .nm{font-size:13px}.gp-mission-pack .ft{font-size:11px;gap:5px}}
 </style></head>
 <body>
 <main class="screen" id="home"></main>
@@ -1128,12 +1138,13 @@ function renderHome(){var h=$('home');var L=levelOf(S.xp),a=xpFor(L),b=xpFor(L+1
  html+='<div class="daily'+(dDone?' done':'')+'"><div class="bigpin">'+PIN_SVG+'</div><h2>'+(dDone?'Défi du jour réussi':'Défi du jour')+'</h2><p>'+(dDone?'Ton score : <b>'+S.daily.score+' pts</b>. Reviens demain pour un nouveau défi.':'10 repères du monde entier, les mêmes pour toute la classe. Tes XP comptent double.')+'</p><button class="btn '+(dDone?'alt':'')+'" id="bDaily">'+(dDone?'Rejouer pour le fun':'Relever le défi')+'</button></div>';
  html+='<button class="review" id="bReview"><span class="ic">🧠</span><span><b>À revoir</b><span>'+(weak.length?weak.length+' repère'+(weak.length>1?'s':'')+' à retravailler':'Rien pour l\'instant, joue une mission !')+'</span></span><span class="go">›</span></button>';
  html+='<div class="sec">Les packs</div><div class="tabs">';var F=['Tout','6e','5e','4e','3e','Bonus'];for(var x=0;x<F.length;x++)html+='<button class="tab'+(FILTER===F[x]?' on':'')+'" data-f="'+F[x]+'">'+F[x]+'</button>';html+='</div><div class="grid">';
- for(x=0;x<PACKS.length;x++){var p=PACKS[x];if(FILTER!=='Tout'&&p.lv!==FILTER)continue;var m=packMastery(p.id);html+='<button class="pack" data-p="'+p.id+'"><div class="band" style="background:'+p.c+'"><span class="em">'+(p.fl?flagImg(p.fl,'pk'):p.e)+'</span><span class="lv">'+p.lv+'</span></div><div class="nm">'+esc(p.n)+'</div><div class="ft">'+ringSvg(m,p.c)+'<span>'+BYPACK[p.id].length+' repères<br>'+Math.round(m*100)+' % maîtrisé</span></div></button>';}
+ for(x=0;x<PACKS.length;x++){var p=PACKS[x];if(FILTER!=='Tout'&&p.lv!==FILTER)continue;var m=packMastery(p.id);html+='<button class="pack gp-mission-pack" data-p="'+p.id+'"><div class="gp-mission-art"><img src="assets/mission-illustrations/scene-'+(MISSION_SCENES[p.id]||'01')+'.webp" alt="" loading="lazy"><span class="gp-mission-level" style="background:'+p.c+'">'+p.lv+'</span></div><div class="nm">'+esc(p.n)+'</div><div class="ft">'+ringSvg(m,p.c)+'<span>'+BYPACK[p.id].length+' repères<br>'+Math.round(m*100)+' % maîtrisé</span></div></button>';}
  html+='</div></div>';h.innerHTML=html;
  $('bDaily').onclick=function(){startGame('daily');};
  $('bReview').onclick=function(){if(!weak.length){toast('🧠','Ta liste est vide. Lance une mission pour la remplir.');return;}startGame('review');};
  var tabs=h.querySelectorAll('.tab');for(x=0;x<tabs.length;x++)tabs[x].onclick=function(){FILTER=this.getAttribute('data-f');renderHome();};
  var pk=h.querySelectorAll('.pack');for(x=0;x<pk.length;x++)pk[x].onclick=function(){openPack(this.getAttribute('data-p'));};}
+var MISSION_SCENES={"conts": "01", "relief": "04", "peuple": "07", "metro": "10", "mondia": "11", "regions": "06", "reliefFr": "04", "villes": "10", "om": "05", "ue": "02", "capitales": "03", "drapeaux": "02", "chez": "13"};
 function openPack(pid){var p=PACK[pid],L=BYPACK[pid],m=Math.round(packMastery(pid)*100);var v=el('div','veil');var s=el('div','sheet');
  var html='<div class="grab"></div><div class="sh-head"><div class="sh-em" style="background:'+p.c+'">'+(p.fl?flagImg(p.fl,'pk'):p.e)+'</div><div><h3>'+esc(p.n)+'</h3><p>'+L.length+' repères, '+m+' % maîtrisé, carte '+({world:'du monde',europe:'de l\'Europe',france:'de France'})[p.m]+'</p></div></div>';
  html+='<div class="modes"><button class="mode" data-m="mission"><i>🎯</i><b>Mission</b><span>'+Math.min(10,L.length)+' repères, prends ton temps</span></button><button class="mode ec" data-m="eclair"><i>⚡</i><b>Éclair</b><span>60 secondes, un seul toucher</span></button>'+(hasFlagMode(pid)?'<button class="mode fl" data-m="flags"><i>📍</i><b>Drapeau → carte</b><span>Seul le drapeau s\'affiche : place le pays</span></button>':'')+(hasQuiz(pid)?'<button class="mode qz'+(hasFlagMode(pid)?'':' full')+'" data-m="quiz"><i>🏁</i><b>Quiz drapeaux</b><span>'+(hasFlagMode(pid)?'4 choix : le bon drapeau ou le bon pays':'4 choix : dans quel pays se trouve chaque ville ?')+'</span></button>':'')+'</div>';
