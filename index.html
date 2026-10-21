@@ -2708,13 +2708,19 @@ body.gp-active-game #end:not(.hidden) {z-index:10001!important;pointer-events:au
 </script>
 
 
-<style id="gp-construction-navigation-repair">
+<style id="gp-construction-navigation-repair-v2">
 /* Ne jamais déplacer les icônes, images ou cartes de construction sur hover/focus. */
 .v3-object-card,.v3-object-card:hover,.v3-object-card:focus-visible,.v3-object-card:active,
 .v3-object-card .v3-object-pic,.v3-object-card:hover .v3-object-pic,
 .v3-object-card .v10-object-image,.v3-object-card:hover .v10-object-image,
-.v3-site,.v3-site:hover,.v3-site:focus-visible,[data-v3-slot],[data-v3-slot]:hover{
- transform:none!important;translate:none!important;scale:1!important;animation:none!important;
+/* Placement buttons MUST keep the centering translation on every interaction.
+   Resetting transform:none shifts the button by half its size. */
+.v3-object-layer .v3-site[data-v3-slot],
+.v3-object-layer .v3-site[data-v3-slot]:hover,
+.v3-object-layer .v3-site[data-v3-slot]:focus-visible,
+.v3-object-layer .v3-site[data-v3-slot]:active{
+ transform:translate(-50%,-50%)!important;translate:none!important;scale:1!important;animation:none!important;
+ transition:filter .12s ease,border-color .12s ease!important;
 }
 .v3-object-card{transition:background-color .12s,border-color .12s!important}
 .v3-object-card.v3-picked{outline:3px solid #208b68!important;outline-offset:2px!important}
