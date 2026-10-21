@@ -921,7 +921,13 @@ img[src*="/final-art/"]{object-fit:contain;object-position:center;}
 #nav.gp-btn-nav button[data-t] > img.art-nav-image {display:block!important;opacity:1!important;visibility:visible!important;width:46px!important;height:46px!important;object-fit:contain!important;}
 #nav.gp-btn-nav button[data-t] > span.art-nav-label {display:block!important;opacity:1!important;visibility:visible!important;}
 #nav.gp-btn-nav button[data-t],#nav.gp-btn-nav button[data-t]:hover,#nav.gp-btn-nav button[data-t]:active {transform:none!important;translate:none!important;animation:none!important;}
-</style><style id="gp-navigation-final-fix">.gp-page-actions{display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap}.gp-return-home{margin-left:auto}.gp-page-actions button,.gp-return-home{min-height:42px;transform:none!important;transition:background-color .15s ease,box-shadow .15s ease!important}@media(max-width:650px){.gp-page-actions{justify-content:flex-start}.gp-page-actions button{flex:1 1 auto}} </style></head>
+</style><style id="gp-navigation-final-fix">.gp-page-actions{display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap}.gp-return-home{margin-left:auto}.gp-page-actions button,.gp-return-home{min-height:42px;transform:none!important;transition:background-color .15s ease,box-shadow .15s ease!important}@media(max-width:650px){.gp-page-actions{justify-content:flex-start}.gp-page-actions button{flex:1 1 auto}} </style><style id="gp-nav-lifecycle-profile-style">
+#profile #nav.gp-btn-nav{position:relative!important;inset:auto!important;transform:none!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:6px!important;max-width:100%!important;width:100%!important;margin:0 0 12px!important;padding:4px!important;background:transparent!important;border:0!important;box-shadow:none!important;}
+#profile #nav.gp-btn-nav > button{display:flex!important;align-items:center!important;justify-content:center!important;gap:5px!important;min-width:0!important;padding:5px!important;background:#fff7e4!important;border:2px solid #c69a62!important;border-radius:12px!important;transform:none!important;}
+#profile #nav.gp-btn-nav img.art-nav-image{display:block!important;visibility:visible!important;opacity:1!important;width:36px!important;height:38px!important;object-fit:contain!important;}
+#profile #nav.gp-btn-nav .art-nav-label{display:block!important;visibility:visible!important;font-size:12px!important;}
+@media(max-width:650px){#profile #nav.gp-btn-nav > button{flex-direction:column!important;gap:0!important}#profile #nav.gp-btn-nav .art-nav-label{font-size:9px!important}}
+</style></head>
 <body>
 <main class="screen" id="home"></main>
 <main class="screen hidden" id="profile"></main>
@@ -1463,16 +1469,7 @@ renderHome=function(){var root=$('home');var html=tvHeader();if(TAB==='missions'
 renderProfile=function(){var root=$('profile');root.innerHTML='<div class="v2-wrap">'+tvHeader()+tvProfile()+'</div>';tvRenderEvents(root);$('nameIn').oninput=function(){S.name=this.value.replace(/^\s+/,'');save();};var opts=root.querySelectorAll('.sw');for(var a=0;a<opts.length;a++)opts[a].onclick=function(){var k=this.getAttribute('data-k');S.settings[k]=!S.settings[k];save();applySettings();renderProfile();};var avs=root.querySelectorAll('[data-avatar]');for(a=0;a<avs.length;a++)avs[a].onclick=function(){TV.avatar=this.getAttribute('data-avatar');tvSave();renderProfile();sfx('tap');};$('bReset').onclick=function(){modal('Repartir de zéro ?','Les scores, XP et badges de cet appareil seront effacés, ainsi que les décorations placées.','Effacer','Annuler',function(){var keep=S.settings;S=defState();S.settings=keep;TV.decor=[];tvSave();save();renderProfile();toast('🧽','Progression remise à zéro.');});};};
 showTab=function(t){if(t==='play')t='village';if(t==='village-edit')t='village';TAB=t;$('home').className='screen'+(t==='me'?' hidden':'');$('profile').className='screen'+(t==='me'?'':' hidden');var btns=$('nav').querySelectorAll('button');for(var z=0;z<btns.length;z++)btns[z].classList.toggle('on',btns[z].getAttribute('data-t')===t);if(t==='me')renderProfile();else if(t==='village'){renderHome();}else renderHome();window.scrollTo(0,0);};
 
-// Correctif robuste : utiliser directement la navigation interne pour les retours.
-// Capture avant les anciens scripts; les boutons n'ont qu'une seule action.
-document.addEventListener('click',function(ev){
- var b=ev.target.closest('button[data-nav],a[data-nav]');
- if(!b)return;
- var route=b.getAttribute('data-nav');
- if(route!=='village' && route!=='home' && route!=='accueil')return;
- ev.preventDefault();ev.stopImmediatePropagation();
- showTab('village');
-},true);
+/* Navigation centralized in showTab and tvRenderEvents; capture interceptor removed. */
 
 // Village editor button: village opens the editor when pressed on the village screen.
 var tvEventsOriginal=tvRenderEvents;
@@ -1666,6 +1663,23 @@ renderProfile=function(){v3OldProfile();var reset=$('bReset');if(reset){var orig
 
 /* V4 artwork: all existing HTML buttons remain functional; only the decorative SVG scene is replaced. */
 TV_SCENE='<img class="terrain-art" loading="eager" fetchpriority="high" src="assets/village-panorama-v12.webp" alt="Panorama original du village Terra Village, sans texte ni boutons dessinés" decoding="async">';
+/* Navigation lifecycle repair: never destroy #nav during innerHTML rewrites.
+   Keep one live navigation bar, with all its onclick handlers and icons. */
+(function(){
+ var navigation=$('nav'), homeEl=$('home'), profileEl=$('profile');
+ function detach(){if(navigation && navigation.parentNode!==document.body){document.body.insertBefore(navigation,homeEl);}}
+ function mount(page){
+  if(!navigation)return;
+  var root=page==='me'?profileEl:homeEl;
+  var target=page==='me' ? root.querySelector('.v2-wrap') : root.querySelector('.v2-grid');
+  if(target&&target.parentNode)target.parentNode.insertBefore(navigation,target);
+  else if(root.firstChild)root.insertBefore(navigation,root.firstChild);
+  else root.appendChild(navigation);
+ }
+ var renderVillage=renderHome,renderMe=renderProfile;
+ renderHome=function(){detach();renderVillage();mount('village');};
+ renderProfile=function(){detach();renderMe();mount('me');};
+})();
 /* ---------- boot ---------- */
 var nb=$('nav').querySelectorAll('button');for(i=0;i<nb.length;i++)nb[i].onclick=function(){showTab(this.getAttribute('data-t'));};
 applySettings();showTab('village');
@@ -2518,23 +2532,16 @@ html body #home #nav.nav.gp-btn-nav > button.gp-illustrated-button > .art-nav-la
 (function(){'use strict';
 const icons={village:'village',missions:'missions',brevet:'brevet',collection:'collection',me:'me'};
 const labels={village:'Village',missions:'Missions',brevet:'Brevet',collection:'Collection',me:'Profil'};
-const nav=document.getElementById('nav'),home=document.getElementById('home');
-if(!nav||!home)return;
+const nav=document.getElementById('nav');if(!nav)return;
 nav.classList.add('gp-btn-nav');
 for(const btn of nav.querySelectorAll(':scope > button[data-t]')){
  const key=btn.dataset.t;if(!icons[key])continue;
- btn.classList.add('gp-illustrated-button'); btn.replaceChildren();
- const image=document.createElement('img');image.className='art-nav-image';image.alt='';image.src='assets/menu-buttons/'+icons[key]+'.webp';image.loading='eager';
- const title=document.createElement('span');title.className='art-nav-label';title.textContent=labels[key];btn.append(image,title);
+ btn.classList.add('gp-illustrated-button');btn.replaceChildren();
+ const image=document.createElement('img'); image.className='art-nav-image';image.alt='';image.src='assets/menu-buttons/'+icons[key]+'.webp';image.loading='eager';
+ const label=document.createElement('span');label.className='art-nav-label';label.textContent=labels[key];btn.append(image,label);
 }
-let active=false;
-function refresh(){if(active)return;active=true;
- try{
-  const map=home.querySelector('.v2-grid');
-  if(map && map.parentNode && (nav.parentNode!==map.parentNode || nav.nextElementSibling!==map)){map.parentNode.insertBefore(nav,map);}
- }finally{active=false;}}
-let scheduled=false;const observer=new MutationObserver(()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;refresh()})});
-observer.observe(home,{childList:true,subtree:true});refresh();
+// Do NOT move navigation into #home here: renderHome() replaces its innerHTML.
+// The app's canonical render wrappers manage it safely.
 })();
 </script>
 
