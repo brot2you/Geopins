@@ -2575,5 +2575,68 @@ body.gp-active-game #end:not(.hidden) {z-index:10001!important;}
 })();
 </script>
 
+
+<style id="gp-construction-navigation-repair">
+/* Ne jamais déplacer les icônes, images ou cartes de construction sur hover/focus. */
+.v3-object-card,.v3-object-card:hover,.v3-object-card:focus-visible,.v3-object-card:active,
+.v3-object-card .v3-object-pic,.v3-object-card:hover .v3-object-pic,
+.v3-object-card .v10-object-image,.v3-object-card:hover .v10-object-image,
+.v3-site,.v3-site:hover,.v3-site:focus-visible,[data-v3-slot],[data-v3-slot]:hover{
+ transform:none!important;translate:none!important;scale:1!important;animation:none!important;
+}
+.v3-object-card{transition:background-color .12s,border-color .12s!important}
+.v3-object-card.v3-picked{outline:3px solid #208b68!important;outline-offset:2px!important}
+/* Show illustrations and labels even on the active tab; other CSS resets had hidden them. */
+#nav.nav.gp-btn-nav > button.gp-illustrated-button > img.art-nav-image,
+#nav.nav.gp-btn-nav > button.gp-illustrated-button.on > img.art-nav-image{
+ display:block!important;visibility:visible!important;opacity:1!important;object-fit:contain!important;
+}
+#nav.nav.gp-btn-nav > button.gp-illustrated-button > .art-nav-label,
+#nav.nav.gp-btn-nav > button.gp-illustrated-button.on > .art-nav-label{
+ display:block!important;visibility:visible!important;opacity:1!important;
+}
+[data-v3-unselect]{cursor:pointer!important}
+</style>
+<script id="gp-construction-navigation-repair-js">
+(function(){'use strict';
+  // Capture only the broken return links; do not override unrelated activity buttons.
+  document.addEventListener('click',function(e){
+    const back=e.target.closest('button[data-nav="village"],a[data-nav="village"]');
+    if(!back || back.closest('#nav'))return;
+    e.preventDefault();e.stopImmediatePropagation();
+    try{if(typeof V3_PICK!=='undefined')V3_PICK=null;
+      if(typeof showTab==='function')showTab('village');
+      else if(typeof renderHome==='function')renderHome();
+      if(typeof TAB!=='undefined' && TAB!=='village'){TAB='village';if(typeof renderHome==='function')renderHome();}
+      window.scrollTo({top:0,behavior:'instant'});
+    }catch(error){console.error('Retour au village',error);}
+  },true);
+  // Cancellation must work even if another script rebuilt the construction cards.
+  document.addEventListener('click',function(e){
+    const cancel=e.target.closest('[data-v3-unselect]');if(!cancel)return;
+    e.preventDefault();e.stopImmediatePropagation();
+    try{V3_PICK=null;if(typeof renderHome==='function')renderHome();}
+    catch(error){console.error('Annulation objet',error);}
+  },true);
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape' || typeof V3_PICK==='undefined' || V3_PICK===null)return;
+    if(e.target.matches('input,textarea,select,[contenteditable="true"]'))return;
+    V3_PICK=null;if(typeof renderHome==='function')renderHome();
+  });
+  // Keep navigation artwork present if older render code replaces tab contents.
+  const paths={village:'village',missions:'missions',brevet:'brevet',collection:'collection',me:'me'};
+  function repairNav(){
+    document.querySelectorAll('#nav button[data-t]').forEach(function(btn){
+      const key=btn.getAttribute('data-t');if(!paths[key])return;
+      let icon=btn.querySelector('img.art-nav-image');
+      if(!icon){icon=document.createElement('img');icon.className='art-nav-image';icon.alt='';icon.loading='eager';btn.prepend(icon);}
+      const expected='assets/menu-buttons/'+paths[key]+'.webp';if(icon.getAttribute('src')!==expected)icon.src=expected;
+      let label=btn.querySelector('.art-nav-label');if(!label){label=document.createElement('span');label.className='art-nav-label';label.textContent=({me:'Profil',village:'Village',missions:'Missions',brevet:'Brevet',collection:'Collection'})[key];btn.append(label);}
+    });
+  }
+  repairNav();
+  const nav=document.getElementById('nav');if(nav){let queued=false;new MutationObserver(function(){if(queued)return;queued=true;requestAnimationFrame(function(){queued=false;repairNav();});}).observe(nav,{childList:true,subtree:true});}
+})();
+</script>
 </body>
 </html>
