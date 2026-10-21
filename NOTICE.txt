@@ -1,0 +1,1 @@
+13 nouvelles images panoramiques sans texte, decoupees une par une de la planche verticale. Boutons adaptes au format horizontal, images non rogneees. Les fonctionnalites et sauvegardes ne sont pas modifiees.
