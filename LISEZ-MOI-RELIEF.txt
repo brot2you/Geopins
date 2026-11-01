@@ -1,0 +1,17 @@
+Geopins - couche physique (relief + fleuves)
+
+Fichiers à déposer à la racine du dépôt GitHub :
+- index.html (remplace l'ancien)
+- assets/relief/relief-world.webp, relief-europe.webp, relief-france.webp (nouveaux)
+
+Fonctionnement :
+- Estompage du relief et fleuves affichés sous les repères.
+- Masqués automatiquement pendant la question quand ils donneraient la réponse
+  (packs « Fleuves, montagnes, déserts » et « Fleuves, massifs et mers de France »,
+  fleuves, massifs, sommets, déserts, forêts, lagunes dans les autres modes).
+- Masqués pendant les épreuves Brevet (carte muette comme au DNB).
+- Réapparaissent à la correction de chaque question.
+- Réglage « Carte muette (sans relief ni fleuves) » dans le profil pour tout couper.
+
+Sources des données (domaine public) : estompage Natural Earth, altitudes ETOPO1 (NOAA),
+reprojetés dans les projections de l'appli.
